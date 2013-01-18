@@ -1,0 +1,17 @@
+o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1358427008.7913587:@value{I"
+class:EFI"StaticAsset;
+FI"id;
+F"%e6029585a438dc2dbfb06317248f661bI"logical_path;
+FI"more_from_brand_hover.png;
+TI"pathname;
+FI"6$root/app/assets/images/more_from_brand_hover.png;
+TI"content_type;
+FI"image/png;
+FI"
+mtime;
+FI"2013-01-17T12:33:45+00:00;
+FI"length;
+FI"	4079;
+FI"digest;
+F"%f33e112057b05afa3ff878a12927f9f1I"_version;
+F"%df7525e917401704ef453cb56bf16697

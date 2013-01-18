@@ -1,0 +1,17 @@
+o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1358427008.8268542:@value{I"
+class:EFI"StaticAsset;
+FI"id;
+F"%3b0154bf634c1f4d01c9503bccc3ab6dI"logical_path;
+FI"play-button.png;
+TI"pathname;
+FI",$root/app/assets/images/play-button.png;
+TI"content_type;
+FI"image/png;
+FI"
+mtime;
+FI"2013-01-17T12:33:05+00:00;
+FI"length;
+FI"	5052;
+FI"digest;
+F"%de648257684ceaed34a1c6ae57f0a173I"_version;
+F"%df7525e917401704ef453cb56bf16697

@@ -1,0 +1,56 @@
+<script type="text/javascript">
+    
+
+  $('#user_name').live('click',function(){
+    var clip = new ZeroClipboard.Client("#user_name");
+    //var clip = new ZeroClipboard.Client("#user_email");
+    //clip.setText( "User name" );
+    //
+    //alert("clip : "+clip);
+	alert("Try again!");
+  });
+
+  
+
+  $('#user_email').live('click',function(){
+    new ZeroClipboard.Client("#user_email");
+	alert("Try again!");
+  });
+
+  $('#c_adminemail').live('click',function(){
+    new ZeroClipboard.Client("#c_adminemail");
+	alert("Try again!");
+  });
+
+  $('#c_offerimage').live('click',function(){
+    new ZeroClipboard.Client("#c_offerimage");
+	alert("Try again!");
+  });
+
+  $('#c_offerselection').live('click',function(){
+    new ZeroClipboard.Client("#c_offerselection");
+	alert("Try again!");
+  });
+
+  $('#c_brandname').live('click',function(){
+    new ZeroClipboard.Client("#c_brandname");
+	alert("Try again!");
+  });
+
+  $('#c_subscribelink').live('click',function(){
+    new ZeroClipboard.Client("#c_subscribelink");
+	alert("Try again!");
+  });
+
+  $('#c_unsubscribelink').live('click',function(){
+    new ZeroClipboard.Client("#c_unsubscribelink");
+	alert("Try again!");
+  });
+
+<%#*$('[id*=c_]').live('click',function(){%>
+<%#*$(this).click();%>
+<%#*id = $(this).attr('id').split('_')[1]%>
+<%#*obj = "#"+id%>
+<%#*new ZeroClipboard.Client(obj);%>
+<%#*});%>
+</script>

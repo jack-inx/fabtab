@@ -1,0 +1,9 @@
+<% if !params[:state_code].nil? %>
+  <%= select_tag "city_id", options_for_select(@city.collect {|p| [ p.name, p.id ] })%>
+<%else%>   
+   <% if !city_name.nil? %>
+     <%= select_tag "city_id", options_for_select(@city.collect {|p| [ p.name, p.id ] }, :selected => "#{city_name.id}")%>
+   <%else%>
+      <%= select_tag "city_id", options_for_select(@city.collect {|p| [ p.name, p.id ] })%>
+    <%end%>
+<%end%>

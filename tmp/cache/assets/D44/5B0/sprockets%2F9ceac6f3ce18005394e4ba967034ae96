@@ -1,0 +1,18 @@
+o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1358427008.3414106:@value{I"
+class:EFI"StaticAsset;
+FI"id;
+F"%f34e6ba3db3c42155bb3ca5d6716edadI"logical_path;
+FI"arialbd.svg;
+TI"pathname;
+FI"'$root/app/assets/fonts/arialbd.svg;
+TI"content_type;
+FI"image/svg+xml;
+FI"
+mtime;
+FI"2013-01-17T12:30:21+00:00;
+FI"length;
+FI"
+61008;
+FI"digest;
+F"%1cfb4b3235498b82a8b54777dd2a9f85I"_version;
+F"%df7525e917401704ef453cb56bf16697

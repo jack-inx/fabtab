@@ -1,0 +1,41 @@
+ <% if params[:controller]=='xdevise/confirmations' %>
+
+  <%= render :partial =>'layouts/signin' %>
+
+<% else %>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>FabTab</title>
+  <%= stylesheet_link_tag    "application" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+	<%= ajaxful_rating_style %>
+	<%= yield(:head) %>
+	<meta property="fb:app_id" content="148204908657714"/>
+	<meta property="og:title" content="FabTab"/>
+	<meta property="og:type" content="website"/>
+	<meta property="og:image" content="http://ec2-107-22-153-137.compute-1.amazonaws.com/assets/betalogo1.png"/>
+	<meta property="og:url" content="http://ec2-107-22-153-137.compute-1.amazonaws.com"/>
+	<meta property="og:site_name" content="fabtab"/>
+	<meta property="og:description" content="FabTab is your place to save, tag and manage all your offers, coupons and ads in one cool place. You can organize your offers into folders and connect with brands that make your life special. You can even look at what other people are tagging and share their offers and brands"/>
+	<%= render :partial => 'layouts/googleanalytics' %>
+</head>
+<body>
+
+<% if current_user %>
+		<%= render :partial => 'layouts/new' %>
+<% else %>
+ <%= render :partial => 'layouts/old' %>
+<% end %>
+<script type="text/javascript">
+      var uvOptions = {};
+      (function() {
+        var uv = document.createElement('script'); uv.type = 'text/javascript'; uv.async = true;
+        uv.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'widget.uservoice.com/cYPrkIzxmmj4HwwxOawg.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(uv, s);
+      })();
+    </script>
+</body>
+</html>
+<% end %>

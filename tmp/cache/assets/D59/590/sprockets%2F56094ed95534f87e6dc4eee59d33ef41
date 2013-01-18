@@ -1,0 +1,17 @@
+o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1358427008.7881877:@value{I"
+class:EFI"StaticAsset;
+FI"id;
+F"%5ccba34134d104b6017c2e786ca0ba64I"logical_path;
+FI"more_from_brand.png;
+TI"pathname;
+FI"0$root/app/assets/images/more_from_brand.png;
+TI"content_type;
+FI"image/png;
+FI"
+mtime;
+FI"2013-01-17T12:33:06+00:00;
+FI"length;
+FI"	4043;
+FI"digest;
+F"%d1df162e85f557521e401602f8bf24fbI"_version;
+F"%df7525e917401704ef453cb56bf16697

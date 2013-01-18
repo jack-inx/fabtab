@@ -1,0 +1,18 @@
+o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1358427008.7000086:@value{I"
+class:EFI"StaticAsset;
+FI"id;
+F"%122d231c4742fa6da5e08ef5e969cd66I"logical_path;
+FI"jplayer.blue.monday.jpg;
+TI"pathname;
+FI"4$root/app/assets/images/jplayer.blue.monday.jpg;
+TI"content_type;
+FI"image/jpeg;
+FI"
+mtime;
+FI"2013-01-17T12:32:52+00:00;
+FI"length;
+FI"
+23189;
+FI"digest;
+F"%260713b428baed5e0dfbb5aec270046cI"_version;
+F"%df7525e917401704ef453cb56bf16697

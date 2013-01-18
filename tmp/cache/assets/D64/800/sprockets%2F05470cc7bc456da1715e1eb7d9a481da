@@ -1,0 +1,17 @@
+o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1358427008.654784:@value{I"
+class:EFI"StaticAsset;
+FI"id;
+F"%4adbfcb56285ed447647da4788c76a29I"logical_path;
+FI"dialog_box_more.png;
+TI"pathname;
+FI"0$root/app/assets/images/dialog_box_more.png;
+TI"content_type;
+FI"image/png;
+FI"
+mtime;
+FI"2013-01-17T12:33:02+00:00;
+FI"length;
+FI"	3326;
+FI"digest;
+F"%386ba9f6a6f39ea26241d77b7e6acdc4I"_version;
+F"%df7525e917401704ef453cb56bf16697

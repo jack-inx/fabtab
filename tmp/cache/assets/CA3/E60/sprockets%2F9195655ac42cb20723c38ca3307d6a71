@@ -1,0 +1,17 @@
+o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1358427008.56712:@value{I"
+class:EFI"StaticAsset;
+FI"id;
+F"%9a10bb3b4909f3a9e6d8edfaf38a55f1I"logical_path;
+FI"bg_middle_t2.png;
+TI"pathname;
+FI"-$root/app/assets/images/bg_middle_t2.png;
+TI"content_type;
+FI"image/png;
+FI"
+mtime;
+FI"2013-01-17T12:32:40+00:00;
+FI"length;
+FI"	3035;
+FI"digest;
+F"%a65a1057f87813083a3ee7edb42d58d5I"_version;
+F"%df7525e917401704ef453cb56bf16697

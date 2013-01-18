@@ -1,0 +1,17 @@
+o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1358427009.0530005:@value{I"
+class:EFI"StaticAsset;
+FI"id;
+F"%6744703441a9cd76b9b1f1e6a7278f95I"logical_path;
+FI"stars.png;
+TI"pathname;
+FI"&$root/app/assets/images/stars.png;
+TI"content_type;
+FI"image/png;
+FI"
+mtime;
+FI"2013-01-17T12:32:55+00:00;
+FI"length;
+FI"	8013;
+FI"digest;
+F"%ff9362083f55d889d900bbf207920b6bI"_version;
+F"%df7525e917401704ef453cb56bf16697

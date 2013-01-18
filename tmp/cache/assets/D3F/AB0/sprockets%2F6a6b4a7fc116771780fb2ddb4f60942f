@@ -1,0 +1,17 @@
+o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1358427008.5731306:@value{I"
+class:EFI"StaticAsset;
+FI"id;
+F"%71735a48428c6ab79b723ef538fc980cI"logical_path;
+FI"btn_confirm.png;
+TI"pathname;
+FI",$root/app/assets/images/btn_confirm.png;
+TI"content_type;
+FI"image/png;
+FI"
+mtime;
+FI"2013-01-17T12:32:15+00:00;
+FI"length;
+FI"	3045;
+FI"digest;
+F"%4357beba66eb27627f5c1b3f02a10ae8I"_version;
+F"%df7525e917401704ef453cb56bf16697

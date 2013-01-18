@@ -1,0 +1,97 @@
+
+    <%= form_tag  setting_multipleads_path, :method => :delete do %>
+      <table class="noborder">
+      <% @ads.each do |ad|%>
+        <tr>
+          <td style="width: 24px;">
+            <%= check_box_tag 'ids[]', ad.id, false ,:id => "ad_#{ad.id}",:class =>"user_cls"%>
+          </td>
+          <td style="padding-right: 10px; width: 60px;">
+            <%= image_tag(ad.image_url,:width => "50",:height => "50") %>
+          </td>
+          <td style="width: 100px; padding-left: 2px; padding-right: 2px; height: 55px;">
+            <% user = User.find_by_id(ad.user_id)  %>
+            <%= truncate(user.username, :length => 15, :omission => '...') %>        
+          </td>
+          <td style="width: 170px; padding-left: 10px; padding-right: 2px;">
+            <% user = User.find_by_id(ad.user_id)  %>
+            <%= user.email %>
+          </td>
+          <td style="padding-left: 5px; width: 100px; padding-right: 5px;">
+            <% if ad.flag == true  %>
+              YES
+            <% else %>
+              NO
+            <%  end %>
+          </td>
+          <td style="border-right-width: 0px; padding-right: 3px; padding-left: 10px; width: 135px; border-left-width: 0px; margin-left: 0px;">
+            <% if !ad.flagupdate.nil? %>
+              <%= ad.flagupdate.strftime("%m/%d/%Y %I:%M%p") %>
+            <% else %>
+              <%= "N/A" %>
+            <% end %>
+          </td>
+          <td style="width: 100px;">
+            <%  if ad.flag == true && ad.status == true %>
+              <%= link_to "Ignore", ignore_ad_path(ad.id) %>
+            <% elsif ad.flag == true %>
+             <%= link_to "Ignore", ignore_ad_path(ad.id) %>
+            <% else %>
+              N/A
+            <% end %>
+          </td>
+          <td>
+            <%= link_to "Delete", destroy_ads_path(ad.id), :method=>'delete' %>
+          </td>
+          <td style="width: 46px;">
+            <div class="status" id="ads_<%= ad.id %>">
+              <%= render :partial => "ads/ads_status", :locals => {:ad => ad } %>
+            </div>
+          </td>
+        </tr>
+      <% end %>
+      <%= submit_tag "Delete",:id => "delete_all", :style => "margin-top: -130px;" %>
+      </table>
+    <% end %>
+<script>
+  document.onload =  $("#delete_all").hide();
+  $('#select_all').click(function() {
+    if (this.checked) {
+      $(':checkbox').each(function() {
+        $("#delete_all").show();
+        this.checked = true;
+      });
+    } else {
+      $(':checkbox').each(function() {
+        $("#delete_all").hide();
+        this.checked = false;
+      });
+    }
+  });
+  var count=0;
+  $('.user_cls').click(function() {
+    if (this.checked) {
+      count++;
+      if(count > 0)
+      {
+        $("#delete_all").show();
+      }
+    }
+    else
+    {
+      count--;
+      if(count == 0)
+      {
+        $("#delete_all").hide();
+      }
+      else
+      {
+        $("#delete_all").show();
+      }
+    }
+  });
+
+$('.close').click(function(){
+$('.close').parent().hide();
+});
+</script>

@@ -1,0 +1,203 @@
+
+function getUrlVars(src) {
+  var vars = [], hash;
+  var hashes = src.slice(src.indexOf('?') + 1).split('&');
+  for (var i = 0; i < hashes.length; i++) {
+    hash = hashes[i].split('=');
+    vars.push(hash[0]);
+    vars[hash[0]] = hash[1];
+  }
+  
+  var splitUrl = vars[0].split('/');
+  vars.push('id');
+  vars['id'] = splitUrl[splitUrl.length-1];
+  
+  return vars;
+}
+ 
+ 
+(function(){
+  var importantImages = function(){
+    var allImages = document.getElementsByTagName('img');
+    var images = [];
+    for(var i=0; i < allImages.length; i++) {
+      if(allImages[i].height >= 150 && allImages[i].width >= 150) {
+        images.push(allImages[i]);
+      }
+    }    
+    return images;
+  }();
+  
+  var importantVideos = function(){
+    videos = [];
+    if(window.location.href.match(/youtube/i)){
+      videos.push(window.location);
+      return videos;
+    }
+    
+    var allVideos = document.getElementsByTagName('embed');
+    for(var i=0; i< allVideos.length; i++) {
+      if (decodeURIComponent(allVideos[i].src).match(/youtube/i)){
+        videos.push(allVideos[i]); 
+      }
+    }    
+    return videos;
+  }();
+  
+  var importantAds = function(){
+    var allAds = document.getElementsByTagName('iframe');
+    var ads = [];
+    for(var i=0; i< allAds.length; i += 1) {  
+       if ( decodeURIComponent(allAds[i].src).match(/adspeed.net/i) ) {
+         ads.push(allAds[i]);
+       }
+     }
+     
+     return ads;
+  }();
+  
+  var totalAdsAndImages = importantImages.length + importantAds.length + importantVideos.length;
+  console.log(importantAds.length);
+  if ( totalAdsAndImages == 0) {
+    alert('Sorry No ad/image to save');
+    return false;
+  }
+    
+  var background = document.createElement('div');
+  background.setAttribute('id', 'tab-it-background');
+  background.setAttribute('style',"position:fixed;top:0;left:0;right:0;bottom:0;background:white;z-index:100000002;opacity:1;");
+  document.body.appendChild(background);
+  
+  var topbar = document.createElement('div');
+  topbar.setAttribute('id','tabit-topbar');
+  topbar.setAttribute('style','position:fixed;z-index:100000004;height:65px;top:0;left:0;right:0;background:white;width:1060px;margin-left:auto;margin-right:auto;');
+  document.body.appendChild(topbar);
+    
+  var container = document.createElement('div');
+  container.setAttribute('class','tabit-container');
+  container.setAttribute('style','position:absolute;width:100%;z-index:100000002;top:0;margin-top:60px');
+  document.body.appendChild(container);  
+  
+  var myfabtabLogo = document.createElement('img');
+  myfabtabLogo.setAttribute('src','http://<%= "#{request.host_with_port}/assets/betalogo1.png" %>');
+  myfabtabLogo.setAttribute('style','float:left;width:150px;margin-top:10px;');
+  topbar.appendChild(myfabtabLogo);
+  
+  var cancelTab = document.createElement('a');
+  cancelTab.setAttribute('style','margin-top:18px;float:right;text-align:center;text-decoration:none;background:#7EBE57;font-family:verdana;font-size:20px;padding:10px;color:white;border-radius:30px');
+  cancelTab.setAttribute('href',"#");
+  cancelTab.innerHTML ="Cancel Tabbing";
+  topbar.appendChild(cancelTab);
+
+  cancelTab.onclick = function () {
+    var tabItContainer = document.getElementById('tabit-container');
+    document.body.removeChild(container);
+    document.body.removeChild(background);
+    document.body.removeChild(topbar);
+    document.body.removeChild(tabitFooter);
+    return false;
+  };
+  
+  var tabitImages = document.createElement('div');
+  tabitImages.setAttribute('id','tabit-images');
+  tabitImages.setAttribute('style','width:1060px;margin-left:auto;margin-right:auto;');
+  container.appendChild(tabitImages);
+  
+  var addEntity = function(type,imageURL,siteURL){
+    var divImage = document.createElement('div');
+    divImage.setAttribute('class','adTabImage');
+    divImage.setAttribute('style','position:relative;border:2px solid gray;width:198px;height:165px;float:left;z-index:10002;opacity:1;text-align:center;margin-right:10px;margin-top:10px');
+    tabitImages.appendChild(divImage);
+    
+    var adLinks = document.createElement('a');
+    adLinks.setAttribute('href','#');
+    divImage.appendChild(adLinks);
+          
+    
+    if( type == 'video') {      
+      var imageElement = document.createElement('iframe');
+      imageElement.setAttribute('src',imageURL);
+      imageElement.setAttribute('width', '198px');
+      imageElement.setAttribute('height','165px');
+      adLinks.appendChild(imageElement);
+    } else {
+      var imageElement = document.createElement('img');
+      imageElement.setAttribute('style', 'width:auto;height:auto;max-width:198px;max-height:165px;');
+      imageElement.src = imageURL;
+      adLinks.appendChild(imageElement);
+    }
+    
+    var adTabIt = document.createElement('a');
+    adTabIt.setAttribute('href','#');
+    divImage.appendChild(adTabIt);
+          
+    var tabitImage = document.createElement('img');
+    tabitImage.src = 'http://<%= "#{request.host_with_port}/assets/tabit_btn.png" %>';
+    tabitImage.setAttribute('style','display:none');
+    adTabIt.appendChild(tabitImage);
+    
+    divImage.onmouseover = function(){
+      tabitImage.setAttribute('style','position:absolute;width:92px;height:35px;display:block;top:20%;right:25%;');
+    };
+
+    divImage.onmouseout = function(){
+      tabitImage.setAttribute('style','display:none');
+    };
+          
+    adTabIt.onclick = function() {
+      var url = siteURL;
+      window.open('http://<%= "#{request.host_with_port}" %>/ads/new?url=' + encodeURIComponent(url) + '&image_url=' + encodeURIComponent(imageURL) + "&type=" + type,"fabtabit","width=600,height=400");
+      return false;
+    };
+  };
+  
+  for(var i=0; i< importantAds.length; i += 1) {
+    var adProperties = getUrlVars(decodeURIComponent(importantAds[i].src));
+    addEntity('ad',adProperties['custom1'],adProperties['custom']);
+  }
+  
+  
+  for(var i=0; i< importantVideos.length; i++) {
+    console.log(importantVideos[i].src);
+    if( importantVideos[i].src ){
+      var adProperties = getUrlVars(decodeURIComponent(importantVideos[i].src));
+      var siteUrl = "http://www.youtube.com/watch?v=" + adProperties['id'] + "&feature=player_embedded";
+      var imageUrl = "http://www.youtube.com/embed/" + adProperties['id'] + "?wmode=opaque&fs=1&feature=oembed";
+    } else if(importantVideos[i].href) {
+      var adProperties = getUrlVars(decodeURIComponent(importantVideos[i].href));
+      var siteUrl = "http://www.youtube.com/watch?v=" + adProperties['v'] + "&feature=player_embedded";
+      var imageUrl = "http://www.youtube.com/embed/" + adProperties['v'] + "?wmode=opaque&fs=1&feature=oembed";
+    }
+    addEntity('video',imageUrl,siteUrl);
+  }
+  
+
+  for(var i=0; i< importantImages.length; i += 1) {
+    var siteURL = importantImages[i].parentNode.href || location.href;
+    addEntity('image',importantImages[i].src,siteURL);
+  }
+  
+
+  var tabitFooter = document.createElement('div');
+  tabitFooter.setAttribute('id','tabit-footer');
+  tabitFooter.setAttribute('style','position:fixed;bottom:0;left:0;right:0;height:45px;background:white;width:1060px;margin-left:auto;margin-right:auto;z-index:100000004;');
+  document.body.appendChild(tabitFooter);
+
+  var footerText = document.createElement('div');
+  footerText.setAttribute('id','tabit-footer-text');
+  footerText.setAttribute('style','color:#7EBE57;float:right;font-family:arial;font-size:18px;');
+  footerText.innerHTML = 'more';
+  tabitFooter.appendChild(footerText);
+  
+  var aboutus = document.createElement('a');
+  aboutus.setAttribute('href','http://<%= "#{request.host_with_port}/about" %>');
+  aboutus.setAttribute('style','margin-left:5px;');
+  aboutus.innerHTML = "about us";
+  footerText.appendChild(aboutus);
+
+  var footerBorder = document.createElement('div');
+  footerBorder.setAttribute('id','tabit-footer-border');
+  footerBorder.setAttribute('style','position:absolute;bottom:0;left:0;right:0;height:25px;background:#7EBE57;');
+  tabitFooter.appendChild(footerBorder);
+  
+})();

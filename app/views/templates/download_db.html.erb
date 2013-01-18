@@ -1,0 +1,68 @@
+
+<div class="content" style="float: none;">
+  <span style="float: right;">
+    <%= link_to "Back",  admin_edit_path, :id=>"add_coupan" %>
+  </span>
+  <br/>
+  <br/>
+  <div id ="dblist" >
+    <% i = 0 %>
+    <div class="total_db" >
+      <div class="rows">
+        <div  style="width: 296px;float:left;text-align: center;"><b>File Name</b></div>
+        <div style="width: 120px;float:left;">&nbsp;</div>
+        <div style="width: 180px;float:left;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Actions</b></div>
+        <div style="width: 90px;float:left;"> &nbsp;</div>
+        <div style="width: 190px;float:left;"><b>Database Creation Date</b></div>
+      </div>
+      <div style="margin-top: 12px;height: 730px;overflow-x: hidden;overflow-y: scroll;width: 933px; float: left;">
+        <% @bucket.objects.each do |obj| %>
+          <% if obj.key.split('admin/')[1].split('/')[0].to_i == current_user.id %>
+            <% if !(obj.key.split('admin/')[1].split('/')[1].nil?) %>
+              <div class="row" id="firstscroll" style="padding: 14px 0 0;">
+                <div style="width: 296px;float:left;text-align: center;">
+                  <%= rename_file(obj.key.split('admin/')[1].split('/')[1]) %>
+                </div>
+                <div style="width: 120px;float:left;">&nbsp;</div>
+                <div style="width: 180px;float:left;text-align: center;">
+                  <a href="<%= obj.url_for(:read,:expire => 10000*60) %>" >Download</a>&nbsp;<span class="login_link"> |</span> &nbsp;
+                  <%= link_to_function "Delete", "$('#hidden_delete_box_#{i}').css('display','block');" %>
+                </div>
+                <div style="width: 120px;float:left;">&nbsp;</div>
+                <div style="width: 190px;float:left;">
+                  <%= convert_time(obj.key.split('dump_')[1].split('.')[0]) %>
+                </div>
+                <div style="width: 120px;float:left;">
+                  <div class="delete_dialog hidden"style="margin: 10px 31px 20px 572px;" id="hidden_delete_box_<%=  i %>">
+                    <div class="close" style="margin: 12px 24px;">X</div>
+                    <div class="title" style="margin-left: 7px;"> Delete</div>
+                    <div class="message-text"> Delete this file?</div>
+                    <%= link_to "Delete", delete_file_path(:obj => obj.key), :method=>'delete', :class => 'delete_tab' %>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  $('.close').click(function(){
+    $(this).parent().hide();
+  });
+</script>
+
+<style type="text/css">
+  a:hover {
+    color : #8BC541
+  }
+  a {
+    color : #C3C6C5
+  }
+  .container footer {
+   margin-top: 132px;
+  }
+</style>

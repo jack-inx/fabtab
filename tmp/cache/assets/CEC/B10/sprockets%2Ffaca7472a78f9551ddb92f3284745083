@@ -1,0 +1,17 @@
+o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1358427009.0286016:@value{I"
+class:EFI"StaticAsset;
+FI"id;
+F"%f1dfcd0d88c8fdc3f6010b4f7a1a9084I"logical_path;
+FI"share_over.png;
+TI"pathname;
+FI"+$root/app/assets/images/share_over.png;
+TI"content_type;
+FI"image/png;
+FI"
+mtime;
+FI"2013-01-17T12:32:11+00:00;
+FI"length;
+FI"	3478;
+FI"digest;
+F"%351b9abc88f892c47f202e3d35f56795I"_version;
+F"%df7525e917401704ef453cb56bf16697

@@ -1,0 +1,123 @@
+<style>
+  body {
+    margin:0;
+    padding:0;
+  }
+	#submit_save {
+		background:url('/assets/save.png') no-repeat;
+		height:32px;
+		width:90px;
+		border:none;
+		vertical-align:bottom;
+		cursor:hand;
+		margin-left: 2px;
+	}
+	#submit_save:hover{
+		background:url('/assets/save_dark.png') no-repeat;
+	}
+	#error{
+		color:red;
+		margin-right: 96px;
+	}
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
+<div id="mftContainer" style="display:none;z-index:9900;position:absolute">
+  <input id="mftHeartBtn" type="button" style="background:url('/assets/saveBTN.png') no-repeat;width:65px;height:60px;padding:0;margin-top:0;border:0;cursor:hand;"></input>
+  </div>
+</div>
+<div style="background:url('/assets/ad_box_bg.png') no-repeat;width:300px;height:250px;display:none;position:relative;z-index:9999;overflow:auto" id="mftAdPopup">
+  <img src="/assets/mft_main_text.png" style="margin:17px 30px;">
+  <div class="formDiv" style="font-size:13px;text-align:center;">
+    <form action="<%= url_for(:controller=>:ads, :action=>:save) %>" id="adSaveForm" method="post" style="margin-bottom:0px">
+      <div style="height: 36px">
+        <%= csrf_meta_tag %>
+        <input type="hidden" id="ad_url" name="ad[url]"></input>
+        <input type="hidden" id="image_url" name="ad[image_url]"></input>
+        <input type="hidden" id="ad_microsite_url" name="ad[microsite_url]"></input>
+        <input type="text" name="email" title="type your email address" placeholder="type your email address" style="height:31px;width:175px;padding:2px 5px;background:#494e4d;border:none;color:white;"></input>
+        <input type="submit" value="" id="submit_save"></input>
+				<label id="error" type="hidden"></label>
+      </div>
+    </form>
+  </div>
+  <div><img src="/assets/mft_logo.png" style="margin:10px 75px;width:135px;height:40px;"></div>
+</div>
+<script>
+var mftDisplaySaved = function(data) {
+  $("#mftAdPopup").hide();
+  $("#mftHeartBtn").remove();
+  resizeIFrameForMFTButton();
+  $(data).appendTo("#mftContainer");
+};
+
+function getParameterByName(url, name) {
+  name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+  var regexS = "[\\?&]" + name + "=([^&#]*)";
+  var regex = new RegExp(regexS);
+  var results = regex.exec(url);
+  if(results == null) {
+    return "";
+  }
+  return decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+var resizeIFrameForMFTButton = function() {
+  var adIFrame = $($("iframe#<%= params['adId'] %>", window.parent.document)[0]);
+  $("#mftAd", window.parent.document).attr("style", "position:absolute;");
+  $("#mftAd", window.parent.document).offset({top: adIFrame.offset().top + 161, left: adIFrame.offset().left + 223});
+  $("#mftAd", window.parent.document).attr("width", 100);
+  $("#mftAd", window.parent.document).attr("height", 80);
+};
+var resizeIFrameForMFTPopUp = function() {
+  var adIFrame = $($("iframe#<%= params['adId'] %>", window.parent.document)[0]);
+  $("#mftAd", window.parent.document).attr("style", "position:absolute");
+  $("#mftAd", window.parent.document).offset({top: adIFrame.offset().top, left: adIFrame.offset().left});
+  $("#mftAd", window.parent.document).attr("width", adIFrame.width());
+  $("#mftAd", window.parent.document).attr("height", adIFrame.height());
+};
+
+$(function() {
+  $(window).load(function() {
+    var adIFrame = $($("iframe#<%= params['adId'] %>", window.parent.document)[0]);
+    var imageUrl = getParameterByName(adIFrame.attr("src"), "custom1");
+    var targetUrl = getParameterByName(adIFrame.attr("src"), "custom");
+    resizeIFrameForMFTButton(adIFrame);
+    $("#mftContainer").show();
+    $("#mftHeartBtn").mouseover(function() {
+        resizeIFrameForMFTPopUp();
+        $("#mftAdPopup").show();
+    });
+    $("#mftAdPopup").mouseleave(function() {
+      resizeIFrameForMFTButton();
+      $(this).hide();
+    });
+    $("form#adSaveForm").submit(function() {
+      var form = $(this);
+      $("input#ad_url").val(targetUrl);
+      $("input#image_url").val(imageUrl);
+      $.ajax({
+        type:'post', 
+        url:form.attr("action"), 
+        data: form.serialize(), 
+        success:function(data) {
+          if(data.indexOf("'mftSaved'") != -1) {
+            mftDisplaySaved(data);
+          } else {
+            $(".formDiv").empty();
+            $(".formDiv").append(data);
+          }
+        },
+				error: function(jqXHR, textStatus, errorThrown){
+					$('#error').html('Please enter a correct email');
+					$('#error').show();
+				},
+        beforeSend: function(jqXHR, settings) {
+          jqXHR.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'));
+        }
+      });
+      return false;
+    }); 
+  });
+});
+
+</script>

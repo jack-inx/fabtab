@@ -1,0 +1,78 @@
+1.Login
+
+API for login with Facebook.
+This does not require any changes from our codebase. When a user logs in via Facebook, we should make a check, and there are no API tokens present on the devise, then, we should consider it as a new user registration. If there is already a token present, then i guess we can just log the user in.
+
+API for login with Twitter.
+Same as above
+
+API for registration.
+This needs to be added. It is fairly straightforward in rails. Need to just add a respond_to block for json support and send back the token, on success.
+
+API for forget Password.
+Do we need an api for this? Can we not redirect them to a link on the web app?
+
+2.Tab a new ad(saving a offer)
+Already have an API for this but seems to add some more parameters into it. Need to include the geo-location parameter (latitude & longitude)
+Yes, this is correct. Geo location information needs to be added for ads. This requires changing the db to include additional columns through a db migration. The additional fields should show up in the API calls for ads automatically.
+
+The image data that is sending is not a url it should be  some binary data.
+I would suggest using a library like Paperclip(https://github.com/thoughtbot/paperclip) and add a column to ad image in the Ad model. That way, the image upload can happen in one call (along with the rest of the ad fields).
+
+Comments to facebook
+
+The API for adding the offer to fb.
+No change needed from our API.
+
+3.Category
+
+API for getting the category (if advanced tabbing).
+This can be added through a controller method on Categories_controller.rb.
+
+Note:-
+If Basic Tabbing what will be the default category. We need an API to fetch all or default categories based on a flag(parameter).
+
+Same as fetching a category.
+
+4.MyLocal Offers
+
+API for getting the local offers based on my current location for the category selected.
+This should be added to the offers_controller. A new method 'index' should be added and the user's location should be passed to this controller action via query string.
+
+Note:- The response result must contain the thumbnail image of the offer ,site url , username and category name.(for the current API implementation some of these data where missing)
+Thumbnail is missing. This should be a url to the thumbnail image. Have to add the geo info to Offer.rb as well.
+
+(As per version 0.6.
+User can swipe left/right between this offer page, the voucher or the Facebook comments page (see sections 8 & 9) IF available)
+
+5.All Other Offers/By Category
+API for getting the all other offers for the category selected.
+Should be implemented in categories_controller's index method as described above.
+
+Note:- The response result must contain the thumbnail image of the offer ,site url , usernam and category name.(for the current API implementation some of these data where missing)
+(As per version 0.6.
+User can swipe left/right between this offer page, the voucher or the Facebook comments page (see sections 8 & 9) IF available)
+
+6.Get details of an ad/offer.
+API for getting the detail of a particular offer.
+Note:-The response result must contain the voucher & Facebook comments.(As per version 0.6.
+User can swipe left/right between this offer page, the voucher or the Facebook comments page (see sections 8 & 9) IF available)
+API already available?
+
+
+7.Search
+
+API for Search is needed.
+If it is for offers, section 4 and 5 should have added support for this.
+
+8.More Offers
+
+API for more offer is needed.
+
+
+
+Don’t we need APIs for Add/manage offers?
+Not sure if we need it via API. It is available in the web application, and not sure if we are supporting admin tasks via Smartphone in the initial version.
+
+API to save settings at database
+Needs to be added to Settings controller.

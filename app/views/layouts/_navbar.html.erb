@@ -1,0 +1,18 @@
+ <% if current_user.admin? %>
+  <div class='navigation_bar' style="font-size:13px;margin-left:0px;">
+    <ul class="pills" style="float: right;">
+      <li class="<%= @settings.to_s %>"><%= link_to current_user.nickname, '/user/settings' %></li>
+      <li class="<%= @about.to_s %>"><%= link_to "ABOUT","/about"%></li>
+      <li class="<%= @invite.to_s %>"><%= link_to 'INVITE FRIENDS','/promo_invite' if current_user %></li>
+      <li class="<%= @admin.to_s %>"><a href="/admin/edit" >ADMIN</a></li>
+    </ul>
+  </div>
+<%  else %>
+  <div class='navigation_bar' style="margin-left:49px;">
+    <ul class="pills" style="float: right;">
+      <li class="<%= @settings.to_s %>"><%= link_to current_user.nickname, '/user/settings' %></li>
+      <li class="<%= @about.to_s %>"><a href='/about' >ABOUT</a></li>
+      <li class="<%= @invite.to_s %>"><%= link_to 'INVITE FRIENDS','/promo_invite' if current_user %></li>
+    </ul>
+  </div>
+<% end %>

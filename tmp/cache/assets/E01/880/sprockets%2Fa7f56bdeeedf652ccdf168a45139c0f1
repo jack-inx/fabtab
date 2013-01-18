@@ -1,0 +1,18 @@
+o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1358427008.444021:@value{I"
+class:EFI"StaticAsset;
+FI"id;
+F"%827e13da7559eb1f3f8e8fb178619ffbI"logical_path;
+FI"Heart.png;
+TI"pathname;
+FI"&$root/app/assets/images/Heart.png;
+TI"content_type;
+FI"image/png;
+FI"
+mtime;
+FI"2013-01-17T12:33:15+00:00;
+FI"length;
+FI"
+11337;
+FI"digest;
+F"%a6faa3ac6f222f6a59e523164037b9aeI"_version;
+F"%df7525e917401704ef453cb56bf16697

@@ -1,0 +1,17 @@
+o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1358427009.079717:@value{I"
+class:EFI"StaticAsset;
+FI"id;
+F"%912d2d5ab7ef34013d31d8449ae6cee0I"logical_path;
+FI"ZeroClipboard.swf;
+TI"pathname;
+FI"3$root/app/assets/javascripts/ZeroClipboard.swf;
+TI"content_type;
+FI""application/x-shockwave-flash;
+FI"
+mtime;
+FI"2013-01-17T12:33:58+00:00;
+FI"length;
+FI"	1661;
+FI"digest;
+F"%af6cff5c831f6af1a0ea218e3aceaa82I"_version;
+F"%df7525e917401704ef453cb56bf16697

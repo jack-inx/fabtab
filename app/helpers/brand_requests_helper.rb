@@ -1,0 +1,2 @@
+module BrandRequestsHelper
+end

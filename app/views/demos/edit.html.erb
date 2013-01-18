@@ -1,0 +1,21 @@
+
+<%= content_for(:toolbar) do %>
+	<%= button_tag "Add an ad", :id => 'addAd', :class => 'btn success medium' %>
+	<%= form_for @demo do |f| %>
+		<%= hidden_field_tag 'demo[position]', '', :id => 'position' %>
+		<%= f.submit "Save", :id => 'saveAd', :class => 'btn success small' %>
+	<% end %>
+	<%= link_to "Back to Demos Page", demos_path, :class => 'btn success medium', :style => 'position:absolute;margin-top:80px;margin-left:525px' %>
+<% end  %>
+
+<div id="page">
+	<iframe width="1800" height="1200" src="<%= @demo.website.url %>"></iframe>
+</div>
+<div class="adWrapper ui-widget-content" style="display:none;width:300px;height:250px;background:gray;opacity:0.5;border:1px solid black;z-index:10000;top:10;left:0">
+</div>
+<% unless @ad_position.nil? %>
+<%= hidden_field_tag 'adLeft', @ad_position["left"], :id => 'adLeft' %>
+<%= hidden_field_tag 'adTop', @ad_position["top"], :id => 'adTop' %>
+<% end %>
+
+

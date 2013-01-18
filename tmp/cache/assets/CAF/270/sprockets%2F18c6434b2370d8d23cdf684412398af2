@@ -1,0 +1,17 @@
+o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1358427008.6571496:@value{I"
+class:EFI"StaticAsset;
+FI"id;
+F"%abb9266d3cda86ae59071ec3c6d48c0aI"logical_path;
+FI"dialog_box_rateit.png;
+TI"pathname;
+FI"2$root/app/assets/images/dialog_box_rateit.png;
+TI"content_type;
+FI"image/png;
+FI"
+mtime;
+FI"2013-01-17T12:31:39+00:00;
+FI"length;
+FI"	2743;
+FI"digest;
+F"%dd8f9f15a51c8b79587df54c0dca638bI"_version;
+F"%df7525e917401704ef453cb56bf16697

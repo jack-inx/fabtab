@@ -1,0 +1,7 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  carousel_refresh: 1
+
+two:
+  carousel_refresh: 1

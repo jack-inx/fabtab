@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>FabTab</title>
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+    <%= yield(:head) %>
+    <%= render :partial => 'layouts/googleanalytics' %>
+  </head>
+  <body>
+    <div class="topbar">
+      <div class="container">
+        <div id='mft_logo'><a class="brand" href="/"><%= image_tag '/assets/betalogo1.png' %></a></div>
+        <% if !@email_info.nil? %>
+          <% if !flash[:notice].nil? %>
+            <h1 class="flash_messages1 flash_msg_border"> <%= flash[:notice] %> </h1>
+          <% end %>
+        <%  else%>
+            <% if !flash[:notice].nil? %>
+            <h1 class="flash_messages1 flash_msg_border"> <%= flash[:notice] %> </h1>
+          <% end %>
+        <% end %>
+        <%= render :partial => 'layouts/navbar' %>
+        <%= yield(:toolbar) %>
+      </div>
+
+    </div>
+    <div class="container main">
+
+      <div class="about">
+        <div class="left-margin">
+          <div class="links">
+            <div class="about-page"><%= link_to "About", '/about' %></div>
+            <div class="help-page"><%= link_to "Help", '/help' %></div>
+            <div class="tab-it-page"><%= link_to "Tab It Button", '/tabit' %></div>
+            <div class="team-page"><%= link_to "Team" , '/team' %></div>
+            <div class="terms-page"><%= link_to "Terms", '/terms' %></div>
+            <div class="invite-page"><%= link_to "Invite Friends", "/invite" %></div>
+            <div class="invite-page"><%= link_to "Contact Us",:controller => :feedback, :action => :new  %></div>
+          </div>
+          <div class="links logout"><%= link_to "Logout", destroy_user_session_path, :method => 'delete' if current_user %></div>
+        </div>
+        <%= yield %>
+      </div>
+    </div>
+    <div class='container'>
+      <footer class='new'>
+        <p>&copy; Copyright MyFabTab Inc 2012</p>
+      </footer>
+    </div>
+<script type="text/javascript">
+      var uvOptions = {};
+      (function() {
+        var uv = document.createElement('script'); uv.type = 'text/javascript'; uv.async = true;
+        uv.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'widget.uservoice.com/cYPrkIzxmmj4HwwxOawg.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(uv, s);
+      })();
+    </script>
+  </body>
+</html>
+
+<script type="text/javascript">
+  $('.flash_messages1').fadeIn(2000).delay(5000).fadeOut(5000);
+</script>
+
+
+

@@ -1,0 +1,35 @@
+<div style="margin-left: 350px;margin-top: 50px;">
+<div class="right-portion" style="margin-left: 10px;">
+	<h1 class="title header-font" style="font-size: 18px;color: #939598;font-weight: bold;font-family: arial;">Invite <span>Friends</span></h1>
+</div>
+<div class="invite_facebook right-portion">
+<div class="promo_text" style="margin-top: 0px;margin-left: 15px;">
+                <%= link_to "Invite Friends using facebook", "https://www.facebook.com/dialog/send?app_id=148204908657714&
+                name=FabTab&description=FabTab is your place to save, tag and manage all your offers, coupons and ads in one cool place. You can organize your offers into folders and connect with brands that make your life special. You can even look at what other people are tagging and share their offers and brands&link=http://ec2-107-22-153-137.compute-1.amazonaws.com/&
+                picture=http://ec2-107-22-153-137.compute-1.amazonaws.com/assets/betalogo1.png&redirect_uri=http://ec2-107-22-153-137.compute-1.amazonaws.com", :id => 'add_coupan' %>
+        </div>
+</div>
+<div class="invite_email right-portion">
+	<div class="promo_text" style="margin-top: 0px;margin-left: 15px;">
+		<a data-controls-modal="emailDialog" id = "add_coupan" data-keyboard="true">Invite via Email</a>
+	</div>
+  <div id="emailDialog" class="modal" style="margin-top: -69px;">
+		<div class="modal-header">
+			<a class="close" data-dismiss="emailDialog">&times;</a>
+			<h3>Invite Friends</h3>
+		</div>
+		<div class="modal-body">
+			<%= form_tag url_for(:controller => 'users', :action => 'email') do %>
+			<div class="field-label">Enter multiple addresses separated by comma</div>
+				<%= text_area_tag 'email', '', :placeholder => 'type friends email address', :class =>'email' , :style => " font-size: 16px;"%>
+				<%= button_tag image_tag('/assets/btn_send.png'), :class => 'invite' %>
+			<% end %>
+		</div>
+	</div>
+</div>
+</div>
+  <script type="text/javascript">
+    $('.invite').click(function(){
+    $('.flash_messages1').fadeIn(2000).delay(5000).fadeOut(5000);
+    });
+  </script>

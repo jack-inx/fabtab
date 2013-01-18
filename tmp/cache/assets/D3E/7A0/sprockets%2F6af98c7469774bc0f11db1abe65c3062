@@ -1,0 +1,17 @@
+o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1358427008.9831803:@value{I"
+class:EFI"StaticAsset;
+FI"id;
+F"%7548d7b83eec8255f5e3ffbdf016b6a5I"logical_path;
+FI"share.png;
+TI"pathname;
+FI"&$root/app/assets/images/share.png;
+TI"content_type;
+FI"image/png;
+FI"
+mtime;
+FI"2013-01-17T12:33:38+00:00;
+FI"length;
+FI"	3506;
+FI"digest;
+F"%014143ee66a3e19060476c0da4e0ec7fI"_version;
+F"%df7525e917401704ef453cb56bf16697

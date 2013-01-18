@@ -1,0 +1,57 @@
+<div class="team right-portion">
+  <div class="title header-font" style="margin-top:20px;margin-left:20px;font-size: 25px;">Team</div>
+  <div class="promo_text">
+
+    <p style="font-size: 18px;line-height: 22px;">MyFabTab Inc. is a small (but beautifully formed) company based in the heart of Silicon Valley, California. Our
+      mission is to provide you the best possible solution to manage all your offers, ads and other fab stuff
+      all in one place. Currently FabTab is in Beta release which basically means we value your feedback on any
+      little kinks you find. So if you want to know more about us, have a great idea for making
+      FabTab even better, or just want to say hello, please contact us using the form below!</p>
+<br />
+    <p style="font-size: 18px;line-height: 22px;">MyFabTab Inc. is self funded and always looking for world class talent to help us grow. So if you want to
+      invest, have incredible skills or are a brand that wants to knows more, then please get in touch!</p>
+
+  </div>
+
+  <div  class="modal"  style=" margin-left: -269px;margin-top: 19px;position: relative;">
+    <div class="modal-header">
+
+      <h3>Contact Us</h3>
+    </div>
+    <div class="modal-body" style="padding:0px;margin-top:-24px;">
+      <%= form_for @feedback, :url => {:action=>"promo_create", :controller=>"feedback" }, :method => :post do |form| %>
+        <fieldset>
+          <div style="margin-bottom: 7px;float: left; margin-right: 46px;margin-top: 13px;">
+            <label style="margin-right: 10px;"> From: </label>
+            <%= text_field_tag :email %>
+          </div>
+          <div style="margin-bottom: 7px;float: left; margin-right: 122px;">
+            <label style="margin-right: 10px;"> To: </label>
+            <%= text_field_tag @email_to, @email_to ,:readonly => true %>
+          </div>
+          <div style="float: left;">
+            <label style="margin-right: 10px;"> Message </label>
+            <%= form.text_area :content, :rows => 5, :cols => 15 , :class => "text_width" %>
+          </div>
+        </fieldset>
+        <fieldset>
+          <%= form.submit "" ,:id => "invite" %>
+        </fieldset>
+      <% end %>
+    </div>
+  </div>
+</div>
+<style>
+  .text_width
+  {width: 300px;}
+  #invite{
+    border-radius: 12px 12px 12px 12px;
+    height: 32px;
+    margin-left: 242px;
+    margin-top: -33px;
+    width: 89px;
+    background: url("/assets/btn_send.png");}
+</style>
+
+
+

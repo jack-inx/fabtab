@@ -1,0 +1,17 @@
+o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1358427008.4053397:@value{I"
+class:EFI"StaticAsset;
+FI"id;
+F"%7601f31fa740640133f6dbff4f6063f2I"logical_path;
+FI"FabTab-LocalTabsX.jpg;
+TI"pathname;
+FI"2$root/app/assets/images/FabTab-LocalTabsX.jpg;
+TI"content_type;
+FI"image/jpeg;
+FI"
+mtime;
+FI"2013-01-17T12:31:44+00:00;
+FI"length;
+FI"110883;
+FI"digest;
+F"%093dad39668ca573f10e2d945a530182I"_version;
+F"%df7525e917401704ef453cb56bf16697

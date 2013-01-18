@@ -1,0 +1,14 @@
+<h3>Listing Ads</h3>
+<table>
+  <thead>
+    <tr><th>Name</th><th>Microsite Url</th><th>Ad image</th>
+  </thead>
+  <% @ads.each do |ad| %>
+    <tr>
+      <td><%= link_to ad.name, display_ad_path(ad) %></td>
+      <td><%= ad.minisite_url %></td>
+      <td><a href="<%= ad.image_url %>">Image</a></td>
+    </tr>
+  <% end %>
+</table>
+<%= link_to "New Ad", new_ad_path %>

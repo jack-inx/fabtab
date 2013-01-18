@@ -1,0 +1,10 @@
+<div class="row carousel">
+	<div class="title">All My <span>Offers</span></div>
+	<div class='brands_offers'>
+		<ul id='all_offers_carousel'>
+			<% @brand_offers.each do |offer| %>
+				<li><%= link_to image_tag(offer.image_url) %><span><%= offer.name %></span></li>
+			<% end %>	
+		</ul>
+	</div>
+</div>

@@ -1,0 +1,132 @@
+/*
+ * This is a manifest file that'll automatically include all the stylesheets available in this directory
+ * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
+ * the top of the compiled file, but it's generally better to create a new file per style scope.
+ *= require_self
+*= require style
+ *= require twitter/bootstrap
+*= require home
+ *= require ajaxful_rating
+ *= require jquery.ui.autocomplete
+ *= require jplayer.blue.monday
+ *= require combobox
+*/
+.ads_link
+{
+    display:block;
+    height:185px;
+    width:222px;
+    position:absolute;
+}
+.ads_link1
+{
+    display:block;
+    height:95px;
+    width:112px;
+    position:absolute;
+}
+
+.flash_messages1 {
+    position:absolute;
+    width:920px;
+    height:40px;
+    margin-left:auto;
+    margin-right:auto;
+    z-index:10000000004;
+    background:#FCFCFC;
+    border-radius:5px;
+    text-align:center;
+    font-size:20px;
+    margin-top:10px;
+    color:green;
+}
+
+.flash_msg_border{
+   border:1px solid #DBDBDB;
+}
+
+.brand_table
+{
+border-style:none;
+margin-bottom: -20px;
+}
+.brand_name_data
+{
+    border-style:none;
+    width: 100px;
+    display: inline-block;
+    word-wrap:break-word;
+}
+.brand_data
+{
+    border-style:none;
+    width: 45px;
+    display: inline-block;
+    word-wrap:break-word;
+}
+
+.brand_edit {
+      display:table-cell;
+      vertical-align:middle;
+      width:auto;
+      height:185px;
+      border:1px solid #E8E9EC;
+      background:url('/assets/image_bg.png') no-repeat top left;
+      text-align:center;
+      margin-left:-1px;
+    }
+
+ #add_coupan
+ {
+    background-color: #7EBE57;
+    background-image: -moz-linear-gradient(center top ,#7EBE57,#7EBE57);
+    background-repeat: repeat-x;
+    border-color:#7EBE57;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+    display: inline-block;
+    font-size: 15px;
+    line-height: normal;
+    padding: 5px 14px 6px;
+    border-style: solid;
+    border-width: 1px;
+    color:white;
+    border-radius: 4px 4px 4px 4px;
+    text-decoration: none;
+	width:auto;
+}
+ 
+.line_spacing{
+  margin-top: 12px;
+  margin-bottom: 16px;
+}
+.noborder, .noborder tr, .noborder th, .noborder td
+{
+    border: none;
+
+}
+
+#delete_all
+{
+    background-color: #7EBE57;
+    background-image: -moz-linear-gradient(center top , #7EBE57, #7EBE57);
+    background-repeat: repeat-x;
+    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+    display: inline-block;
+    font-size: 15px;
+    line-height: normal;
+    padding: 5px 14px 6px;
+    border-style: solid;
+    border-width: 1px;
+    color:white;
+    border-radius: 4px 4px 4px 4px;
+    text-decoration: none;
+    width:auto;
+    position: absolute;
+    margin-top: -35px;
+    margin-left:-23px;
+    margin-top: -70px;
+
+}

@@ -1,0 +1,2 @@
+module DemoImagesHelper
+end

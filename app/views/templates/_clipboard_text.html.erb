@@ -1,0 +1,22 @@
+
+
+<div>
+  <u><b>Copy to Clipboard</b></u> <br/><br/>
+<%= link_to_function "User name", "return copyToClipboard('{{user_name}}')", :class => "copy" %><span class="login_link"> | </span>
+<%= link_to_function "User email", "return copyToClipboard('{{user_email}}')", :class => "copy" %><span class="login_link"> | </span>
+<%= link_to_function "Admin email", "return copyToClipboard('{{admin_email}}')", :class => "copy" %><span class="login_link"> | </span>
+<%= link_to_function "Offer image", "return copyToClipboard('{{ad_image_url}}')", :class => "copy" %><span class="login_link"> | </span>
+<%= link_to_function "Offer selection", "return copyToClipboard('{{ad_token}}')", :class => "copy" %><span class="login_link"> | </span>
+<%= link_to_function "Brand name", "return copyToClipboard('{{brand_name}}')", :class => "copy" %><span class="login_link"> | </span>
+<%= link_to_function "Subscribe link", "return copyToClipboard('{{subscribe}}')", :class => "copy" %><span class="login_link"> | </span>
+<%= link_to_function "Unsubscribe link", "return copyToClipboard('{{unsubscribe}}')", :class => "copy" %>
+  
+  <br/><br/>
+</div>
+
+
+<script type="text/javascript">
+  function copyToClipboard (txt) {
+    window.prompt("Copy to clipboard: Ctrl+C", txt);
+  }
+</script>

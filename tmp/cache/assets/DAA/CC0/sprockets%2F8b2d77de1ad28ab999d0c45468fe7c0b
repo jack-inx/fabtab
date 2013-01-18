@@ -1,0 +1,17 @@
+o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1358427008.771051:@value{I"
+class:EFI"StaticAsset;
+FI"id;
+F"%37679cda9b52dd4c5a95e791aecb5eb6I"logical_path;
+FI"mft_0006_whiteBacking.png;
+TI"pathname;
+FI"6$root/app/assets/images/mft_0006_whiteBacking.png;
+TI"content_type;
+FI"image/png;
+FI"
+mtime;
+FI"2013-01-17T12:32:56+00:00;
+FI"length;
+FI"	1075;
+FI"digest;
+F"%e96af11b6989673e5bf6ab81496153dbI"_version;
+F"%df7525e917401704ef453cb56bf16697

@@ -1,0 +1,17 @@
+o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1358427008.2821195:@value{I"
+class:EFI"StaticAsset;
+FI"id;
+F"%0a7dcbaad53b77863588bb57bf3081a1I"logical_path;
+FI"arial.eot;
+TI"pathname;
+FI"%$root/app/assets/fonts/arial.eot;
+TI"content_type;
+FI"application/octet-stream;
+FI"
+mtime;
+FI"2013-01-17T12:31:21+00:00;
+FI"length;
+FI"774634;
+FI"digest;
+F"%b90d59d067fe46650498bd52ea71c0acI"_version;
+F"%df7525e917401704ef453cb56bf16697

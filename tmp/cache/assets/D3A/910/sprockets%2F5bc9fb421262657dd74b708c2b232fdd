@@ -1,0 +1,17 @@
+o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1358427008.4189076:@value{I"
+class:EFI"StaticAsset;
+FI"id;
+F"%2dd74b7346ac812d83694091eecadb37I"logical_path;
+FI"FabTab-ScanTabX.jpg;
+TI"pathname;
+FI"0$root/app/assets/images/FabTab-ScanTabX.jpg;
+TI"content_type;
+FI"image/jpeg;
+FI"
+mtime;
+FI"2013-01-17T12:32:16+00:00;
+FI"length;
+FI"116453;
+FI"digest;
+F"%d7828c0a632bdeb29f4e1736fc31bd3fI"_version;
+F"%df7525e917401704ef453cb56bf16697

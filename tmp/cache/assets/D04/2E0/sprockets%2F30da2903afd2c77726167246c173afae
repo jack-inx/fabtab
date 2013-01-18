@@ -1,0 +1,17 @@
+o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1358427008.6517062:@value{I"
+class:EFI"StaticAsset;
+FI"id;
+F"%70854e2c126786829f12ac9f5470dea6I"logical_path;
+FI"delete_hover.png;
+TI"pathname;
+FI"-$root/app/assets/images/delete_hover.png;
+TI"content_type;
+FI"image/png;
+FI"
+mtime;
+FI"2013-01-17T12:33:39+00:00;
+FI"length;
+FI"	3483;
+FI"digest;
+F"%10e666257eeb1ed13ca2c9c5d2516663I"_version;
+F"%df7525e917401704ef453cb56bf16697

@@ -1,0 +1,1 @@
+$('#flag1_'+'<%= @user.id %>').html("<%= escape_javascript(render :partial => "users/admin_status", :locals => {:user => @user}) %>")

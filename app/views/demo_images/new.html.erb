@@ -1,0 +1,9 @@
+<div class="content">
+	<%= form_for @demo_image do |f| %>
+		<div class="image_url">
+			Demo Ad Image <%= f.file_field :ad %>
+		</div>
+		<%= submit_tag "Save", :class =>'btn small success' %>
+	<% end %>
+	<%= link_to "All Demo Ad Images", demo_images_path, :class => 'btn success large' %>
+</div>

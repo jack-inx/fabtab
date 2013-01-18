@@ -1,0 +1,232 @@
+
+<div class="Middle_Bottom">
+  <div class="Middle_Main">
+    <div class="Home">
+      <div class="Slider">
+        <div class="Banner fl" style="width:670px;">
+          <div class="Scan_Tab" style="padding-top: 10px;">
+            <ul id="items" style="list-style: none;">
+
+              <li class="first" id="everyonetab">
+                <div class="Step" style="min-height:0px;margin-left: 35px;margin-top: -51px; padding-bottom: 0px;">
+                  <div style=" margin-left: 186px;margin-top: -125px;">
+                    <iframe width="519" height="323" src="http://www.youtube.com/embed/rCw1tdvYl1o" frameborder="0" allowfullscreen></iframe>
+                  </div>
+                </div>
+              </li>
+              <li class="first" id="scanit">
+                <div class="tab">
+                  <p class="text1">Use Scan & Tab to read any QR code</p>
+                  <h1 class="fr">scan & tab</h1>
+                </div>
+                     <div class="Step" style="min-height:0px; margin-left: 72px;margin-top: -51px; padding-bottom: 22px;">
+                  <%= image_tag("/assets/FabTab-ScanTabX1.jpg",:width=>"800px") %>
+                </div>
+              </li>
+              <li class="first" id="snapit">
+                <div class="tab">
+                  <p class="text2">Use Snap & Tab to capture your favorite objects, get information and save them in your FabTab folders</p>
+                  <h1 class="fr">snap & tab</h1>
+                </div>
+               <div class="Step" style="min-height:0px; margin-left: 72px;margin-top: -51px;padding-bottom: 22px;">
+                  <%= image_tag("/assets/FabTab-SnapTabX1.jpg",:width=>"800px") %>
+                </div>
+              </li>
+              <li class="first" id="tabit">
+                <div class="tab">
+                  <p class="text1">Use Tab It! to save any ad, offer or product on website</p>
+                  <h1 class="fr">tab it!</h1>
+                </div>
+               <div class="Step" style="min-height:0px; margin-left: 72px;margin-top: -51px;padding-bottom: 22px;">
+                  <%= image_tag("/assets/FabTab-TabItX1.jpg",:width=>"800px") %>
+                </div>
+              </li>
+              <li class="first" id="fabtab">
+                <div class="tab">
+                  <p class="text2">Use FabTab folders to manage all your fab offers, ads and products, share with friends and interact with brands you love</p>
+                  <h1 class="fr">my fabtabs</h1>
+                </div>
+                
+                <div class="Step" style="min-height:0px; margin-left: 72px;margin-top: -51px;padding-bottom: 22px;">
+                  <%=image_tag("/assets/FabTab-MyFabTabsX1.jpg",:width=>"800px") %>
+                </div>
+              </li>
+              <li class="first" id="localtab">
+                <div class="tab">
+                  <p class="text2">Use the Geo-Locate service to filter FabTab offers in your local area</p>
+                  <h1 class="fr">local tabs</h1>
+                </div>
+                <div class="Step" style="min-height:0px; margin-left: 72px;margin-top: -51px;padding-bottom: 22px;">
+                  <%= image_tag("/assets/FabTab-LocalTabsX1.jpg",:width=>"800px") %>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="Buttons" style="margin-top:-9px;">
+<div class="ft_div">
+ <% if !current_user.present? %>
+      <%= link_to image_tag("/assets/signup_b.png") ,new_user_registration_path ,:class=>"sign_button"%>
+      <%= link_to image_tag("/assets/icon_facebook.png",:width=>"39px") , user_omniauth_authorize_path(:facebook), :class=> "butt_f",:target => "_blank" %>
+      <%= link_to image_tag("/assets/icon_twitter.png",:width=>"39px") , user_omniauth_authorize_path(:twitter), :class=>"butt_t", :target => "_blank" %>
+      <%#= link_to image_tag("/assets/signup2.png") ,new_user_registration_path %>
+      <%#= link_to image_tag("/assets/index.jpeg", :height => "66" ,:width => "70") , user_omniauth_authorize_path(:facebook), :target => "_blank" %>
+      <%#= link_to image_tag("/assets/twitter.jpg", :height => "66" ,:width => "70") , user_omniauth_authorize_path(:twitter), :target => "_blank" %>
+      <%= link_to image_tag("/assets/LOGIN.png"), new_user_session_path , :style=>"float: right; margin-top: -70px; margin-right: 445px;"%>
+<%= link_to image_tag("/assets/app-store-button-orange-hover.png", :height => "65") ,"#" , :style => "float:right;margin-right: 66px;;margin-top: -70px;" %>
+<% else %>
+<%= link_to image_tag("/assets/app-store-button-orange-hover.png", :height => "65") ,"#" , :style => "float:right;margin-right: 66px;" %>
+<% end %>
+</div>
+    </div>
+
+  </div>
+</div>
+
+
+
+<script type="text/javascript">
+
+  jQuery(function($){
+    
+
+    $('ul#items').easyPaginate({
+	page: 1,
+      step: 1,
+      controls: 'saved_ads_pagination',
+temp: true
+    });
+    
+    $('#saved_ads_pagination li').click(function() {
+      var m = $(this).index();
+
+      if (m == 2){
+        $('.Header .Menu li a.active').removeClass('active');
+        $('.Header .Menu li.forth-item').removeClass('new_active');
+        $('.Header .Menu li.third-item').removeClass('new_active');
+        $('.Header .Menu li.fifth-item').removeClass('new_active');
+        $('.Header .Menu li.first-item').removeClass('new_active');
+        $('.Header .Menu li.sixth-item').removeClass('new_active');
+        $('.second-item').addClass('new_active');
+      }
+      if (m == 3){
+        $('.Header .Menu li a.active').removeClass('active');
+        $('.Header .Menu li.second-item').removeClass('new_active');
+        $('.Header .Menu li.forth-item').removeClass('new_active');
+        $('.Header .Menu li.first-item').removeClass('new_active');
+        $('.Header .Menu li.fifth-item').removeClass('new_active');
+        $('.Header .Menu li.sixth-item').removeClass('new_active');
+        $('.third-item').addClass('new_active');
+      }
+      if (m == 4){
+        $('.Header .Menu li a.active').removeClass('active');
+        $('.Header .Menu li.third-item').removeClass('new_active');
+        $('.Header .Menu li.second-item').removeClass('new_active');
+        $('.Header .Menu li.first-item').removeClass('new_active');
+        $('.Header .Menu li.fifth-item').removeClass('new_active');
+        $('.Header .Menu li.sixth-item').removeClass('new_active');
+        $('.forth-item').addClass('new_active');
+      }
+      if (m == 5){
+        $('.Header .Menu li a.active').removeClass('active');
+        $('.Header .Menu li.forth-item').removeClass('new_active');
+        $('.Header .Menu li.second-item').removeClass('new_active');
+        $('.Header .Menu li.third-item').removeClass('new_active');
+        $('.Header .Menu li.first-item').removeClass('new_active');
+        $('.Header .Menu li.sixth-item').removeClass('new_active');
+        $('.fifth-item').addClass('new_active');
+      }
+      if (m == 1)
+      {
+        $('.Header .Menu li.forth-item').removeClass('new_active');
+        $('.Header .Menu li.second-item').removeClass('new_active');
+        $('.Header .Menu li.third-item').removeClass('new_active');
+        $('.Header .Menu li.fifth-item').removeClass('new_active');
+        $('.Header .Menu li.sixth-item').removeClass('new_active');
+        $('.first-item').addClass('new_active');
+      }
+      if (m == 6)
+      {
+        $('.Header .Menu li.forth-item').removeClass('new_active');
+        $('.Header .Menu li.second-item').removeClass('new_active');
+        $('.Header .Menu li.third-item').removeClass('new_active');
+        $('.Header .Menu li.fifth-item').removeClass('new_active');
+        $('.Header .Menu li.first-item').removeClass('new_active');
+        $('.sixth-item').addClass('new_active');
+      }
+    });
+  });
+$("li.first-item").live('click', function(){
+  change_menu(1);
+  $('.Header .Menu li.forth-item').removeClass('new_active');
+        $('.Header .Menu li.second-item').removeClass('new_active');
+        $('.Header .Menu li.third-item').removeClass('new_active');
+        $('.Header .Menu li.fifth-item').removeClass('new_active');
+        $('.Header .Menu li.sixth-item').removeClass('new_active');
+        $('.first-item').addClass('new_active');
+});
+
+$("li.second-item").live('click', function(){
+  change_menu(2);
+  $('.Header .Menu li a.active').removeClass('active');
+        $('.Header .Menu li.forth-item').removeClass('new_active');
+        $('.Header .Menu li.third-item').removeClass('new_active');
+        $('.Header .Menu li.fifth-item').removeClass('new_active');
+        $('.Header .Menu li.first-item').removeClass('new_active');
+        $('.Header .Menu li.sixth-item').removeClass('new_active');
+        $('.second-item').addClass('new_active');
+});
+
+$("li.third-item").live('click', function(){
+  change_menu(3);
+  $('.Header .Menu li a.active').removeClass('active');
+        $('.Header .Menu li.second-item').removeClass('new_active');
+        $('.Header .Menu li.forth-item').removeClass('new_active');
+        $('.Header .Menu li.first-item').removeClass('new_active');
+        $('.Header .Menu li.fifth-item').removeClass('new_active');
+        $('.Header .Menu li.sixth-item').removeClass('new_active');
+        $('.third-item').addClass('new_active');
+});
+
+$("li.forth-item").live('click', function(){
+  change_menu(4);
+   $('.Header .Menu li a.active').removeClass('active');
+        $('.Header .Menu li.third-item').removeClass('new_active');
+        $('.Header .Menu li.second-item').removeClass('new_active');
+        $('.Header .Menu li.first-item').removeClass('new_active');
+        $('.Header .Menu li.fifth-item').removeClass('new_active');
+        $('.Header .Menu li.sixth-item').removeClass('new_active');
+        $('.forth-item').addClass('new_active');
+});
+
+$("li.fifth-item").live('click', function(){
+  change_menu(5);
+   $('.Header .Menu li a.active').removeClass('active');
+        $('.Header .Menu li.forth-item').removeClass('new_active');
+        $('.Header .Menu li.second-item').removeClass('new_active');
+        $('.Header .Menu li.third-item').removeClass('new_active');
+        $('.Header .Menu li.first-item').removeClass('new_active');
+        $('.Header .Menu li.sixth-item').removeClass('new_active');
+        $('.fifth-item').addClass('new_active');
+});
+
+$("li.sixth-item").live('click', function(){
+  change_menu(6);
+  $('.Header .Menu li.forth-item').removeClass('new_active');
+        $('.Header .Menu li.second-item').removeClass('new_active');
+        $('.Header .Menu li.third-item').removeClass('new_active');
+        $('.Header .Menu li.fifth-item').removeClass('new_active');
+        $('.Header .Menu li.first-item').removeClass('new_active');
+        $('.sixth-item').addClass('new_active');
+});
+function change_menu(page_no){
+  $('ul#items').easyPaginate({ page: page_no, controls: 'saved_ads_pagination',temp: true });
+  $("ol#saved_ads_pagination").last().remove();
+}
+</script>
+
+
+
+

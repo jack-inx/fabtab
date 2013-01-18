@@ -1,0 +1,18 @@
+<p>
+  <b>User Name:</b>
+  <%= @user.username %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%= @user.email %>
+</p>
+
+<p>
+  <b>Zipcode:</b>
+  <%= @user.zipcode %>
+</p>
+
+
+<%= link_to 'Edit', edit_users_path(@user.id) %> |
+<%= link_to 'Back', setting_users_list_path %>

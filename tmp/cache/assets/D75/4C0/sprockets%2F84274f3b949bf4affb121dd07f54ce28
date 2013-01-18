@@ -1,0 +1,17 @@
+o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1358427008.8436096:@value{I"
+class:EFI"StaticAsset;
+FI"id;
+F"%11c3baa346452abd3c5de25a1b5d473aI"logical_path;
+FI"remove.jpg;
+TI"pathname;
+FI"'$root/app/assets/images/remove.jpg;
+TI"content_type;
+FI"image/jpeg;
+FI"
+mtime;
+FI"2013-01-17T12:31:35+00:00;
+FI"length;
+FI"	4364;
+FI"digest;
+F"%8d6d97463f7f20c036c5303201fb4b2dI"_version;
+F"%df7525e917401704ef453cb56bf16697

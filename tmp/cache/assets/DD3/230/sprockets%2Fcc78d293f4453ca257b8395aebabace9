@@ -1,0 +1,17 @@
+o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1358427008.3555875:@value{I"
+class:EFI"StaticAsset;
+FI"id;
+F"%764ecfd066f3bab5f111fd3f8d5422cfI"logical_path;
+FI"impact.eot;
+TI"pathname;
+FI"&$root/app/assets/fonts/impact.eot;
+TI"content_type;
+FI"application/octet-stream;
+FI"
+mtime;
+FI"2013-01-17T12:30:55+00:00;
+FI"length;
+FI"136010;
+FI"digest;
+F"%a3769b768b529618401a5515b5efdf7aI"_version;
+F"%df7525e917401704ef453cb56bf16697

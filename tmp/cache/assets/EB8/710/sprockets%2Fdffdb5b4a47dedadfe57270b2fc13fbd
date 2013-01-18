@@ -1,0 +1,17 @@
+o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1358427008.8939586:@value{I"
+class:EFI"StaticAsset;
+FI"id;
+F"%45750cad5f74a97eeee0931eb201359cI"logical_path;
+FI"$rollover__0000_SAVE-HEART-ove#0;
+TI"pathname;
+FI"<$root/app/assets/images/rollover__0000_SAVE-HEART-ove#0;
+TI"content_type;
+FI"application/octet-stream;
+FI"
+mtime;
+FI"2013-01-17T12:32:23+00:00;
+FI"length;
+FI"	1293;
+FI"digest;
+F"%b88b481b8ad17176e58e9a56236aa294I"_version;
+F"%df7525e917401704ef453cb56bf16697

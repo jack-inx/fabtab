@@ -1,0 +1,18 @@
+o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1358427008.4887176:@value{I"
+class:EFI"StaticAsset;
+FI"id;
+F"%62f2ee2445ba31f21486c20c722a8b7eI"logical_path;
+FI"Idol.jpg;
+TI"pathname;
+FI"%$root/app/assets/images/Idol.jpg;
+TI"content_type;
+FI"image/jpeg;
+FI"
+mtime;
+FI"2013-01-17T12:32:42+00:00;
+FI"length;
+FI"
+47832;
+FI"digest;
+F"%af457a6c9d9b8b6cd463686b14d4dc82I"_version;
+F"%df7525e917401704ef453cb56bf16697

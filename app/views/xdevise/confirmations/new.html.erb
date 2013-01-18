@@ -1,0 +1,29 @@
+
+<div class="conf_page" style="margin: 5px 280px 5px 275px;">
+<div class="title" style="font-size: 20px;">Resend confirmation instructions</div>
+  <%= form_for(@user, :as=> :user, :url => user_confirmation_path(@user), :html => { :method => :post }) do |f| %>
+
+    <div class="clearfix" style="margin-left:-272px;">
+      <br/>
+      <%= f.email_field :email, :class => 'credentials email', :placeholder => 'type email address here' %>
+    </div>
+
+    <div class="createAccount" style="margin-left:-433px;"><%= f.submit "Resend confirmation instructions" %></div>
+  <% end %>
+
+  <%- if controller_name != 'sessions' %>
+    <%= link_to "Sign in", new_session_path(resource_name) %><br />
+  <% end -%>
+</div>
+<style type="text/css">
+  a:hover {
+    color : #8BC541;
+    margin: 0 3px;
+  }
+  a {
+    color : #C3C6C5;
+    margin: 0 3px;
+  }
+</style>
+
+

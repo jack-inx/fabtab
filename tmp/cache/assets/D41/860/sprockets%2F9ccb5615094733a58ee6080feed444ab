@@ -1,0 +1,18 @@
+o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1358427008.3989868:@value{I"
+class:EFI"StaticAsset;
+FI"id;
+F"%71bb298e1569fd8ec089968de6cc3a35I"logical_path;
+FI"Bravo.jpg;
+TI"pathname;
+FI"&$root/app/assets/images/Bravo.jpg;
+TI"content_type;
+FI"image/jpeg;
+FI"
+mtime;
+FI"2013-01-17T12:33:24+00:00;
+FI"length;
+FI"
+37060;
+FI"digest;
+F"%e59a165f28f80f59bca10a15e9c0c5c0I"_version;
+F"%df7525e917401704ef453cb56bf16697

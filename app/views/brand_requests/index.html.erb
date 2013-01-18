@@ -1,0 +1,53 @@
+<div class="content">
+
+<div style="margin-left:700px;">
+<%= link_to "Back",admin_edit_path, :id =>'add_coupan' %>
+</div>
+  <div class="brand_requests">
+    <ul>
+ <% if @brand_requests.count > 0  %>
+      <% @brand_requests.each do |brand_request| %>
+  <% if brand_request.ad.status == true %>
+        <li class="row">
+          <%= form_for brand_request, :method => :delete do |f| %>
+            <div class="left">
+              <% if brand_request.ad.ad_type == "video" %>
+                <iframe src="<%= brand_request.ad.image_url %>" width="220" height="180" border="none"></iframe>
+              <% else %>
+                <% if brand_request.ad.ad_type == "image" %>
+                  <%= link_to image_tag(brand_request.ad.image_url), URI.encode(brand_request.ad.image_url), :class => 'brand_request_image' , :target => '_blank' %>
+                <% elsif brand_request.ad.ad_type == "url" %>
+                <%= link_to image_tag(brand_request.ad.image_url, :size => "222x185") %>
+                  <%#= link_to image_tag(brand_request.ad.url), URI.encode(brand_request.ad.url), :class => 'brand_request_image' , :target => '_blank' %>
+                <% end %>
+              <% end %>
+            </div>
+            <div class="right">
+              <div class="email_address">Email: <%= brand_request.user.email %></div>
+
+              <% if !brand_request.ad.url.nil? %>
+                <div class="url">Portal URL:
+                  <%= brand_request.ad.site_url_hostname  %>
+                </div>
+              <% end %>
+
+
+              <% if !brand_request.ad.image_url.nil?  %>
+                <div class="image-name">Image Name:
+                  <%= brand_request.ad.image_name %>
+                </div>
+              <% end %>
+
+              <%= select_tag "brand", options_from_collection_for_select(@brands, "id", "name"), :prompt => "Select a brand" %>
+              <%= submit_tag "Add", :id => 'add_coupan'  %>
+            </div>
+          <% end %>
+        </li>
+      <% end %>
+<% end %>
+<% else %>
+<div>"No Requests" </div>
+<% end %>
+    </ul>
+  </div>
+</div>

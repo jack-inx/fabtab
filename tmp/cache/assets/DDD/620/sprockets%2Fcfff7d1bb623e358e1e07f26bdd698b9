@@ -1,0 +1,17 @@
+o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1358427008.8055675:@value{I"
+class:EFI"StaticAsset;
+FI"id;
+F"%d6f39862f39b4e09ea2d4ecfa01877a6I"logical_path;
+FI"nicEditorIcons.gif;
+TI"pathname;
+FI"/$root/app/assets/images/nicEditorIcons.gif;
+TI"content_type;
+FI"image/gif;
+FI"
+mtime;
+FI"2013-01-17T12:33:12+00:00;
+FI"length;
+FI"	3550;
+FI"digest;
+F"%0f08a3269afb9e3cc50165b29614e8a0I"_version;
+F"%df7525e917401704ef453cb56bf16697

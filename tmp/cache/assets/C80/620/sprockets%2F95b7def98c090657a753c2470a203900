@@ -1,0 +1,17 @@
+o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1358427008.9470348:@value{I"
+class:EFI"StaticAsset;
+FI"id;
+F"%37a01acd32963ad731648849912e01bdI"logical_path;
+FI"rollover__0019_SIGN-UP.png;
+TI"pathname;
+FI"7$root/app/assets/images/rollover__0019_SIGN-UP.png;
+TI"content_type;
+FI"image/png;
+FI"
+mtime;
+FI"2013-01-17T12:32:53+00:00;
+FI"length;
+FI"	2741;
+FI"digest;
+F"%7da99d5e9dc6a7af157230912686564fI"_version;
+F"%df7525e917401704ef453cb56bf16697

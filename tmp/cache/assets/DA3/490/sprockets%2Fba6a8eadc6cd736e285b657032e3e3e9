@@ -1,0 +1,17 @@
+o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1358427008.9438076:@value{I"
+class:EFI"StaticAsset;
+FI"id;
+F"%9e91ecedd4c3f2a8b32c9f8f86aa82d3I"logical_path;
+FI"$rollover__0018_SIGN-UP-OVER.png;
+TI"pathname;
+FI"<$root/app/assets/images/rollover__0018_SIGN-UP-OVER.png;
+TI"content_type;
+FI"image/png;
+FI"
+mtime;
+FI"2013-01-17T12:33:36+00:00;
+FI"length;
+FI"	2220;
+FI"digest;
+F"%18913874746a1ea8a06b45184553650aI"_version;
+F"%df7525e917401704ef453cb56bf16697

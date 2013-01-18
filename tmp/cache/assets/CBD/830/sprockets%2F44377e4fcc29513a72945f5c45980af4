@@ -1,0 +1,17 @@
+o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1358427008.849751:@value{I"
+class:EFI"StaticAsset;
+FI"id;
+F"%d2b47ebc8af3f24c127187eb6b961825I"logical_path;
+FI"repot_it.png;
+TI"pathname;
+FI")$root/app/assets/images/repot_it.png;
+TI"content_type;
+FI"image/png;
+FI"
+mtime;
+FI"2013-01-17T12:31:57+00:00;
+FI"length;
+FI"	4155;
+FI"digest;
+F"%1135864e572bad1371729bed410f8539I"_version;
+F"%df7525e917401704ef453cb56bf16697

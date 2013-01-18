@@ -1,0 +1,24 @@
+<h1>Listing purposes</h1>
+
+<table>
+  <tr>
+    <th style="border-left:none !important;">Name</th>
+    <th style="border-left:none !important;"></th>
+    <th style="border-left:none !important;">Actions</th>
+    <th style="border-left:none !important;"></th>
+  </tr>
+
+<% @purposes.each do |purpose| %>
+  <tr>
+    <td><%= purpose.name %></td>
+    <td style="border-left:none !important;"><%= link_to 'Show', purpose %></td>
+    <td style="border-left:none !important;"><%= link_to 'Edit', edit_purpose_path(purpose) %></td>
+    <td style="border-left:none !important;"><%= link_to 'Destroy', purpose, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Purpose', new_purpose_path , :id=>"add_coupan" %>
+

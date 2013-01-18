@@ -1,0 +1,36 @@
+<div class="content">
+<div style="margin-left:700px;">
+<%= link_to "Back",admin_edit_path, :id => "add_coupan" %>
+</div>
+
+  <%= form_for @brand, :html => {:id => 'new_brand'} do |f| %>
+ <span id ="offer_url" style="color:red;display: none;">Please Enter Following Details </span> <br/>
+  <br /> 
+    <div class="brand_name">Brand's Category folder name </div>
+    <%= f.text_field :name , :id => "url"  %>
+    <div class="twitter_handle">Brand's Twitter ID</div>
+    <%= f.text_field :twitter_handle %> <br/>
+    <div class="brand_logo">Brand folder logo</div>
+    <%= f.file_field :logo %>
+    <div style="margin-left: 51px;">
+      <%= f.submit "Submit", :id => "add_coupan" %>
+    </div>
+  <% end %>
+
+
+</div>
+<script>
+  $("form").submit(function() {
+    if($('#url').val().length == 0 )
+ 
+      {
+         $('#offer_url').show();
+        return false;
+      }
+    else
+    {
+     
+      return true;
+    }
+  });
+</script>

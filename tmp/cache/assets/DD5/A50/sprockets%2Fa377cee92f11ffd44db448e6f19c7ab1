@@ -1,0 +1,17 @@
+o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1358427008.3315363:@value{I"
+class:EFI"StaticAsset;
+FI"id;
+F"%2e0bb826fc51b030542bb21253f67deeI"logical_path;
+FI"arial.woff;
+TI"pathname;
+FI"&$root/app/assets/fonts/arial.woff;
+TI"content_type;
+FI"application/octet-stream;
+FI"
+mtime;
+FI"2013-01-17T12:31:00+00:00;
+FI"length;
+FI"424680;
+FI"digest;
+F"%0ddf6ff236e9acd5551860da71b75496I"_version;
+F"%df7525e917401704ef453cb56bf16697

@@ -1,0 +1,17 @@
+o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1358427008.326066:@value{I"
+class:EFI"StaticAsset;
+FI"id;
+F"%df21b04957b8087049c1a346276daaf3I"logical_path;
+FI"arial.ttf;
+TI"pathname;
+FI"%$root/app/assets/fonts/arial.ttf;
+TI"content_type;
+FI"application/octet-stream;
+FI"
+mtime;
+FI"2013-01-17T12:30:46+00:00;
+FI"length;
+FI"774476;
+FI"digest;
+F"%d73b08fb0045225b2788519bf0f6d349I"_version;
+F"%df7525e917401704ef453cb56bf16697

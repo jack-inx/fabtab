@@ -1,0 +1,33 @@
+<div class="content">
+	<div class="row carousel">	
+		<div class="title">
+			<div class="top-carousel-heading header-font">
+<% if !@group.category.nil? %>
+	<%= @group.category.name %> <% end %> <span>folder</span></div>
+			<div class="order-parameter">
+				<% if @sort_by == 'alphabetical' %>
+					<span class="green">A-Z</span> |
+				<% else %>
+					<%= link_to "A-Z", "#{request.path}?sort_by=alphabetical", :id => 'sort_alphabetical_group' %> |
+				<% end %>
+				
+				<% if @sort_by == 'date' %>
+					<span class="green">DATE SAVED</span> |
+				<% else %>
+					<%= link_to "DATE SAVED", "#{request.path}?sort_by=date", :id => 'sort_date_group' %> |
+				<% end %>
+				
+				
+				<% if @sort_by == 'rating' %>
+					<span class="green">RATE IT</span>
+				<% else %>
+					<%= link_to "RATE IT", "#{request.path}?sort_by=rating", :id => 'sort_rating_ad' %>
+				<% end %>
+				
+			</div>
+		</div>
+		<div id="groupads">
+			<%= render :partial => 'groupads' %>
+		</div>
+	</div>
+</div>

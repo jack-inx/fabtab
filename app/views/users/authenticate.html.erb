@@ -1,0 +1,55 @@
+<style type="text/css" media="screen">
+#submit_save {
+	background:url('/assets/save.png') no-repeat;
+	height:32px;
+	width:90px;
+	border:none;
+	vertical-align:bottom;
+	cursor:hand;
+	margin-left: 2px;
+}
+#submit_save:hover{
+	background:url('/assets/save_dark.png') no-repeat;
+}
+
+#error{
+	color:red;
+	margin-right: 96px;
+}
+</style>
+
+<form action="<%= user_session_path %>" id="signinForm" method="post" style="margin-bottom:0px" id="authForm">
+  <div style="height: 36px">
+    <%= csrf_meta_tag %>
+    <input type="hidden" name="user[email]" value="<%= @user.email %>"></input>
+    <input type="hidden" id="ad_url" name="ad[url]" value="<%= @ad.url %>"></input>
+    <input type="hidden" id="ad_microsite_url" name="ad[microsite_url]" value="<%= @ad.microsite_url %>"></input>
+    <input type="password" placeholder="Enter password to save ad" name="user[password]" title="Enter password to save ad" style="height:31px;width:175px;background:#494e4d;border:none;color:white;padding:2px 5px;"></input>
+    <input type="submit" style="" value="" id='submit_save'></input>
+		<label id="error" type="hidden"></label>
+  </div>
+
+</form>
+<script>
+$(function(){
+  $("form#signinForm").submit(function() {
+    var form = $(this);
+    $.ajax({
+      type:'post', 
+      url:form.attr("action"), 
+      data: form.serialize(), 
+      success:function(data) {
+        mftDisplaySaved(data);
+      },
+			error: function(jqXHR, textStatus, errorThrown) {
+				$('#error').html('Please enter correct password');
+				$('#error').show();
+			},
+      beforeSend: function(jqXHR, settings) {
+        jqXHR.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'));
+      }
+    });
+    return false;
+  });
+});
+</script>

@@ -1,0 +1,229 @@
+<div class="content edit_brand">
+
+
+  <span style="margin-left: 120px;"> <%= link_to "Back to All Brands", brands_path, :class =>'btn medium success' %></span>
+
+  <div class="left">
+    <%= form_for @brand do |f| %>
+      <table style="border:none;">
+        <tr><td style="border:none;width: 130px;"> <div class="brand_name"> Brand Name:</td><td style="border:none;"> <%= f.text_field :name %></td>  </div></tr>
+        <tr><td style="border:none;width: 130px;"><div class="twitter_handle">Twitter Handle: </td><td style="border:none;"><%= f.text_field :twitter_handle %></td></div></tr>
+        <tr><td style="border:none;width: 130px;"><div class="brand_logo">Logo:</td><td style="border:none;"> <%= f.file_field :logo %></td></div>
+        <tr><td style="border:none;width: 130px;"><%= image_tag @brand.logo.url(:thumb), :class => 'brand_logo' %></td></tr>
+        <tr><td style="border:none;width: 130px;"><%= submit_tag "Save Brand", :class => 'btn success small editBrand' %></td></tr>
+      </table>
+    <% end %>
+
+
+    <div class="offer-title"> <!-- Additional <span>Offers</span> --> </div>
+    <!--   <ul id="additional_offers">
+    <% if !@additional_offers.nil? %>
+      <% @additional_offers.each do |offer| %>
+                         <li>
+                           <div class="ad_image"><%#= link_to offer.image_url, offer.url, :target => '_blank' %></div>
+                           <div class="expiry_date">Expiry Date: <%#= offer.expiry_date %></div>
+                         </li>
+      <% end %>
+    <% end %>
+       </ul>
+       <ul id="additional_template">
+         <li class="template">
+           <div class="ad_image"><a href="#"></a></div>
+           <div class="expiry_date"></div>
+         </li>
+       </ul> -->
+
+    <div class="brand-folder-title"><%#= @brand.name %> <!-- <span>Folders</span> --> </div>
+    <!--  <ul id="brand_folders">
+    <% @brand_folders.each do |folder| %>
+                <li>
+                  <div class="folder-name"><%#= folder.category.name %></div>
+                  <ul>
+      <% folder.ads.each do |ad| %>
+                            <li>
+                              <div class="ad_image"><%#= link_to ad.image_url[0..50], ad.url, :target => '_blank' %></div>
+                            </li>
+      <% end %>
+                  </ul>
+                </li>
+    <% end %>
+      </ul> -->
+  </div>
+</div>
+
+<table style="border:none;width:auto;">
+
+  <tr>
+
+    <% @brand_count = 0 %>
+
+    <% @brand_count_else = 0 %>
+
+    <% @brand.ads.each do |ad| %>
+
+      <% if ad.ad_type == "url" %>
+
+        <% if !ad.url.nil? %>
+
+          <th style="width:0px;border:none;">
+
+            <div class="brand_edit">
+
+              <% @url = ad.url %>
+
+              <%  @brand_count += 1%>
+
+              <%= link_to image_tag(ad.image.url , :size => "200x100" )%>
+
+              </div>
+
+            <div style="margin-top:5px;text-align: center;"><%= link_to "Source URL", ad.url,:class => "btn success medium",:target => "_blank" %></div>
+
+            
+
+              <% @offer =  Offer.find_by_ad_id(ad.id) %>
+
+              <% if @offer.present?  %>
+<div style="margin-top:5px;text-align: center;">
+
+                <%= link_to "Edit Coupon", edit_coupans_path(@brand, :ad_id => ad.id, :coupan_id => @offer.id), :id => "add_coupan" %>
+</div>
+
+<div style="margin-top:5px;text-align: center;" >
+              <% if !@offer.url.nil? %>
+
+                <%= link_to "View Coupon", @offer.url, :id => "add_coupan" , :target => "_blank" %>
+
+<% end %>
+</div>
+
+              <% else %>
+
+                <%= link_to "Add Coupon", new_coupans_path(@brand, :ad_id => ad.id), :id => "add_coupan" %>
+
+              <% end %>
+
+
+
+          </th>
+
+          <% if   @brand_count == 5 %>
+
+          </tr>
+
+          <tr>
+
+            <% @brand_count = 0 %>
+
+          <% end %>
+
+        <% end %>
+
+      <% else %>
+
+        <%  if !ad.image_url.nil? %>
+
+          <%  @brand_count += 1 %>
+
+          <th style="width:0px;border:none;">
+
+            <div class="brand_edit"><%= link_to image_tag(ad.image_url,:size=>"200x100"),'#', :target => '_blank' %></div>
+
+            <div style="margin-top:5px;text-align: center;"><%= link_to "Source URL",ad.image_url, :class=>"btn success medium",:target => "_blank" %></div>
+
+      
+
+              <% @offer =  Offer.find_by_ad_id(ad.id) %>
+
+              <% if @offer.present?  %>
+		      <div style="margin-top:5px;text-align: center;" >
+
+                <%= link_to "Edit Coupon", edit_coupans_path(@brand, :ad_id => ad.id, :coupan_id => @offer.id), :id => "add_coupan" %>
+		</div>
+
+               <%  if !@offer.url.nil? %>
+
+               <div style="margin-top:5px;text-align: center;" >
+
+                <%= link_to "View Coupon", @offer.url ,:id => "add_coupan" , :target => "_blank" %>
+
+               </div>
+ <% else %>
+        <div style="margin-top:5px;text-align: center;height:25px;"> </div>
+
+
+              <% end %>
+
+              <% else %>
+		      <div style="margin-top:5px;text-align: center;" >
+
+                <%= link_to "Add Coupon", new_coupans_path(@brand, :ad_id => ad.id), :id => "add_coupan" %>
+		</div>
+
+              <% end %>
+
+
+
+          <% end %>
+
+        </th>
+
+        <% if  @brand_count == 5 %>
+
+        </tr>
+
+        <tr>
+
+          <% @brand_count = 0 %>
+
+        <% end %>
+
+      <% end %>
+
+    <% end %>
+
+  </tr>
+
+</table>
+
+
+
+<div class="right">
+<%#= form_for @offer, :url => {:controller => 'offers', :action => 'create'}, :html => { :multipart => true }, :id => 'new_offer', :class => 'hidden' do |f| %>
+<%#= hidden_field_tag 'brand[id]', @brand.id %>
+<%#*<div class="offer_name">Coupon Name</div>%>
+<%#= f.text_field :name %><br/>
+<%#*<div class="address">Coupon Zipcode</div>%>
+<%#= f.text_field :address %><br/>
+<%#*<div class="address">Coupon Radius</div>%>
+<%#= f.text_field :radius %><br/>
+<%#*<div class="offer_image_url"> Upload Image </div>%>
+<%#= f.file_field :image %><br/>
+<%#*<div class="offer_url">Coupon destination URL (if needed)</div>%>
+<%#= f.text_field :url %><br/>
+<%#*<div class="expiry_date">Coupon Expiry Date</div>%>
+<%#*<div class="row offer">%>
+<%#= date_select('offer','expiry_date', {}, :class => 'datetime') %><br/>
+<%#= hidden_field_tag 'offer[expiry_date(4i)]', '23' %>
+<%#= hidden_field_tag 'offer[expiry_date(5i)]', '59' %>
+<%#= hidden_field_tag 'offer[expiry_date(6i)]', '59' %>
+<%#*</div>%>
+<%#= f.submit "Add Coupan", :class => 'btn medium success add_offer' %>
+<%# end %>
+
+  <%= form_tag url_for(:controller => 'groups', :action => 'create'), :id => 'new_group', :class => 'hidden' do %>
+    <%= hidden_field_tag 'brand[id]', @brand.id %>
+    <div class="ad-url">Image Url</div>
+    <%= text_field_tag "ad[image_url]" %>
+    <div class="ad-url">Site Url</div>
+    <%= text_field_tag "ad[url]" %>
+    <%= hidden_field_tag "ad[brand_id]", @brand.id %>
+    <div class="folder-name">
+      <div class="category">
+        <%= select_tag "tabcategory", options_from_collection_for_select(@category, "id", "name"), :prompt => "Select a category" %>
+      </div>
+    </div>
+    <%= submit_tag "Add", :class => 'btn medium success add_ad' %>
+  <% end %>
+
+</div>

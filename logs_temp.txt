@@ -1,0 +1,101 @@
+2012-07-20T12:39:13+00:00 app[web.1]: Redirected to http://myfabtab-st.herokuapp.com/ads/new?url=http%3A%2F%2Fwww.google.co.in%2Fimgres%3Fnum%3D10%26hl%3Den%26biw%3D1360%26bih%3D569%26tbm%3Disch%26tbnid%3DAOTqCv970kTG0M%3A%26imgrefurl%3Dhttp%3A%2F%2Fasia.olympus-imaging.com%2Fproducts%2Fdslr%2Fe510%2Fsample%2F%26docid%3Dsrw_rM4ff-094M%26imgurl%3Dhttp%3A%2F%2Fasia.olympus-imaging.com%2Fproducts%2Fdslr%2Fe510%2Fsample%2Fimages%2Fsample_05.jpg%26w%3D3648%26h%3D2736%26ei%3DOlEJUOvDKobjrAeoy9jICA%26zoom%3D1&image_url=https%3A%2F%2Fencrypted-tbn2.google.com%2Fimages%3Fq%3Dtbn%3AANd9GcQR42xEn-5BcHu9uUKDEX-FPJf1RwaihBUQUope9K4FSI6RdOCg&type=image
+2012-07-20T12:39:13+00:00 app[web.1]: Completed 302 Found in 176ms
+2012-07-20T12:39:13+00:00 app[web.1]: cache: [GET /users/auth/facebook/callback?code=AQBg37WrYEnx7lPA2lKGCUthlj66JhHhJhD3cqBNUqUL102QG0CdDbJwI8avbMmQYaVRdQD8CleMzIbvBaqeDIQfF2REnW6jMBWJyuGYJm_m9pOdP68F1waCkWPW9-DbcE2W3tLXm5EcfUUrXxunKtoAmjt8n9A-I3B6XaZYb6KsDDIAVGI6ZFwOCPnsVqy9_UU] miss
+2012-07-20T12:39:14+00:00 heroku[router]: GET myfabtab-st.herokuapp.com/users/auth/facebook/callback?code=AQBg37WrYEnx7lPA2lKGCUthlj66JhHhJhD3cqBNUqUL102QG0CdDbJwI8avbMmQYaVRdQD8CleMzIbvBaqeDIQfF2REnW6jMBWJyuGYJm_m9pOdP68F1waCkWPW9-DbcE2W3tLXm5EcfUUrXxunKtoAmjt8n9A-I3B6XaZYb6KsDDIAVGI6ZFwOCPnsVqy9_UU dyno=web.1 queue=0 wait=0ms service=1014ms status=302 bytes=668
+2012-07-20T12:39:14+00:00 app[web.1]: 
+2012-07-20T12:39:14+00:00 app[web.1]: Started GET "/ads/new?url=http%3A%2F%2Fwww.google.co.in%2Fimgres%3Fnum%3D10%26hl%3Den%26biw%3D1360%26bih%3D569%26tbm%3Disch%26tbnid%3DAOTqCv970kTG0M%3A%26imgrefurl%3Dhttp%3A%2F%2Fasia.olympus-imaging.com%2Fproducts%2Fdslr%2Fe510%2Fsample%2F%26docid%3Dsrw_rM4ff-094M%26imgurl%3Dhttp%3A%2F%2Fasia.olympus-imaging.com%2Fproducts%2Fdslr%2Fe510%2Fsample%2Fimages%2Fsample_05.jpg%26w%3D3648%26h%3D2736%26ei%3DOlEJUOvDKobjrAeoy9jICA%26zoom%3D1&image_url=https%3A%2F%2Fencrypted-tbn2.google.com%2Fimages%3Fq%3Dtbn%3AANd9GcQR42xEn-5BcHu9uUKDEX-FPJf1RwaihBUQUope9K4FSI6RdOCg&type=image" for 210.211.249.230 at 2012-07-20 12:39:14 +0000
+2012-07-20T12:39:14+00:00 app[web.1]: 
+2012-07-20T12:39:14+00:00 app[web.1]:   Processing by AdsController#new as HTML
+2012-07-20T12:39:14+00:00 app[web.1]:   Parameters: {"url"=>"http://www.google.co.in/imgres?num=10&hl=en&biw=1360&bih=569&tbm=isch&tbnid=AOTqCv970kTG0M:&imgrefurl=http://asia.olympus-imaging.com/products/dslr/e510/sample/&docid=srw_rM4ff-094M&imgurl=http://asia.olympus-imaging.com/products/dslr/e510/sample/images/sample_05.jpg&w=3648&h=2736&ei=OlEJUOvDKobjrAeoy9jICA&zoom=1", "image_url"=>"https://encrypted-tbn2.google.com/images?q=tbn:ANd9GcQR42xEn-5BcHu9uUKDEX-FPJf1RwaihBUQUope9K4FSI6RdOCg", "type"=>"image"}
+2012-07-20T12:39:14+00:00 app[web.1]: Rendered ads/new.html.erb within layouts/tabit (17.1ms)
+2012-07-20T12:39:14+00:00 app[web.1]: Rendered layouts/_googleanalytics.html.erb (0.0ms)
+2012-07-20T12:39:14+00:00 app[web.1]: Completed 200 OK in 251ms (Views: 37.9ms | ActiveRecord: 124.5ms)
+2012-07-20T12:39:14+00:00 app[web.1]: cache: [GET /ads/new?url=http%3A%2F%2Fwww.google.co.in%2Fimgres%3Fnum%3D10%26hl%3Den%26biw%3D1360%26bih%3D569%26tbm%3Disch%26tbnid%3DAOTqCv970kTG0M%3A%26imgrefurl%3Dhttp%3A%2F%2Fasia.olympus-imaging.com%2Fproducts%2Fdslr%2Fe510%2Fsample%2F%26docid%3Dsrw_rM4ff-094M%26imgurl%3Dhttp%3A%2F%2Fasia.olympus-imaging.com%2Fproducts%2Fdslr%2Fe510%2Fsample%2Fimages%2Fsample_05.jpg%26w%3D3648%26h%3D2736%26ei%3DOlEJUOvDKobjrAeoy9jICA%26zoom%3D1&image_url=https%3A%2F%2Fencrypted-tbn2.google.com%2Fimages%3Fq%3Dtbn%3AANd9GcQR42xEn-5BcHu9uUKDEX-FPJf1RwaihBUQUope9K4FSI6RdOCg&type=image] miss
+2012-07-20T12:39:14+00:00 heroku[router]: GET myfabtab-st.herokuapp.com/ads/new?url=http%3A%2F%2Fwww.google.co.in%2Fimgres%3Fnum%3D10%26hl%3Den%26biw%3D1360%26bih%3D569%26tbm%3Disch%26tbnid%3DAOTqCv970kTG0M%3A%26imgrefurl%3Dhttp%3A%2F%2Fasia.olympus-imaging.com%2Fproducts%2Fdslr%2Fe510%2Fsample%2F%26docid%3Dsrw_rM4ff-094M%26imgurl%3Dhttp%3A%2F%2Fasia.olympus-imaging.com%2Fproducts%2Fdslr%2Fe510%2Fsample%2Fimages%2Fsample_05.jpg%26w%3D3648%26h%3D2736%26ei%3DOlEJUOvDKobjrAeoy9jICA%26zoom%3D1&image_url=https%3A%2F%2Fencrypted-tbn2.google.com%2Fimages%3Fq%3Dtbn%3AANd9GcQR42xEn-5BcHu9uUKDEX-FPJf1RwaihBUQUope9K4FSI6RdOCg&type=image dyno=web.1 queue=0 wait=0ms service=273ms status=200 bytes=4821
+2012-07-20T12:39:15+00:00 heroku[router]: GET myfabtab-st.herokuapp.com/assets/fabtab.png dyno=web.1 queue=0 wait=0ms service=8ms status=200 bytes=5655
+2012-07-20T12:39:15+00:00 app[web.1]: cache: [GET /assets/fabtab.png] miss
+2012-07-20T12:39:15+00:00 app[web.1]: cache: [GET /assets/arrow.png] miss
+2012-07-20T12:39:15+00:00 heroku[router]: GET myfabtab-st.herokuapp.com/assets/arrow.png dyno=web.1 queue=0 wait=0ms service=72ms status=200 bytes=3193
+2012-07-20T12:39:24+00:00 heroku[router]: POST myfabtab-st.herokuapp.com/ads/save dyno=web.1 queue=0 wait=0ms service=228ms status=200 bytes=13
+2012-07-20T12:39:26+00:00 app[web.1]: 
+2012-07-20T12:39:26+00:00 app[web.1]: Started POST "/ads/save" for 210.211.249.230 at 2012-07-20 12:39:24 +0000
+2012-07-20T12:39:26+00:00 app[web.1]: 
+2012-07-20T12:39:26+00:00 app[web.1]:   Parameters: {"utf8"=>"✓", "authenticity_token"=>"IZZ8zSO6lBr6edwPx1P9Nu00VteEJMWXKhl/b+hdXuQ=", "tabcategory"=>"Accessories", "ad"=>{"url"=>"http://www.google.co.in/imgres?num=10&hl=en&biw=1360&bih=569&tbm=isch&tbnid=AOTqCv970kTG0M:&imgrefurl=http://asia.olympus-imaging.com/products/dslr/e510/sample/&docid=srw_rM4ff-094M&imgurl=http://asia.olympus-imaging.com/products/dslr/e510/sample/images/sample_05.jpg&w=3648&h=2736&ei=OlEJUOvDKobjrAeoy9jICA&zoom=1", "image_url"=>"https://encrypted-tbn2.google.com/images?q=tbn:ANd9GcQR42xEn-5BcHu9uUKDEX-FPJf1RwaihBUQUope9K4FSI6RdOCg", "ad_type"=>"image"}, "email"=>"parikh.trushaparikh@gmail.com"}
+2012-07-20T12:39:26+00:00 app[web.1]:   Processing by AdsController#save as */*
+2012-07-20T12:39:26+00:00 app[web.1]: Completed 200 OK in 212ms (Views: 0.3ms | ActiveRecord: 172.1ms)
+2012-07-20T12:39:26+00:00 app[web.1]: [paperclip] Saving attachments.
+2012-07-20T12:39:26+00:00 app[web.1]: cache: [POST /ads/save] invalidate, pass
+2012-07-20T12:39:52+00:00 app[web.1]: 
+2012-07-20T12:39:52+00:00 app[web.1]: Started GET "/ads.json?modified_since=Fri,%2020%20Jul%202012%2010:49:52%20GMT" for 210.211.249.230 at 2012-07-20 12:39:52 +0000
+2012-07-20T12:39:52+00:00 app[web.1]: 
+2012-07-20T12:39:52+00:00 app[web.1]:   Processing by AdsController#index as JSON
+2012-07-20T12:39:52+00:00 app[web.1]:   Parameters: {"modified_since"=>"Fri, 20 Jul 2012 10:49:52 GMT"}
+2012-07-20T12:39:52+00:00 app[web.1]: Completed 401 Unauthorized in 0ms
+2012-07-20T12:39:52+00:00 app[web.1]: cache: [GET /ads.json?modified_since=Fri,%2020%20Jul%202012%2010:49:52%20GMT] miss
+2012-07-20T12:39:52+00:00 heroku[router]: GET myfabtab-st.herokuapp.com/ads.json?modified_since=Fri,%2020%20Jul%202012%2010:49:52%20GMT dyno=web.1 queue=0 wait=0ms service=10ms status=401 bytes=61
+2012-07-20T12:40:52+00:00 app[web.1]: 
+2012-07-20T12:40:52+00:00 app[web.1]:   Parameters: {"modified_since"=>"Fri, 20 Jul 2012 10:49:52 GMT"}
+2012-07-20T12:40:52+00:00 app[web.1]: 
+2012-07-20T12:40:52+00:00 app[web.1]: Started GET "/ads.json?modified_since=Fri,%2020%20Jul%202012%2010:49:52%20GMT" for 210.211.249.230 at 2012-07-20 12:40:52 +0000
+2012-07-20T12:40:52+00:00 app[web.1]:   Processing by AdsController#index as JSON
+2012-07-20T12:40:52+00:00 app[web.1]: Completed 401 Unauthorized in 0ms
+2012-07-20T12:40:52+00:00 app[web.1]: cache: [GET /ads.json?modified_since=Fri,%2020%20Jul%202012%2010:49:52%20GMT] miss
+2012-07-20T12:40:52+00:00 heroku[router]: GET myfabtab-st.herokuapp.com/ads.json?modified_since=Fri,%2020%20Jul%202012%2010:49:52%20GMT dyno=web.1 queue=0 wait=0ms service=10ms status=401 bytes=61
+2012-07-20T12:41:12+00:00 app[web.1]: 
+2012-07-20T12:41:12+00:00 app[web.1]: Started POST "/signin" for 210.211.251.20 at 2012-07-20 12:41:12 +0000
+2012-07-20T12:41:12+00:00 app[web.1]: 
+2012-07-20T12:41:12+00:00 app[web.1]:   Processing by Xdevise::SessionsController#create as JSON
+2012-07-20T12:41:12+00:00 app[web.1]:   Parameters: {"user"=>{"email"=>"dhara@inheritx.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"dhara@inheritx.com", "password"=>"[FILTERED]"}, "action"=>"create", "controller"=>"xdevise/sessions"}}
+2012-07-20T12:41:12+00:00 app[web.1]: session info testing
+2012-07-20T12:41:13+00:00 app[web.1]: Completed 200 OK in 90ms (Views: 0.2ms | ActiveRecord: 4.7ms)
+2012-07-20T12:41:13+00:00 app[web.1]: cache: [POST /signin] invalidate, pass
+2012-07-20T12:41:13+00:00 heroku[router]: POST myfabtab-st.herokuapp.com/signin dyno=web.1 queue=0 wait=0ms service=101ms status=200 bytes=53
+2012-07-20T12:41:22+00:00 app[web.1]: 
+2012-07-20T12:41:22+00:00 app[web.1]: 
+2012-07-20T12:41:22+00:00 app[web.1]: Started GET "/categories?auth_token:nsxrWjEoE2hHscbtsvZQ" for 210.211.251.20 at 2012-07-20 12:41:22 +0000
+2012-07-20T12:41:22+00:00 app[web.1]:   Processing by CategoriesController#index as JSON
+2012-07-20T12:41:22+00:00 app[web.1]:   Parameters: {"auth_token:nsxrWjEoE2hHscbtsvZQ"=>nil, "category"=>{}}
+2012-07-20T12:41:22+00:00 app[web.1]: Completed 200 OK in 123ms (Views: 0.3ms | ActiveRecord: 34.1ms)
+2012-07-20T12:41:22+00:00 app[web.1]: cache: [GET /categories?auth_token:nsxrWjEoE2hHscbtsvZQ] miss
+2012-07-20T12:41:22+00:00 heroku[router]: GET myfabtab-st.herokuapp.com/categories?auth_token:nsxrWjEoE2hHscbtsvZQ
+ dyno=web.1 queue=0 wait=0ms service=135ms status=200 bytes=5902
+2012-07-20T12:41:23+00:00 app[web.1]: 
+2012-07-20T12:41:23+00:00 app[web.1]: 
+2012-07-20T12:41:23+00:00 app[web.1]: Started GET "/my_local_offers_without_category?latitude=10.10&longitude=70.10,35&auth_token:nsxrWjEoE2hHscbtsvZQ" for 210.211.251.20 at 2012-07-20 12:41:23 +0000
+2012-07-20T12:41:23+00:00 app[web.1]:   Processing by CategoriesController#my_local_offers_without_category as JSON
+2012-07-20T12:41:23+00:00 app[web.1]:   Parameters: {"latitude"=>"10.10", "longitude"=>"70.10,35", "auth_token:nsxrWjEoE2hHscbtsvZQ"=>nil, "category"=>{}}
+2012-07-20T12:41:23+00:00 app[web.1]: Completed 200 OK in 10ms (Views: 0.3ms | ActiveRecord: 7.4ms)
+2012-07-20T12:41:23+00:00 app[web.1]: cache: [GET /my_local_offers_without_category?latitude=10.10&longitude=70.10,35&auth_token:nsxrWjEoE2hHscbtsvZQ] miss
+2012-07-20T12:41:23+00:00 heroku[router]: GET myfabtab-st.herokuapp.com/my_local_offers_without_category?latitude=10.10&longitude=70.10,35&auth_token:nsxrWjEoE2hHscbtsvZQ dyno=web.1 queue=0 wait=0ms service=166ms status=200 bytes=2
+2012-07-20T12:41:32+00:00 app[web.1]: 
+2012-07-20T12:41:32+00:00 app[web.1]: 
+2012-07-20T12:41:32+00:00 app[web.1]: Started GET "/categories/93/offers?auth_token:nsxrWjEoE2hHscbtsvZQ" for 210.211.251.20 at 2012-07-20 12:41:32 +0000
+2012-07-20T12:41:32+00:00 app[web.1]:   Parameters: {"auth_token:nsxrWjEoE2hHscbtsvZQ"=>nil, "id"=>"93", "category"=>{"id"=>"93"}}
+2012-07-20T12:41:32+00:00 app[web.1]:   Processing by CategoriesController#offers as JSON
+2012-07-20T12:41:32+00:00 app[web.1]: Completed 200 OK in 60ms (Views: 0.2ms | ActiveRecord: 50.4ms)
+2012-07-20T12:41:32+00:00 app[web.1]: cache: [GET /categories/93/offers?auth_token:nsxrWjEoE2hHscbtsvZQ] miss
+2012-07-20T12:41:32+00:00 heroku[router]: GET myfabtab-st.herokuapp.com/categories/93/offers?auth_token:nsxrWjEoE2hHscbtsvZQ dyno=web.1 queue=0 wait=0ms service=66ms status=200 bytes=3478
+2012-07-20T12:41:46+00:00 app[web.1]: 
+2012-07-20T12:41:46+00:00 app[web.1]: 
+2012-07-20T12:41:46+00:00 app[web.1]: Started GET "/ads/306?auth_token:nsxrWjEoE2hHscbtsvZQ" for 210.211.251.20 at 2012-07-20 12:41:46 +0000
+2012-07-20T12:41:46+00:00 app[web.1]:   Parameters: {"auth_token:nsxrWjEoE2hHscbtsvZQ"=>nil, "id"=>"306", "ad"=>{"id"=>"306"}}
+2012-07-20T12:41:46+00:00 app[web.1]:   Processing by AdsController#show as JSON
+2012-07-20T12:41:46+00:00 app[web.1]: Completed 200 OK in 384ms (Views: 0.8ms | ActiveRecord: 322.5ms)
+2012-07-20T12:41:46+00:00 app[web.1]: cache: [GET /ads/306?auth_token:nsxrWjEoE2hHscbtsvZQ] miss
+2012-07-20T12:41:46+00:00 heroku[router]: GET myfabtab-st.herokuapp.com/ads/306?auth_token:nsxrWjEoE2hHscbtsvZQ dyno=web.1 queue=0 wait=0ms service=398ms status=200 bytes=526
+2012-07-20T12:41:52+00:00 app[web.1]: 
+2012-07-20T12:41:52+00:00 app[web.1]: Started GET "/ads.json?modified_since=Fri,%2020%20Jul%202012%2010:49:52%20GMT" for 210.211.249.230 at 2012-07-20 12:41:52 +0000
+2012-07-20T12:41:52+00:00 app[web.1]: 
+2012-07-20T12:41:52+00:00 app[web.1]:   Processing by AdsController#index as JSON
+2012-07-20T12:41:52+00:00 app[web.1]: Completed 401 Unauthorized in 0ms
+2012-07-20T12:41:52+00:00 app[web.1]:   Parameters: {"modified_since"=>"Fri, 20 Jul 2012 10:49:52 GMT"}
+2012-07-20T12:41:52+00:00 app[web.1]: cache: [GET /ads.json?modified_since=Fri,%2020%20Jul%202012%2010:49:52%20GMT] miss
+2012-07-20T12:41:52+00:00 heroku[router]: GET myfabtab-st.herokuapp.com/ads.json?modified_since=Fri,%2020%20Jul%202012%2010:49:52%20GMT dyno=web.1 queue=0 wait=0ms service=17ms status=401 bytes=61
+2012-07-20T12:42:52+00:00 app[web.1]: 
+2012-07-20T12:42:52+00:00 app[web.1]: 
+2012-07-20T12:42:52+00:00 app[web.1]: Started GET "/ads.json?modified_since=Fri,%2020%20Jul%202012%2010:49:52%20GMT" for 210.211.249.230 at 2012-07-20 12:42:52 +0000
+2012-07-20T12:42:52+00:00 app[web.1]:   Processing by AdsController#index as JSON
+2012-07-20T12:42:52+00:00 app[web.1]:   Parameters: {"modified_since"=>"Fri, 20 Jul 2012 10:49:52 GMT"}
+2012-07-20T12:42:52+00:00 app[web.1]: Completed 401 Unauthorized in 0ms
+2012-07-20T12:42:52+00:00 app[web.1]: cache: [GET /ads.json?modified_since=Fri,%2020%20Jul%202012%2010:49:52%20GMT] miss
+2012-07-20T12:42:52+00:00 heroku[router]: GET myfabtab-st.herokuapp.com/ads.json?modified_since=Fri,%2020%20Jul%202012%2010:49:52%20GMT dyno=web.1 queue=0 wait=0ms service=8ms status=401 bytes=61

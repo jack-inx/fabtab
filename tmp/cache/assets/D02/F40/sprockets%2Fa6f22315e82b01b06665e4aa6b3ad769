@@ -1,0 +1,17 @@
+o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1358427008.7772186:@value{I"
+class:EFI"StaticAsset;
+FI"id;
+F"%23402ed15e56ef226491635cb8545547I"logical_path;
+FI"mft_logo.png;
+TI"pathname;
+FI")$root/app/assets/images/mft_logo.png;
+TI"content_type;
+FI"image/png;
+FI"
+mtime;
+FI"2013-01-17T12:33:14+00:00;
+FI"length;
+FI"	8997;
+FI"digest;
+F"%0c49332c2266a4491c3174e666eb3725I"_version;
+F"%df7525e917401704ef453cb56bf16697

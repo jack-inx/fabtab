@@ -1,0 +1,17 @@
+o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1358427008.8328483:@value{I"
+class:EFI"StaticAsset;
+FI"id;
+F"%554cca9b2eeb607a11faae4a2074f975I"logical_path;
+FI"rateit_btn.png;
+TI"pathname;
+FI"+$root/app/assets/images/rateit_btn.png;
+TI"content_type;
+FI"image/png;
+FI"
+mtime;
+FI"2013-01-17T12:32:20+00:00;
+FI"length;
+FI"	3430;
+FI"digest;
+F"%479031964672af6069eb97af3538abbaI"_version;
+F"%df7525e917401704ef453cb56bf16697

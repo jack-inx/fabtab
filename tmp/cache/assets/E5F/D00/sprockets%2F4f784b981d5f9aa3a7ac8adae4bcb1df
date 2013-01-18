@@ -1,0 +1,17 @@
+o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1358427008.9772782:@value{I"
+class:EFI"StaticAsset;
+FI"id;
+F"%3e0e55931b777d90ed9db56c75246e3fI"logical_path;
+FI"save_dark.png;
+TI"pathname;
+FI"*$root/app/assets/images/save_dark.png;
+TI"content_type;
+FI"image/png;
+FI"
+mtime;
+FI"2013-01-17T12:32:10+00:00;
+FI"length;
+FI"	4619;
+FI"digest;
+F"%8f1e565cc39c238efb107751fa5bbbaaI"_version;
+F"%df7525e917401704ef453cb56bf16697

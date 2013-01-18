@@ -1,0 +1,17 @@
+o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1358427008.426238:@value{I"
+class:EFI"StaticAsset;
+FI"id;
+F"%3db9ffe89ff4554761752e07deac063aI"logical_path;
+FI"FabTab-SnapTabX.jpg;
+TI"pathname;
+FI"0$root/app/assets/images/FabTab-SnapTabX.jpg;
+TI"content_type;
+FI"image/jpeg;
+FI"
+mtime;
+FI"2013-01-17T12:33:44+00:00;
+FI"length;
+FI"110098;
+FI"digest;
+F"%09ca062628346ac6ba0d6fde4dfbde12I"_version;
+F"%df7525e917401704ef453cb56bf16697

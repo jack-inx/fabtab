@@ -1,0 +1,17 @@
+o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1358427009.0761638:@value{I"
+class:EFI"StaticAsset;
+FI"id;
+F"%a16f1a44767a0c8c9677dbd14ab26e75I"logical_path;
+FI"Jplayer.swf;
+TI"pathname;
+FI"-$root/app/assets/javascripts/Jplayer.swf;
+TI"content_type;
+FI""application/x-shockwave-flash;
+FI"
+mtime;
+FI"2013-01-17T12:34:00+00:00;
+FI"length;
+FI"	8452;
+FI"digest;
+F"%3dd8dc3c45d641d743a590dbcbcc9116I"_version;
+F"%df7525e917401704ef453cb56bf16697

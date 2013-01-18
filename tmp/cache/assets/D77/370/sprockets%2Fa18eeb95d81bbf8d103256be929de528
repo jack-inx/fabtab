@@ -1,0 +1,17 @@
+o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1358427008.8405707:@value{I"
+class:EFI"StaticAsset;
+FI"id;
+F"%1efa9384cc0293b93d5673ae226d086bI"logical_path;
+FI"refer_dark.png;
+TI"pathname;
+FI"+$root/app/assets/images/refer_dark.png;
+TI"content_type;
+FI"image/png;
+FI"
+mtime;
+FI"2013-01-17T12:31:49+00:00;
+FI"length;
+FI"	4375;
+FI"digest;
+F"%28ae339d7206525446673efc20fe98d4I"_version;
+F"%df7525e917401704ef453cb56bf16697

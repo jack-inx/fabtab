@@ -1,0 +1,17 @@
+o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1358427008.7647915:@value{I"
+class:EFI"StaticAsset;
+FI"id;
+F"%290c139d4f4accc0418aad7342310c3cI"logical_path;
+FI" mft_0002_email_textHTML.png;
+TI"pathname;
+FI"8$root/app/assets/images/mft_0002_email_textHTML.png;
+TI"content_type;
+FI"image/png;
+FI"
+mtime;
+FI"2013-01-17T12:32:39+00:00;
+FI"length;
+FI"	1059;
+FI"digest;
+F"%3688c26b14f714e1190857d4cd325470I"_version;
+F"%df7525e917401704ef453cb56bf16697

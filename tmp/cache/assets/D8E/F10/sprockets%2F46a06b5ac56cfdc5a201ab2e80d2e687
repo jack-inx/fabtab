@@ -1,0 +1,17 @@
+o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1358427008.9591305:@value{I"
+class:EFI"StaticAsset;
+FI"id;
+F"%5aecf65b29953b62e17b48ac69af7e27I"logical_path;
+FI""rollover__0023_HowItWorks.png;
+TI"pathname;
+FI":$root/app/assets/images/rollover__0023_HowItWorks.png;
+TI"content_type;
+FI"image/png;
+FI"
+mtime;
+FI"2013-01-17T12:32:50+00:00;
+FI"length;
+FI"878;
+FI"digest;
+F"%ce54b987ad7047ff974d173525a9ea29I"_version;
+F"%df7525e917401704ef453cb56bf16697

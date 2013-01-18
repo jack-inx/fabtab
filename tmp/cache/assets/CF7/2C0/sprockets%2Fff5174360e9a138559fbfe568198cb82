@@ -1,0 +1,18 @@
+o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1358427008.5017388:@value{I"
+class:EFI"StaticAsset;
+FI"id;
+F"%51fe402ff88fe59799127fe272b7de26I"logical_path;
+FI"Pop Up.jpg;
+TI"pathname;
+FI"'$root/app/assets/images/Pop Up.jpg;
+TI"content_type;
+FI"image/jpeg;
+FI"
+mtime;
+FI"2013-01-17T12:32:24+00:00;
+FI"length;
+FI"
+22339;
+FI"digest;
+F"%15e35f424b036baea8d3aa9b5fecfafeI"_version;
+F"%df7525e917401704ef453cb56bf16697

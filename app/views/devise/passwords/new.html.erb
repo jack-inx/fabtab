@@ -1,0 +1,37 @@
+
+<div class="content" style="float: none;">
+
+<div class="title" style="margin: 0 275px;font-size: 20px;">Forgot your password?</div>
+  <%#*<h2 class="confirmationHeading">Forgot your password?</h2>%>
+
+  <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
+    <%= devise_error_messages! %>
+
+    <div class="clearfix" style="margin-left:-2px;">
+      <br/>
+      <%= f.email_field :email, :class => 'credentials email', :placeholder => 'type email address here' %>
+    </div>
+
+    <div class="createAccount" style="margin-left:-162px;"><%= f.submit "Send me reset password instructions" %></div>
+  <% end %>
+  <div style="margin-left:274px;">
+
+    <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
+      <%= link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name) %><br />
+    <% end -%>
+
+
+  </div>
+</div>
+<style type="text/css">
+  a:hover {
+    color : #8BC541;
+    font-size: 15px;
+  }
+   a {
+    color : #C3C6C5;
+    font-size: 15px;
+  }
+</style>
+
+

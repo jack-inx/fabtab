@@ -1,0 +1,15 @@
+<div class="content">
+	<ul class="unstyled">
+		<% @demo_images.each do |demo_image| %>
+			<li>
+				<%= form_for demo_image do |f| %>
+					<%= image_tag(demo_image.ad.url(:thumbnail)) %>
+					<div>Image URL: <%= demo_image.ad.url(:ad)  %></div>
+					<%= button_tag "Delete", :class => 'btn success delete-image', :method => :delete %>
+				<% end %>
+			</li>
+		<% end %>
+	</ul>
+	<%= link_to "Create a New Demo", new_demo_path, :id => 'add_coupan' %>
+	<%= link_to "Upload a new image", new_demo_image_path, :id => 'add_coupan' %>
+</div>

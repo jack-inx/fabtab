@@ -1,0 +1,17 @@
+o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1358427009.0390055:@value{I"
+class:EFI"StaticAsset;
+FI"id;
+F"%1b4171b16fd112c5ac70c2ab16a3805eI"logical_path;
+FI"signup_b.png;
+TI"pathname;
+FI")$root/app/assets/images/signup_b.png;
+TI"content_type;
+FI"image/png;
+FI"
+mtime;
+FI"2013-01-17T12:33:18+00:00;
+FI"length;
+FI"	5742;
+FI"digest;
+F"%e817cd59c17f2775efe8e2a89c27578dI"_version;
+F"%df7525e917401704ef453cb56bf16697

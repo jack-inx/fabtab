@@ -1,0 +1,17 @@
+o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1358427008.5227973:@value{I"
+class:EFI"StaticAsset;
+FI"id;
+F"%43abe831b3dde2d2bdfc3c2877386909I"logical_path;
+FI"ads_arrow_right.png;
+TI"pathname;
+FI"0$root/app/assets/images/ads_arrow_right.png;
+TI"content_type;
+FI"image/png;
+FI"
+mtime;
+FI"2013-01-17T12:31:51+00:00;
+FI"length;
+FI"	2982;
+FI"digest;
+F"%ff0986f63d36cefc86e8629a7f89818bI"_version;
+F"%df7525e917401704ef453cb56bf16697

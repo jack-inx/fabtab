@@ -1,0 +1,28 @@
+Get All Ads tabbed by other users
+GET /ads.json?auth_token=<auth_token>
+
+Get details of an ad
+GET /ads/:id.json?auth_token=<auth_token>
+
+Move an Ad from one Group to another
+PUT /ads/:id.json?auth_token=<auth_token>
+
+Form Data
+category: id
+
+Tab a new ad
+POST http://localhost:3000/ads/save?auth_token=KUxWigvrEygX6digT8ps
+
+Form Data
+tabcategory: <name>
+ad[image_url]: <image url>
+ad[url]: <destination url>
+ad[ad_type]: <type of ad>
+email: <email address of user>
+
+Get all the folders
+GET /groups.json?auth_token=<auth_token>
+
+Get details of a folder
+GET /groups/:id.json?auth_token=<auth_token>
+

@@ -1,0 +1,17 @@
+o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1358427008.7583683:@value{I"
+class:EFI"StaticAsset;
+FI"id;
+F"%2405ddf51b5c1f949e6f0933f0ea42f5I"logical_path;
+FI"menu_bbg.png;
+TI"pathname;
+FI")$root/app/assets/images/menu_bbg.png;
+TI"content_type;
+FI"image/png;
+FI"
+mtime;
+FI"2013-01-17T12:32:48+00:00;
+FI"length;
+FI"	2846;
+FI"digest;
+F"%d4699d9bf1d60d8a9abfa865b5646cb2I"_version;
+F"%df7525e917401704ef453cb56bf16697

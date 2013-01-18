@@ -1,0 +1,6 @@
+<%  if user.status == true %>
+  <%= link_to "active",status_change_path(user.id),:remote => "true" %>
+<%#= user.status %>
+<% else %>
+  <%= link_to "deactivated", status_unchange_path(user.id),:remote => "true"%>
+<% end %>

@@ -1,0 +1,18 @@
+o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1358427008.546877:@value{I"
+class:EFI"StaticAsset;
+FI"id;
+F"%0af14d1f848353387f0ad01381650ac6I"logical_path;
+FI"betalogo1.png;
+TI"pathname;
+FI"*$root/app/assets/images/betalogo1.png;
+TI"content_type;
+FI"image/png;
+FI"
+mtime;
+FI"2013-01-17T12:31:59+00:00;
+FI"length;
+FI"
+10066;
+FI"digest;
+F"%0ec63386cdcf6b226846bc9b638f0a36I"_version;
+F"%df7525e917401704ef453cb56bf16697

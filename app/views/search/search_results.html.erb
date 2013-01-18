@@ -1,0 +1,11 @@
+<div class="content">
+	<div class="row carousel">	
+		<div class="title">
+			<div class="top-carousel-heading search_results">Search <span>Results</span></div>
+			<div class="search_count"><%#= "#{pluralize(@group_ads.size,'result')} found for '#{params[:q]}'" %></div>
+		</div>
+		<div id="groupads">
+			<%= render :partial => 'groups/groupads' %>
+		</div>
+	</div>
+</div>

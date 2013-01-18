@@ -1,0 +1,17 @@
+o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1358427008.767938:@value{I"
+class:EFI"StaticAsset;
+FI"id;
+F"%e2d53ee9147be1640a848ef0fe44d444I"logical_path;
+FI"mft_0003_emailBOX.png;
+TI"pathname;
+FI"2$root/app/assets/images/mft_0003_emailBOX.png;
+TI"content_type;
+FI"image/png;
+FI"
+mtime;
+FI"2013-01-17T12:31:56+00:00;
+FI"length;
+FI"184;
+FI"digest;
+F"%c2a910d950a6e65a67cc9a144df72b07I"_version;
+F"%df7525e917401704ef453cb56bf16697

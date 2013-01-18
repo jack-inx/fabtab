@@ -1,0 +1,18 @@
+o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1358427008.392702:@value{I"
+class:EFI"StaticAsset;
+FI"id;
+F"%2b2de15e98d625e7403daeedc6a3671eI"logical_path;
+FI"AT&T.gif;
+TI"pathname;
+FI"%$root/app/assets/images/AT&T.gif;
+TI"content_type;
+FI"image/gif;
+FI"
+mtime;
+FI"2013-01-17T12:32:45+00:00;
+FI"length;
+FI"
+16799;
+FI"digest;
+F"%0c90789cf974e1a1f1566286a57d1dc3I"_version;
+F"%df7525e917401704ef453cb56bf16697

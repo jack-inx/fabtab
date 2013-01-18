@@ -1,0 +1,18 @@
+o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1358427008.705692:@value{I"
+class:EFI"StaticAsset;
+FI"id;
+F"%86ee6c4169b6ca28b3253ec3b4471b71I"logical_path;
+FI"'jplayer.blue.monday.video.play.png;
+TI"pathname;
+FI"?$root/app/assets/images/jplayer.blue.monday.video.play.png;
+TI"content_type;
+FI"image/png;
+FI"
+mtime;
+FI"2013-01-17T12:33:33+00:00;
+FI"length;
+FI"
+17692;
+FI"digest;
+F"%c5eb053c60bd1eb0ff035f499e0c7022I"_version;
+F"%df7525e917401704ef453cb56bf16697

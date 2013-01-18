@@ -1,0 +1,8 @@
+<h1>Hello <%= @user.nickname %>  </h1>
+<% @userowner = User.find_by_id(@ads.user_id) %>
+<p>There is one ad request removed from <%= @current_user.username %> for <%= link_to "image",@ads.image_url %> this ad is created by <%= @userowner.nickname %></p>
+<p>Please visit the <%= link_to "image",@ads.image_url %> by click it and you can <%= link_to 'Ignore',ignore_ad_url(@ads.id), :target => "_blank" %> the ad or <%= link_to 'Delete',destroy_ads_url(@ads.id), :target => "_blank"  %> the ad</p>
+
+
+
+

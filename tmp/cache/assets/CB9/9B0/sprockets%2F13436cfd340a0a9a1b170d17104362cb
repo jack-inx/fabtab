@@ -1,0 +1,17 @@
+o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1358427008.3372123:@value{I"
+class:EFI"StaticAsset;
+FI"id;
+F"%92d2ec277a5ff0134f46cf7841839702I"logical_path;
+FI"arialbd.eot;
+TI"pathname;
+FI"'$root/app/assets/fonts/arialbd.eot;
+TI"content_type;
+FI"application/octet-stream;
+FI"
+mtime;
+FI"2013-01-17T12:31:29+00:00;
+FI"length;
+FI"751266;
+FI"digest;
+F"%263a658c1edaf0a2b7ec75c7b5277668I"_version;
+F"%df7525e917401704ef453cb56bf16697

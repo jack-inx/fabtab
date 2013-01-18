@@ -1,0 +1,17 @@
+o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1358427008.800109:@value{I"
+class:EFI"StaticAsset;
+FI"id;
+F"%9674e64ff1104983a111c5484f7157f6I"logical_path;
+FI"move_hover.png;
+TI"pathname;
+FI"+$root/app/assets/images/move_hover.png;
+TI"content_type;
+FI"image/png;
+FI"
+mtime;
+FI"2013-01-17T12:32:20+00:00;
+FI"length;
+FI"	3483;
+FI"digest;
+F"%3f67df9c25d161c04db5aa2a9d4ab31bI"_version;
+F"%df7525e917401704ef453cb56bf16697

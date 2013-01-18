@@ -1,0 +1,17 @@
+o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1358427008.6401947:@value{I"
+class:EFI"StaticAsset;
+FI"id;
+F"%9d1c0bd2dc1f9a178d9bc6d09c00f477I"logical_path;
+FI"default_for_scanit.png;
+TI"pathname;
+FI"3$root/app/assets/images/default_for_scanit.png;
+TI"content_type;
+FI"image/png;
+FI"
+mtime;
+FI"2013-01-17T12:31:47+00:00;
+FI"length;
+FI"	7465;
+FI"digest;
+F"%9fe39a183ae550f406a04b68786e05d5I"_version;
+F"%df7525e917401704ef453cb56bf16697

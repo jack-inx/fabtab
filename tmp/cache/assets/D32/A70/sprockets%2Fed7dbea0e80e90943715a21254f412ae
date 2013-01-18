@@ -1,0 +1,18 @@
+o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1358427008.402065:@value{I"
+class:EFI"StaticAsset;
+FI"id;
+F"%cbab6c03521bb9e0410e039d335d938dI"logical_path;
+FI"FabTab-LOGObeta.png;
+TI"pathname;
+FI"0$root/app/assets/images/FabTab-LOGObeta.png;
+TI"content_type;
+FI"image/png;
+FI"
+mtime;
+FI"2013-01-17T12:32:49+00:00;
+FI"length;
+FI"
+13578;
+FI"digest;
+F"%1f671d030ffa904de2f3bb827d827978I"_version;
+F"%df7525e917401704ef453cb56bf16697

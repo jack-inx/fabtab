@@ -1,0 +1,17 @@
+o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1358427008.5498023:@value{I"
+class:EFI"StaticAsset;
+FI"id;
+F"%83dcaac11baa5111ba007fbe825a6a57I"logical_path;
+FI"bg_buttons.png;
+TI"pathname;
+FI"+$root/app/assets/images/bg_buttons.png;
+TI"content_type;
+FI"image/png;
+FI"
+mtime;
+FI"2013-01-17T12:32:51+00:00;
+FI"length;
+FI"	1289;
+FI"digest;
+F"%7ed2b2be4c38ae877ad6f9d1f5442225I"_version;
+F"%df7525e917401704ef453cb56bf16697

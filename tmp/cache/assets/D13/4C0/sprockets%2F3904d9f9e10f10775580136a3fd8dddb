@@ -1,0 +1,17 @@
+o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1358427009.048245:@value{I"
+class:EFI"StaticAsset;
+FI"id;
+F"%485f4a5cd97da528fd2097ddbad7c15bI"logical_path;
+FI"starUnmarked.png;
+TI"pathname;
+FI"-$root/app/assets/images/starUnmarked.png;
+TI"content_type;
+FI"image/png;
+FI"
+mtime;
+FI"2013-01-17T12:33:33+00:00;
+FI"length;
+FI"	3917;
+FI"digest;
+F"%bc1e14bd23b5667a71755372a6c78236I"_version;
+F"%df7525e917401704ef453cb56bf16697

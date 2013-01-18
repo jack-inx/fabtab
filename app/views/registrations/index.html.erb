@@ -1,0 +1,23 @@
+<style type="text/css" media="screen">
+	#delete_user {
+		background: #8CC63F;
+		padding: 5px;
+		border-radius: 2px;
+		text-decoration:none;
+		color: black;
+	}
+	
+	#delete_user:hover {
+		background: green;
+	}
+	
+</style>
+
+<h3>Users</h3>
+<table>
+ <% @users.each do |user| %>
+   <tr>
+    <td><a href="/registrations/<%= user.id %>"><%= user.email %></a> <%= link_to "Delete User", "/registrations/#{user.id}", :method => :delete, :id => 'delete_user' %></td>
+   </tr>
+ <% end %>
+</table>

@@ -1,0 +1,17 @@
+o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1358427008.9502103:@value{I"
+class:EFI"StaticAsset;
+FI"id;
+F"%816c054976b44dd2fc4c92696c0a113fI"logical_path;
+FI"!rollover__0020_adminOVER.png;
+TI"pathname;
+FI"9$root/app/assets/images/rollover__0020_adminOVER.png;
+TI"content_type;
+FI"image/png;
+FI"
+mtime;
+FI"2013-01-17T12:32:46+00:00;
+FI"length;
+FI"476;
+FI"digest;
+F"%350a2435ca67d62f33f71585ec966320I"_version;
+F"%df7525e917401704ef453cb56bf16697

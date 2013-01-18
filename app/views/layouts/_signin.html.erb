@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>FabTab</title>
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+    <meta property="og:image" content="http://ec2-54-242-55-172.compute-1.amazonaws.com/assets/betalogo1.png"></meta>
+    <%= render :partial => 'layouts/googleanalytics' %>
+  </head>
+
+  <body>
+    <div class="container">
+      <% if !flash[:notice].nil? %>
+        <h1 class="flash_messages1 flash_msg_border"> <%= flash[:error] %> </h1>
+        <h1 class="flash_messages1 flash_msg_border"> <%= flash[:notice] %> </h1>
+      <% end %>
+
+      <%= image_tag('/assets/betalogo1.png', :class => 'logo') %>
+      <%= yield %>
+
+    </div>
+<script type="text/javascript">
+      var uvOptions = {};
+      (function() {
+        var uv = document.createElement('script'); uv.type = 'text/javascript'; uv.async = true;
+        uv.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'widget.uservoice.com/cYPrkIzxmmj4HwwxOawg.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(uv, s);
+      })();
+    </script>
+  </body>
+</html>

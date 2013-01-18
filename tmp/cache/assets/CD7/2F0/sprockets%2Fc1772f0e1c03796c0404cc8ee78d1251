@@ -1,0 +1,17 @@
+o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1358427008.492469:@value{I"
+class:EFI"StaticAsset;
+FI"id;
+F"%a1acc2b9645891fa659e446a62e77cd8I"logical_path;
+FI"Kia.png;
+TI"pathname;
+FI"$$root/app/assets/images/Kia.png;
+TI"content_type;
+FI"image/png;
+FI"
+mtime;
+FI"2013-01-17T12:32:09+00:00;
+FI"length;
+FI"160162;
+FI"digest;
+F"%3e92c7be7982bd2a2205ae0618144fd8I"_version;
+F"%df7525e917401704ef453cb56bf16697

@@ -1,0 +1,83 @@
+<div class="right">
+  <div style="float: right;margin-right: 175px;">
+    <%= link_to "Back" , edit_brand_path(params[:id]) ,:class => 'btn medium success add_offer' %>
+  </div>
+  <%= form_for @offer, :url => {:controller => 'offers', :action => 'create'}, :html => { :multipart => true, :target => "_self" }, :class => 'hidden' do |f| %>
+    <%= hidden_field_tag 'brand[id]', params[:id] %>
+    <%= f.hidden_field :ad_id, :value => @ad_id %>
+    <div class="offer_name">Coupon Name</div>
+    <%= f.text_field :name %><br/>
+    <div class="address">State</div>
+    <%= select_tag "state", options_for_select(UsState.all.collect {|p| [ p.state, p.state_code ] }),{ :onchange => "update_versions_div(this.value)"}%>
+    <div class="address">City</div>
+    <div  id="versionsDiv">
+      <%= render :partial => "city_list", :locals => {:city => @city ,:city_name => nil } %>
+    </div>
+    <%#=f.select :city_id, options_for_select(City.all.collect {|p| [ p.name, p.id ] }) %>
+    <div class="address">Coupon Radius</div>
+    <%= f.text_field :radius %><br/>
+    <div class="offer_image_url"> Upload Image </div>
+    <%= f.file_field :image %><br/>
+    <div class="offer_url">Coupon destination URL (if needed) (Example : http://www.website.com) </div>
+    <%= f.text_field :url ,:id => "url" %>
+ <span id ="offer_url" style="color:red;display:none;">Please Enter valid URL </span> <br/>
+    <div class="expiry_date">Coupon Expiry Date</div>
+    <div class="row offer">
+      <%= date_select('offer','expiry_date', {}, :class => 'datetime') %><br/>
+      <%= hidden_field_tag 'offer[expiry_date(4i)]', '23' %>
+      <%= hidden_field_tag 'offer[expiry_date(5i)]', '59' %>
+      <%= hidden_field_tag 'offer[expiry_date(6i)]', '59' %>
+    </div>
+    <%= f.submit "Add Coupon", :class => 'btn medium success add_offer' %>
+
+  <% end %>
+</div>
+<script>
+
+  function update_versions_div(state_code) {
+
+    $.ajax({
+
+      type: "GET",
+
+      url: "/offers/state_city_list/"+state_code,
+
+      dataType: "html",
+
+      success: function(data) {
+
+        jQuery("#versionsDiv").html(data);
+
+      }
+
+    });
+
+  }
+
+
+
+  $("form").submit(function() {
+
+    var url = $('#url').val();
+
+    var pattern = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/;
+
+    if (pattern.test(url)) {
+
+      return true;
+
+    }
+
+    else
+
+    {
+
+      $('#offer_url').show();
+
+      return false;
+
+    }
+
+  });
+
+</script>

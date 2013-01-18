@@ -1,0 +1,13 @@
+<div class="predictive_results">
+	<ul class="unstyled">
+		<% @ads.each do |ad| %>
+			<li><%= link_to ad, "/search?q=#{ad}" %></li>
+		<% end %>
+		<% @brands.each do |brand| %>
+			<li><%= link_to brand.name.capitalize, brand_path(brand) %></li>
+		<% end %>
+		<% if @ads.empty? && @brands.empty? %>
+			<li>No ads found</li>
+		<% end %>
+	</ul>
+</div>

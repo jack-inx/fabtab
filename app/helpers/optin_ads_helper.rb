@@ -1,0 +1,2 @@
+module OptinAdsHelper
+end

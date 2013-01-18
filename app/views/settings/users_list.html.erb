@@ -1,0 +1,40 @@
+<div style="margin-top: -40px;width:933px;height: 35px;margin-left:10px;">
+  <span style="margin-right: 15px;font-size: 18px;color: #939598;">USER LIST</span>
+  <%= link_to "Top-","#",:style => "font-size: 18px;color: #939598;",:id => "totop" %>
+  <%= link_to "Bottom-","#",:style => "font-size: 18px;color: #939598;",:id => "tobottom" %>
+  <%= link_to "A-Z",setting_sort_username_path, :remote => "true" ,:style => "font-size: 18px;color: #939598;"%>
+  <span style="float: right;margin-right: 12px;">
+<% if MasterPassword.first %>    <%= MasterPassword.first.mpassword %> <% end %>
+    <%= link_to "Add User",setting_new_users_path, :id => 'add_coupan' %>
+    <%= link_to "Back",admin_edit_path, :id => 'add_coupan' %>
+  </span>
+</div>
+
+<div id ="userslist">
+	<br/><br/><br/>
+  <%= render :partial => "settings/userslist", :locals => {:user => @user} %>
+</div>
+<%#*<div id="pagination_user">%>
+<%#= paginate @user %>
+<%#*</div>%>
+<script type="text/javascript">
+  $(function() {
+    $('.pagination a').attr('data-remote', 'true');
+  });
+$('#totop').click(function (e)
+  {
+    $('#userslist').scrollTop("0")
+  });
+  $('#tobottom').click(function (e)
+  {
+    $('#userslist').scrollTop("10000")
+  });
+</script>
+
+<style type="text/css">
+  .container footer {
+    margin-top: 132px;
+  }
+</style>
+
+

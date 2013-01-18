@@ -1,0 +1,18 @@
+o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1358427008.3208315:@value{I"
+class:EFI"StaticAsset;
+FI"id;
+F"%dea34b548a49838a3725b9add975e100I"logical_path;
+FI"arial.svg;
+TI"pathname;
+FI"%$root/app/assets/fonts/arial.svg;
+TI"content_type;
+FI"image/svg+xml;
+FI"
+mtime;
+FI"2013-01-17T12:30:19+00:00;
+FI"length;
+FI"
+61618;
+FI"digest;
+F"%765b9e9878a79d6f2510268c9240f425I"_version;
+F"%df7525e917401704ef453cb56bf16697

@@ -1,0 +1,17 @@
+o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1358427008.6723852:@value{I"
+class:EFI"StaticAsset;
+FI"id;
+F"%e6b27362262b78b24cc143c2491bbd94I"logical_path;
+FI"gotosite.png;
+TI"pathname;
+FI")$root/app/assets/images/gotosite.png;
+TI"content_type;
+FI"image/png;
+FI"
+mtime;
+FI"2013-01-17T12:32:27+00:00;
+FI"length;
+FI"	4231;
+FI"digest;
+F"%4713ed1b70b0771b3d6fef783736b90bI"_version;
+F"%df7525e917401704ef453cb56bf16697

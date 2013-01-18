@@ -1,0 +1,83 @@
+MFTModule1::Application.routes.draw do
+
+#  devise_for :users, :controllers => {:confirmations => "xdevise/confirmations", :registrations => "registrations", :sessions=>"xdevise/sessions", :passwords => "devise/passwords"}, :skip=>[:sessions] do
+  devise_for :users, :controllers => {:confirmations => "xdevise/confirmations", :registrations => "registrations", :sessions=>"xdevise/sessions"}, :skip=>[:sessions] do
+
+    get "/users/confirmation", :to => "xdevise/confirmations#show"
+    post "confirm_user", :to => "xdevise/confirmations#confirm_user"
+    get 'signin' => 'xdevise/sessions#new', :as => :new_user_session
+    post 'signin' => 'xdevise/sessions#create', :as => :user_session
+    delete 'signout' => 'xdevise/sessions#destroy', :as => :destroy_user_session
+    match 'users/auth/:provider/callback' => 'xdevise/sessions#omniauth', :via => :get
+    match 'users/:provider/fb_twitter' => 'xdevise/sessions#fb_twitter', :via => :get
+    get 'second_step/:uid/:email' => 'xdevise/sessions#second_step', :as => :second_step_path
+    post 'email_check/:uid' => 'xdevise/sessions#email_check'
+
+  end
+  
+  resources :ads do
+    get '/optin', :to => 'ads#optin'
+    member do
+      post 'rate'
+    end
+  end
+  
+  resources :users
+  resources :categories do
+    member do
+      get 'offers'
+      get 'my_local_offers'
+    end
+  end
+  resources :registrations
+  resources :demos
+  resources :optin_ads
+  resources :groups
+  resources :brands do
+    member do
+      get 'ads'
+    end
+  end
+  
+  resources :offers
+  resources :settings
+  resources :authentications
+  resources :brand_requests
+  resources :demo_images
+
+  match '/user/settings' => 'users#settings'
+  match '/optin_ads/save' => 'optin_ads#save'
+  match '/optin_ads/refer' => 'optin_ads#refer'
+  match '/demo/:id' => 'demos#demo'
+  match '/ads/save'=>'ads#save'
+  match '/ads/:id/test'=>'ads#test'
+  
+  match '/myfabtab' => 'ads#wrapper'
+  match '/redirect' => 'redirection#redirect'
+  match '/about' => 'home#about'
+  match '/tabit' => 'home#tabit'
+  match '/team' => 'home#team'
+  match '/help' => 'home#help'
+  match '/terms' => 'home#terms'
+  match 'js/bookmarkads' => 'Js#bookmarkads'
+  match '/search' => 'search#search'
+  match '/predictive_search' => 'search#predictive_search'
+  match '/invite' => 'users#invite'
+  match '/invite/email' => 'users#email'
+  match '/setting' => 'settings#parameters'
+  match '/admin/edit' => 'settings#edit'
+  match '/follow_brand' => 'users#follow_brand'
+  match '/my_local_offers_without_category' => 'categories#my_local_offers_without_category'
+  get '/category_list' => 'categories#category_list'
+  match '/search_offers' => 'ads#search_offers'
+  match '/search_offer_by_brand' => 'offers#search_offer_by_brand'
+  match '/search_ads' => 'ads#search_ads'
+  post '/snapit', :to => 'ads#snapit'
+  get '/scanit', :to => 'ads#scanit'
+  post 'ad_fb_comment/:ad_id/:fb_comment_id' => 'ads#ad_fb_comment'
+  get '/ads_show/:ad_id', :to => 'ads#ads_show'
+  get '/omniauth_fb/:uid/:email' => 'settings#omniauth_fb'
+  get '/omniauth_tw/:uid' => 'settings#omniauth_tw'
+
+  root :to=> 'home#index'
+end

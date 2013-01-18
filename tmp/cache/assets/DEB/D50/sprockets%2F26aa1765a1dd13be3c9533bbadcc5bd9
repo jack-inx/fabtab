@@ -1,0 +1,17 @@
+o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1358427008.796905:@value{I"
+class:EFI"StaticAsset;
+FI"id;
+F"%48151e82ba00e3ce21fb6e2bf8af2cefI"logical_path;
+FI"move_dialog_bg.png;
+TI"pathname;
+FI"/$root/app/assets/images/move_dialog_bg.png;
+TI"content_type;
+FI"image/png;
+FI"
+mtime;
+FI"2013-01-17T12:32:25+00:00;
+FI"length;
+FI"	7595;
+FI"digest;
+F"%f307692c587f4b35e7aca50503ae8ed2I"_version;
+F"%df7525e917401704ef453cb56bf16697

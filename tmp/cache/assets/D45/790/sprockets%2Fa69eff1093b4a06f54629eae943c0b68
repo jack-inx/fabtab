@@ -1,0 +1,17 @@
+o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1358427008.6340473:@value{I"
+class:EFI"StaticAsset;
+FI"id;
+F"%fb85d4f92fcc8f8ed23aefe95a932043I"logical_path;
+FI"button_black.png;
+TI"pathname;
+FI"-$root/app/assets/images/button_black.png;
+TI"content_type;
+FI"image/png;
+FI"
+mtime;
+FI"2013-01-17T12:32:21+00:00;
+FI"length;
+FI"	1347;
+FI"digest;
+F"%d89e5c06afb475d761b9ed952fa682edI"_version;
+F"%df7525e917401704ef453cb56bf16697

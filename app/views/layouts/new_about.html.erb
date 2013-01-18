@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>FabTab</title>
+    <%= stylesheet_link_tag "application" %>
+
+    <%= javascript_include_tag "application" %>
+
+    <%= csrf_meta_tags %>
+<%= yield(:head) %>
+<meta property="fb:app_id" content="148204908657714"/>
+        <meta property="og:title" content="FabTab"/>
+        <meta property="og:type" content="website"/>
+<meta property="og:description" content="FabTab is your place to save, tag and manage all your offers, coupons and ads in one cool place. You can organize your offers into folders and connect with brands that make your life special. You can even look at what other people are tagging and share their offers and brands"/>
+        <meta property="og:image" content="http://ec2-107-22-153-137.compute-1.amazonaws.com/assets/betalogo1.png"/>
+        <meta property="og:url" content="http://ec2-107-22-153-137.compute-1.amazonaws.com/signin"/>
+        <meta property="og:site_name" content="fabtab"/>
+<%#= render :partial => 'layouts/navbar' %>
+  </head>
+  <body>
+    <div id="Wrapper">
+ <div class="Header" style="min-height: 114px;padding-top: 18px;">
+ <%= link_to image_tag("/assets/betalogo1.png"), root_path ,:class=> "fabtablogo" %>
+        <ul class="Menu fr" style="margin-top: 29px;">
+ <li class="first-item">
+
+
+            <% action_array = ['promo_help','promo_tabit','promo_team','promo_invite','promo_terms'] %>
+            <% if action_array.index(params[:action]) %>
+              <%= link_to 'WHAT’S FABTAB','/about',:onclick => "return change_menu(1)" %>
+            <% else %>
+              <%= link_to 'WHAT’S FABTAB','/about',:onclick => "return change_menu(1)", :class => "active"%>
+            <% end %>
+          </li>
+          <li class="second-item">
+            <%= link_to_function 'SCAN & TAB', "return change_menu(2)" %>
+          </li>
+          <li class="third-item">
+            <%= link_to_function 'SNAP & TAB', "return change_menu(3)" %>
+          </li>
+          <li class="forth-item">
+            <%= link_to_function 'TAB IT!', "return change_menu(4)" %>
+          </li>
+          <li class="fifth-item">
+            <%= link_to_function 'MY FABTABS', "return change_menu(5)" %>
+          </li>
+          <li class="sixth-item">
+            <%= link_to_function 'LOCAL TABS', "return change_menu(6)" %>
+          </li>
+        </ul>
+      </div>
+<% if !@email_info.nil? %>
+          <% if !flash[:notice].nil? %>
+            <h1 class="flash_messages1 flash_msg_border"> <%= flash[:notice] %> </h1>
+          <% end %>
+        <%  else%>
+            <% if !flash[:notice].nil? %>
+            <h1 class="flash_messages1 flash_msg_border"> <%= flash[:notice] %> </h1>
+          <% end %>
+        <% end %>
+
+      <div class="Middle">
+        <div class="Middle_Top">
+          <img src="assets/bg_middle_t2.png" style="width:924px;"/>
+          <%= yield %>
+        </div>
+        <div class="Middle_Bottom">
+          <img src="assets/bg_middle_b2.png" style="width:924px;"/>
+        </div>
+      </div>
+      <div class="Footer" style="margin-left:-22px;padding-top: 20px;">
+        <ul>
+          <li><a href="/promo_help">help</a></li>
+          <li>|</li>
+          <li><a href="/promo_tabit">tab it! button</a></li>
+          <li>|</li>
+          <li><a href="/promo_team">team & contact</a></li>
+          <li>|</li>
+          <li><a href="/promo_invite">invite friends</a></li>
+          <li>|</li>
+          <li><a href="/promo_terms">t&c’s</a></li>
+        </ul>
+        <ul style="float:right;margin-right:-7px;margin-top: -18px;">
+ <li><%= link_to "follow us on facebook","http://www.facebook.com/pages/FabTab/149095311895290", :target => "_blank" %></li>
+          <li>|</li>
+<li><%= link_to "follow us on twitter","https://twitter.com/MyFabTab", :target => "_blank" %></li>
+        </ul>
+
+      </div>
+    </div>
+<script type="text/javascript">
+      var uvOptions = {};
+      (function() {
+        var uv = document.createElement('script'); uv.type = 'text/javascript'; uv.async = true;
+        uv.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'widget.uservoice.com/cYPrkIzxmmj4HwwxOawg.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(uv, s);
+      })();
+    </script>
+  </body>
+</html>
+
+
+
+<script type="text/javascript">
+  $('.flash_messages1').fadeIn(2000).delay(5000).fadeOut(5000);
+</script>
+
+

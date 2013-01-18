@@ -1,0 +1,17 @@
+o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1358427009.062187:@value{I"
+class:EFI"StaticAsset;
+FI"id;
+F"%8e642d9d075c1b3720a3858dd2d8a680I"logical_path;
+FI"tabit_app_bg.png;
+TI"pathname;
+FI"-$root/app/assets/images/tabit_app_bg.png;
+TI"content_type;
+FI"image/png;
+FI"
+mtime;
+FI"2013-01-17T12:31:38+00:00;
+FI"length;
+FI"	7415;
+FI"digest;
+F"%667c05307cff00a2ebda7b21a4b74010I"_version;
+F"%df7525e917401704ef453cb56bf16697

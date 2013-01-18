@@ -1,0 +1,17 @@
+o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1358427008.9743109:@value{I"
+class:EFI"StaticAsset;
+FI"id;
+F"%ed38720de950b9158e5389690f944337I"logical_path;
+FI"saveBTN.png;
+TI"pathname;
+FI"($root/app/assets/images/saveBTN.png;
+TI"content_type;
+FI"image/png;
+FI"
+mtime;
+FI"2013-01-17T12:31:40+00:00;
+FI"length;
+FI"	9835;
+FI"digest;
+F"%1c00126bb6ca4b8c52c2859972c02891I"_version;
+F"%df7525e917401704ef453cb56bf16697

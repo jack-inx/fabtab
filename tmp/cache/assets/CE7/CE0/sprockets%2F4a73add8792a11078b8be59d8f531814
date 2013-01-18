@@ -1,0 +1,17 @@
+o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1358427008.9682894:@value{I"
+class:EFI"StaticAsset;
+FI"id;
+F"%ccf501e7b9459b8f35d5554ef30c7607I"logical_path;
+FI"rollover_save_heart.png;
+TI"pathname;
+FI"4$root/app/assets/images/rollover_save_heart.png;
+TI"content_type;
+FI"image/png;
+FI"
+mtime;
+FI"2013-01-17T12:31:46+00:00;
+FI"length;
+FI"	2322;
+FI"digest;
+F"%d446d134e0ba938fd9b8c1f1dabe8810I"_version;
+F"%df7525e917401704ef453cb56bf16697

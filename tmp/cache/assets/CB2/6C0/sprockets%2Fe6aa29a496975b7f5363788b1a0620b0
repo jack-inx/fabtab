@@ -1,0 +1,17 @@
+o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1358427008.660163:@value{I"
+class:EFI"StaticAsset;
+FI"id;
+F"%8c24aa3e008e720e83ad3b26160be161I"logical_path;
+FI"edit_btn.png;
+TI"pathname;
+FI")$root/app/assets/images/edit_btn.png;
+TI"content_type;
+FI"image/png;
+FI"
+mtime;
+FI"2013-01-17T12:31:42+00:00;
+FI"length;
+FI"	3646;
+FI"digest;
+F"%214a639db6eeb6218ec6b58e8e742dabI"_version;
+F"%df7525e917401704ef453cb56bf16697

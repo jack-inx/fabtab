@@ -1,0 +1,17 @@
+o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1358427008.631019:@value{I"
+class:EFI"StaticAsset;
+FI"id;
+F"%055182bb420147c5b1caca580f6468d4I"logical_path;
+FI"btn_twitterlogin.png;
+TI"pathname;
+FI"1$root/app/assets/images/btn_twitterlogin.png;
+TI"content_type;
+FI"image/png;
+FI"
+mtime;
+FI"2013-01-17T12:33:27+00:00;
+FI"length;
+FI"	2361;
+FI"digest;
+F"%47865408e911c5720fcd5e05a205f429I"_version;
+F"%df7525e917401704ef453cb56bf16697

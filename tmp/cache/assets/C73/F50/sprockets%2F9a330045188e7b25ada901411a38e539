@@ -1,0 +1,17 @@
+o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1358427008.3683226:@value{I"
+class:EFI"StaticAsset;
+FI"id;
+F"%f3381afa5dec5276a0b921e81c3bee09I"logical_path;
+FI"myriadpro-bold.eot;
+TI"pathname;
+FI".$root/app/assets/fonts/myriadpro-bold.eot;
+TI"content_type;
+FI"application/octet-stream;
+FI"
+mtime;
+FI"2013-01-17T12:31:07+00:00;
+FI"length;
+FI"114472;
+FI"digest;
+F"%ba7994dd3bf0b755aa5748710378e312I"_version;
+F"%df7525e917401704ef453cb56bf16697

@@ -1,0 +1,17 @@
+o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1358427008.761615:@value{I"
+class:EFI"StaticAsset;
+FI"id;
+F"%5b1d732928b41d4d1cf83eca37b02d04I"logical_path;
+FI" mft_0001_SAVE-heart_btn.png;
+TI"pathname;
+FI"8$root/app/assets/images/mft_0001_SAVE-heart_btn.png;
+TI"content_type;
+FI"image/png;
+FI"
+mtime;
+FI"2013-01-17T12:33:23+00:00;
+FI"length;
+FI"	2322;
+FI"digest;
+F"%d446d134e0ba938fd9b8c1f1dabe8810I"_version;
+F"%df7525e917401704ef453cb56bf16697

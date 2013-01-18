@@ -1,0 +1,16 @@
+<div class="content row">
+	<div class="ad_title">TabIt.</div>
+	<div class="image">
+		<%= link_to image_tag(@new_ad.image_url), @new_ad.url %>		
+	</div>
+	<div class="tabit_dialog_ad">
+		<%= form_for @new_ad, :url => url_for(:controller=>:ads, :action=>:save), :method => :post do %>
+			<%= select_tag "category", options_from_collection_for_select(@category, "id", "name"), :prompt => "Select a category" %>
+			<%= hidden_field_tag "ad[url]", @new_ad.url%>
+			<%= hidden_field_tag "ad[image_url]", @new_ad.image_url %>
+			<%= hidden_field_tag :email, current_user.email %>
+
+			<%= submit_tag "Save", :class => 'btn success small save' %>
+		<% end %>
+	</div>  
+</div>

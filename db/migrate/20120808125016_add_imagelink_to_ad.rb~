@@ -1,0 +1,5 @@
+class AddImagelinkToAd < ActiveRecord::Migration
+  def change
+    add_column :ads, :imagelink, :string, :default => nil
+  end
+end

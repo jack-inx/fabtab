@@ -1,0 +1,117 @@
+
+<div class="tabal_div">
+  <div class="row">
+    <div class="check"><%= check_box_tag "user_id[]",@user ,false ,:id => "select_all"%></div>
+    <div class="user_name" style="width: 138px;">User Name</div>
+    <div class="email">Email</div>
+ <div class="zipcode">Zipcode</div>
+    <div class="facebook">Facebook</div>
+    <div class="twitter">Twitter</div>
+    <div class="action">Action</div>
+    <div class="edit">&nbsp;</div>
+    <div class="delete">&nbsp;</div>
+    <div class="status" style="margin-left: 83px;">Status</div>
+  </div>
+<div style="margin-top: -12px;height: 730px;overflow-x: hidden;overflow-y: scroll;width: 933px; float: left;">
+  <%= form_tag  setting_multipleuser_path, :method => :delete do %>
+    <% @user.each do|user| %>
+      <div class="row">
+        <div class="check"><%= check_box_tag 'ids[]', user.id, false ,:id => "user_#{user.id}",:class =>"user_cls"%></div>
+        <div class="user_name" style="width: 140px;">
+          <% if user.username.nil? %>
+          &nbsp;
+          <% else %>
+        <%= user.username %>
+          <% end %>
+        </div>
+        <div class="email"><%=  user.email %></div>
+  <div class="zipcode">
+          <% if user.zipcode.nil? %>
+            &nbsp;
+          <% else %>
+            <%= user.zipcode %>
+          <% end %>
+        </div>
+        <div class="facebook">
+          <% @facebook = user.authentications.select { |authentication| authentication.provider == 'facebook' } %>
+          <% if @facebook.empty? %>
+           <%= link_to "N/A", '#' %>
+          <% else %>
+            <%= link_to "Remove Link", destroy_fbtw_path(user.id)%>
+          <% end %>
+        </div>
+        <div class="twitter">
+          <% @twitter = user.authentications.select { |authentication| authentication.provider == 'twitter' } %>
+          <% if @twitter.empty? %>
+            <%= link_to "N/A", '#' %>
+          <% else %>
+            <%= link_to "Remove Link",destroy_fbtw_path(user.id) %>
+          <% end %>
+        </div>
+        <div class="action">
+          <%= link_to "View",show_users_path(user.id) %> |
+        </div>
+        <div class="edit"><%= link_to "Edit",edit_users_path(user.id) %> | </div>
+        <div class="delete"><%= link_to "Delete","#",:onclick=>"$('#hidden_delete_box_#{user.id}').css('display','block');"  %> | </div>
+  <div class="delete_dialog hidden" id="hidden_delete_box_<%=  user.id %>" style="margin-left: 635px;">
+          <div class="close" style="margin: 12px 24px;">X</div>
+          <div class="title" style="margin-left: 7px;"> Delete</div>
+          <div class="message-text"> Delete this User?</div>
+          <%= link_to "Delete", destroy_users_path(user.id), :method=>'delete', :class => 'delete_tab' %>
+        </div>
+<div class="admin" id="flag1_<%= user.id %>">
+          <%= render :partial => "users/admin_status", :locals => {:user => user } %>
+        </div>
+        <div class="status" id="flag_<%= user.id %>">
+          <%= render :partial => "users/user_status", :locals => {:user => user } %>
+        </div>
+      </div>
+    <% end %>
+   <%= submit_tag "Delete",:id => "delete_all" %>
+  <% end %>
+ </div>
+</div>
+
+
+<script>
+  document.onload =  $("#delete_all").hide();
+  $('#select_all').click(function() {
+    if (this.checked) {
+      $(':checkbox').each(function() {
+        $("#delete_all").show();
+        this.checked = true;
+      });
+    } else {
+      $(':checkbox').each(function() {
+        $("#delete_all").hide();
+        this.checked = false;
+      });
+    }
+  });
+  var count=0;
+  $('.user_cls').click(function() {
+    if (this.checked) {
+      count++;
+      if(count > 0)
+      {
+        $("#delete_all").show();
+      }
+    }
+    else
+    {
+      count--;
+      if(count == 0)
+      {
+        $("#delete_all").hide();
+      }
+      else
+      {
+        $("#delete_all").show();
+      }
+    }
+  });
+$('.close').click(function(){
+$('.close').parent().hide();
+});
+
+</script>

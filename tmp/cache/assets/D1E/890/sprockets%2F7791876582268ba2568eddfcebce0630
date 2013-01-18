@@ -1,0 +1,18 @@
+o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1358427008.4985046:@value{I"
+class:EFI"StaticAsset;
+FI"id;
+F"%07e20ba87c41d806e918cff822ca0cc4I"logical_path;
+FI"Netflix.gif;
+TI"pathname;
+FI"($root/app/assets/images/Netflix.gif;
+TI"content_type;
+FI"image/gif;
+FI"
+mtime;
+FI"2013-01-17T12:33:02+00:00;
+FI"length;
+FI"
+24841;
+FI"digest;
+F"%7d75bf2b0df746edf4fc81ab14cfaf8cI"_version;
+F"%df7525e917401704ef453cb56bf16697

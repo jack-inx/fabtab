@@ -1,0 +1,17 @@
+o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1358427008.9802387:@value{I"
+class:EFI"StaticAsset;
+FI"id;
+F"%c92ccba04275382fe153a547f4dbe1daI"logical_path;
+FI"savebtn_dialog.png;
+TI"pathname;
+FI"/$root/app/assets/images/savebtn_dialog.png;
+TI"content_type;
+FI"image/png;
+FI"
+mtime;
+FI"2013-01-17T12:32:55+00:00;
+FI"length;
+FI"	4635;
+FI"digest;
+F"%66cbc5f20328c5d2bedc4322ffac14dfI"_version;
+F"%df7525e917401704ef453cb56bf16697

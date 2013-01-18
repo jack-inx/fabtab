@@ -1,0 +1,17 @@
+o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1358427009.0560856:@value{I"
+class:EFI"StaticAsset;
+FI"id;
+F"%a682d9ef767953cdefe711042e78dac8I"logical_path;
+FI"step_box.png;
+TI"pathname;
+FI")$root/app/assets/images/step_box.png;
+TI"content_type;
+FI"image/png;
+FI"
+mtime;
+FI"2013-01-17T12:33:12+00:00;
+FI"length;
+FI"527;
+FI"digest;
+F"%230ff89f47dbd59bfa3dc5c792dfa502I"_version;
+F"%df7525e917401704ef453cb56bf16697

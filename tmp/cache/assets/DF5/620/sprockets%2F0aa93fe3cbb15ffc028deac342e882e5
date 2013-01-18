@@ -1,0 +1,18 @@
+o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1358427008.666251:@value{I"
+class:EFI"StaticAsset;
+FI"id;
+F"%652537410034c8621a514641e80588b6I"logical_path;
+FI"fb_fabtab_logo.png;
+TI"pathname;
+FI"/$root/app/assets/images/fb_fabtab_logo.png;
+TI"content_type;
+FI"image/png;
+FI"
+mtime;
+FI"2013-01-17T12:32:18+00:00;
+FI"length;
+FI"
+18318;
+FI"digest;
+F"%cb63f7256a274c0701765cb8f769b9b5I"_version;
+F"%df7525e917401704ef453cb56bf16697

@@ -1,0 +1,28 @@
+<div style="margin-bottom: 150px;margin-top: 70px;">
+<%= form_for @feedback, :url => {:action=>"create", :controller=>"feedback" }, :method => :post do |form| %>
+  <fieldset class="fields">
+<div style= "float:right;margin-right:175px;">
+<%= link_to "Back", about_path, :class =>'btn medium success' %>
+</div>
+    <div class="field" style="margin-bottom: 7px;">
+      <label style="margin-right: 10px;"> From: </label>
+      <%= text_field_tag @email, @email ,:readonly => true %>
+    </div>
+    <div class="field" style="margin-bottom: 7px;">
+      <label style="margin-right: 10px;"> To: </label>
+      <%= text_field_tag @email_to, @email_to ,:readonly => true %>
+    </div>
+    <div class="field" style="margin-bottom: 7px;">
+      <label style="margin-right: 10px;"> Message </label>
+      <%= form.text_area :content, :rows => 5, :cols => 15 , :class => "text_width" %>
+    </div>
+  </fieldset>
+  <fieldset class="actions">
+    <%= form.submit "Send" %>
+  </fieldset>
+<% end %>
+</div>
+<style>
+  .text_width
+  {width: 300px;}
+</style>

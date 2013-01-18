@@ -1,0 +1,17 @@
+o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1358427009.0591223:@value{I"
+class:EFI"StaticAsset;
+FI"id;
+F"%c661edbe6e19fbf1e4e000a769403895I"logical_path;
+FI"step_logo.png;
+TI"pathname;
+FI"*$root/app/assets/images/step_logo.png;
+TI"content_type;
+FI"image/png;
+FI"
+mtime;
+FI"2013-01-17T12:33:30+00:00;
+FI"length;
+FI"	2165;
+FI"digest;
+F"%472ca606d5b4ab665aeac0c427263304I"_version;
+F"%df7525e917401704ef453cb56bf16697

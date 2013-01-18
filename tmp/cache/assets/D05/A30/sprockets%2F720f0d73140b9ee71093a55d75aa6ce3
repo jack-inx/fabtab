@@ -1,0 +1,17 @@
+o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1358427008.7827065:@value{I"
+class:EFI"StaticAsset;
+FI"id;
+F"%fdea44d89ed618953f9b1bf8c3a0c3a8I"logical_path;
+FI"middle_b.png;
+TI"pathname;
+FI")$root/app/assets/images/middle_b.png;
+TI"content_type;
+FI"image/png;
+FI"
+mtime;
+FI"2013-01-17T12:33:24+00:00;
+FI"length;
+FI"	2860;
+FI"digest;
+F"%345efae7ba234a6fb474830bcd68c3efI"_version;
+F"%df7525e917401704ef453cb56bf16697

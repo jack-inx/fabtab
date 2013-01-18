@@ -1,0 +1,6 @@
+  <p>Hello <%= @user.email %></p>
+<% if !@ad_url.nil? %>
+<p>You request for the offer (<%= @ad_url %>) is set up for the Brand named <%= @brand_name %>.</p>
+<% else %>
+<p>You request for the ad (<%= @ad_imageurl %>) is set up for the Brand named <%= @brand_name %>.</p>
+<% end %>

@@ -1,0 +1,17 @@
+o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1358427008.531905:@value{I"
+class:EFI"StaticAsset;
+FI"id;
+F"%16665f63630cc363ca6e2d381877f80cI"logical_path;
+FI"apple.jpg;
+TI"pathname;
+FI"&$root/app/assets/images/apple.jpg;
+TI"content_type;
+FI"image/jpeg;
+FI"
+mtime;
+FI"2013-01-17T12:32:41+00:00;
+FI"length;
+FI"	8481;
+FI"digest;
+F"%7e9a0a004a98696fe47db5f4881a6485I"_version;
+F"%df7525e917401704ef453cb56bf16697

@@ -1,0 +1,18 @@
+o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1358427008.3958323:@value{I"
+class:EFI"StaticAsset;
+FI"id;
+F"%b5d932f7165a90540cc44922b3d4be1eI"logical_path;
+FI"Blue_Nile.jpg;
+TI"pathname;
+FI"*$root/app/assets/images/Blue_Nile.jpg;
+TI"content_type;
+FI"image/jpeg;
+FI"
+mtime;
+FI"2013-01-17T12:33:05+00:00;
+FI"length;
+FI"
+24906;
+FI"digest;
+F"%55678869204bb64ff8b1c3a0c2974422I"_version;
+F"%df7525e917401704ef453cb56bf16697

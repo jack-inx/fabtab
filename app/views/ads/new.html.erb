@@ -1,0 +1,37 @@
+<%= form_for @ad, :url => url_for(:controller=>:ads, :action=>:save), :method => :post, :html => {:class =>'tabItForm'} do |f| %>
+
+  <div class="adImage">
+    <% if @ad_type == "video" %>
+      <iframe src="<%= @ad.image_url %>" width="220" height="180" border="none"></iframe>
+    <% else %>
+      <%= image_tag @ad.image_url %>
+    <% end %>
+  </div>
+<div style="float: left;">
+  <div>
+    <%= image_tag '/assets/betalogo1.png', :class => 'fabtab-logo' %>
+  </div>
+  <% if current_user.admin? %>
+    <div class="admin_options">
+      <input type="radio" name="folder" id="my_folder" value="mine" checked="true"> My Categories </input>
+      <input type="radio" naem="folder" id="brand_folder" value="brand"> Brand Folders </input>
+      <div class="category">
+        <%= select_tag "tabcategory", options_from_collection_for_select(@category, "name", "name"), :prompt => 'type a category' %>
+      </div>
+<span class="tabit_field" style = 'display:none;'>
+      <%= select_tag "brandname", options_from_collection_for_select(@brand,"id","name"), :prompt => 'select a brand folder', :style => 'display:none;color:white;' %> </span>
+    </div>
+  <% else %>
+  <div class="category">
+  <%= select_tag "tabcategory", options_from_collection_for_select(@category, "name", "name"), :prompt => 'type a category' %>
+  </div>
+</div>
+<% end %>
+  <%= hidden_field_tag "ad[url]", @ad.url %>
+  <%= hidden_field_tag "ad[image_url]", @ad.image_url%>
+  <%= hidden_field_tag "ad[ad_type]", @ad_type %>
+  <%= hidden_field_tag :email, current_user.email %>
+  <div style = "position: absolute;">
+    <%= link_to image_tag('/assets/tabit_btn.png'), '#', :id => 'tabAds' %>
+  </div>
+<% end %>

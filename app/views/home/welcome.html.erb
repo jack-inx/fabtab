@@ -1,0 +1,116 @@
+<% content_for :head do %>
+  <%= javascript_include_tag 'welcome' %>
+<% end %>
+
+<div class="content">
+  <div class="row section optin_ads carousel">
+    <div class="title">
+      <div class="all-myfabtabs header-font">&gt; All My <span><a href="/groups">Fabtabs</a></span></div>
+    </div>
+    <ul id='optin_ads_carousel'>
+      <% @user_folders.each do |user_folder| %>
+        <% if user_folder.ads.count > 0 %>
+          <% if user_folder.brand_folder? %>
+            <li class="group" data-folder="<%= user_folder.brand.name %>">
+              <div class="super_folder">
+                <%= link_to image_tag(user_folder.brand.logo.url(:super_folder)), brand_path(user_folder.brand) %>
+              </div>
+              <div class="folder-category"><%= user_folder.brand.name %></div>
+            </li>
+          <% else %>
+            <li class="group" data-folder="<%#= user_folder.category.name %>">
+              <% unless user_folder.permanent? %>
+                <%= link_to "Edit", '#', :class => 'edit-button hidden' %>
+                <div class="edit_dialog hidden">
+                  <div class="message">Edit.</div>
+                  <%= form_for user_folder do %>
+                    <%= select_tag "category", options_from_collection_for_select(@category, "id", "name"), :prompt => "Select a category" %>
+                    <div class="delete">
+                      delete folder
+                      <%= link_to image_tag('/assets/icon_delete.png'), '#' %>
+                    </div>
+                    <div class="delete_dialog hidden">
+                      <div class="title">Delete.</div>
+                      <div class="message-text">Delete this Folder?</div>
+                      <%= link_to "Delete", "#", :class => 'delete_folder' %>
+                    </div>
+
+                    <%= link_to "Save", '#', :class => 'save' %>
+
+                  <% end %>
+                </div>
+
+              <% end %>
+              <a href="<%= group_path(user_folder.id) %>">
+                <div class="folder">
+                  <div class="folder-content">
+                    <% user_folder.ads.reverse_order.limit(4).each do |ad| %>
+                      <% if ad.status == true %>
+                        <div class="image">
+                          <% if ad.ad_type == "video" %>
+                            <%= image_tag video_thumbnail(ad), :class => 'folder-images' %>
+                          <% else %>
+                            <% if ad.ad_type == "url" %>
+
+                              <%= image_tag ad.image_url, :class => 'folder-images' %>
+              <%#= image_tag '/assets/default_for_scanit.png', :class => 'folder-images' %>
+                            <% else %>
+                              <%= image_tag ad.image_url, :class => 'folder-images' %>
+                            <% end %>
+                          <% end %>
+                        </div>
+                      <% end %>
+                    <% end %>
+                  </div>
+                </div>
+              </a>
+              <div class="folder-category"><%= category_or_title_name(user_folder) %></div>
+            </li>
+          <% end %>
+        <% end %>
+      <% end %>
+    </ul>
+  </div>
+  <div class='row section saved_ads carousel'>
+    <div class="title header-font">What <span>Everyone's Tabbing.</span></div>
+    <ul id="saved_ads_carousel" style="margin-left:24px;">
+    </ul>
+
+    <ul style="display:none">
+      <li class="template saved_ad">
+        <div class="ad_image hidden">
+          <img src="/assets/mft_logo.png" alt="image" />
+        </div>
+        <div class="ad_details hidden">
+          <div class="site"></div>
+          <%= hidden_field_tag 'url' %>
+          <%= hidden_field_tag 'ad_type' %>
+          <div class="user">user: <span></span></div>
+        </div>
+        <%= link_to image_tag('/assets/btn_tabit.png'), '#', :class => 'tabit-button hidden' %>
+        <%= link_to_function image_tag('/assets/repot_it.png'), "return flag(this)", :class => 'flag-button hidden', :style=>'margin-left:63px;
+    margin-top:-91px;' %>
+        <% if current_user.admin %>
+          <%= link_to_function image_tag('/assets/remove1.jpeg',:width => "40px",:height => "40px"), "return remove(this)", :class => 'remove-button hidden' %>
+        <% end %>
+      </li>
+    </ul>
+
+    <div class="tabit_dialog hidden">
+      <div class="message">TabIt.</div>
+      <%= form_for @ad, :url => url_for(:controller=>:ads, :action=>:save), :method => :post do %>
+        <%= select_tag "category", options_from_collection_for_select(@category, "id", "name"), :prompt => "Select a category" %>
+        <%= hidden_field_tag "ad[url]"%>
+        <%= hidden_field_tag "ad[image_url]" %>
+        <%= hidden_field_tag "ad[ad_type]" %>
+        <%= hidden_field_tag :email, current_user.email %>
+        <div class="cancel">cancel tab <%= link_to image_tag('/assets/icon_delete.png'), '#' %></div>
+        <%= link_to image_tag('/assets/save.png'), '#', :class => 'tabit' %>
+      <% end %>
+
+    </div>
+  </div>
+</div>
+
+<script>
+</script>

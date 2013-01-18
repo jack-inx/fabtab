@@ -1,0 +1,13 @@
+<div class="container">
+	<ul>
+		<% @demos.each do |demo| %>
+			<li>
+			<%= form_for demo do |f| %>
+				<%= link_to demo.name, demo_path(demo), :class => 'demo_name' %>
+				<%= link_to 'Edit', edit_demo_path(demo), :class => 'btn success small' %>
+				<%= link_to 'Delete', demo_path(demo), :class => 'btn success small deleteDemo', :method => :delete %>
+			<% end %>
+			</li>
+		<% end %>
+	</ul>
+</div>

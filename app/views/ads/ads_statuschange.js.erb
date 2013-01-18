@@ -1,0 +1,1 @@
+$('#ads_'+'<%= @ads.id %>').html("<%= escape_javascript(render :partial => "ads/ads_status", :locals => {:ad => @ads}) %>")

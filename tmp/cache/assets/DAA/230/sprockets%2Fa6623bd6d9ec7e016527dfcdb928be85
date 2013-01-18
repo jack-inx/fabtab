@@ -1,0 +1,17 @@
+o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1358427008.899554:@value{I"
+class:EFI"StaticAsset;
+FI"id;
+F"%e3c3cbc623b3be35bac5b4efe83e818bI"logical_path;
+FI"$rollover__0003_arrowSMALL-rig#0;
+TI"pathname;
+FI"<$root/app/assets/images/rollover__0003_arrowSMALL-rig#0;
+TI"content_type;
+FI"application/octet-stream;
+FI"
+mtime;
+FI"2013-01-17T12:33:08+00:00;
+FI"length;
+FI"342;
+FI"digest;
+F"%9e4fddbd773ca64608e0bf4b7c3cd5baI"_version;
+F"%df7525e917401704ef453cb56bf16697

@@ -1,0 +1,17 @@
+o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1358427008.8145804:@value{I"
+class:EFI"StaticAsset;
+FI"id;
+F"%0b0aa73e569fdfdb77682d5338279c7bI"logical_path;
+FI"optin_arrow_left.png;
+TI"pathname;
+FI"1$root/app/assets/images/optin_arrow_left.png;
+TI"content_type;
+FI"image/png;
+FI"
+mtime;
+FI"2013-01-17T12:32:43+00:00;
+FI"length;
+FI"	3156;
+FI"digest;
+F"%c59dc719c07cece472966743f7ea3f13I"_version;
+F"%df7525e917401704ef453cb56bf16697

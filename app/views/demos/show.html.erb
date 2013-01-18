@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MFTModule1</title>
+  <%= stylesheet_link_tag    "application" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+	<script type="text/javascript" charset="utf-8">
+		$(function(){
+			$('#adContainer').css('position','absolute');
+			$('#adContainer').css('left', function(){
+				return $('#adLeft').val() + 'px';
+			});
+			$('#adContainer').css('top', function(){
+				return $('#adTop').val() + 'px';
+			});
+		});
+	</script>
+</head>
+
+<body>
+
+<div id="page">
+	<iframe width="1800" height="1200" src="<%= @demo.website.url %>"></iframe>
+</div>
+<% unless @ad_position.nil? %>
+<%= hidden_field_tag 'adLeft', @ad_position["left"], :id => 'adLeft' %>
+<%= hidden_field_tag 'adTop', @ad_position["top"], :id => 'adTop' %>
+<% end %>
+
+<div id='adContainer'>
+	<%= @demo.adspeed_data.html_safe %>
+</div>
+
+<%= link_to "Back to Demos Page", demos_path, :class => 'btn success large', :style => 'position:absolute;margin-left:550px' %>
+
+</body>
+</html>

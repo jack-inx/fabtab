@@ -1,0 +1,21 @@
+<%= form_for(@demo, :html => { :multipart => true, :id => 'demoCreation' }) do |f| %>
+	<div class="demo_name">Demo name</div>
+	<%= f.text_field :name %>
+  <div class='image'><%= f.label :website, "Background image url" %></div>
+	<div class='url'>
+		<%= f.file_field :website %>
+	</div>
+	<div class="image_url">Image Url</div>
+	<%= text_field_tag :image_url %>
+	<div class="site_url">Site Url</div>
+	<%= text_field_tag :site_url %>
+	<div class="custom_code">Custom Code</div>
+	<%= text_field_tag :ad_custom_code, '', :style => 'display:none' %>
+	<%= link_to "Generate Custom parameters", "#", :class => 'custom_code_btn btn success medium' %>
+	<div class="adspeed_data">Adspeed Code: </div>
+	<%= f.text_area :adspeed_data %>
+	<div id="createDemo"><%= f.submit "Submit", :id => 'add_coupan' %></div>
+<% end %>
+<div class="all-uploaded-images">
+	<%= link_to "All Demo Ad images", demo_images_path, :id => 'add_coupan' %>
+</div>
