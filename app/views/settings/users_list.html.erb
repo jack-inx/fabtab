@@ -4,7 +4,7 @@
   <%= link_to "Bottom-","#",:style => "font-size: 18px;color: #939598;",:id => "tobottom" %>
   <%= link_to "A-Z",setting_sort_username_path, :remote => "true" ,:style => "font-size: 18px;color: #939598;"%>
   <span style="float: right;margin-right: 12px;">
-<% if MasterPassword.first %>    <%= MasterPassword.first.mpassword %> <% end %>
+<% if MasterPassword.first %>    <%= MasterPassword.decrypt %> <% end %>
     <%= link_to "Add User",setting_new_users_path, :id => 'add_coupan' %>
     <%= link_to "Back",admin_edit_path, :id => 'add_coupan' %>
   </span>
