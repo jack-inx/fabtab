@@ -1,8 +1,8 @@
 
 <div class="content" style="float: none;">
 
-<div class="title" style="margin: 0 275px;font-size: 20px;">Forgot your password?</div>
-  <%#*<h2 class="confirmationHeading">Forgot your password?</h2>%>
+  <div class="title" style="margin: 0 275px;font-size: 20px;">Forgot your password?</div>
+<%#*<h2 class="confirmationHeading">Forgot your password?</h2>%>
 
   <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
     <%= devise_error_messages! %>
@@ -28,7 +28,7 @@
     color : #8BC541;
     font-size: 15px;
   }
-   a {
+  a {
     color : #C3C6C5;
     font-size: 15px;
   }

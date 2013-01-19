@@ -69,29 +69,29 @@
     });
 
 
-  var count=0;
+    var count=0;
 
-  $('.select_this').click(function() {
-    if (this.checked) {
-      count++;
-      if(count > 0)
-      {
-        $("#delete_all").show();
-      }
-    }
-    else
-    {
-      count--;
-      if(count == 0)
-      {
-        $("#delete_all").hide();
+    $('.select_this').click(function() {
+      if (this.checked) {
+        count++;
+        if(count > 0)
+        {
+          $("#delete_all").show();
+        }
       }
       else
       {
-        $("#delete_all").show();
+        count--;
+        if(count == 0)
+        {
+          $("#delete_all").hide();
+        }
+        else
+        {
+          $("#delete_all").show();
+        }
       }
-    }
-  });
+    });
   </script>
 </div>
 

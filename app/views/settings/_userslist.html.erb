@@ -3,14 +3,14 @@
   <div class="row">
     <div class="check"><%= check_box_tag "user_id[]",@user ,false ,:id => "select_all"%></div>
     <div class="user_name" style="width: 138px;">User Name</div>
-    <div class="email">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Email</div>
-    <div class="zipcode" style="text-align:center;">Zipcode</div>
-    <div class="facebook" style="text-align:center;">Facebook</div>
-    <div class="twitter" style="text-align:center;">Twitter</div>
+    <div class="email">Email</div>
+    <div class="zipcode" style="text-align:left;">Zipcode</div>
+    <div class="facebook" style="text-align:left;">Facebook</div>
+    <div class="twitter" style="text-align:left;">Twitter</div>
     <div class="edit">&nbsp;</div>
-    <div class="action" style="text-align:center;">&nbsp;&nbsp;&nbsp;Action</div>
+    <div class="action" style="margin-left: -32px;">Action</div>
     <div class="delete">&nbsp;</div>
-    <div class="status" style="margin-left: 76px;">Status</div>
+    <div class="status" style="margin-left: 110px;">Status</div>
   </div>
   <div style="margin-top: -12px;height: 730px;overflow-x: hidden;overflow-y: scroll;width: 933px; float: left;">
     <%= form_tag  setting_multipleuser_path, :method => :delete do %>
@@ -25,14 +25,14 @@
             <% end %>
           </div>
           <div class="email"><%=  user.email %></div>
-          <div class="zipcode" style="text-align:center;">
+          <div class="zipcode" style="text-align:left;">
             <% if user.zipcode.nil? || user.zipcode.blank?%>
               &nbsp;
             <% else %>
               <%= user.zipcode %>
             <% end %>
           </div>
-          <div class="facebook" style="text-align:center;">
+          <div class="facebook" style="text-align:left;">
             <% @facebook = user.authentications.select { |authentication| authentication.provider == 'facebook' } %>
             <% if @facebook.empty? %>
               <%= link_to "N/A", '#' %>
@@ -40,7 +40,7 @@
               <%= link_to "Remove Link", destroy_fbtw_path(user.id)%>
             <% end %>
           </div>
-          <div class="twitter" style="text-align:center;">
+          <div class="twitter" style="text-align:left;">
             <% @twitter = user.authentications.select { |authentication| authentication.provider == 'twitter' } %>
             <% if @twitter.empty? %>
               <%= link_to "N/A", '#' %>

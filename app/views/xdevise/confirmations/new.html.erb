@@ -1,7 +1,8 @@
 
 <div class="conf_page" style="margin: 5px 280px 5px 274px;">
-<div class="title" style="font-size: 20px;">Resend confirmation instructions</div>
+  <div class="title" style="font-size: 20px;">Resend confirmation instructions</div>
   <%= form_for(@user, :as=> :user, :url => user_confirmation_path(@user), :html => { :method => :post }) do |f| %>
+    <%= devise_error_messages! %>
 
     <div class="clearfix" style="margin-left:-272px;">
       <br/>
@@ -23,6 +24,11 @@
   a {
     color : #C3C6C5;
     margin: 0 3px;
+  }
+
+  #error_explanation {
+    margin-left: -274px;
+    margin-right: -200px;
   }
 </style>
 

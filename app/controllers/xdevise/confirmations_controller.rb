@@ -4,7 +4,7 @@ class Xdevise::ConfirmationsController < Devise::ConfirmationsController
     if !@user.present?
       render_with_scope :new
     else
-flash[:error] = @user.errors.full_messages
+      flash[:error] = @user.errors.full_messages
       render 'show', :layout => 'signin'
     end
     
@@ -27,7 +27,7 @@ flash[:error] = @user.errors.full_messages
           render :json=>{:result=>false,:message=>@user.errors.full_messages}.to_json
         }
         format.html{
-flash[:error] = @user.errors.full_messages
+          flash[:error] = @user.errors.full_messages
           render :action => "show" , :layout => 'signin'
         }
       end
