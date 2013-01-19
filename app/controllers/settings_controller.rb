@@ -85,13 +85,14 @@ def users_list
     else
       @user.admin = false
     end
-@user.confirm!
     if @user.save
+
       flash[:notice] = "User successfully created "
+      @user.confirm!
       redirect_to setting_users_list_path
     else
-	flash[:notice] = "#{@user.errors.full_messages.join(', ')}"	
-	redirect_to setting_new_users_path
+	   flash[:notice] = "#{@user.errors.full_messages.join(', ')}"	
+	   redirect_to setting_new_users_path
 #      render 'new_users', :layout => 'application'
     end
   end  
