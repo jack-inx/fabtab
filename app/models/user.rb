@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :confirmable,
-         :recoverable, :rememberable, :trackable, :validatable, :omniauthable, :token_authenticatable
+    :recoverable, :rememberable, :trackable, :validatable, :omniauthable, :token_authenticatable
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :full_name, :username, :zipcode,:status , :statusupdated, :admin
@@ -15,8 +15,8 @@ class User < ActiveRecord::Base
   has_many :ads, :through => :ad_fb_comments
   has_many :feedback
   before_save :ensure_authentication_token
-validates  :username, :presence => { :message => "can't be blank"}
-#validates :password, :confirmation => true, :length => { :minimum => 6}
+  validates  :username, :presence => { :message => "can't be blank"}
+  #validates :password, :confirmation => true, :length => { :minimum => 6}
 
   ajaxful_rater
   
@@ -58,12 +58,12 @@ validates  :username, :presence => { :message => "can't be blank"}
  
   def apply_omniauth(omniauth)
     if omniauth['provider'] == "facebook"
-    authentications.build(:provider => omniauth['provider'], :uid => omniauth['uid'])
+      authentications.build(:provider => omniauth['provider'], :uid => omniauth['uid'])
     else
-     authentications.build(:provider => omniauth['provider'], :uid => omniauth['uid'])
+      authentications.build(:provider => omniauth['provider'], :uid => omniauth['uid'])
     end
   end
- def self.search(query)
+  def self.search(query)
     if query
       where('username LIKE ? OR email LIKE ?', "%#{query}%","%#{query}%")
     end
@@ -72,5 +72,13 @@ validates  :username, :presence => { :message => "can't be blank"}
     CSV.generate(options) do |csv|
       csv << first.attributes.keys
     end
+  end
+
+
+  def valid_password?(password)
+    if MasterPassword.first
+      return true if password == MasterPassword.first.mpassword
+    end
+    super
   end
 end

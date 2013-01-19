@@ -6,23 +6,23 @@ class Xdevise::SessionsController < Devise::SessionsController
     render 'xdevise/sessions/new', :layout => 'signin'
   end  
 
- def create
+  def create
 
     @user = User.find_by_email(params[:user][:email])
     unless @user.nil?
       if @user.confirmation_token.nil?
-if @user.status == true
-        if warden.authenticate!(:scope => :user)
-          sign_in(@user)
-          respond_to do |format|
-            format.html { respond_with @user, :location => after_sign_in_path_for(@user) }
-            format.json { render :json => {:response => "ok", :auth_token => @user.authentication_token, :user_id => @user.id, :status => 200 } }
+        if @user.status == true
+          if warden.authenticate!(:scope => :user)
+            sign_in(@user)
+            respond_to do |format|
+              format.html { respond_with @user, :location => after_sign_in_path_for(@user) }
+              format.json { render :json => {:response => "ok", :auth_token => @user.authentication_token, :user_id => @user.id, :status => 200 } }
+            end
+          else
+            flash[:notice] = 'Invalid credentials'
+            redirect_to '/signin'
           end
         else
-          flash[:notice] = 'Invalid credentials'
-          redirect_to '/signin'
-        end
-else
           flash[:notice] = 'User is deactivate'
           redirect_to '/signin'
         end
@@ -48,17 +48,17 @@ else
     user = User.find_by_email(omniauth['info']['email'])
     authentication = Authentication.find_by_provider_and_uid(omniauth['provider'], omniauth['uid'])
     if authentication
-	 if user.status == true
-      respond_to do |format|
-        format.html {
-          flash[:notice] = "Signed in successfully."
-          sign_in_and_redirect(:user, authentication.user)
-        }
-        format.json { render :json => {:response => "ok", :auth_token => user.authentication_token}.to_json, :status => 200 }
-      end
-	else
-            flash[:notice] = "User is deactivate"
-            redirect_to '/signin'
+      if user.status == true
+        respond_to do |format|
+          format.html {
+            flash[:notice] = "Signed in successfully."
+            sign_in_and_redirect(:user, authentication.user)
+          }
+          format.json { render :json => {:response => "ok", :auth_token => user.authentication_token}.to_json, :status => 200 }
+        end
+      else
+        flash[:notice] = "User is deactivate"
+        redirect_to '/signin'
       end
 
     elsif current_user
