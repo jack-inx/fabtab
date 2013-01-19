@@ -1,4 +1,4 @@
- class BrandRequestsController < ApplicationController
+class BrandRequestsController < ApplicationController
   before_filter :authenticate_admin
   
   def index
@@ -9,18 +9,18 @@
   def destroy
     @brand_request = BrandRequest.find(params[:id])
     @ad = @brand_request.ad
-#    @ad_keep = @brand_request.ad
-#    user_keep = @ad_keep.user_id
-#    group_keep = @ad_keep.group_id
+    #    @ad_keep = @brand_request.ad
+    #    user_keep = @ad_keep.user_id
+    #    group_keep = @ad_keep.group_id
     @ad.brand_id = params[:brand].to_i
     @user = User.find(@brand_request.user)
-	 #@category = Category.find_or_create_by_user_id_and_brand_id(@user.id,params[:brand].to_i)
+    #@category = Category.find_or_create_by_user_id_and_brand_id(@user.id,params[:brand].to_i)
     @super_folder = Group.find_or_create_by_user_id_and_brand_id(@user.id, params[:brand].to_i)
     @category = Category.find_or_create_by_name_and_user_id('my saved fabtabs', @user.id)
- #   @brand_user_folder = Group.find_or_create_by_category_id_and_brand_id_and_user_id(@category.id, params[:brand].to_i,@user.id)
- @ad.group_id = @super_folder.id
+    #   @brand_user_folder = Group.find_or_create_by_category_id_and_brand_id_and_user_id(@category.id, params[:brand].to_i,@user.id)
+    @ad.group_id = @super_folder.id
     @ad.save!
-	@super_folder.ads << @ad
+    @super_folder.ads << @ad
     @super_folder.save!
 
 
@@ -28,12 +28,12 @@
     purpose_id = Purpose.where(purpose[:name].matches("%brand set%")).first.id
     template = Template.find_by_purpose_id(purpose_id)
 
-	if template
-   @var = template.content
+    if template
+      @var = template.content
     
-    if @ad.url.nil?
-      @ad.url = @ad.image_url
-    end
+      if @ad.url.nil?
+        @ad.url = @ad.image_url
+      end
 
       @token = SecureRandom.urlsafe_base64
       
@@ -48,11 +48,11 @@
       @var = @var.gsub('{{user_ema<font size="2">il}}', @user.email)
 
 
-    @var = @var.gsub("{{ad_image_url}}",@ad.url)
-   @var = @var.gsub("{{brand_name}}", @ad.brand.name )
-# UserMailer.brand_folder_set_up(@user,@ad.url,@ad.image_url,@ad.brand.name).deliver   
-    UserMailer.brand_folder_set_up(@user,@ad.url,@ad.brand.name, @var).deliver
-	end
+      @var = @var.gsub("{{ad_image_url}}",@ad.url)
+      @var = @var.gsub("{{brand_name}}", @ad.brand.name )
+      # UserMailer.brand_folder_set_up(@user,@ad.url,@ad.image_url,@ad.brand.name).deliver
+      UserMailer.brand_folder_set_up(@user,@ad.url,@ad.brand.name, @var).deliver
+    end
     @brand_request.destroy
 
 

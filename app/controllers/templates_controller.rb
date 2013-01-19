@@ -17,7 +17,7 @@ class TemplatesController < ApplicationController
     @template = Template.new(params[:template])
     if @template.save
       redirect_to @template
-      flash[:notice] = "One template create successfully."
+      flash[:notice] = "Template created successfully."
     else
       render :action => "new", :message => @template
     end
@@ -60,7 +60,7 @@ class TemplatesController < ApplicationController
   def destroy
     @template = Template.find(params[:id])
     @template.delete
-    flash[:notice]= "One template deleted successfully."
+    flash[:notice]= "Template deleted successfully."
     redirect_to templates_path
   end
 	

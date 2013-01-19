@@ -1,41 +1,56 @@
-
+<%= javascript_include_tag 'templates' %>
 
 <div class="content" style="float: none;">
 
-  <h1>Email Templates List <span style="float: right;"><%= link_to "Add New Template", new_template_path, :id=>"add_coupan", :class=>'space', :style=>'margin: 5px;' %><%= link_to "Back", admin_edit_path , :id=>"add_coupan" %></span></h1>
+  <h1 style="margin-bottom: 50px;">Email Templates List <span style="float: right;">
+      <%= link_to "Add New Template", new_template_path, :id=>"add_coupan", :class=>'space', :style=>'margin: 5px;' %><%= link_to "Back", admin_edit_path , :id=>"add_coupan" %></span></h1>
+
+  <table class="table" style="border:none;">
+    <th><%= check_box_tag "delete[selected][]","all",false ,:id => "select_all"  %></th>
+    <th align="center" style="border-left:none !important;">Template Name</th>
+    <th style="border-left:none !important;">Purpose</th>
+    <th align="center" style="border-left:none !important;">  </th>
+    <th align="center" style="border-left:none !important;">&nbsp;&nbsp;Actions</th>
+  </table>
   <%= form_tag(templates_delete_selection_path) do |f| %>
-    <%#= link_to "List of Purpose", purposes_path %>
-    <table class="table">
-      <th><%= check_box_tag "delete[selected][]","all",false ,:id => "select_all"  %></th>
-      <th align="center" style="border-left:none !important;">Template Name</th>
-      <th style="border-left:none !important;">Purpose</th>
-      <th align="center" style="border-left:none !important;">  </th>
-      <th align="center" style="border-left:none !important;">&nbsp;&nbsp;Actions</th>
-      <tbody>
-        <% @templates.each do |f| %>
-          <tr>
-            <td><%= check_box_tag "delete[selected][]",f.id  %></td>
-            <td style="border-left:none !important;"><%= f.name %></td>
-            <td style="border-left:none !important;"><%=  f.purpose.name %></td>
-            <td style="border-left:none !important;">
-              <div class="delete_dialog hidden" id="hidden_delete_box_<%=  f.id %>">
-                <div class="close" style="margin: 12px 24px;">X</div>
-                <div class="title" style="margin-left: 7px;"> Delete</div>
-                <div class="message-text"> Delete this Template?</div>
-                <%= link_to "Delete", template_path(f), :method=>'delete', :class => 'delete_tab' %>
-              </div>
-            </td>
-            <td style="border-left:none !important;">
-              <%= link_to "View", template_path(f)%> <span class="login_link"> | </span><%= link_to "Edit", edit_template_path(f) %><span class="login_link"> | </span>
-              <%= link_to "Delete", "#",:onclick=>"$('#hidden_delete_box_#{f.id}').css('display','block');"  %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-    <%= submit_tag "Delete"  %>
+    <div style="margin-top: -12px;height: 730px;overflow-x: hidden;overflow-y: scroll;width: 933px; float: left;">
+  <%#= link_to "List of Purpose", purposes_path %>
+      <table class="table">
+        <th style="display:none;"><%#= check_box_tag "delete[selected][]","all",false ,:id => "select_all"  %>&nbsp;&nbsp;&nbsp;&nbsp;</th>
+        <th align="center" style="border-left:none !important;display:none;">&nbsp;&nbsp;&nbsp;&nbsp; </th>
+        <th style="border-left:none !important;display:none;">&nbsp;&nbsp;&nbsp;&nbsp;</th>
+        <th align="center" style="border-left:none !important;display:none;">  </th>
+        <th align="center" style="border-left:none !important;display:none;">&nbsp;&nbsp;&nbsp;&nbsp;</th>
+
+        <tbody>
+          <% @templates.each do |f| %>
+            <tr style="width:933px;">
+              <td><%= check_box_tag "delete[selected][]",f.id ,false, :class=>"select_this" %></td>
+              <td style="border-left:none !important;"><%= f.name %></td>
+              <td style="border-left:none !important;"><%=  f.purpose.name %></td>
+              <td style="border-left:none !important;">
+                <div class="delete_dialog hidden" id="hidden_delete_box_<%=  f.id %>">
+                  <div class="close" style="margin: 12px 24px;">X</div>
+                  <div class="title" style="margin-left: 7px;"> Delete</div>
+                  <div class="message-text"> Delete this Template?</div>
+                  <%= link_to "Delete", template_path(f), :method=>'delete', :class => 'delete_tab' %>
+                </div>
+              </td>
+              <td style="border-left:none !important;">
+                <%= link_to "View", template_path(f)%> <span class="login_link"> | </span><%= link_to "Edit", edit_template_path(f) %><span class="login_link"> | </span>
+                <%= link_to "Delete", "#",:onclick=>"$('#hidden_delete_box_#{f.id}').css('display','block');"  %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+
+    <%= submit_tag "Delete" , :id=>"delete_all", :style=>"top: 270px; left: 215px;position: absolute;" %>
   <% end %>
 
   <script type="text/javascript">
+    document.onload =  $("#delete_all").hide();
+
     $('.close').click(function(){
       $(this).parent().hide();
     });
@@ -44,12 +59,39 @@
         $(':checkbox').each(function() {
           this.checked = true;
         });
+        $("#delete_all").show();
       } else {
         $(':checkbox').each(function() {
           this.checked = false;
         });
+        $("#delete_all").hide();
       }
     });
+
+
+  var count=0;
+
+  $('.select_this').click(function() {
+    if (this.checked) {
+      count++;
+      if(count > 0)
+      {
+        $("#delete_all").show();
+      }
+    }
+    else
+    {
+      count--;
+      if(count == 0)
+      {
+        $("#delete_all").hide();
+      }
+      else
+      {
+        $("#delete_all").show();
+      }
+    }
+  });
   </script>
 </div>
 
@@ -61,7 +103,18 @@
   a {
     color : #C3C6C5
   }
-.container footer {
-   margin-top: 132px;
+  .container footer {
+    margin-top: 132px;
+  }
+  table th {
+    border-bottom: 0 solid #DDDDDD;
+  }
+  table {
+    border: none;
+  }
+
+  table tr + tr td {
+    border-top: none;
   }
 </style>
+
