@@ -1,5 +1,5 @@
 <div style="float: right;margin-right: 14px;">
- <%= link_to "Back",admin_edit_path, :id => 'add_coupan' %> 
+  <%= link_to "Back",admin_edit_path, :id => 'add_coupan' %>
 </div>
 <table class="noborder">
   <tr>
@@ -28,20 +28,26 @@
         <%= link_to "Delete",destroy_userscategories_path(category.id) %>
       </td>
     </tr>
-
     <tr>
       <td>
-        <div id="<%= category.id %>" style="display:none;">
+        <table id="<%= category.id %>" style="display:none;width:215px;height: 100px;overflow:scroll;z-index: 10000004;position: absolute;background-color: white; ">
           <%  @group =  Group.where("category_id = ?",category.id) %>
           <%  @group.each do|group| %>
             <% @ad = Ad.where("group_id = ?",group.id) %>
-            <% @ad.each do|ad| %>
-              <% if ad.status == true %>
-                <%= image_tag(ad.image_url,:width => "50",:height => "50") %>
-              <% end %>
-            <% end %>
+            <tbody>
+              <tr >
+                <% @ad.each do|ad| %>
+                  <% if ad.status == true %>
+                    <td style="float:left;">
+                      <%= image_tag(ad.image_url,:width => "50",:height => "50") %>
+                    </td>
+                  <% end %>
+                <% end %>
+              </tr>
+            </tbody>
           <% end %>
-        </div>
+        </table>
+
       </td>
     </tr>
   <% end %>
@@ -53,7 +59,7 @@
 <script>
   function category_name(cat_id)
   {    
-    $('div#'+cat_id).toggle();
+    $('table#'+cat_id).toggle();
   }
  
 </script>
