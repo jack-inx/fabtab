@@ -29,7 +29,7 @@
             <% if user.zipcode.nil? || user.zipcode.blank?%>
               &nbsp;
             <% else %>
-              <%= user.zipcode %>
+              <%= truncate(user.zipcode, :length => 8, :omission=>'...') %>
             <% end %>
           </div>
           <div class="facebook" style="text-align:left;">
