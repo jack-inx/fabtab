@@ -21,7 +21,7 @@
             <% if user.username.nil? %>
               &nbsp;
             <% else %>
-              <%= user.username %>
+              <%= truncate(user.username, :length => 20, :omission=>'...') %>
             <% end %>
           </div>
           <div class="email"><%=  user.email %></div>

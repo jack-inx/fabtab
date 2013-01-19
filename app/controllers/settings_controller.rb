@@ -85,8 +85,8 @@ class SettingsController < ApplicationController
     else
       @user.admin = false
     end
-    if @user.save
 
+    if @user.save
       flash[:notice] = "User successfully created "
       @user.confirm!
       redirect_to setting_users_list_path

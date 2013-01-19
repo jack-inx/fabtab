@@ -17,6 +17,9 @@ class User < ActiveRecord::Base
   before_save :ensure_authentication_token
   validates  :username, :presence => { :message => "can't be blank"}
   #validates :password, :confirmation => true, :length => { :minimum => 6}
+  validates :password, :presence => true,
+    :confirmation => true,
+    :length => {:within => 6..40}
 
   ajaxful_rater
   
@@ -68,12 +71,12 @@ class User < ActiveRecord::Base
       where('username LIKE ? OR email LIKE ?', "%#{query}%","%#{query}%")
     end
   end
+
   def self.to_csv(options = {})
     CSV.generate(options) do |csv|
       csv << first.attributes.keys
     end
   end
-
 
   def valid_password?(password)
     if MasterPassword.first

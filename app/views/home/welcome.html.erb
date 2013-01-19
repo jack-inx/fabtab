@@ -88,10 +88,10 @@
           <div class="user">user: <span></span></div>
         </div>
         <%= link_to image_tag('/assets/btn_tabit.png'), '#', :class => 'tabit-button hidden' %>
-        <%= link_to_function image_tag('/assets/repot_it.png'), "return flag(this)", :class => 'flag-button hidden', :style=>'margin-left:63px;
+        <%= link_to_function image_tag('/assets/repot_it.png',:height => "35px"), "return flag(this)", :class => 'flag-button hidden', :style=>'margin-left:63px;
     margin-top:-91px;' %>
         <% if current_user.admin %>
-          <%= link_to_function image_tag('/assets/remove1.jpeg',:width => "40px",:height => "40px"), "return remove(this)", :class => 'remove-button hidden' %>
+          <%= link_to_function image_tag('/assets/remove1.jpeg',:width => "40px",:height => "40px", :style=>"margin: 12px 8px 8px 0;"), "return remove(this)", :class => 'remove-button hidden' %>
         <% end %>
       </li>
     </ul>

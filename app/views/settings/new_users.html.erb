@@ -3,19 +3,21 @@
 </div>
 <%= form_for @user,:url => url_for(:controller=>:settings, :action=>:create_users) , :html => {:id => 'new_brand'} do |f| %>
   <%#= f.error_messages %>
+
   <div class="brand_name">User Name*</div>
   <%= f.text_field :username %>
   <div class="twitter_handle">Email ID*</div>
-    <%= f.text_field :email %> <br/>
-<div class="brand_name">Password*</div>
+  <%= f.text_field :email %> <br/>
+  <div class="brand_name">Password*</div>
   <%= f.password_field :password  %>
   <div class="brand_logo">Password Confirmation*</div>
   <%= f.password_field :password_confirmation %>
-<div class="twitter_handle">Zip Code</div>
-    <%= f.text_field :zipcode %> 
+  <div class="twitter_handle">Zip Code</div>
+  <%= f.text_field :zipcode %>
   <div class="brand_logo">Admin
-    <%= f.check_box :admin %></div>
-  
+    <%= f.check_box :admin %>
+  </div>
+
   <div>
     <%= f.submit "Create", :id => "add_coupan" %>
     <%= link_to "Cancel", setting_users_list_path,:id => "add_coupan" %>
