@@ -20,6 +20,14 @@
           <% if obj.key.split('admin/')[1].split('/')[0].to_i == current_user.id %>
             <% if !(obj.key.split('admin/')[1].split('/')[1].nil?) %>
               <div class="row" id="firstscroll" style="padding: 14px 0 0;">
+                <div style="width: 120px;float:left;">
+                  <div class="delete_dialog hidden"style="margin: 10px 31px 20px 572px;" id="hidden_delete_box_<%=  i %>">
+                    <div class="close" style="margin: 12px 24px;">X</div>
+                    <div class="title" style="margin-left: 7px;"> Delete</div>
+                    <div class="message-text"> Delete this file?</div>
+                    <%= link_to "Delete", delete_file_path(:obj => obj.key), :method=>'delete', :class => 'delete_tab' %>
+                  </div>
+                </div>
                 <div style="width: 296px;float:left;text-align: center;">
                   <%= rename_file(obj.key.split('admin/')[1].split('/')[1]) %>
                 </div>
@@ -31,14 +39,6 @@
                 <div style="width: 120px;float:left;">&nbsp;</div>
                 <div style="width: 190px;float:left;">
                   <%= convert_time(obj.key.split('dump_')[1].split('.')[0]) %>
-                </div>
-                <div style="width: 120px;float:left;">
-                  <div class="delete_dialog hidden"style="margin: 10px 31px 20px 572px;" id="hidden_delete_box_<%=  i %>">
-                    <div class="close" style="margin: 12px 24px;">X</div>
-                    <div class="title" style="margin-left: 7px;"> Delete</div>
-                    <div class="message-text"> Delete this file?</div>
-                    <%= link_to "Delete", delete_file_path(:obj => obj.key), :method=>'delete', :class => 'delete_tab' %>
-                  </div>
                 </div>
               </div>
             <% end %>
@@ -63,6 +63,6 @@
     color : #C3C6C5
   }
   .container footer {
-   margin-top: 132px;
+    margin-top: 132px;
   }
 </style>
