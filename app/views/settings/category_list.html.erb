@@ -12,6 +12,9 @@
     <td>
       Actions
     </td>
+    <td>
+
+    </td>
 
   </tr>
   <% @category.each do|category| %>
@@ -24,8 +27,19 @@
           <%= category.user.email  %>
         <% end %>
       </td>
+
       <td>
-        <%= link_to "Delete",destroy_userscategories_path(category.id) %>
+  <%#= link_to "Delete",destroy_userscategories_path(category.id) %>
+        <%= link_to "Delete", "#",:onclick=>"$('#hidden_delete_box_#{category.id}').css('display','block');"  %>
+      </td>
+
+      <td style="border-left:none !important;">
+        <div class="delete_dialog hidden" id="hidden_delete_box_<%=  category.id %>" style="left: 972px; right: 10px; margin-left: 7px; margin-top: 15px;">
+          <div class="close" style="margin: 12px 24px;">X</div>
+          <div class="title" style="margin-left: 7px;"> Delete</div>
+          <div class="message-text"> Delete this Category?</div>
+          <%= link_to "Delete", destroy_userscategories_path(category), :method=>'delete', :class => 'delete_tab' %>
+        </div>
       </td>
     </tr>
     <tr>
@@ -56,10 +70,25 @@
   <%= paginate @category %>
 </div>
 
-<script>
+<script type="text/javascript">
+  $('.close').click(function(){
+    $(this).parent().hide();
+  });
+    
   function category_name(cat_id)
   {    
     $('table#'+cat_id).toggle();
   }
  
 </script>
+<style type="text/css">
+  a:hover {
+    color : #8BC541
+  }
+  a {
+    color : #C3C6C5
+  }
+  .container footer {
+    margin-top: 132px;
+  }
+</style>
