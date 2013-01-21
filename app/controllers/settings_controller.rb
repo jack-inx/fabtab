@@ -35,13 +35,13 @@ class SettingsController < ApplicationController
   end
   
   def edit
-   @setting = Setting.first
+    @setting = Setting.first
     if @setting.nil?
       @setting = Setting.new
     end      
     render 'edit', :layout => 'admin'
   end
- def create
+  def create
     @setting = Setting.new(params[:setting])
     if @setting.save
       redirect_to admin_edit_path
@@ -60,15 +60,15 @@ class SettingsController < ApplicationController
   end
  
  
-def users_list
+  def users_list
     @user = User.all
     
     @users = User.search(params[:query])
-	@u = User.all
+    @u = User.all
     respond_to do |format|
       format.html { render 'users_list', :layout => 'admin' }
       format.xls
-	format.js
+      format.js
     end
     
   end
@@ -85,18 +85,18 @@ def users_list
     else
       @user.admin = false
     end
-    if @user.save
 
+    if @user.save
       flash[:notice] = "User successfully created "
       @user.confirm!
       redirect_to setting_users_list_path
     else
-	   flash[:notice] = "#{@user.errors.full_messages.join(', ')}"	
-	   redirect_to setting_new_users_path
-#      render 'new_users', :layout => 'application'
+      flash[:notice] = "#{@user.errors.full_messages.join(', ')}"
+      redirect_to setting_new_users_path
+      #      render 'new_users', :layout => 'application'
     end
   end  
-def edit_users
+  def edit_users
     @user = User.find(params[:id])
     render 'edit_users', :layout => 'admin'
   end
@@ -108,7 +108,7 @@ def edit_users
 
   def update_users
     @user = User.find(params[:id])
-@user.update_attributes(params[:user])
+    @user.update_attributes(params[:user])
     @user.save(validate: false)
     redirect_to setting_users_list_path
     flash[:notice] = "User successfully updated! "
@@ -122,19 +122,19 @@ def edit_users
       format.html { redirect_to(setting_users_list_path) }
     end
   end
-def multipleuser
+  def multipleuser
     @user = User.find(params[:ids])
     @user.each { |u| u.destroy }
     flash[:notice] = "User successfully deleted!"
     redirect_to setting_users_list_path
   end
- def destroy_fbtw
+  def destroy_fbtw
     @authentication = Authentication.where("user_id = ?",params[:id].to_i)
     @authentication.destroy_all
     flash[:notice] = "Link removed"
     redirect_to setting_users_list_path
   end
-def sort_username
+  def sort_username
     @user = User.order("username ASC").page(params[:page]).per(7)
   end
 
@@ -203,7 +203,7 @@ def sort_username
   end
 
 
- def category_list
+  def category_list
     @category = Category.where('user_id IS NOT NULL and name not like ?','my saved fabtabs').page(params[:page]).per(7)
     respond_to do |format|
       format.html{render :layout => "admin"}
@@ -225,6 +225,7 @@ def sort_username
     if @mpasswords.nil?
       @mpassword = MasterPassword.new
     else
+      @mpasswords.mpassword = MasterPassword.decrypt
       @mpassword = @mpasswords
     end
     respond_to do |format|

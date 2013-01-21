@@ -1,5 +1,5 @@
 <div style="float: right;margin-right: 14px;">
- <%= link_to "Back",admin_edit_path, :id => 'add_coupan' %> 
+  <%= link_to "Back",admin_edit_path, :id => 'add_coupan' %>
 </div>
 <table class="noborder">
   <tr>
@@ -11,6 +11,9 @@
     </td>
     <td>
       Actions
+    </td>
+    <td>
+
     </td>
 
   </tr>
@@ -24,24 +27,41 @@
           <%= category.user.email  %>
         <% end %>
       </td>
+
       <td>
-        <%= link_to "Delete",destroy_userscategories_path(category.id) %>
+  <%#= link_to "Delete",destroy_userscategories_path(category.id) %>
+        <%= link_to "Delete", "#",:onclick=>"$('#hidden_delete_box_#{category.id}').css('display','block');"  %>
+      </td>
+
+      <td style="border-left:none !important;">
+        <div class="delete_dialog hidden" id="hidden_delete_box_<%=  category.id %>" style="left: 972px; right: 10px; margin-left: 7px; margin-top: 15px;">
+          <div class="close" style="margin: 12px 24px;">X</div>
+          <div class="title" style="margin-left: 7px;"> Delete</div>
+          <div class="message-text"> Delete this Category?</div>
+          <%= link_to "Delete", destroy_userscategories_path(category), :method=>'delete', :class => 'delete_tab' %>
+        </div>
       </td>
     </tr>
-
     <tr>
       <td>
-        <div id="<%= category.id %>" style="display:none;">
+        <table id="<%= category.id %>" style="display:none;width:215px;height: 100px;overflow:scroll;z-index: 10000004;position: absolute;background-color: white; ">
           <%  @group =  Group.where("category_id = ?",category.id) %>
           <%  @group.each do|group| %>
             <% @ad = Ad.where("group_id = ?",group.id) %>
-            <% @ad.each do|ad| %>
-              <% if ad.status == true %>
-                <%= image_tag(ad.image_url,:width => "50",:height => "50") %>
-              <% end %>
-            <% end %>
+            <tbody>
+              <tr >
+                <% @ad.each do|ad| %>
+                  <% if ad.status == true %>
+                    <td style="float:left;">
+                      <%= image_tag(ad.image_url,:width => "50",:height => "50") %>
+                    </td>
+                  <% end %>
+                <% end %>
+              </tr>
+            </tbody>
           <% end %>
-        </div>
+        </table>
+
       </td>
     </tr>
   <% end %>
@@ -50,10 +70,25 @@
   <%= paginate @category %>
 </div>
 
-<script>
+<script type="text/javascript">
+  $('.close').click(function(){
+    $(this).parent().hide();
+  });
+    
   function category_name(cat_id)
   {    
-    $('div#'+cat_id).toggle();
+    $('table#'+cat_id).toggle();
   }
  
 </script>
+<style type="text/css">
+  a:hover {
+    color : #8BC541
+  }
+  a {
+    color : #C3C6C5
+  }
+  .container footer {
+    margin-top: 132px;
+  }
+</style>
