@@ -9,5 +9,10 @@
     text-indent:-9999px;
 }
 .delete_ad:hover {
+    float:left;
+    margin-right:10px;
     background-image:url('/assets/delete_hover.png');
+    height:26px;
+    width:59px;
+    text-indent:-9999px;
 }

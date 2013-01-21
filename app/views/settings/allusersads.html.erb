@@ -28,7 +28,7 @@
             <li style="float:left;height: 200px;width: 210px;margin: 5px 5px 5px 5px;">
               <div class="options1">
       <%#= link_to "delete", ad_path(ad.id),:method=>:delete, :class => 'delete_ad', :style=>"margin: -42px 7px 20px 72px;" %>
-                <%= link_to "delete", "#",:onclick=>"$('#hidden_delete_box_#{ad.id}').css('display','block');" ,:class => 'delete_ad', :style=>"margin: -42px 7px 20px 72px;" %></td>
+                <%= link_to "delete", "#",:onclick=>"$('#hidden_delete_box_#{ad.id}').css('display','block');" ,:class => 'delete_ad', :style=>"margin: -42px 7px 20px 70px;" %></td>
                 <div class="delete_dialog hidden" id="hidden_delete_box_<%=  ad.id %>">
                   <div class="close" style="margin: 12px 24px;">X</div>
                   <div class="title" style="margin-left: 7px;"> Delete</div>
