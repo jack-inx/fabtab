@@ -24,7 +24,9 @@
                 <div class="edit_dialog hidden">
                   <div class="message">Edit.</div>
                   <%= form_for user_folder do %>
-                    <%= select_tag "category", options_from_collection_for_select(@category, "id", "name"), :prompt => "Select a category" %>
+                    <div class="select_cat">
+                      <%= select_tag "category", options_from_collection_for_select(@category, "id", "name"), :prompt => "Select a category"  %>
+                    </div>
                     <div class="delete">
                       delete folder
                       <%= link_to image_tag('/assets/icon_delete.png'), '#' %>
@@ -89,9 +91,9 @@
         </div>
         <%= link_to image_tag('/assets/btn_tabit.png'), '#', :class => 'tabit-button hidden' %>
         <%= link_to_function image_tag('/assets/repot_it.png',:height => "35px"), "return flag(this)", :class => 'flag-button hidden', :style=>'margin-left:63px;
-    margin-top:-91px;' %>
+margin-top:-91px;' %>
         <% if current_user.admin %>
-          <%= link_to_function image_tag('/assets/remove1.jpeg',:width => "40px",:height => "40px", :style=>"margin: 12px 8px 8px 0;"), "return remove(this)", :class => 'remove-button hidden' %>
+          <%= link_to_function image_tag('/assets/remove1.jpeg',:width => "40px",:height => "40px", :style=>"margin: 11px 8px 0px 0px; width: 40px; height: 39px;"), "return remove(this)", :class => 'remove-button hidden' %>
         <% end %>
       </li>
     </ul>
