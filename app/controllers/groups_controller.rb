@@ -35,8 +35,11 @@ class GroupsController < ApplicationController
   end
   
   def update
-    @new_group = Group.find_by_user_id_and_category_id(current_user.id, params[:category].to_i)
+    @new_group = Group.find_by_user_id_and_category_id(current_user.id, params[:group][:category])
     @old_group = Group.find(params[:id])
+    logger.info "===================="
+    logger.info 
+    logger.info @old_group.id
     if @new_group
       if @new_group.category == @old_group.category
         category = @old_group.category.name
@@ -50,13 +53,14 @@ class GroupsController < ApplicationController
       end
     else
       @old_group.category_id
-      @old_group.category_id = params[:category]
+      @old_group.category_id = params[:group][:category]
       @old_group.save!
       category = @old_group.category.name
       new_group = false
     end
     respond_to do |format|
       format.json {render :json =>  { :category => category, :new_group => new_group } }
+      format.html { redirect_to root_path }
     end
     
   end
@@ -66,6 +70,8 @@ class GroupsController < ApplicationController
     @group.destroy
     respond_to do |format|
       format.json { render :json => @group }
+      format.html { redirect_to root_path }
+
     end
   end
   

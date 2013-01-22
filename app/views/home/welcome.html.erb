@@ -20,31 +20,11 @@
           <% else %>
             <li class="group" data-folder="<%#= user_folder.category.name %>">
               <% unless user_folder.permanent? %>
-                <%= link_to "Edit", '#', :class => 'edit-button hidden' %>
-                <div class="edit_dialog hidden">
-                  <div class="message">Edit.</div>
-                  <%= form_for user_folder do %>
-                    <div class="select_cat">
-                      <%= select_tag "category", options_from_collection_for_select(@category, "id", "name"), :prompt => "Select a category"  %>
-                    </div>
-                    <div class="delete">
-                      delete folder
-                      <%= link_to image_tag('/assets/icon_delete.png'), '#' %>
-                    </div>
-                    <div class="delete_dialog hidden">
-                      <div class="title">Delete.</div>
-                      <div class="message-text">Delete this Folder?</div>
-                      <%= link_to "Delete", "#", :class => 'delete_folder' %>
-                    </div>
-
-                    <%= link_to "Save", '#', :class => 'save' %>
-
-                  <% end %>
-                </div>
-
+                <%= link_to "Edit", home_render_div_path(:user_folder=>user_folder.id) , :remote=>true, :class => 'edit-button hidden' %>
+            
               <% end %>
               <a href="<%= group_path(user_folder.id) %>">
-                <div class="folder">
+                <div class="folder" id="folder_<%= user_folder.id %>">
                   <div class="folder-content">
                     <% user_folder.ads.reverse_order.limit(4).each do |ad| %>
                       <% if ad.status == true %>
@@ -67,6 +47,7 @@
                 </div>
               </a>
               <div class="folder-category"><%= category_or_title_name(user_folder) %></div>
+              <div id="user_folder_<%=user_folder.id %>" class="show_it" style="margin: -1px 2px; top: 263px;"></div>
             </li>
           <% end %>
         <% end %>
@@ -74,7 +55,7 @@
     </ul>
   </div>
   <div class='row section saved_ads carousel'>
-    <div class="title header-font">What <span>Everyone's Tabbing.</span></div>
+    <div class="title header-font">What <span>Everyone's Tabbing</span></div>
     <ul id="saved_ads_carousel" style="margin-left:24px;">
     </ul>
 
@@ -114,5 +95,11 @@ margin-top:-91px;' %>
   </div>
 </div>
 
-<script>
+<script type="text/javascript">
+  $("[id*=folder_]").live('focus',function(){
+    alert($(this).attr("id"));
+  });
+  $("[id*=folder_]").live('blur',function(){
+    alert($(this).attr("id"));
+  });
 </script>

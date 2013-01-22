@@ -1,16 +1,16 @@
 
 <div class="topbar">
-	<div class="container">
-		<div id='mft_logo' style="margin-left:300px;"><a class="brand" href="/"><%= image_tag '/assets/betalogo1.png' %></a></div>
+  <div class="container">
+    <div id='mft_logo' style="margin-left:300px;"><a class="brand" href="/"><%= image_tag '/assets/FabTab-LOGObeta.png',:style=>"width: 220px; height: 70px;" %></a></div>
 
-		<%#= render :partial => 'layouts/navbar' %>
-		<%= yield(:toolbar) %>
-	</div>
+<%#= render :partial => 'layouts/navbar' %>
+    <%= yield(:toolbar) %>
+  </div>
 </div>
 <div class="container main">
-<div class='row'>	
-</div>
-<div class="flash_messages"><div></div></div>
-<%= yield %>
+  <div class='row'>
+  </div>
+  <div class="flash_messages"><div></div></div>
+  <%= yield %>
 </div>
 
