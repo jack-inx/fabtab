@@ -1,0 +1,2 @@
+$("#user_folder_<%= @group.id %>").addClass('edit_dialogs');
+$("#user_folder_<%= @group.id %>").html("<%= escape_javascript(render :partial => "home/edit_group", :locals => {:user_folder => @group, :category=>@category}) %>")
