@@ -6,11 +6,11 @@
       <%= link_to "Add New Template", new_template_path, :id=>"add_coupan", :class=>'space', :style=>'margin: 5px;' %><%= link_to "Back", admin_edit_path , :id=>"add_coupan" %></span></h1>
 
   <table class="table" style="border:none;">
-    <th><%= check_box_tag "delete[selected][]","all",false ,:id => "select_all"  %></th>
-    <th align="center" style="border-left:none !important;">Template Name</th>
+    <th style="padding-left: 0px; padding-right: 3px; height: 19px; width: 36px; margin-left: 3px; margin-right: -3px; text-align: center;"><%= check_box_tag "delete[selected][]","all",false ,:id => "select_all"  %></th>
+    <th align="left" style="border-left: medium none ! important; padding-left: 23px; width: 262px;">Template Name</th>
     <th style="border-left:none !important;">Purpose</th>
-    <th align="center" style="border-left:none !important;">  </th>
-    <th align="center" style="border-left:none !important;">&nbsp;&nbsp;Actions</th>
+    <th align="left" style="border-left:none !important;">  </th>
+    <th align="left" style="border-left:none !important;">&nbsp;&nbsp;Actions</th>
   </table>
   <%= form_tag(templates_delete_selection_path) do |f| %>
     <div style="margin-top: -12px;height: 730px;overflow-x: hidden;overflow-y: scroll;width: 933px; float: left;">
