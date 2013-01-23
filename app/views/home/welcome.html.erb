@@ -54,6 +54,7 @@
       <% end %>
     </ul>
   </div>
+
   <div class='row section saved_ads carousel'>
     <div class="title header-font">What <span>Everyone's Tabbing</span></div>
     <ul id="saved_ads_carousel" style="margin-left:24px;">
@@ -95,7 +96,69 @@ margin-top:-91px;' %>
   </div>
 </div>
 
-<script type="text/javascript">
+<script>
+var page_count = 1;
+$(".next").live('click',function() {
+ var next_id =  $(this).parent().attr("id");
+ page_count = page_count +1;
+ if (next_id == 'temp_pagination'){
+  jQuery.ajax({
+      url : "/my/sample/ind",
+      type : "POST",
+      data : {
+        "data_id" : page_count-1
+        },
+      success : function(data) {
+        // alert('hii');
+        //alert(data);
+        var html = "";
+
+        if( data.length > 0 ){
+        for(i=0;i<data.length;i++){
+         // html+="<li class='saved_ad' style='display: list-item;'>"+ data[i].id +"</li>";
+           $("#saved_ads_carousel li[style*='list-item']:last").hide();
+      var adDetails = $('.template').clone();
+      adDetails.children('div').removeClass('hidden');
+      adDetails.removeClass('template');
+if (data[i].status == true)
+            {
+      if ( data[i].ad_type == 'video'){
+        adDetails.find('.ad_image').append("<iframe src="+ data[i].image_url +" width=216 height=180 border='none'></iframe>");
+        adDetails.find('.ad_image img').hide();
+      }else {
+        adDetails.find('img')[0].src = data[i].image_url;
+      }
+      adDetails.find('.site')[0].innerHTML = decodeURIComponent(data[i].url).split('/')[2];
+      adDetails.find('#url:first').val(function(){
+        return data[i].url;
+      });
+      adDetails.find('#ad_type:first').val(function(){
+        return data[i].ad_type;
+      });
+  adDetails.find('.flag-button:first').attr('id', data[i].id);
+                adDetails.find('.remove-button:first').attr('id', data[i].id);
+
+      if(data[i].group.user){
+        adDetails.find('.user span')[0].innerHTML = data[i].group.user.nickname;
+        $('#saved_ads_carousel').prepend(adDetails);
+      }
+    }
+        }
+        $('#temp_pagination').remove();
+    var paginate = $('#saved_ads_carousel').easyPaginate({
+page: page_count,
+      step: 4,
+      controls: 'temp_pagination',
+temp: false
+    });
+    paginate.show();
+  }
+     //  $("#saved_ads_carousel").html(html);
+      }
+    }) 
+  }
+});
+
   $("[id*=folder_]").live('focus',function(){
     alert($(this).attr("id"));
   });

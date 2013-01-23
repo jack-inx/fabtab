@@ -1,3 +1,6 @@
+<%= link_to "Edit",edit_users_path(@user.id),:id => "add_coupan", :style => "float: right;margin-top: -56px; margin-right: 83px;" %>
+<%= link_to "Back",setting_users_list_path,:id => "add_coupan", :style => "float: right;margin-top: -56px; margin-right: 10px;" %>
+
 <p>
   <b>User Name:</b>
   <%= @user.username %>
@@ -13,6 +16,26 @@
   <%= @user.zipcode %>
 </p>
 
+<p>
+  <b>Number offers count:</b>
+  <%= @user.offer_count %>
+</p>
 
-<%= link_to 'Edit', edit_users_path(@user.id) %> |
-<%= link_to 'Back', setting_users_list_path %>
+<p>
+  <b>Super Folder Brand Count:</b>
+  <%= @user.brands.count %>
+</p>
+
+<p>
+  <b>Subscribe at:</b>
+  <%if !@user.confirmed_at.nil?%>
+  <%= @user.confirmed_at.strftime('%d-%^b-%Y %I:%M %p') %>
+  <%else%>
+  Not Yet Subscribed
+  <%end%>
+</p>
+
+<p>
+  <b>Brand Request Count:</b>
+  <%= @user.brand_requests.count %>
+</p>
