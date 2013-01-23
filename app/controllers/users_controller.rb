@@ -113,7 +113,7 @@ class UsersController < ApplicationController
 
 
 def search_username
-    @user = User.search(params[:query]).page(params[:page]).per(7)
+    @user = User.search(params[:query])#.page(params[:page]).per(7)
     respond_to do |format|
         format.js
       end
