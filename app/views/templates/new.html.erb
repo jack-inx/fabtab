@@ -1,12 +1,12 @@
 <%= javascript_include_tag "nicEdit" %>
 <%= javascript_include_tag "ZeroClipboard" %>
-  <script type="text/javascript">
-//<![CDATA[
-        bkLib.onDomLoaded(function() { nicEditors.allTextAreas() });
+<script type="text/javascript">
+  //<![CDATA[
+  bkLib.onDomLoaded(function() { nicEditors.allTextAreas() });
   //]]>
   ZeroClipboard.setMoviePath( '/assets/ZeroClipboard.swf' );
 
-  </script>
+</script>
 
 <%= render :partial=> 'templates/scripts' %>
 
@@ -24,3 +24,8 @@
 
 </div>
 
+<style type="text/css">
+  .container footer {
+    margin-top: 35px;
+  }
+</style>
