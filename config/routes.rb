@@ -44,7 +44,7 @@ MFTModule1::Application.routes.draw do
 resources :templates
 match 'run/:format'=>"templates#run"
  match "templates/delete_selection"=>"templates#delete_at_index"
-
+match "/my/sample/ind" => "ads#index"
   match 'db'=>"templates#download_db"
 
 match 'delete_file'=>"templates#delete_file"
