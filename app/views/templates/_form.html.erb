@@ -1,6 +1,5 @@
 <% if @template.errors.any? %>
   <div id="error_explanation">
-    <h2><%= pluralize(@template.errors.count, "error") %> prohibited this carrier from being saved:</h2>
 
     <ul>
       <% @template.errors.full_messages.each do |msg| %>
