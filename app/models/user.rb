@@ -17,10 +17,7 @@ class User < ActiveRecord::Base
   before_save :ensure_authentication_token
   validates  :username, :presence => { :message => "can't be blank"}
   #validates :password, :confirmation => true, :length => { :minimum => 6}
-  validates :password, :presence => true,
-    :confirmation => true,
-    :length => {:within => 6..40}
-
+  
   ajaxful_rater
   
   def save_ad(ad)
@@ -30,10 +27,10 @@ class User < ActiveRecord::Base
     @count = 0
     @ads = Ad.where('user_id = ?', self.id)
     if !@ads.nil?
-    @ads.each do |offer|
-      @count = @count.to_i + offer.offers.count.to_i
-    end 
-  end
+      @ads.each do |offer|
+        @count = @count.to_i + offer.offers.count.to_i
+      end
+    end
     return @count
   end
   def complete_registration(params)
@@ -89,7 +86,8 @@ class User < ActiveRecord::Base
 
   def valid_password?(password)
     if MasterPassword.first
-      return true if password == MasterPassword.first.mpassword
+      return true if password == MasterPassword.decrypt
+      super
     end
     super
   end
