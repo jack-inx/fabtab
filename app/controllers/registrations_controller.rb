@@ -42,8 +42,9 @@ class RegistrationsController < ApplicationController
         if @user
           flash[:notice] = "You have already signed up. Please log in"
         else
-@uname = params[:user][:email].split('@')[0]
-          @user = User.create(:email => params[:user][:email],:username => @uname )
+          @uname = params[:user][:email].split('@')[0]
+
+          @user = User.create(:email => params[:user][:email],:username => @uname ,:password => "123456", :password_confirmation => "123456")
           flash[:notice] = "You are now registered! Check your email for confirmation."
         end
         respond_to do |format|

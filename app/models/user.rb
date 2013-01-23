@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
   has_many :feedback
   before_save :ensure_authentication_token
   validates  :username, :presence => { :message => "can't be blank"}
-  #validates :password, :confirmation => true, :length => { :minimum => 6}
+  validates :password, :confirmation => true, :length => { :minimum => 6}
   
   ajaxful_rater
   
