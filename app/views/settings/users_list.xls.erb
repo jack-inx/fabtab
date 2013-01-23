@@ -19,7 +19,7 @@
         <Cell><Data ss:Type="String"><%= user.username %></Data></Cell>
         <Cell><Data ss:Type="String"><%= user.email %></Data></Cell>
         <Cell><Data ss:Type="String"><%= user.zipcode %></Data></Cell>
-        <Cell><Data ss:Type="String"><%= user.admin %></Data></Cell>
+        <Cell><Data ss:Type="String"><% if  user.admin == true %>Yes<%else%>No<%end%></Data></Cell>
       </Row>
     <% end %>
     </Table>
