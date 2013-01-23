@@ -1,24 +1,24 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>FabTab</title>
-  <%= stylesheet_link_tag    "application" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-	<%= yield(:head) %>
-	<%#= render :partial => 'layouts/googleanalytics' %>
-</head>
-<body>
-	<div class="topbar">
-		<div class="container">
-			<div id='mft_logo'><a class="brand" href="/"><%= image_tag '/assets/betalogo1.png' %></a></div>
+  <head>
+    <title>FabTab</title>
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+    <%= yield(:head) %>
+<%#= render :partial => 'layouts/googleanalytics' %>
+  </head>
+  <body>
+    <div class="topbar">
+      <div class="container">
+        <div id='mft_logo'><a class="brand" href="/"><%= image_tag '/assets/FabTab-LOGObeta.png', :style=>"width: 220px; height: 70px;" %></a></div>
 
-			<%= render :partial => 'layouts/navbar' %>
-			<%= yield(:toolbar) %>
-		</div>
-	</div>
-<div class="container main">
-        <div class="flash_messages"><div></div></div>
+        <%= render :partial => 'layouts/navbar' %>
+        <%= yield(:toolbar) %>
+      </div>
+    </div>
+    <div class="container main">
+      <div class="flash_messages"><div></div></div>
       <% if !flash[:notice].nil? %>
         <h1 class="flash_messages1 flash_msg_border"style="width:596px;margin-left: 174px;margin-top: -26px;"> <%= flash[:notice] %> </h1>
       <% end %>
@@ -27,26 +27,26 @@
           <%= text_field_tag :query, params[:query], :id => 'search_field1',:class => 'xinput', :placeholder => 'search user', :size => 30, :autocomplete => 'off' %>
         <% end %>
       </div>
-<div style="min-height:655px;">
-      <%= yield %>
-</div>
+      <div style="min-height:655px;">
+        <%= yield %>
+      </div>
 
     </div>
-	<div class='container'>
-		<footer class='new'>
-		   <p>&copy; Copyright MyFabTab Inc 2012</p>
-		</footer>
-	</div>
-<script type="text/javascript">
+    <div class='container'>
+      <footer class='new'>
+        <p>&copy; Copyright MyFabTab Inc 2011-2013</p>
+      </footer>
+    </div>
+    <script type="text/javascript">
       var uvOptions = {};
       (function() {
         var uv = document.createElement('script'); uv.type = 'text/javascript'; uv.async = true;
         uv.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'widget.uservoice.com/cYPrkIzxmmj4HwwxOawg.js';
         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(uv, s);
       })();
- $('.flash_messages1').fadeIn(2000).delay(5000).fadeOut(5000);
+      $('.flash_messages1').fadeIn(2000).delay(5000).fadeOut(5000);
     </script>
-</body>
+  </body>
 </html>
 
 

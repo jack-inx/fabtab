@@ -10,7 +10,7 @@
     <div class="edit">&nbsp;</div>
     <div class="action" style="margin-left: -32px;">Action</div>
     <div class="delete">&nbsp;</div>
-    <div class="status" style="margin-left: 110px;">Status</div>
+    <div class="status" style="margin-left: 87px;">Status</div>
   </div>
   <div style="margin-top: -12px;height: 730px;overflow-x: hidden;overflow-y: scroll;width: 933px; float: left;">
     <%= form_tag  setting_multipleuser_path, :method => :delete do %>
@@ -62,7 +62,7 @@
           <div class="admin" id="flag1_<%= user.id %>">
             <%= render :partial => "users/admin_status", :locals => {:user => user } %>
           </div>
-          <div class="status" id="flag_<%= user.id %>">
+          <div class="status" id="flag_<%= user.id %>" style="text-align: left;">
             <%= render :partial => "users/user_status", :locals => {:user => user } %>
           </div>
         </div>

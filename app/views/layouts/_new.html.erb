@@ -1,13 +1,17 @@
 <div class="topbar">
-	<div class="container">
-		<div id='mft_logo'><a class="brand" href="/"><%= image_tag '/assets/betalogo1.png' %></a></div>
+  <div class="container">
+    <div id='mft_logo'>
+      <a class="brand" href="/">
+        <%= image_tag '/assets/FabTab-LOGObeta.png',:style=>"width: 220px; height: 70px;" %>
+      </a>
+    </div>
 
-		<%= render :partial => 'layouts/navbar' %>
-		<%= yield(:toolbar) %>
-	</div>
+    <%= render :partial => 'layouts/navbar' %>
+    <%= yield(:toolbar) %>
+  </div>
 </div>
 <div class="container main">
-<div class="row">
+  <div class="row">
     <%= form_tag '/search', :method => :get, :id => 'fabtabs_search' do %>
       <div class='search'>
         <%= text_field_tag :q, params[:q], :class => 'xinput', :placeholder => 'search my fabtabs', :size => 30, :autocomplete => 'off' %>
@@ -15,16 +19,16 @@
       </div>
     <% end %>
   </div>
-<div class="flash_messages" style="width: 923px; margin-left: 4px;"><div></div></div>
-<% if !flash[:notice].nil? %>
-            <h1 class="flash_messages1 flash_msg_border"> <%= flash[:notice] %> </h1>
-          <% end %>
-<%= yield %>
+  <div class="flash_messages" style="width: 923px; margin-left: 4px;"><div></div></div>
+  <% if !flash[:notice].nil? %>
+    <h1 class="flash_messages1 flash_msg_border"> <%= flash[:notice] %> </h1>
+  <% end %>
+  <%= yield %>
 </div>
 <div class='container'>
-	<footer class='new'>
-	   <p>&copy; Copyright MyFabTab Inc 2012</p>
-	</footer>
+  <footer class='new'>
+    <p>&copy; Copyright MyFabTab Inc 2011-2013</p>
+  </footer>
 </div>
 <script type="text/javascript">
   $('.flash_messages1').fadeIn().fadeOut(1000);

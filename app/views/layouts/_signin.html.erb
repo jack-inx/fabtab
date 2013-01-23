@@ -5,7 +5,7 @@
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
-    <meta property="og:image" content="http://ec2-54-242-55-172.compute-1.amazonaws.com/assets/betalogo1.png"></meta>
+    <meta property="og:image" content="http://ec2-54-242-55-172.compute-1.amazonaws.com/assets/FabTab-LOGObeta.png"></meta>
     <%= render :partial => 'layouts/googleanalytics' %>
   </head>
 
@@ -16,7 +16,7 @@
         <h1 class="flash_messages1 flash_msg_border"> <%= flash[:notice] %> </h1>
       <% end %>
 
-      <%= image_tag('/assets/betalogo1.png', :class => 'logo') %>
+      <%= image_tag('/assets/FabTab-LOGObeta.png', :class => 'logo',:style=>"width: 220px; height: 70px;") %>
       <%= yield %>
 
     </div>

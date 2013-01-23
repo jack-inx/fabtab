@@ -5,7 +5,7 @@ class HomeController < ApplicationController
   def index
     if current_user
       @user_folders = Group.where("user_id = ?",current_user.id)
-     @category = Category.find_all_for_user(current_user)
+      @category = Category.find_all_for_user(current_user)
       @ad = Ad.new
       respond_to do |format|
         format.html { render 'home/welcome'}
@@ -27,9 +27,17 @@ class HomeController < ApplicationController
   def help
     render 'help', :layout => 'header'
   end
+
+  def render_div
+    @category = Category.find_all_for_user(current_user)
+    @group = Group.find(params[:user_folder])
+    respond_to do |format|
+      format.js
+    end
+  end
   
   def team
-@feedback = Feedback.new
+    @feedback = Feedback.new
     @email = current_user.email
     @email_to = 'info@fabtab.com'
     render 'team', :layout => 'header'
@@ -39,7 +47,7 @@ class HomeController < ApplicationController
     render 'terms', :layout => 'header'
   end
 
-	  def promo_help
+  def promo_help
     render 'promo_help', :layout => 'header'
   end
 
@@ -60,9 +68,9 @@ class HomeController < ApplicationController
 
   def promo_invite
     @email_info= params[:format]
-   if !@email_info.nil?
-     flash[:notice] = "Please confirming the invite has been sent"
-   end
+    if !@email_info.nil?
+      flash[:notice] = "Please confirming the invite has been sent"
+    end
     render 'promo_invite', :layout => 'header'
   end    
 end

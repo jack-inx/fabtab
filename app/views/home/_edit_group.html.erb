@@ -1,0 +1,22 @@
+<div class="message">Edit.</div>
+<%= form_for user_folder do |f| %>
+<div id="group_categorys" style="margin-left: 16px;margin-top: 11px;">
+    <%= f.select "category", options_from_collection_for_select(@category, "id", "name"), :prompt => "Select a category"  %>
+    <div class="delete" style="margin-left: 153px;">
+      delete folder
+      <%= link_to image_tag('/assets/icon_delete.png'), '#' %>
+    </div>
+  <div class="delete_dialogs hidden" >
+      <div class="title">Delete.</div>
+      <div class="message-text">Delete this Folder?</div>
+      <%#= link_to "Delete", "#", :class => 'delete_folder' %>
+      <%= link_to "Delete",group_path(user_folder.id), :method=>:delete, :class => 'delete_folder' %>
+    </div>
+  </div>
+  <%= f.submit "Save", :class => 'save' %>
+<% end %>
+<script type="text/javascript">
+  $(".delete").on('click',function(){
+    $('.delete_dialogs').removeClass('hidden');
+  })
+</script>

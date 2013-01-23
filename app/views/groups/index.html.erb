@@ -1,75 +1,75 @@
 <div class="content">
-	<div class="row carousel">	
-		<div class="title">
-			<div class="top-carousel-heading header-font">All My <span><%= link_to "FabTabs.", groups_path %></span></div>
-			<div class="order-parameter">
-				<%= link_to "REARRANGE MY TABS", '#' %> |
-				<% if @sort_by == 'alphabetical' %>
-					<span class="green">A-Z</span> |
-				<% else %>
-					<%= link_to "A-Z", "#{request.path}?sort_by=alphabetical", :id => 'sort_alphabetical_group' %> |
-				<% end %>
-				
-				<% if @sort_by == 'date' %>
-					<span class="green">DATE SAVED</span>
-				<% else %>
-					<%= link_to "DATE SAVED", "#{request.path}?sort_by=date", :id => 'sort_date_group' %>
-				<% end %>
-			</div>
-		</div>
-		<ul id="groups_carousel">	
-			<% @groups.each do |group| %>
-<% if group.ads.count > 0 %>
-			<% if group.brand_folder? %>
-			<li>
-				<div class="folder">
-					<%= link_to image_tag(group.brand.logo.url(:all_folders)), brand_path(group.brand) %>
-				</div>
-				<div class="folder-details">
-					<div class="folder-category green"><%= group.brand.name %></div>
-					<div class="folder-saved-date">Date Saved:<%= group.created_at.localtime.strftime('%m/%d/%y %H:%M') %></div>
-				</div>
-			</li>
-			<% else %>
-			<li>
-				<% unless group.permanent? %>
-				<%= link_to "Edit", '#', :class => 'edit-button hidden' %>
-				<div class="edit_dialog hidden">
-					<div class="message">Edit.</div>
-					<%= form_for group do %>
-					<%= select_tag "category", options_from_collection_for_select(@category, "id", "name"), :prompt => "Select a category" %>        
-					<div class="delete">
-						delete tab
-						<%= link_to image_tag('/assets/icon_delete.png'), '#', :class => 'delete-image' %>
-					</div> 
-					<%= link_to "Save", '#', :class => 'save' %>
+  <div class="row carousel">
+    <div class="title">
+      <div class="top-carousel-heading header-font">All My <span><%= link_to "FabTabs.", groups_path %></span></div>
+      <div class="order-parameter">
+        <%#= link_to "REARRANGE MY TABS", '#' %> 
+        <% if @sort_by == 'alphabetical' %>
+          <span class="green">A-Z</span> |
+        <% else %>
+          <%= link_to "A-Z", "#{request.path}?sort_by=alphabetical", :id => 'sort_alphabetical_group' %> |
+        <% end %>
 
-					<% end %>
-				</div>
+        <% if @sort_by == 'date' %>
+          <span class="green">DATE SAVED</span>
+        <% else %>
+          <%= link_to "DATE SAVED", "#{request.path}?sort_by=date", :id => 'sort_date_group' %>
+        <% end %>
+      </div>
+    </div>
+    <ul id="groups_carousel">
+      <% @groups.each do |group| %>
+        <% if group.ads.count > 0 %>
+          <% if group.brand_folder? %>
+            <li>
+              <div class="folder">
+                <%= link_to image_tag(group.brand.logo.url(:all_folders)), brand_path(group.brand) %>
+              </div>
+              <div class="folder-details">
+                <div class="folder-category green"><%= group.brand.name %></div>
+                <div class="folder-saved-date">Date Saved:<%= group.created_at.localtime.strftime('%m/%d/%y %H:%M') %></div>
+              </div>
+            </li>
+          <% else %>
+            <li>
+              <% unless group.permanent? %>
+                <%= link_to "Edit", '#', :class => 'edit-button hidden' %>
+                <div class="edit_dialog hidden">
+                  <div class="message">Edit.</div>
+                  <%= form_for group do %>
+                    <%= select_tag "category", options_from_collection_for_select(@category, "id", "name"), :prompt => "Select a category" %>
+                    <div class="delete">
+                                                          delete tab
+                      <%= link_to image_tag('/assets/icon_delete.png'), '#', :class => 'delete-image' %>
+                    </div>
+                    <%= link_to "Save", '#', :class => 'save' %>
 
-				<% end %>				
-				<a href="<%= group_path(group.id) %>">
-					<div class="folder">
-						<div class="folder-content">
-							<% group.ads.reverse_order.limit(4).each do |ad| %>
-							<div class="image">
-							<% if ad.ad_type == "video" %>
-								<%= image_tag video_thumbnail(ad), :class => 'folder-images' %>
-							<% else %>
-								<%= image_tag ad.image_url, :class => 'folder-images' %>
-							<% end %>
-							</div>
-							<% end %>
-						</div>
-					</div></a>
-					<div class="folder-details">
-						<div class="folder-category green"><%= group.category.name unless group.category.nil?%></div>
-						<div class="folder-saved-date">Date Saved:<%= group.created_at.localtime.strftime('%m/%d/%y %H:%M') %></div>
-					</div>
-				</li>
-				<% end %>
-<% end %>
-				<% end %>
-			</ul>	
-	</div>
+                  <% end %>
+                </div>
+
+              <% end %>
+              <a href="<%= group_path(group.id) %>">
+                <div class="folder">
+                  <div class="folder-content">
+                    <% group.ads.reverse_order.limit(4).each do |ad| %>
+                      <div class="image">
+                        <% if ad.ad_type == "video" %>
+                          <%= image_tag video_thumbnail(ad), :class => 'folder-images' %>
+                        <% else %>
+                          <%= image_tag ad.image_url, :class => 'folder-images' %>
+                        <% end %>
+                      </div>
+                    <% end %>
+                  </div>
+                </div></a>
+              <div class="folder-details">
+                <div class="folder-category green"><%= group.category.name unless group.category.nil?%></div>
+                <div class="folder-saved-date">Date Saved:<%= group.created_at.localtime.strftime('%m/%d/%y %H:%M') %></div>
+              </div>
+            </li>
+          <% end %>
+        <% end %>
+      <% end %>
+    </ul>
+  </div>
 </div>
