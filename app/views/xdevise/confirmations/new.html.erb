@@ -2,7 +2,13 @@
 <div class="conf_page" style="float: none; margin-top: 0px; min-height: 655px; margin-left: 275px;">
   <div class="title" style="font-size: 20px;">Resend confirmation instructions</div>
   <%= form_for(@user, :as=> :user, :url => user_confirmation_path(@user), :html => { :method => :post }) do |f| %>
-    <%= devise_error_messages! %>
+  <%#= devise_error_messages! %>
+    <% if !@user.nil? and @user.errors.any? %>
+      <% ActionView::Base.field_error_proc = Proc.new do |html_tag, instance|
+        errors = Array(instance.error_message).join(',')
+        %(#{html_tag}<span class="validation-error">&nbsp;#{errors}</span>).html_safe
+      end %>
+    <% end %>
 
     <div class="clearfix" style="margin-left:-277px;">
       <br/>
