@@ -19,7 +19,7 @@
       <%= link_to "Back",admin_edit_path, :id => 'add_coupan' %>
     </div>
   </div>
-  <div id="gridview" class="<%= @gridview %>" style="height: 730px;overflow-x: hidden;overflow-y: scroll;">
+  <div id="gridview" class="<%= @gridview %>" style="height: 257px;overflow-x: hidden;overflow-y: scroll;">
     <ul id="folder_ads_carousel1" style="height:200px;">
       <% @ads.each do |ad| %>
         <%  if !ad.nil? %>
@@ -28,11 +28,11 @@
             <li style="float:left;height: 200px;width: 210px;margin: 5px 5px 5px 5px;">
               <div class="options1">
       <%#= link_to "delete", ad_path(ad.id),:method=>:delete, :class => 'delete_ad', :style=>"margin: -42px 7px 20px 72px;" %>
-                <%= link_to "delete", "#",:onclick=>"$('#hidden_delete_box_#{ad.id}').css('display','block');" ,:class => 'delete_ad', :style=>"margin: -42px 7px 20px 70px;" %></td>
+                <%= link_to "delete", "#",:onclick=>"$('#hidden_delete_box_#{ad.id}').css('display','block');" ,:class => 'delete_ad', :style=>"margin: -42px 7px 20px 70px;" %>
                 <div class="delete_dialog hidden" id="hidden_delete_box_<%=  ad.id %>">
                   <div class="close" style="margin: 12px 24px;">X</div>
                   <div class="title" style="margin-left: 7px;"> Delete</div>
-                  <div class="message-text"> Delete this Ad?</div>
+                  <div class="message-text"> Delete this Offer?</div>
                   <%= link_to "Delete", ad_path(ad.id), :method=>'delete', :class => 'delete_tab' %>
                 </div>
               </div>

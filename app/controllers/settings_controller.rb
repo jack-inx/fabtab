@@ -159,7 +159,7 @@ class SettingsController < ApplicationController
     @ad = Ad.find(params[:id])
     @ad.destroy
     respond_to do |format|
-      flash[:notice] = "Ad successfully deleted!"
+      flash[:notice] = "Offer successfully deleted!"
       format.html { redirect_to(setting_allusersads_path) }
     end
   end
@@ -186,7 +186,7 @@ class SettingsController < ApplicationController
   def multipleads
     @ad = Ad.find(params[:ids])
     @ad.each { |a| a.destroy }
-    flash[:notice] = "Ad successfully deleted!"
+    flash[:notice] = "Offer successfully deleted!"
     redirect_to setting_allusersads_path
   end
   
@@ -198,7 +198,7 @@ class SettingsController < ApplicationController
     @user.each do|user|
       UserMailer.ignore_status(@ad,@currentuser,user).deliver
     end
-    flash[:notice] = "Ad successfully ignored!"
+    flash[:notice] = "Offer successfully ignored!"
     redirect_to setting_allusersads_path
   end
 

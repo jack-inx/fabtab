@@ -46,7 +46,7 @@ class AdsController < ApplicationController
   def save
     @user = User.find_by_email(params[:email])
     @ad = Ad.new(params[:ad])
-@ad.ad_type = "url"
+    @ad.ad_type = "url"
     @ad.user_id = current_user.id
     if @user.nil?
       @user = User.new(:email=> params[:email])
@@ -62,35 +62,35 @@ class AdsController < ApplicationController
       else
         if params[:tabcategory]
           if params[:brandname].to_i == 0 
-	 @category = Category.find_by_name_and_user_id(params[:tabcategory],@user.id)
-	  if !@category.nil?
-		@category = Category.find_by_name_and_user_id(params[:tabcategory],@user.id)
-	 else
-	 @category = Category.find_or_create_by_name_and_user_id(params[:tabcategory].downcase,current_user.id)          
-	end
+            @category = Category.find_by_name_and_user_id(params[:tabcategory],@user.id)
+            if !@category.nil?
+              @category = Category.find_by_name_and_user_id(params[:tabcategory],@user.id)
+            else
+              @category = Category.find_or_create_by_name_and_user_id(params[:tabcategory].downcase,current_user.id)
+            end
 
-	else
+          else
             @category = Category.find_or_create_by_name_and_brand_id_and_user_id(params[:tabcategory].downcase,params[:brandname].to_i,current_user.id)
           end
         else
-	@category_new = Category.find_by_id(params[:category])
-	@category = Category.find_by_name_and_user_id(@category_new.name,@user.id)
-         if !@category.nil?
-               @category = Category.find_by_name_and_user_id(@category_new.name,@user.id)
-        else
-        @category = Category.find_or_create_by_name_and_user_id(@category_new.name,current_user.id)
-        end
+          @category_new = Category.find_by_id(params[:category])
+          @category = Category.find_by_name_and_user_id(@category_new.name,@user.id)
+          if !@category.nil?
+            @category = Category.find_by_name_and_user_id(@category_new.name,@user.id)
+          else
+            @category = Category.find_or_create_by_name_and_user_id(@category_new.name,current_user.id)
+          end
 
         end
              
         if params[:brandname].to_i == 0
-	@group = Group.find_by_category_id_and_user_id(@category.id,current_user.id)
-    if !@group.nil?
-	  @group = Group.find_by_category_id_and_user_id(@category.id,current_user.id)
-  else
-	@group = current_user.groups.find_or_create_by_category_id(@category.id)        
-  end
-	else
+          @group = Group.find_by_category_id_and_user_id(@category.id,current_user.id)
+          if !@group.nil?
+            @group = Group.find_by_category_id_and_user_id(@category.id,current_user.id)
+          else
+            @group = current_user.groups.find_or_create_by_category_id(@category.id)
+          end
+        else
 
           @brand = Brand.find(params[:brandname].to_i)
           @group = @brand.groups.find_or_create_by_category_id(@category.id)
@@ -125,16 +125,17 @@ class AdsController < ApplicationController
     @ad = Ad.find(params[:id])
     brand = @ad.brand_id
     if @ad.destroy
-	respond_to do |format|
+      respond_to do |format|
         format.json{ render :json => { :response => "success" }}
+        flash[:notice]="Offer successfully deleted!"
         format.html { redirect_to setting_allusersads_path }
       end    
-     else
-     respond_to do |format|
+    else
+      respond_to do |format|
         format.json{ render :json => { :response => "failure" }}
         format.html { redirect_to edit_brand_path(brand)}
       end
-     end
+    end
   end
 
   def update
@@ -186,34 +187,34 @@ class AdsController < ApplicationController
   def snapit
     @user = User.find_by_authentication_token(params[:auth_token])
 
-	 if !params[:thumbnail_url].nil?
-@sio = StringIO.new(Base64.decode64(params[:encode_img]))
-    @sio.original_filename = "#{@user.id + (Time.now).to_i}.png"
-    @sio.content_type = "image/png"
-new_url = params[:weburl].to_s
-        new_url.gsub!(/~/,'&')
-    @ad = Ad.create(:ad_type => params[:type], :longitude => params[:longitude], :latitude => params[:latitude], :image => @sio, :user_id => @user.id, :url => new_url)
- @ad.image_url = params[:thumbnail_url]
- @ad.save(:validate => false)
-else
-    @sio = StringIO.new(Base64.decode64(params[:encode_img]))
-    @sio.original_filename = "#{@user.id + (Time.now).to_i}.png"
-    @sio.content_type = "image/png"
-    @ad = Ad.create(:ad_type => params[:type], :longitude => params[:longitude], :latitude => params[:latitude], :image => @sio, :user_id => @user.id)
-    @ad = Ad.find_by_id(@ad.id)
-    @ad.image_url = @ad.image.to_s
-    @ad.save(:validate => false)
-@ad.url = @ad.image_url
- @ad.save(:validate => false)
-end
+    if !params[:thumbnail_url].nil?
+      @sio = StringIO.new(Base64.decode64(params[:encode_img]))
+      @sio.original_filename = "#{@user.id + (Time.now).to_i}.png"
+      @sio.content_type = "image/png"
+      new_url = params[:weburl].to_s
+      new_url.gsub!(/~/,'&')
+      @ad = Ad.create(:ad_type => params[:type], :longitude => params[:longitude], :latitude => params[:latitude], :image => @sio, :user_id => @user.id, :url => new_url)
+      @ad.image_url = params[:thumbnail_url]
+      @ad.save(:validate => false)
+    else
+      @sio = StringIO.new(Base64.decode64(params[:encode_img]))
+      @sio.original_filename = "#{@user.id + (Time.now).to_i}.png"
+      @sio.content_type = "image/png"
+      @ad = Ad.create(:ad_type => params[:type], :longitude => params[:longitude], :latitude => params[:latitude], :image => @sio, :user_id => @user.id)
+      @ad = Ad.find_by_id(@ad.id)
+      @ad.image_url = @ad.image.to_s
+      @ad.save(:validate => false)
+      @ad.url = @ad.image_url
+      @ad.save(:validate => false)
+    end
     if params[:tabcategory]
       if params[:brandname].to_i == 0
-#        @category = Category.find_or_create_by_name_and_user_id(params[:tabcategory].downcase, @user.id)
-	 @category = Category.find_by_name_and_user_id(params[:tabcategory],@user.id)
-	  if !@category.nil?
-		@category = Category.find_by_name_and_user_id(params[:tabcategory],@user.id)
-	 else
-		 @category = Category.find_or_create_by_name_and_user_id(params[:tabcategory].downcase,current_user.id)          
+        #        @category = Category.find_or_create_by_name_and_user_id(params[:tabcategory].downcase, @user.id)
+        @category = Category.find_by_name_and_user_id(params[:tabcategory],@user.id)
+        if !@category.nil?
+          @category = Category.find_by_name_and_user_id(params[:tabcategory],@user.id)
+        else
+          @category = Category.find_or_create_by_name_and_user_id(params[:tabcategory].downcase,current_user.id)
        	end
       else
         @category = Category.find_or_create_by_name_and_brand_id(params[:tabcategory].downcase, params[:brandname].to_i)
@@ -231,13 +232,13 @@ end
       end
     end
     if params[:brandname].to_i == 0
-     @group = @user.groups.find_or_create_by_category_id(@category.id)
-#		@group = Group.find_by_category_id_and_user_id(@category.id,current_user.id)
- #   if !@group.nil?
-#	  @group = Group.find_by_category_id_and_user_id(@category.id,current_user.id)
- # else
-#	@group = current_user.groups.find_or_create_by_category_id(@category.id)        
- # end
+      @group = @user.groups.find_or_create_by_category_id(@category.id)
+      #		@group = Group.find_by_category_id_and_user_id(@category.id,current_user.id)
+      #   if !@group.nil?
+      #	  @group = Group.find_by_category_id_and_user_id(@category.id,current_user.id)
+      # else
+      #	@group = current_user.groups.find_or_create_by_category_id(@category.id)
+      # end
     else
       @brand = Brand.find(params[:brandname].to_i)
       @group = @brand.groups.find_or_create_by_category_id(@category.id)
@@ -250,36 +251,36 @@ end
 
   def scanit            
     @user = User.find_by_authentication_token(params[:auth_token])
-#@image = IMGKit.new(params[:weburl],:quality => 50 ,:width => 300 ,:height => 250)
-	if !params[:thumbnail_url].nil?
+    #@image = IMGKit.new(params[:weburl],:quality => 50 ,:width => 300 ,:height => 250)
+    if !params[:thumbnail_url].nil?
 
-	 @ad = Ad.new()
- new_url = params[:weburl].to_s
-        new_url.gsub!(/~/,'&')
-    @ad.url = new_url
-    @ad.ad_type = params[:type]
-    @ad.longitude = params[:longitude]
-    @ad.latitude = params[:latitude]
-    @ad.user_id = @user.id
-	@ad.image_url = params[:thumbnail_url]
-@ad.save!
-else
-    @image_url = "#{Rails.root}"+"/public/#{@user.id + (Time.now).to_i}.jpg"  
-#@image.to_file("#{@image_url}")
-    `xvfb-run wkhtmltoimage-amd64 --crop-h 800 --crop-w 900 --crop-x 0 --crop-y 0 "#{params[:weburl]}" "#{@image_url}"`
-    @ad = Ad.new()
-    @ad.url = params[:weburl]
-    @ad.ad_type = params[:type]
-    @ad.longitude = params[:longitude]
-    @ad.latitude = params[:latitude]
-    @ad.user_id = @user.id
-#    @ad.image = @image_url
-@ad.image = @ad.picture_from_url(@image_url)
-    @ad.save!
-@ad.image_url = @ad.image.to_s
-@ad.save! 
-    `rm "#{@image_url}"`
-end
+      @ad = Ad.new()
+      new_url = params[:weburl].to_s
+      new_url.gsub!(/~/,'&')
+      @ad.url = new_url
+      @ad.ad_type = params[:type]
+      @ad.longitude = params[:longitude]
+      @ad.latitude = params[:latitude]
+      @ad.user_id = @user.id
+      @ad.image_url = params[:thumbnail_url]
+      @ad.save!
+    else
+      @image_url = "#{Rails.root}"+"/public/#{@user.id + (Time.now).to_i}.jpg"
+      #@image.to_file("#{@image_url}")
+      `xvfb-run wkhtmltoimage-amd64 --crop-h 800 --crop-w 900 --crop-x 0 --crop-y 0 "#{params[:weburl]}" "#{@image_url}"`
+      @ad = Ad.new()
+      @ad.url = params[:weburl]
+      @ad.ad_type = params[:type]
+      @ad.longitude = params[:longitude]
+      @ad.latitude = params[:latitude]
+      @ad.user_id = @user.id
+      #    @ad.image = @image_url
+      @ad.image = @ad.picture_from_url(@image_url)
+      @ad.save!
+      @ad.image_url = @ad.image.to_s
+      @ad.save!
+      `rm "#{@image_url}"`
+    end
     #@image_name = Time.now.to_i
     #%x[cutycapt --url=#{params[:weburl]} --out="#{@image_name}.jpg" --min-width=600 --min-height=10]
 
@@ -290,13 +291,13 @@ end
 
     if params[:tabcategory]
       if params[:brandname].to_i == 0
-	       # @category = Category.find_or_create_by_name_and_user_id(params[:tabcategory].downcase, @user.id)
-	@category = Category.find_by_name_and_user_id(params[:tabcategory],@user.id)
-	  if !@category.nil?
-		@category = Category.find_by_name_and_user_id(params[:tabcategory],@user.id)
-	 else
-	 @category = Category.find_or_create_by_name_and_user_id(params[:tabcategory].downcase,current_user.id)          
-	end
+        # @category = Category.find_or_create_by_name_and_user_id(params[:tabcategory].downcase, @user.id)
+        @category = Category.find_by_name_and_user_id(params[:tabcategory],@user.id)
+        if !@category.nil?
+          @category = Category.find_by_name_and_user_id(params[:tabcategory],@user.id)
+        else
+          @category = Category.find_or_create_by_name_and_user_id(params[:tabcategory].downcase,current_user.id)
+        end
       else
         @category = Category.find_or_create_by_name_and_brand_id(params[:tabcategory].downcase, params[:brandname].to_i)
       end
@@ -314,13 +315,13 @@ end
     end
     if params[:brandname].to_i == 0
       @group = @user.groups.find_or_create_by_category_id(@category.id)
-#	@group = Group.find_by_category_id_and_user_id(@category.id,current_user.id)
+      #	@group = Group.find_by_category_id_and_user_id(@category.id,current_user.id)
  
-#   if !@group.nil?
-#	  @group = Group.find_by_category_id_and_user_id(@category.id,current_user.id)
- # else
-#	@group = current_user.groups.find_or_create_by_category_id(@category.id)        
- # end
+      #   if !@group.nil?
+      #	  @group = Group.find_by_category_id_and_user_id(@category.id,current_user.id)
+      # else
+      #	@group = current_user.groups.find_or_create_by_category_id(@category.id)
+      # end
     else
       @brand = Brand.find(params[:brandname].to_i)
       @group = @brand.groups.find_or_create_by_category_id(@category.id)
@@ -347,11 +348,11 @@ end
     render :json => @adl.to_json
   end
 
-def tabit_category_list
-@brand = Brand.all
-render :partial => "tabit_category_list" , :object => @brand
-end
- def ads_statuschange
+  def tabit_category_list
+    @brand = Brand.all
+    render :partial => "tabit_category_list" , :object => @brand
+  end
+  def ads_statuschange
     @ads = Ad.find(params[:id])
     @ads.update_attributes(:status => false)
   end
@@ -360,7 +361,7 @@ end
     @ads.update_attributes(:status => true)
   end
 
-def flags_ad
+  def flags_ad
     @ads = Ad.find(params[:id])
     @email =  User.where("id = ?",@ads.user_id)
     @currentuser = current_user
