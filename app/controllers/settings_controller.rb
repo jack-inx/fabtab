@@ -92,8 +92,8 @@ class SettingsController < ApplicationController
       redirect_to setting_users_list_path
     else
       flash[:notice] = "#{@user.errors.full_messages.join(', ')}"
-      redirect_to setting_new_users_path
-      #      render 'new_users', :layout => 'application'
+      #redirect_to setting_new_users_path
+      render 'new_users', :layout => 'admin'
     end
   end  
   def edit_users
