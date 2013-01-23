@@ -1,15 +1,15 @@
 
-<div class="conf_page" style="margin: 5px 280px 5px 274px;">
+<div class="conf_page" style="float: none; margin-top: 0px; min-height: 655px; margin-left: 275px;">
   <div class="title" style="font-size: 20px;">Resend confirmation instructions</div>
   <%= form_for(@user, :as=> :user, :url => user_confirmation_path(@user), :html => { :method => :post }) do |f| %>
     <%= devise_error_messages! %>
 
-    <div class="clearfix" style="margin-left:-272px;">
+    <div class="clearfix" style="margin-left:-277px;">
       <br/>
       <%= f.email_field :email, :class => 'credentials email', :placeholder => 'type email address here' %>
     </div>
 
-    <div class="createAccount" style="margin-left:-433px;"><%= f.submit "Resend confirmation instructions" %></div>
+    <div class="createAccount" style="margin-left:-433px;"><%= f.submit "Resend confirmation instructions", :style=>"margin-left: 156px;" %></div>
   <% end %>
 
   <%- if controller_name != 'sessions' %>
