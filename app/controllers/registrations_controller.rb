@@ -44,7 +44,7 @@ class RegistrationsController < ApplicationController
         else
           @uname = params[:user][:email].split('@')[0]
 
-          @user = User.create(:email => params[:user][:email],:username => @uname ,:password => "123456", :password_confirmation => "123456")
+          @user = User.create(:email => params[:user][:email],:username => @uname ,:password => "12345678", :password_confirmation => "12345678")
           flash[:notice] = "You are now registered! Check your email for confirmation."
         end
         respond_to do |format|
