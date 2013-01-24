@@ -21,7 +21,6 @@
             <li class="group" data-folder="<%#= user_folder.category.name %>">
               <% unless user_folder.permanent? %>
                 <%= link_to "Edit", home_render_div_path(:user_folder=>user_folder.id) , :remote=>true, :class => 'edit-buttons hidden', :style => "outline:medium none !important" %>
-            
               <% end %>
               <a href="<%= group_path(user_folder.id) %>">
                 <div class="folder" id="folder_<%= user_folder.id %>">
@@ -75,7 +74,14 @@
         <%= link_to_function image_tag('/assets/repot_it.png',:height => "35px"), "return flag(this)", :class => 'flag-button hidden', :style=>'margin-left:63px;
 margin-top:-91px;' %>
         <% if current_user.admin %>
-          <%= link_to_function image_tag('/assets/remove1.jpeg',:width => "40px",:height => "40px", :style=>"margin: 15px 8px 0px 12px; width: 27px; height: 27px;"), "return remove(this)", :class => 'remove-button hidden' %>
+  <%#= link_to_function image_tag('/assets/remove1.jpeg',:width => "40px",:height => "40px", :style=>"margin: 15px 8px 0px 12px; width: 27px; height: 27px;"), "return remove(this)", :class => 'remove-button hidden' %>
+          <%= link_to_function image_tag('/assets/remove1.jpeg',:width => "40px",:height => "40px", :style=>"margin: 15px 8px 0px 12px; width: 27px; height: 27px;"), "return delete_alert_box(this)", :class => 'remove-button hidden' %>
+          <div class="delete_dialog" style="display:none;">
+            <div class="close" style="margin: 12px 24px;">X</div>
+            <div class="title" style="margin-left: 7px;"> Delete</div>
+            <div class="message-text"> Delete this Offer?</div>
+            <%= link_to_function "Delete", "return remove_offer(this)", :class => 'delete_tab' %>
+          </div>
         <% end %>
       </li>
     </ul>
@@ -97,77 +103,79 @@ margin-top:-91px;' %>
 </div>
 
 <script>
-var page_count = 1;
-$(".next").live('click',function() {
- var next_id =  $(this).parent().attr("id");
- page_count = page_count +1;
- if (next_id == 'temp_pagination'){
-  jQuery.ajax({
-      url : "/my/sample/ind",
-      type : "POST",
-      data : {
-        "data_id" : page_count-1
+  var page_count = 1;
+  $(".next").live('click',function() {
+    var next_id =  $(this).parent().attr("id");
+    page_count = page_count +1;
+    if (next_id == 'temp_pagination'){
+      jQuery.ajax({
+        url : "/my/sample/ind",
+        type : "POST",
+        data : {
+          "data_id" : page_count-1
         },
-      success : function(data) {
-        // alert('hii');
-        //alert(data);
-        var html = "";
+        success : function(data) {
+          // alert('hii');
+          //alert(data);
+          var html = "";
 
-        if( data.length > 0 ){
-        for(i=0;i<data.length;i++){
-         // html+="<li class='saved_ad' style='display: list-item;'>"+ data[i].id +"</li>";
-           $("#saved_ads_carousel li[style*='list-item']:last").hide();
-      var adDetails = $('.template').clone();
-      adDetails.children('div').removeClass('hidden');
-      adDetails.removeClass('template');
-if (data[i].status == true)
-            {
-      if ( data[i].ad_type == 'video'){
-        adDetails.find('.ad_image').append("<iframe src="+ data[i].image_url +" width=216 height=180 border='none'></iframe>");
-        adDetails.find('.ad_image img').hide();
-      }else {
-        adDetails.find('img')[0].src = data[i].image_url;
-      }
-      adDetails.find('.site')[0].innerHTML = decodeURIComponent(data[i].url).split('/')[2];
-      adDetails.find('#url:first').val(function(){
-        return data[i].url;
-      });
-      adDetails.find('#ad_type:first').val(function(){
-        return data[i].ad_type;
-      });
-  adDetails.find('.flag-button:first').attr('id', data[i].id);
+          if( data.length > 0 ){
+            for(i=0;i<data.length;i++){
+              // html+="<li class='saved_ad' style='display: list-item;'>"+ data[i].id +"</li>";
+              $("#saved_ads_carousel li[style*='list-item']:last").hide();
+              var adDetails = $('.template').clone();
+              adDetails.children('div').removeClass('hidden');
+              adDetails.removeClass('template');
+              if (data[i].status == true)
+              {
+                if ( data[i].ad_type == 'video'){
+                  adDetails.find('.ad_image').append("<iframe src="+ data[i].image_url +" width=216 height=180 border='none'></iframe>");
+                  adDetails.find('.ad_image img').hide();
+                }else {
+                  adDetails.find('img')[0].src = data[i].image_url;
+                }
+                adDetails.find('.site')[0].innerHTML = decodeURIComponent(data[i].url).split('/')[2];
+                adDetails.find('#url:first').val(function(){
+                  return data[i].url;
+                });
+                adDetails.find('#ad_type:first').val(function(){
+                  return data[i].ad_type;
+                });
+                adDetails.find('.flag-button:first').attr('id', data[i].id);
                 adDetails.find('.remove-button:first').attr('id', data[i].id);
 
-      if(data[i].group.user){
-        adDetails.find('.user span')[0].innerHTML = data[i].group.user.nickname;
-        $('#saved_ads_carousel').prepend(adDetails);
-      }
-    }
+                if(data[i].group.user){
+                  adDetails.find('.user span')[0].innerHTML = data[i].group.user.nickname;
+                  $('#saved_ads_carousel').prepend(adDetails);
+                }
+              }
+            }
+            $('#temp_pagination').remove();
+            var paginate = $('#saved_ads_carousel').easyPaginate({
+              page: page_count,
+              step: 4,
+              controls: 'temp_pagination',
+              temp: false
+            });
+            paginate.show();
+          }
+          //  $("#saved_ads_carousel").html(html);
         }
-        $('#temp_pagination').remove();
-    var paginate = $('#saved_ads_carousel').easyPaginate({
-page: page_count,
-      step: 4,
-      controls: 'temp_pagination',
-temp: false
-    });
-    paginate.show();
-  }
-     //  $("#saved_ads_carousel").html(html);
-      }
-    }) 
-  }
-});
+      })
+    }
+  });
 
- $('.group').on('mouseenter',function(){
-  var self = this;
-  var edit_box = $(self).children('.edit-buttons');
-  edit_box.removeClass('hidden');
- })
+  $('.group').on('mouseenter',function(){
+    var self = this;
+    var edit_box = $(self).children('.edit-buttons');
+    edit_box.removeClass('hidden');
+  })
   $('.group').on('mouseleave',function(){
-  var self = this;
-  var edit_box = $(self).children('.edit-buttons');
-  edit_box.addClass('hidden');
- })
+    var self = this;
+    var edit_box = $(self).children('.edit-buttons');
+    edit_box.addClass('hidden');
+  })
 
 </script>
+
+

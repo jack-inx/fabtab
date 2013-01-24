@@ -2,52 +2,52 @@
 $(document).ready(function() {
       
     $('ul#saved_ads_carousel').easyPaginate({
-	page: 1,
+        page: 1,
         step: 4,
         controls: 'temp_pagination',
-temp: false
+        temp: false
     });
   
     $('ul#optin_ads_carousel').easyPaginate({
-page: 1,
+        page: 1,
         step: 3,
         controls: 'optin_ads_pagination',
-temp: false
+        temp: false
     });
   
     $('ul#extra_offers_carousel').easyPaginate({
-page: 1,
+        page: 1,
         step: 3,
         controls: 'extra_offers_pagination',
-temp: false
+        temp: false
     });
   
     $('ul#brand_ads_carousel').easyPaginate({
-page: 1,
+        page: 1,
         step: 3,
         controls: 'brand_ads_pagination',
-temp: false
+        temp: false
     });
   
     $('ul#all_offers_carousel').easyPaginate({
-page: 1,
+        page: 1,
         step: 12,
         controls: 'all_offers_pagination',
-temp: false
+        temp: false
     });
   
     $('#groups_carousel').easyPaginate({
-page: 1,
+        page: 1,
         step:12,
         controls: 'groups_pagination',
-temp: false
+        temp: false
     });
   
     $('#folder_ads_carousel').easyPaginate({
-page: 1,
+        page: 1,
         step:12,
         controls: 'folder_ads_pagination',
-temp: false
+        temp: false
     });
   
     $('.search .xinput').focusout(function(event) {
@@ -370,17 +370,17 @@ temp: false
             data: $(self).parents('form').serialize(),
             success: function(data, textStatus, xhr) {
 
-	if ($("input[@name=folder]:checked").val() == "brand")
-            {
+                if ($("input[@name=folder]:checked").val() == "brand")
+                {
 
-                updateFlashMessage1('Offer saved to brand folder','success');
+                    updateFlashMessage1('Offer saved to brand folder','success');
                 }
                 else
                 {
-                updateFlashMessage1('Successfully tabbed!','success');
+                    updateFlashMessage1('Successfully tabbed!','success');
                 }
 
-//                updateFlashMessage1('Successfully tabbed!','success');
+                //                updateFlashMessage1('Successfully tabbed!','success');
                 setTimeout(function() {
                     window.close();
                 }, 10000);
@@ -390,9 +390,9 @@ temp: false
     });
   
     $('#groups_carousel li').hover(function() {
-        $(this).children('.edit-button').removeClass('hidden');
+        $(this).children('.edit-buttons').removeClass('hidden');
     }, function() {
-        $(this).children('.edit-button').addClass('hidden');
+        $(this).children('.edit-buttons').addClass('hidden');
         $(this).children('.edit_dialog').addClass('hidden');
     });
     
@@ -507,28 +507,28 @@ temp: false
 
 	
 
-	    $('#my_folder').change(function(event) {
-            //$('#my_folder').attr('checked',true);
-	 $('#brand_folder').attr('checked',false);
-	 $('#brandname').hide();
- $('.tabit_field').hide();
-	$('#my_folder').attr('checked',true);
-	 return false;
-	});
+    $('#my_folder').change(function(event) {
+        //$('#my_folder').attr('checked',true);
+        $('#brand_folder').attr('checked',false);
+        $('#brandname').hide();
+        $('.tabit_field').hide();
+        $('#my_folder').attr('checked',true);
+        return false;
+    });
 
-	$('#brand_folder').change(function(event) {
- $('#my_folder').attr('checked',false);            
-$('#brand_folder').attr('checked',true);
-             $('#brand_folder').attr('disabled',false);
-             $('.tabit_field').show();
-$('#brandname').show();
-            $('#my_folder').attr('checked',false);
+    $('#brand_folder').change(function(event) {
+        $('#my_folder').attr('checked',false);
+        $('#brand_folder').attr('checked',true);
+        $('#brand_folder').attr('disabled',false);
+        $('.tabit_field').show();
+        $('#brandname').show();
+        $('#my_folder').attr('checked',false);
         //   $('#my_folder').attr('disabled',true);
-	 return false;
-	});
+        return false;
+    });
 
-	$('#brand_ads_carousel li').hover(function() {    
-    $(this).children('.edit-button').removeClass('hidden');
+    $('#brand_ads_carousel li').hover(function() {
+        $(this).children('.edit-button').removeClass('hidden');
     }, function() {
         $(this).children('.edit-button').addClass('hidden');
         $(this).children('.edit_dialog').addClass('hidden');
@@ -695,35 +695,61 @@ function getUrlVars(src) {
     return vars;
 }
 $('ul#items').easyPaginate({
-      step: 1,
-      controls: 'saved_ads_pagination'
-    });
+    step: 1,
+    controls: 'saved_ads_pagination'
+});
 
 
-  function flag(ad)
-  {
+function flag(ad)
+{
     var ad_id = $(ad).attr('id')
     $.ajax({
-      type: "POST",
-      url: "/ads/flags_ad/"+ad_id,
-      dataType: "html",
-      success: function(data) {
-          updateFlashMessage('Successfully flagged!','success');
-      }
+        type: "POST",
+        url: "/ads/flags_ad/"+ad_id,
+        dataType: "html",
+        success: function(data) {
+            updateFlashMessage('Successfully flagged!','success');
+        }
     });
-  }
+}
 
-    function remove(ad)
-  {
+function remove(ad)
+{
     var ad_id = $(ad).attr('id')
     $.ajax({
-      type: "POST",
-      url: "/ads/remove_ad/"+ad_id,
-      dataType: "html",
-      success: function(data) {
-        window.location="/";
-        updateFlashMessage('Successfully Deleted!','success');
-      }
+        type: "POST",
+        url: "/ads/remove_ad/"+ad_id,
+        dataType: "html",
+        success: function(data) {
+            window.location="/";
+            updateFlashMessage('Successfully Deleted!','success');
+        }
     });
-  }
+}
 
+function remove_offer(ad)
+{
+    var ad_id = $(ad).parent().prev().attr('id')
+    $.ajax({
+        type: "POST",
+        url: "/ads/remove_ad/"+ad_id,
+        dataType: "html",
+        success: function(data) {
+            window.location="/";
+            updateFlashMessage('Successfully Deleted!','success');
+        }
+    });
+
+}
+
+function delete_alert_box(ad){
+    $(this).click(function(event){
+        event.preventDefault();
+    });
+    $(ad).next().attr('style','display:block;margin-top: -138px;margin-left:4px;')
+    
+}
+
+$(".close").live('click',function(){
+    $(this).parent().hide();
+});
