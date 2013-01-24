@@ -24,15 +24,18 @@
   $(".delete").on('click',function(){
     $('.delete_dialogs').removeClass('hidden');
   })
- $('#close_delete').live('click',function(){
+ $('#close_delete').live('click',function(event){
+  event.preventDefault();
   $('.delete_dialogs').addClass('hidden');
    });
- $('#close_cato').live('click',function(){
+ $('#close_cato').live('click',function(event){
+  event.preventDefault();
     var self = this;
     var folder_remove_id = $(self).parent().parent().parent().attr('id');
     $('#'+ folder_remove_id).css('display','none');
    });
- $('.edit-buttons').live('click',function(){
+ $('.edit-buttons').live('click',function(event){
+  event.preventDefault();
   $('.edit_dialogs').css('display','none');
      var self = this;
      var folder_add_id = $(self).parent().children().next().next().next().attr('id');
