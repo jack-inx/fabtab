@@ -171,6 +171,7 @@ margin-top:-91px;' %>
     edit_box.removeClass('hidden');
   })
   $('.group').on('mouseleave',function(){
+    $('.edit_dialogs').css('display','none');
     var self = this;
     var edit_box = $(self).children('.edit-buttons');
     edit_box.addClass('hidden');
