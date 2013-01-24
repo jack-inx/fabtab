@@ -1,22 +1,44 @@
 <div class="message">Edit.</div>
+
+
 <%= form_for user_folder do |f| %>
+
 <div id="group_categorys" style="margin-left: 16px;margin-top: 11px;">
+  <div class="close" id="close_cato" style="margin: -51px 29px;">X</div>
     <%= f.select "category", options_from_collection_for_select(@category, "id", "name"), :prompt => "Select a category"  %>
     <div class="delete" style="margin-left: 153px;">
       delete folder
       <%= link_to image_tag('/assets/icon_delete.png'), '#' %>
     </div>
   <div class="delete_dialogs hidden" >
+    <div class="close" id="close_delete" style="margin: 13px 29px;">X</div>
       <div class="title">Delete.</div>
       <div class="message-text">Delete this Folder?</div>
       <%#= link_to "Delete", "#", :class => 'delete_folder' %>
       <%= link_to "Delete",group_path(user_folder.id), :method=>:delete, :class => 'delete_folder' %>
     </div>
   </div>
-  <%= f.submit "Save", :class => 'save' %>
+  <%= f.submit "Save", :class => 'save', :style=>"border:none;" %>
 <% end %>
 <script type="text/javascript">
   $(".delete").on('click',function(){
     $('.delete_dialogs').removeClass('hidden');
   })
+ $('#close_delete').live('click',function(event){
+  event.preventDefault();
+  $('.delete_dialogs').addClass('hidden');
+   });
+ $('#close_cato').live('click',function(event){
+  event.preventDefault();
+    var self = this;
+    var folder_remove_id = $(self).parent().parent().parent().attr('id');
+    $('#'+ folder_remove_id).css('display','none');
+   });
+ $('.edit-buttons').live('click',function(event){
+  event.preventDefault();
+  $('.edit_dialogs').css('display','none');
+     var self = this;
+     var folder_add_id = $(self).parent().children().next().next().next().attr('id');
+    $('#'+ folder_add_id).css('display','block');
+});
 </script>
