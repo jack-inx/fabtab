@@ -161,45 +161,21 @@ margin-top:-91px;' %>
           }
           //  $("#saved_ads_carousel").html(html);
         }
-          <<<<<<< HEAD
       })
     }
   });
 
- 
-</script>
-<script type="text/javascript">
-  $('.close').click(function(){
-    alert($(this).parent().attr('class'))
-    $(this).parent().hide();
-  });
-    =======
-    $('#temp_pagination').remove();
-  var paginate = $('#saved_ads_carousel').easyPaginate({
-    page: page_count,
-    step: 4,
-    controls: 'temp_pagination',
-    temp: false
-  });
-  paginate.show();
-}
-//  $("#saved_ads_carousel").html(html);
-}
-}) 
-}
-});
+  $('.group').on('mouseenter',function(){
+    var self = this;
+    var edit_box = $(self).children('.edit-buttons');
+    edit_box.removeClass('hidden');
+  })
+  $('.group').on('mouseleave',function(){
+    var self = this;
+    var edit_box = $(self).children('.edit-buttons');
+    edit_box.addClass('hidden');
+  })
 
-$('.group').on('mouseenter',function(){
-var self = this;
-var edit_box = $(self).children('.edit-buttons');
-edit_box.removeClass('hidden');
-})
-$('.group').on('mouseleave',function(){
-var self = this;
-var edit_box = $(self).children('.edit-buttons');
-edit_box.addClass('hidden');
-})
-
->>>>>>> 86acd73e2873192c73aab83cf6b7ee6c94ae68d4
 </script>
+
 
