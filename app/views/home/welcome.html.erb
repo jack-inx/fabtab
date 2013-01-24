@@ -20,7 +20,7 @@
           <% else %>
             <li class="group" data-folder="<%#= user_folder.category.name %>">
               <% unless user_folder.permanent? %>
-                <%= link_to "Edit", home_render_div_path(:user_folder=>user_folder.id) , :remote=>true, :class => 'edit-buttons hidden' %>
+                <%= link_to "Edit", home_render_div_path(:user_folder=>user_folder.id) , :remote=>true, :class => 'edit-buttons hidden', :style => "outline:medium none !important" %>
               <% end %>
               <a href="<%= group_path(user_folder.id) %>">
                 <div class="folder" id="folder_<%= user_folder.id %>">
