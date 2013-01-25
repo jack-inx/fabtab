@@ -3,117 +3,118 @@
   .grid_clz { display: none; }
   .list_clz { display: none; }
 </style>
-<div style="margin-left: 30px;font-size: 18px;color: #939598;"> OFFERS MANAGEMENT</div>
-<div id="groupads1">
-  <div style="height: 50px;">
-    <div style="float: right; margin-right: 37px;">
-      <%= link_to "Category List",setting_category_list_path, :style=>"font-size: 18px;color: #939598;" %>
+<div class="content">
+  <div style="margin-left: 30px;font-size: 18px;color: #939598;"> OFFERS MANAGEMENT</div>
+  <div id="groupads1">
+    <div style="height: 50px;">
+      <div style="float: right; margin-right: 37px;">
+        <%= link_to "Category List",setting_category_list_path, :style=>"font-size: 18px;color: #939598;" %>
 <%#= link_to "flag",setting_flag_ads_path,:id => "add_coupan", :remote => "true" %>
 
-      <%=radio_button_tag 'group1', 'gridview' %> Grid View
-      <%=radio_button_tag 'group1', 'listview' %> LIst View
+        <%=radio_button_tag 'group1', 'gridview' %> Grid View
+        <%=radio_button_tag 'group1', 'listview' %> LIst View
 
+      </div>
+
+      <div style="float: right;margin-top: -74px; margin-right: -286px;">
+        <%= link_to "Back",admin_edit_path, :id => 'add_coupan' %>
+      </div>
     </div>
-    
-    <div style="float: right;margin-top: -74px; margin-right: -286px;">
-      <%= link_to "Back",admin_edit_path, :id => 'add_coupan' %>
-    </div>
-  </div>
-  <div id="gridview" class="<%= @gridview %>" style="height: 550px;overflow-x: hidden;overflow-y: scroll;">
-    <ul id="folder_ads_carousel1" style="height:200px;">
-      <% @ads.each do |ad| %>
-        <%  if !ad.nil? %>
-          <%  @user = User.where("id = ?",ad.user_id) %>
-          <% @user.each do|user| %>
-            <li style="float:left;height: 200px;width: 210px;margin: 5px 5px 5px 5px;">
-              <div class="options1">
+    <div id="gridview" class="<%= @gridview %>" style="height: 535px;overflow-x: hidden;overflow-y: scroll;">
+      <ul id="folder_ads_carousel1" style="height:200px;">
+        <% @ads.each do |ad| %>
+          <%  if !ad.nil? %>
+            <%  @user = User.where("id = ?",ad.user_id) %>
+            <% @user.each do|user| %>
+              <li style="float:left;height: 200px;width: 210px;margin: 5px 5px 5px 5px;">
+                <div class="options1">
       <%#= link_to "delete", ad_path(ad.id),:method=>:delete, :class => 'delete_ad', :style=>"margin: -42px 7px 20px 72px;" %>
-                <%= link_to "delete", "#",:onclick=>"$('#hidden_delete_box_#{ad.id}').css('display','block');" ,:class => 'delete_ad', :style=>"margin: -42px 7px 20px 70px;" %>
-                <div class="delete_dialog hidden" id="hidden_delete_box_<%=  ad.id %>">
-                  <div class="close" style="margin: 12px 24px;">X</div>
-                  <div class="title" style="margin-left: 7px;"> Delete</div>
-                  <div class="message-text"> Delete this Offer?</div>
-                  <%= link_to "Delete", ad_path(ad.id), :method=>'delete', :class => 'delete_tab' %>
+                  <%= link_to "delete", "#",:onclick=>"$('#hidden_delete_box_#{ad.id}').css('display','block');" ,:class => 'delete_ad', :style=>"margin: -42px 7px 20px 70px;" %>
+                  <div class="delete_dialog hidden" id="hidden_delete_box_<%=  ad.id %>">
+                    <div class="close" style="margin: 12px 24px;">X</div>
+                    <div class="title" style="margin-left: 7px;"> Delete</div>
+                    <div class="message-text"> Delete this Offer?</div>
+                    <%= link_to "Delete", ad_path(ad.id), :method=>'delete', :class => 'delete_tab' %>
+                  </div>
                 </div>
-              </div>
-              <div class="ad_image">
-                <% if ad.ad_type == "video" %>
-                  <iframe src="<%= ad.image_url %>" width="210" height="160" border="none"></iframe>
-                <% else %>
-                  <% if ad.flag == true %>
-                    <% if ad.ad_type == "url" %>
-                      <% @url = ad.url %>
-                      <%= link_to image_tag(ad.image_url, :size => "215x182"), '#'  %>
-                      <div style=" text-align: right;margin-top: -14px;">
-                        <%= image_tag("/assets/flag.png",:width => "30px",:height => "30px") %>
-                        User:  <%= user.nickname %>
-                        Email:  <%= user.email %></div>
-                    <% else %>
-                      <% if !ad.url.nil? %>
-                        <%= link_to image_tag(ad.image_url,:width=>"210px",:height => "200px"), '#', :onClick=>"window.open('#{ ad.url }','pagename','resizable,height=450,width=600');"  %>
-                        <div style=" text-align: right;margin-top: -14px;">
-                          <%= image_tag("/assets/flag.png",:width => "30px",:height => "30px") %>
-                          User:  <%= user.nickname %>
-                          Email:  <%= user.email %></div>
-                      <% elsif !ad.image_url.nil? %>
-                        <%= link_to image_tag(ad.image_url,:width=>"210px",:height => "200px"), URI.decode(ad.image_url), :target => '_blank' %>
-                        <div style=" text-align: right;margin-top: -14px;">
-                          <%= image_tag("/assets/flag.png",:width => "30px",:height => "30px") %>
-                          User:  <%= user.nickname %>
-                          Email:  <%= user.email %></div>
-                      <% end %>
-                    <% end %>
+                <div class="ad_image">
+                  <% if ad.ad_type == "video" %>
+                    <iframe src="<%= ad.image_url %>" width="210" height="160" border="none"></iframe>
                   <% else %>
-                    <% if ad.ad_type == "url" %>
-                      <% @url = ad.url %>
-                      <%= link_to image_tag(ad.image_url, :size => "215x182"), '#'  %>
-                      <div style=" text-align: right;">User:  <%= user.nickname %></div>
-                      <div style=" text-align: right;">Email:  <%= user.email %></div>
+                    <% if ad.flag == true %>
+                      <% if ad.ad_type == "url" %>
+                        <% @url = ad.url %>
+                        <%= link_to image_tag(ad.image_url, :size => "215x182"), '#'  %>
+                        <div style=" text-align: right;margin-top: -14px;">
+                          <%= image_tag("/assets/flag.png",:width => "30px",:height => "30px") %>
+                          User:  <%= user.nickname %>
+                          Email:  <%= user.email %></div>
+                      <% else %>
+                        <% if !ad.url.nil? %>
+                          <%= link_to image_tag(ad.image_url,:width=>"210px",:height => "200px"), '#', :onClick=>"window.open('#{ ad.url }','pagename','resizable,height=450,width=600');"  %>
+                          <div style=" text-align: right;margin-top: -14px;">
+                            <%= image_tag("/assets/flag.png",:width => "30px",:height => "30px") %>
+                            User:  <%= user.nickname %>
+                            Email:  <%= user.email %></div>
+                        <% elsif !ad.image_url.nil? %>
+                          <%= link_to image_tag(ad.image_url,:width=>"210px",:height => "200px"), URI.decode(ad.image_url), :target => '_blank' %>
+                          <div style=" text-align: right;margin-top: -14px;">
+                            <%= image_tag("/assets/flag.png",:width => "30px",:height => "30px") %>
+                            User:  <%= user.nickname %>
+                            Email:  <%= user.email %></div>
+                        <% end %>
+                      <% end %>
                     <% else %>
-                      <% if !ad.url.nil? %>
-                        <%= link_to image_tag(ad.image_url,:width=>"210px",:height => "200px"), '#', :onClick=>"window.open('#{ ad.url }','pagename','resizable,height=450,width=600');"  %>
+                      <% if ad.ad_type == "url" %>
+                        <% @url = ad.url %>
+                        <%= link_to image_tag(ad.image_url, :size => "215x182"), '#'  %>
                         <div style=" text-align: right;">User:  <%= user.nickname %></div>
                         <div style=" text-align: right;">Email:  <%= user.email %></div>
-                      <% elsif !ad.image_url.nil? %>
-                        <%= link_to image_tag(ad.image_url,:width=>"210px",:height => "200px"), URI.decode(ad.image_url), :target => '_blank' %>
-                        <div style=" text-align: right;">User:  <%= user.nickname %></div>
-                        <div style=" text-align: right;">Email:  <%= user.email %></div>
+                      <% else %>
+                        <% if !ad.url.nil? %>
+                          <%= link_to image_tag(ad.image_url,:width=>"210px",:height => "200px"), '#', :onClick=>"window.open('#{ ad.url }','pagename','resizable,height=450,width=600');"  %>
+                          <div style=" text-align: right;">User:  <%= user.nickname %></div>
+                          <div style=" text-align: right;">Email:  <%= user.email %></div>
+                        <% elsif !ad.image_url.nil? %>
+                          <%= link_to image_tag(ad.image_url,:width=>"210px",:height => "200px"), URI.decode(ad.image_url), :target => '_blank' %>
+                          <div style=" text-align: right;">User:  <%= user.nickname %></div>
+                          <div style=" text-align: right;">Email:  <%= user.email %></div>
+                        <% end %>
                       <% end %>
                     <% end %>
                   <% end %>
-                <% end %>
-              </div>
-            </li>
+                </div>
+              </li>
+            <% end %>
           <% end %>
         <% end %>
-      <% end %>
-    </ul>
-  </div>
+      </ul>
+    </div>
 
-  <div class="rows" id="header_list" style="display:none;">
-    <div  style="padding-left: 11px; margin-right: 28px; float: left;"><%= check_box_tag "ad_id[]",@ads ,false ,:id => "select_all"%></div>
-    <div style="float:left;margin-right: 41px;">Image</div>
-    <div style="margin-right: 41px; padding-left: 0px; width: 71px; float: left; border-left-width: 0px; margin-left: -7px;">User Name</div>
-    <div style="float: left; margin-right: 128px; padding-left: 2px; margin-left: 0px; width: 33px;"> Email</div>
-    <div style="float: left; margin-right: 20px; margin-left: 13px; padding-left: 2px;">Report It! Status</div>
-    <div style="float:left;margin-right: 36px;">Report It! Time</div>
-    <div style="float: left; margin-right: 28px; margin-left: 24px;">Notification Link</div>
-    <div style="float:left;margin-right: 16px;">Actions</div>
-    <div style="float: left; margin-left: 13px;">Status</div>
-  </div>
+    <div class="rows" id="header_list" style="display:none;">
+      <div  style="padding-left: 11px; margin-right: 28px; float: left;"><%= check_box_tag "ad_id[]",@ads ,false ,:id => "select_all"%></div>
+      <div style="float:left;margin-right: 41px;">Image</div>
+      <div style="margin-right: 41px; padding-left: 0px; width: 71px; float: left; border-left-width: 0px; margin-left: -7px;">User Name</div>
+      <div style="float: left; margin-right: 128px; padding-left: 2px; margin-left: 0px; width: 33px;"> Email</div>
+      <div style="float: left; margin-right: 20px; margin-left: 13px; padding-left: 2px;">Report It! Status</div>
+      <div style="float:left;margin-right: 36px;">Report It! Time</div>
+      <div style="float: left; margin-right: 28px; margin-left: 24px;">Notification Link</div>
+      <div style="float:left;margin-right: 16px;">Actions</div>
+      <div style="float: left; margin-left: 13px;">Status</div>
+    </div>
 
-  <br/>
-  <br/>
-  <div id="listview" class="<%= @listview %>" style="height: 550px;overflow-x: hidden;overflow-y: scroll;">
-    <%= render :partial => "listview_ads",:locals => {:ads => @ads} %>
+    <br/>
+    <br/>
+    <div id="listview" class="<%= @listview %>" style="height: 550px;overflow-x: hidden;overflow-y: scroll;">
+      <%= render :partial => "listview_ads",:locals => {:ads => @ads} %>
+    </div>
   </div>
-</div>  
 <%#*<div>%>
 <%#= paginate @ads %>
 <%#*</div>%>
 
 
-
+</div>
 
 <script>
   var grid_list_cls = '<%= @listview %>' + '<%= @gridview %>';
@@ -181,7 +182,9 @@
   a {
     color : #C3C6C5
   }
+  /*
   .container footer {
-    margin-top: 15px;
+    margin-top: 12px;
   }
+  */
 </style>
