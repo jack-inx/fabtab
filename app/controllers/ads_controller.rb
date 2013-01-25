@@ -267,7 +267,7 @@ class AdsController < ApplicationController
     else
       @image_url = "#{Rails.root}"+"/public/#{@user.id + (Time.now).to_i}.jpg"
       #@image.to_file("#{@image_url}")
-      `xvfb-run wkhtmltoimage-amd64 --crop-h 800 --crop-w 900 --crop-x 0 --crop-y 0 "#{params[:weburl]}" "#{@image_url}"`
+      `xvfb-run wkhtmltoimage-amd64 --crop-h 800 --crop-w 900 --crop-x 0 --crop-y 0  --use-xserver "#{params[:weburl]}" "#{@image_url}"`
       @ad = Ad.new()
       @ad.url = params[:weburl]
       @ad.ad_type = params[:type]
