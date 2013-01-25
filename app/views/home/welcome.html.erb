@@ -75,7 +75,7 @@
 margin-top:-91px;' %>
         <% if current_user.admin %>
   <%#= link_to_function image_tag('/assets/remove1.jpeg',:width => "40px",:height => "40px", :style=>"margin: 15px 8px 0px 12px; width: 27px; height: 27px;"), "return remove(this)", :class => 'remove-button hidden' %>
-          <%= link_to_function image_tag('/assets/remove1.jpeg',:width => "40px",:height => "40px", :style=>"margin: 15px 8px 0px 12px; width: 27px; height: 27px;"), "return delete_alert_box(this)", :class => 'remove-button hidden' %>
+          <%= link_to_function image_tag('/assets/TRASH_ICON.png',:width => "40px",:height => "40px", :style=>"margin: 9px 8px 0px 0px; width: 40px; height: 40px;"), "return delete_alert_box(this)", :class => 'remove-button hidden' %>
           <div class="delete_dialog" style="display:none;">
             <div class="close" style="margin: 12px 24px;">X</div>
             <div class="title" style="margin-left: 7px;"> Delete</div>
