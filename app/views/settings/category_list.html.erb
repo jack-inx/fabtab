@@ -76,7 +76,10 @@
   });
     
   function category_name(cat_id)
-  {    
+  {
+    $(this).click(function(event){
+      event.preventDefault();
+    });
     $('table#'+cat_id).toggle();
   }
  
