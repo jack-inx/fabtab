@@ -4,14 +4,14 @@
   <%= link_to "Bottom-","#",:style => "font-size: 18px;color: #939598;",:id => "tobottom" %>
   <%= link_to "A-Z",setting_sort_username_path, :remote => "true" ,:style => "font-size: 18px;color: #939598;"%>
   <span style="float: right;margin-right: 12px;">
-<% if MasterPassword.first %> <b>  Master Password: <%= MasterPassword.decrypt %> </b><% end %>
+    <% if MasterPassword.first %> <b>  Master Password: <%= MasterPassword.decrypt %> </b><% end %>
     <%= link_to "Add User",setting_new_users_path, :id => 'add_coupan' %>
     <%= link_to "Back",admin_edit_path, :id => 'add_coupan' %>
   </span>
 </div>
 
 <div id ="userslist">
-	<br/><br/><br/>
+  <br/><br/><br/>
   <%= render :partial => "settings/userslist", :locals => {:user => @user} %>
 </div>
 <%#*<div id="pagination_user">%>
@@ -21,7 +21,7 @@
   $(function() {
     $('.pagination a').attr('data-remote', 'true');
   });
-$('#totop').click(function (e)
+  $('#totop').click(function (e)
   {
     $('#userslist').scrollTop("0")
   });
