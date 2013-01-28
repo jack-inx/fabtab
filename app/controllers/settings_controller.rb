@@ -148,7 +148,7 @@ class SettingsController < ApplicationController
       @listview = 'list_clz'
     end
     @user = User.page(params[:page]).per(7)
-    @ads = Ad.all
+    @ads = Ad.order("created_at desc").all
     respond_to do |format|
       format.html{ render :layout => "admin"}
     end
