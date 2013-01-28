@@ -399,6 +399,7 @@ $(document).ready(function() {
     $('#groups_carousel li .edit-button').click(function(event) {
         var self = this;
         var editDialog = $(self).parent().children('.edit_dialog');
+        $(self).parent().children().children().children('.delete_dialog').addClass('hidden');
         editDialog.removeClass('hidden');
         var action = editDialog.find('form:first').attr('action');
         editDialog.find('.save:first').click(function(){
@@ -415,6 +416,7 @@ $(document).ready(function() {
                         editDialog.find('form #category option:first').attr('selected',true);
                     }
                     $(self).parent().children('.edit_dialog').addClass('hidden');
+                    $(self).parent().children('.edit_dialog').removeAttr('style');
                     $(self).parent().children('.edit-button').addClass('hidden');
                 }
             });
@@ -753,3 +755,5 @@ function delete_alert_box(ad){
 $(".close").live('click',function(){
     $(this).parent().hide();
 });
+
+

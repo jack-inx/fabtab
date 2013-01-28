@@ -3,7 +3,7 @@
     <div class="title">
       <div class="top-carousel-heading header-font">All My <span><%= link_to "FabTabs", groups_path %></span></div>
       <div class="order-parameter">
-        <%#= link_to "REARRANGE MY TABS", '#' %> 
+<%#= link_to "REARRANGE MY TABS", '#' %> 
         <% if @sort_by == 'alphabetical' %>
           <span class="green">A-Z</span> |
         <% else %>
@@ -35,12 +35,22 @@
               <% unless group.permanent? %>
                 <%= link_to "Edit", '#', :class => 'edit-button hidden' %>
                 <div class="edit_dialog hidden">
-                  <div class="message">Edit.</div>
+                  <div class="closes" style="margin-left: 260px; margin-right: 24px;">X</div>
+                  <div class="message" style="margin-top: 10px;">Edit.</div>
+
                   <%= form_for group do %>
-                    <%= select_tag "category", options_from_collection_for_select(@category, "id", "name"), :prompt => "Select a category" %>
-                    <div class="delete">
-                                                          delete tab
-                      <%= link_to image_tag('/assets/icon_delete.png'), '#', :class => 'delete-image' %>
+                    <%= select_tag "category", options_from_collection_for_select(@category, "id", "name"), :prompt => "Select a category", :class=>'category' %>
+                    <div class="deletes" style="margin-left: 186px;
+                         margin-top: 14px;">
+                      delete tab
+          <%#= link_to image_tag('/assets/icon_delete.png'), '#', :class => 'delete-image' %>
+                      <%= link_to image_tag('icon_delete.png'),'#' %>
+                    </div>
+                    <div class="delete_dialog hidden">
+                      <div class="closes" style="margin: 12px 24px;">X</div>
+                      <div class="title" style="margin-left: 7px;"> Delete</div>
+                      <div class="message-text"> Delete this Offer?</div>
+                      <%= link_to_function "Delete", "#", :class => 'delete_tab delete', :style=>'margin-left: 112px;' %>
                     </div>
                     <%= link_to "Save", '#', :class => 'save' %>
 
@@ -73,3 +83,24 @@
     </ul>
   </div>
 </div>
+<script type="text/javascript">
+  $(".category").on('click',function(e){
+    $(this).parent().parent().css('display','block');
+    e.preventDefault();
+  })
+
+  $('.closes').on('click',function(e){
+    $(this).parent().addClass('hidden');
+    $(this).parent().removeAttr('style');
+    e.preventDefault();
+  })
+
+
+  $('.deletes').on('click',function(e){
+    $(this).parent().parent().removeClass('hidden');
+    $(this).parent().removeAttr('style');
+    $(this).next().removeClass('hidden');
+    e.preventDefault();
+
+  });
+</script>
