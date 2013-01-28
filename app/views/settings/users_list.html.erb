@@ -21,13 +21,19 @@
   $(function() {
     $('.pagination a').attr('data-remote', 'true');
   });
-  $('#totop').click(function (e)
+  $('#totop').live('click',function (e)
   {
-    $('#userslist').scrollTop("0")
+    $('#user_list1').scrollTop("0") 
+    // $('#user_list1').animate({         
+    //     scrollTop: '0',
+    //  }, 10000);
   });
-  $('#tobottom').click(function (e)
+  $('#tobottom').live('click',function (e)
   {
-    $('#userslist').scrollTop("10000")
+    $('#user_list1').scrollTop("10000")
+   // $('#user_list1').animate({         
+   //      scrollTop: '10000',
+   //   }, 10000);
   });
 </script>
 
