@@ -47,20 +47,20 @@
                         <%= link_to image_tag(ad.image_url, :size => "215x182"), '#'  %>
                         <div style=" text-align: right;margin-top: -14px;">
                           <%= image_tag("/assets/flag.png",:width => "30px",:height => "30px") %>
-                          User:  <%= user.nickname %>
+                          User:  <%= user.nickname %><br>
                           Email:  <%= user.email %></div>
                       <% else %>
                         <% if !ad.url.nil? %>
                           <%= link_to image_tag(ad.image_url,:width=>"210px",:height => "200px"), '#', :onClick=>"window.open('#{ ad.url }','pagename','resizable,height=450,width=600');"  %>
                           <div style=" text-align: right;margin-top: -14px;">
                             <%= image_tag("/assets/flag.png",:width => "30px",:height => "30px") %>
-                            User:  <%= user.nickname %>
+                            User:  <%= user.nickname %><br>
                             Email:  <%= user.email %></div>
                         <% elsif !ad.image_url.nil? %>
                           <%= link_to image_tag(ad.image_url,:width=>"210px",:height => "200px"), URI.decode(ad.image_url), :target => '_blank' %>
                           <div style=" text-align: right;margin-top: -14px;">
                             <%= image_tag("/assets/flag.png",:width => "30px",:height => "30px") %>
-                            User:  <%= user.nickname %>
+                            User:  <%= user.nickname %><br>
                             Email:  <%= user.email %></div>
                         <% end %>
                       <% end %>
