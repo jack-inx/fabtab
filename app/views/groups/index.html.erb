@@ -103,4 +103,19 @@
     e.preventDefault();
 
   });
+
+  $('.edit-button').on('click',function(){
+    $(this).next().removeClass('hidden');
+  })
+
+
+    $('#groups_carousel li').on('mouseenter',function(){
+    var self = this;
+    $(self).children('.edit-button').removeClass('hidden');
+    
+  })
+  $('#groups_carousel li').on('mouseleave',function(){
+    var self = this;
+    $(self).children('.edit-button').addClass('hidden');
+  })
 </script>

@@ -755,5 +755,3 @@ function delete_alert_box(ad){
 $(".close").live('click',function(){
     $(this).parent().hide();
 });
-
-
