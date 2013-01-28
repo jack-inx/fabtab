@@ -85,17 +85,20 @@ class SettingsController < ApplicationController
     else
       @user.admin = false
     end
+    
+    @user.skip_confirmation!
 
-    if @user.save
+    if @user.save(:validate => false)
       flash[:notice] = "User successfully created "
       @user.confirm!
       redirect_to setting_users_list_path
     else
-      flash[:notice] = "#{@user.errors.full_messages.join(', ')}"
+      #flash[:notice] = "#{@user.errors.full_messages.join(', ')}"
       #redirect_to setting_new_users_path
-      render 'new_users', :layout => 'admin'
+      render 'new_users', :message => @user , :layout => 'admin'
     end
-  end  
+  end
+  
   def edit_users
     @user = User.find(params[:id])
     render 'edit_users', :layout => 'admin'
