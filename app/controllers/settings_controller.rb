@@ -138,7 +138,7 @@ class SettingsController < ApplicationController
     redirect_to setting_users_list_path
   end
   def sort_username
-    @user = User.order("username ASC").page(params[:page]).per(7)
+    @user = User.order("username ASC")#.page(params[:page]).per(7)
   end
 
 
