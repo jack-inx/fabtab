@@ -85,8 +85,7 @@ class Xdevise::SessionsController < Devise::SessionsController
       end
     else
       user = User.new(:email => omniauth['info']['email'],:full_name => omniauth['info']['name'],:nickname => omniauth['info']['nickname'])
-      user.authentications.build(:provider => omniauth ['provider'], :uid => omniauth['uid'])
-      if user.save
+      if  (user.authentications.build(:provider => omniauth ['provider'], :uid => omniauth['uid']) && user.save)
         user.skip_confirmation!
         sign_in(user)
         respond_to do |format|
