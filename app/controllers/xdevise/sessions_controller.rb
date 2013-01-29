@@ -46,8 +46,6 @@ class Xdevise::SessionsController < Devise::SessionsController
   def omniauth
     omniauth = request.env["omniauth.auth"]
     user = User.find_by_email(omniauth['info']['email'])
-    logger.info "======== #{omniauth}   =============omniauth============="
-    logger.info "===========#{omniauth['info']['email']} ================="
     authentication = Authentication.find_by_provider_and_uid(omniauth['provider'], omniauth['uid'])
     if authentication && !user.nil?
       if user.status == true
@@ -85,7 +83,8 @@ class Xdevise::SessionsController < Devise::SessionsController
       end
     else
       user = User.new(:email => omniauth['info']['email'],:full_name => omniauth['info']['name'],:nickname => omniauth['info']['nickname'])
-      if  (user.authentications.build(:provider => omniauth ['provider'], :uid => omniauth['uid']) && user.save)
+      user.authentications.build(:provider => omniauth ['provider'], :uid => omniauth['uid'])
+      if user.save
         user.skip_confirmation!
         sign_in(user)
         respond_to do |format|
