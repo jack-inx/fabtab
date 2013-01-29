@@ -75,7 +75,7 @@ class Xdevise::SessionsController < Devise::SessionsController
     elsif user
       user.authentications.build(:provider => omniauth ['provider'], :uid => omniauth['uid'])
       user.username = omniauth['info']['nickname']
-      user.save!
+      user.save(:validate => false)
       sign_in(user)
       respond_to do |format|
         format.html {

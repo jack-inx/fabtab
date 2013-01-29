@@ -32,7 +32,7 @@ class RegistrationsController < ApplicationController
         end
         @user.username = session[:omniauth]['info']['nickname']
         @user.apply_omniauth(session[:omniauth])
-        @user.save!
+        @user.save(:validate => false)
         sign_in(@user)
         respond_to do |format|
           format.html { redirect_to root_url }
