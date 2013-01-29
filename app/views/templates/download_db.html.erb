@@ -15,7 +15,7 @@
         <div style="width: 90px;float:left;"> &nbsp;</div>
         <div style="width: 190px;float:left;"><b>Database Creation Date</b></div>
       </div>
-      <div style="margin-top: 12px;height: 730px;overflow-x: hidden;overflow-y: scroll;width: 933px; float: left;">
+      <div style="margin-top: 12px;height: 585px;overflow-x: hidden;overflow-y: scroll;width: 933px; float: left;">
         <% @bucket.objects.each do |obj| %>
           <% if obj.key.split('admin/')[1].split('/')[0].to_i == current_user.id %>
             <% if !(obj.key.split('admin/')[1].split('/')[1].nil?) %>
@@ -62,7 +62,8 @@
   a {
     color : #C3C6C5
   }
+  
   .container footer {
-    margin-top: 132px;
+    margin-top: 25px;
   }
 </style>
