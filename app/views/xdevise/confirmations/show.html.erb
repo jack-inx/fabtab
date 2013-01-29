@@ -1,4 +1,4 @@
-<div style="margin-left:85px;">
+<div style="margin-left:35px;">
 <div class="login_link" style="margin-left: 367px;">Please complete your account setup</div>
 <%= form_for(@user, :as=> :user, :url => confirm_user_path, :html => { :method => :post }) do |f| %>
 	<% unless flash[:error].nil? %>
@@ -25,7 +25,7 @@
   </div>
 </div>
 
-  <div class="createAccount"><%= f.submit "Create account" %></div>
+  <div class="createAccount" ><%= f.submit "Create account" , :style=>" margin-left: 186px !important;"%></div>
 <% end %>
 </div>
 
