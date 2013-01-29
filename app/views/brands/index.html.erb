@@ -1,17 +1,19 @@
-<div class="content">
-  <div class="brands">
-<div style="margin-left:700px;">
+<div style="float:right;margin-right:10px;">
 <%= link_to "Back",admin_edit_path, :id =>'add_coupan' %>
 </div>
 
-    <ul class="unstyled">
+<div class="content">
+  <div class="brands">
+
+    <ul class="unstyled" style="margin-top: 50px;">
+      <div class="tabal_div"style=" margin-left: 10px;text-align: left;width: 150px;">Brand Name</div>
+      <div class="tabal_div"style="margin-left: 138px;margin-top: -14px;text-align: center;width: 150px;">Actions</div>
       <% @brands.each do |brand| %>
         <li>
           <%= form_for brand do |f| %>
             <table class="brand_table">
-
               <tr>
-                <td class="brand_name_data">  <%= brand.name %> </td>
+                <td class="brand_name_data" style="width: 150px;">  <%= brand.name %> </td>
                 <td class="brand_data"> <%= link_to 'View', brand_path(brand), :id => 'add_coupan' %> </td>
                 <td class="brand_data">  <%= link_to 'Edit', edit_brand_path(brand), :id => 'add_coupan' %></td>
                 <td class="brand_data">	<%= link_to 'Delete', brand, :confirm => 'Are you sure you want to destroy your brand?', :method => :delete, :id => 'add_coupan' %></td>
