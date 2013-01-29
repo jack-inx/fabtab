@@ -69,7 +69,7 @@ class HomeController < ApplicationController
   def promo_invite
     @email_info= params[:format]
     if !@email_info.nil?
-      flash[:notice] = "Please confirming the invite has been sent"
+      flash[:notice] = "Invitaion has been sent"
     end
     render 'promo_invite', :layout => 'header'
   end    
