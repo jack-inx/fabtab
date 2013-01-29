@@ -26,9 +26,7 @@ class RegistrationsController < ApplicationController
     if params[:user_email].nil?
       @user = User.find_by_email(params[:user][:email])
       if session[:omniauth]
-        logger.info "===========session omniauth  #{session[:omniauth]}"
         unless @user
-          logger.info "==========unless user #{@user} "
           @user = User.create(:email => params[:user][:email])
           @user.skip_confirmation!
         end
@@ -41,13 +39,9 @@ class RegistrationsController < ApplicationController
           format.json { render :json => {:response => "ok", :auth_token => @user.authentication_token}.to_json, :status => 200 }
         end
       else
-        logger.info "==========not session omniauth============="
-
         if @user
           flash[:notice] = "You have already signed up. Please log in"
         else
-          logger.info "==========else @user nil hai========="
-
           @uname = params[:user][:email].split('@')[0]
 
           @user = User.create(:email => params[:user][:email],:username => @uname ,:password => "12345678", :password_confirmation => "12345678")
@@ -59,14 +53,10 @@ class RegistrationsController < ApplicationController
         end
       end
     else
-      logger.info "==========params user_email hai========"
-
       @user = User.find_by_email(params[:user_email])
       if @user
         @user_status = "You have already signed up. Please log in."
       else
-        logger.info "==========else of params user_email hai==========="
-
         @user = User.create(:email => params[:user_email])
         @user_status = "You are now registered! Check your email for confirmation."
         flash[:notice] = "You are now registered! Check your email for confirmation."
