@@ -19,9 +19,7 @@ module MFTModule1
 
     # Custom directories with classes and modules you want to be autoloadable.
     # config.autoload_paths += %W(#{config.root}/extras)
-    if Rails.env == "production"
-      config.middleware.use("Rack::GoogleAnalytics", :web_property_id => "UA-29789450-1")
-    end
+
     # Only load the plugins named here, in the order given (default is alphabetical).
     # :all can be used as a placeholder for all plugins not explicitly named.
     # config.plugins = [ :exception_notification, :ssl_requirement, :all ]
