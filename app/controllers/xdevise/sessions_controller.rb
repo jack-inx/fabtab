@@ -46,8 +46,9 @@ class Xdevise::SessionsController < Devise::SessionsController
   def omniauth
     omniauth = request.env["omniauth.auth"]
     user = User.find_by_email(omniauth['info']['email'])
+    logger.info "======== #{user}   =============omniauth============="
     authentication = Authentication.find_by_provider_and_uid(omniauth['provider'], omniauth['uid'])
-    if authentication
+    if authentication && !user.nil?
       if user.status == true
         respond_to do |format|
           format.html {
@@ -60,9 +61,7 @@ class Xdevise::SessionsController < Devise::SessionsController
         flash[:notice] = "User is deactivate"
         redirect_to '/signin'
       end
-
     elsif current_user
-
       current_user.authentications.create(:provider => omniauth['provider'], :uid => omniauth['uid'])
       respond_to do |format|
         format.html {
@@ -71,7 +70,6 @@ class Xdevise::SessionsController < Devise::SessionsController
         }
         format.json { render :json => {:response => "ok", :auth_token => user.authentication_token}.to_json, :status => 200 }
       end
-
     elsif user
       user.authentications.build(:provider => omniauth ['provider'], :uid => omniauth['uid'])
       user.username = omniauth['info']['nickname']
@@ -100,7 +98,6 @@ class Xdevise::SessionsController < Devise::SessionsController
             render :json => {:response => "ok", :auth_token => user.authentication_token}.to_json, :status => 200
           }
         end
-
       else
         respond_to do |format|
           format.html {
