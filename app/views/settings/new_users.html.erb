@@ -5,16 +5,7 @@
 
 <%= form_for @user,:url => url_for(:controller=>:settings, :action=>:create_users) , :html => {:id => 'new_brand'} do |f| %>
   <%#= f.error_messages %>
-  <% if @user.errors.any? %>
-    <div id="error_explanation">
 
-      <ul>
-        <% @user.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
 
   <div class="brand_name">User Name*</div>
   <%= f.text_field :username %>
