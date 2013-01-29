@@ -2,6 +2,10 @@ class UsersController < ApplicationController
   before_filter :authenticate_user!
   before_filter :user_active, :only => [:settings]
   before_filter :invite_active, :only => [:invite,:email]
+
+  def index
+    redirect_to root_path
+  end
   
   def settings
     @user = current_user
@@ -29,14 +33,14 @@ class UsersController < ApplicationController
         render :text => "You have already contacted this brand, they will get in touch with you soon" 
       else
         current_user.brand_requests.create(:ad_id => @ad.id)
-	purpose = Purpose.arel_table
+        purpose = Purpose.arel_table
         purpose_id = Purpose.where(purpose[:name].matches("%follow req%")).first.id
         template = Template.find_by_purpose_id(purpose_id)
 
         if template
           @var = template.content
           User.admins.each do |admin|
-	    @var = @var.gsub("{{admin_email}}",admin.email)
+            @var = @var.gsub("{{admin_email}}",admin.email)
             @var = @var.gsub("{{user_name}}", current_user.nickname.capitalize)
             @var = @var.gsub('{{user_ema<font size="2">il}}', current_user.email)
 
@@ -50,23 +54,23 @@ class UsersController < ApplicationController
           end
         end
 
-	purpose = Purpose.arel_table
+        purpose = Purpose.arel_table
         purpose_id = Purpose.where(purpose[:name].matches("%brand req%")).first.id
         template = Template.find_by_purpose_id(purpose_id)       
 
-#	 template = Template.find_by_purpose("Brand Request Confirmation")
+        #	 template = Template.find_by_purpose("Brand Request Confirmation")
         if template
           @var = template.content
-	  @var = @var.gsub('{{user_ema<font size="2">il}}', current_user.email)
+          @var = @var.gsub('{{user_ema<font size="2">il}}', current_user.email)
 
-	  @token = SecureRandom.urlsafe_base64
+          @token = SecureRandom.urlsafe_base64
 
           unsubscribe_link = unsubscribe_me_url(:token => @token,:id=>current_user.id)
           @var = @var.gsub("{{unsubscribe}}", "<a href=#{unsubscribe_link}>Click here</a>")
 
           registration_link = new_registration_url
           @var = @var.gsub("{{subscribe}}", "<a href=#{registration_link}>Click here</a>")        
-	  @var = @var.gsub("{{user_email}}", "#{current_user.email}")
+          @var = @var.gsub("{{user_email}}", "#{current_user.email}")
           UserMailer.brand_request_confirmation(current_user,@var).deliver
         end
         render :text => 'Thank you, this brand will be in touch with you soon!'
@@ -83,12 +87,12 @@ class UsersController < ApplicationController
 
   def invite
     @email_info= params[:format]
-   if !@email_info.nil?
-     flash[:notice] = "Email successfully sent"
-   end
- render 'invite', :layout => 'settings'
+    if !@email_info.nil?
+      flash[:notice] = "Email successfully sent"
+    end
+    render 'invite', :layout => 'settings'
   end
- def email
+  def email
     emails = params[:email].split(',')
     
     purpose = Purpose.arel_table
@@ -112,13 +116,13 @@ class UsersController < ApplicationController
   end
 
 
-def search_username
+  def search_username
     @user = User.search(params[:query])#.page(params[:page]).per(7)
     respond_to do |format|
-        format.js
-      end
+      format.js
+    end
   end  
-def status_change
+  def status_change
     @user = User.find params[:id]
     @user.update_attributes(:email => @user.email, :username => @user.username, :status => false, :statusupdated => Time.now )
   end
@@ -127,7 +131,7 @@ def status_change
     @user = User.find params[:id]
     @user.update_attributes(:email => @user.email, :username => @user.username, :status => true, :statusupdated => Time.now )
   end
-   def adminstatus_change
+  def adminstatus_change
     @user = User.find params[:id]
     @user.update_attributes(:email => @user.email, :username => @user.username, :admin => true)
   end
