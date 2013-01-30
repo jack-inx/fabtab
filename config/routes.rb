@@ -76,6 +76,7 @@ match "/my/sample/ind" => "ads#index"
   match '/promo_tabit' => 'home#promo_tabit'
   match '/promo_terms' => 'home#promo_terms'
   match '/promo_team' => 'home#promo_team'
+  match '/promo_create' => 'home#promo_create'
   match '/promo_invite' => 'home#promo_invite'
   match '/promo_create' => 'feedback#promo_create'
   match 'js/bookmarkads' => 'Js#bookmarkads'

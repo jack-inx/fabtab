@@ -22,13 +22,18 @@ class FeedbackController < ApplicationController
       render :new
     end
   end
-def promo_create
+  def promo_create
     @feedback = Feedback.new(params[:feedback])
     @email = params[:email]
-    if @feedback.save!
+    if @feedback.save
       NotificationsMailer.new_message(@email, @feedback.content).deliver
       redirect_to(about_path)
       flash[:notice] = "Mail was successfully sent."
+    else
+      respond_to  do|format|
+        format.html { render promo_team_path }
+        format.json { render :json=> @feedback.errors, status=> :unprocessable_entity }
+      end
     end
   end
 
