@@ -3,12 +3,12 @@
   <div class="title" style="font-size: 20px;">Resend confirmation instructions</div>
   <%= form_for(@user, :as=> :user, :url => user_confirmation_path(@user), :html => { :method => :post }) do |f| %>
   <%#= devise_error_messages! %>
-    <% if !@user.nil? and @user.errors.any? %>
-      <% ActionView::Base.field_error_proc = Proc.new do |html_tag, instance|
-        errors = Array(instance.error_message).join(',')
-        %(#{html_tag}<span class="validation-error">&nbsp;#{errors}</span>).html_safe
-      end %>
+    <% if !@user.nil? && @user.errors.any? %>
+      <% @user.errors.messages.each do |key,value| %>
+        <% flash[:notice] = "#{key.capitalize}  #{value.join(',')}" %>
+      <% end %>
     <% end %>
+
 
     <div class="clearfix" style="margin-left:-277px;">
       <br/>
@@ -36,6 +36,12 @@
     margin-left: -274px;
     margin-right: -200px;
   }
+  .validation-error{
+    display: none;
+  }
 </style>
 
 
+<script type="text/javascript">
+  $('.flash_messages1').fadeIn(2000).delay(5000).fadeOut(5000);
+</script>

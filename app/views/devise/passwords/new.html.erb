@@ -1,12 +1,17 @@
 
-<div class="content" style="float: none;margin-top: 0;
-    min-height: 655px;">
+<div class="content" style="float: none;margin-top: 0;min-height: 655px;">
 
   <div class="title" style="margin: 0 275px;font-size: 20px;">Forgot your password?</div>
 <%#*<h2 class="confirmationHeading">Forgot your password?</h2>%>
 
   <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
-    <%= devise_error_messages! %>
+
+
+    <% if resource.errors.any? %>
+      <% resource.errors.messages.each do |key,value| %>
+        <% flash[:notice] = "#{key.capitalize}  #{value.join(',')}" %>
+      <% end %>
+    <% end %>
 
     <div class="clearfix" style="margin-left:-2px;">
       <br/>
@@ -36,6 +41,11 @@
     color : #C3C6C5;
     font-size: 15px;
   }
+  .validation-error{
+    display: none;
+  }
 </style>
-
+<script type="text/javascript">
+  $('.flash_messages1').fadeIn(2000).delay(5000).fadeOut(5000);
+</script>
 

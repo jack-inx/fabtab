@@ -1,25 +1,25 @@
 <div class="session_new" style="margin: 0 -5px 0 0;">
-	<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-  <div>
-    <%= f.email_field :email, :class => 'credentials email', :placeholder => 'type email address here' %></div>
+  <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+    <div>
+      <%= f.email_field :email, :class => 'credentials email', :placeholder => 'type email address here' %></div>
 
-  <div>
-    <%= f.password_field :password, :class => 'credentials password', :placeholder => 'password' %></div>
-  <div class="submit" style="height: 65px;"><%= f.submit "Log In", :class => 'login_button', :style=>"padding-left: 15px;" %></div>
-<% end %>
-<div class="forgotLink" style="margin-left: 273px;">
-</div>
-<div style="margin-top: -50px;height: 130px;">
-  <%= link_to image_tag('/assets/btn_facebook.png'), user_omniauth_authorize_path(:facebook), :class => 'facebook_login' %>
-  <%= link_to image_tag('/assets/btn_twitterlogin.png'),user_omniauth_authorize_path(:twitter), :class => 'twitter-login' %>
-</div>
-<div  style="margin-left: 269px;">
-  <%= link_to "Need an account?", new_registration_path,:class => "login_link" %> <span class="login_link"> | </span>
-  <%- if devise_mapping.recoverable? && controller_name != 'passwords' %>
-    <%= link_to "Forgot password?", new_password_path(resource_name) ,:class => "login_link"%> <span class="login_link"> | </span>
-  <% end -%>
-  <%= link_to "About FabTab","/about",:class => "login_link" %>
-</div>
+    <div>
+      <%= f.password_field :password, :class => 'credentials password', :placeholder => 'password' %></div>
+    <div class="submit" style="height: 65px;"><%= f.submit "Log In", :class => 'login_button', :style=>"padding-left: 15px;" %></div>
+  <% end %>
+  <div class="forgotLink" style="margin-left: 273px;">
+  </div>
+  <div style="margin-top: -50px;height: 130px;">
+    <%= link_to image_tag('/assets/btn_facebook.png'), user_omniauth_authorize_path(:facebook), :class => 'facebook_login' %>
+    <%= link_to image_tag('/assets/btn_twitterlogin.png'),user_omniauth_authorize_path(:twitter), :class => 'twitter-login' %>
+  </div>
+  <div  style="margin-left: 269px;">
+    <%= link_to "Need an account?", new_registration_path,:class => "login_link" %> <span class="login_link"> | </span>
+    <%- if devise_mapping.recoverable? && controller_name != 'passwords' %>
+      <%= link_to "Forgot password?", new_password_path(resource_name) ,:class => "login_link"%> <span class="login_link"> | </span>
+    <% end -%>
+    <%= link_to "About FabTab","/about",:class => "login_link" %>
+  </div>
 </div>
 <script type="text/javascript">
   $('.flash_messages1').fadeIn(2000).delay(5000).fadeOut(5000);
@@ -31,5 +31,5 @@
   }
   .login_link {
     margin-left: 6px;
-}
+  }
 </style>
