@@ -45,7 +45,9 @@
                   </div>
                 </div>
               </a>
+              <% if !user_folder.category_id.nil? %>
               <div class="folder-category"><%= category_or_title_name(user_folder) %></div>
+              <% end %>
               <div id="user_folder_<%=user_folder.id %>" class="show_it" style="margin: -1px 2px; top: 263px;"></div>
             </li>
           <% end %>
