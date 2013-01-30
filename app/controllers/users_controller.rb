@@ -16,8 +16,13 @@ class UsersController < ApplicationController
   
   def update
     @user = User.find(params[:id])
+    logger.info "========================"
+    params[:user].delete(:password) if params[:user][:password].blank?
+    params[:user].delete(:password_confirmation) if params[:user][:password].blank? and params[:user][:password_confirmation].blank?
+    logger.info params[:user][:password]
     if @user.update_attributes(params[:user])
-      sign_in(current_user, :bypass => true)
+      logger.info "=================udated=========="
+      sign_in(@user, :bypass => true)
     end
     respond_to do |format|
       format.json  { render :json => @user.to_json }
