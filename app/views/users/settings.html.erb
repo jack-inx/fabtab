@@ -16,7 +16,7 @@
       <div class="field-name email"><span class="field-label">Email</span>
         <div class="field">
           <span class="display_field"><%= current_user.email %></span>
-          <span class="edit_field hidden"><%= text_field_tag 'user[email]', current_user.email %></span>
+          <span class="edit_field hidden"><%= f.text_field :email %></span>
         </div>
         <%= link_to 'edit', "#", :class => 'edit' %>
         <%= link_to "cancel", "#", :class => 'cancel', :style => 'display:none' %>
@@ -27,8 +27,8 @@
       <div class="field-name password">
         <span class="field-label">Password</span>
         <div class="field">
-          <span class="display_field">*******</span>
-          <span class="edit_field hidden"><%= password_field_tag 'user[password]', current_user.password %></span>
+          <span class="display_field"></span>
+          <span class="edit_field hidden"><%= f.password_field :password, :autocomplete => "off"%><%= f.password_field :password_confirmation %></span>
         </div>
         <%= link_to 'edit', "#", :class => 'edit' %>
         <%= link_to "cancel", "#", :class => 'cancel', :style => 'display:none' %>
@@ -40,7 +40,7 @@
         <span class="field-label">Zip Code</span>
         <div class="field">
           <span class="display_field"><%= current_user.zipcode %></span>
-          <span class="edit_field hidden"><%= text_field_tag 'user[zipcode]', current_user.zipcode %></span>
+          <span class="edit_field hidden"><%= f.text_field :zipcode %></span>
 
         </div>
         <%= link_to 'edit', "#", :class => 'edit' %>
@@ -54,7 +54,7 @@
         <span class="field-label">Username</span>
         <div class="field username">
           <span class="display_field"><%= current_user.username.to_s %></span>
-          <span class="edit_field hidden"><%= text_field_tag 'user[username]', current_user.username %></span>
+          <span class="edit_field hidden"><%= f.text_field :username %></span>
         </div>
         <%= link_to 'edit', "#", :class => 'edit' %>
         <%= link_to "cancel", "#", :class => 'cancel', :style => 'display:none' %>
@@ -86,8 +86,9 @@
       </div>
 
     </div>
+  <div class="Middle_Top"></div>
 
     <div></div>
-  </div>
-<% end %>	
+
+  <% end %>	
 </div>
