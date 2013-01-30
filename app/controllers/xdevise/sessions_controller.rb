@@ -46,20 +46,13 @@ class Xdevise::SessionsController < Devise::SessionsController
 
   def omniauth
     omniauth = request.env["omniauth.auth"]
-    logger.info "================"
-    logger.info omniauth['info']
-    logger.info "==========step 1 ======"
     user = User.find_by_email(omniauth['info']['email'])
-    logger.info "==========step 2 ======"
     authentication = Authentication.find_by_provider_and_uid(omniauth['provider'], omniauth['uid'])
     if user.nil? && !authentication.nil? && !authentication.user_id.nil?
-      logger.info "==========step 3 ======"
       user = User.find(authentication.user_id)
     end
     if authentication && !user.nil?
-      logger.info "==========step 4 ======"
       if user.status == true
-        logger.info "==========step 5 ======"
         respond_to do |format|
           format.html {
             flash[:notice] = "Signed in successfully."
@@ -68,14 +61,11 @@ class Xdevise::SessionsController < Devise::SessionsController
           format.json { render :json => {:response => "ok", :auth_token => user.authentication_token}.to_json, :status => 200 }
         end
       else
-        logger.info "==========step 6 ======"
         flash[:notice] = "User is deactivate"
         redirect_to '/signin'
       end
     elsif current_user
-      logger.info "==========step 7 ======"
       current_user.authentications.create(:provider => omniauth['provider'], :uid => omniauth['uid'])
-      logger.info "==========step 8 ======"
       respond_to do |format|
         format.html {
           flash[:notice] = "Authentication successful."
@@ -84,12 +74,10 @@ class Xdevise::SessionsController < Devise::SessionsController
         format.json { render :json => {:response => "ok", :auth_token => user.authentication_token}.to_json, :status => 200 }
       end
     elsif user
-      logger.info "==========step 9 ======"
       user.authentications.build(:provider => omniauth ['provider'], :uid => omniauth['uid'])
       user.username = omniauth['info']['nickname']
       user.save(:validate => false)
       sign_in(user)
-      logger.info "==========step 10 ======"
       respond_to do |format|
         format.html {
           flash[:notice] = "Signed in successfully."
@@ -98,11 +86,9 @@ class Xdevise::SessionsController < Devise::SessionsController
         format.json { render :json => {:response => "ok", :auth_token => user.authentication_token}.to_json, :status => 200 }
       end
     else
-      logger.info "==========step 11 ======"
       user = User.new(:email => omniauth['info']['email'],:full_name => omniauth['info']['name'],:nickname => omniauth['info']['nickname'])
       user.authentications.build(:provider => omniauth ['provider'], :uid => omniauth['uid'])
       if user.save
-        logger.info "==========step 12 ======"
         user.skip_confirmation!
         sign_in(user)
         respond_to do |format|
@@ -116,7 +102,6 @@ class Xdevise::SessionsController < Devise::SessionsController
           }
         end
       else
-        logger.info "==========step 13 ======"
         respond_to do |format|
           format.html {
             session[:omniauth] = omniauth.except('extra')
@@ -126,11 +111,8 @@ class Xdevise::SessionsController < Devise::SessionsController
             render :json => {:response => "fail"}.to_json, :status => 401
           }
         end
-        logger.info "==========step 14 ======"
       end
-      logger.info "==========step 15 ======"
     end
-    logger.info "==========step 16 ======"
   end
 
   def fb_twitter

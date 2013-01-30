@@ -1,7 +1,7 @@
 <div class="team right-portion">
   <div class="title header-font" style="margin-top:20px;margin-left:20px;font-size: 25px;">Team</div>
   <div class="promo_text">
-
+    <%= params[:action] %>
     <p style="font-size: 18px;line-height: 22px;">MyFabTab Inc. is a small (but beautifully formed) company based in the heart of Silicon Valley, California. Our
       mission is to provide you the best possible solution to manage all your offers, ads and other fab stuff
       all in one place. Currently FabTab is in Beta release which basically means we value your feedback on any
@@ -59,6 +59,11 @@
     background: url("/assets/btn_send.png");}
   .validation-error{
     display: none;
+  }
+
+  .field_with_errors{
+    margin-left: 139px;
+    margin-top: -1px;
   }
 </style>
 <script type="text/javascript">
