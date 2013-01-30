@@ -3,9 +3,7 @@ LC_ALL="en_US.UTF-8"
 source 'http://rubygems.org'
 
 gem 'rails', '3.1.10'
-group :production do
-  gem 'rack-google_analytics', :require => "rack/google_analytics"
-end
+
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
 group :development do
