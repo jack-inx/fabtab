@@ -72,7 +72,7 @@ class HomeController < ApplicationController
       flash[:notice] = "Mail was successfully sent."
     else
       respond_to  do|format|
-        format.html { render :action=>'promo_team' }
+        format.html { render :action=>'promo_team',  :layout => 'header' }
         format.json { render :json=> @feedback.errors, status=> :unprocessable_entity }
       end
     end
