@@ -9,7 +9,7 @@
     <%= f.text_field :name %><br/>
     <div class="address">State</div>
     <%= select_tag "state", options_for_select(UsState.all.collect {|p| [ p.state, p.state_code ] }),{ :onchange => "update_versions_div(this.value)"}%>
-    <div class="address">City</div>
+    <div class="address" style="margin-top:10px;">City</div>
     <div  id="versionsDiv">
       <%= render :partial => "city_list", :locals => {:city => @city ,:city_name => nil } %>
     </div>
