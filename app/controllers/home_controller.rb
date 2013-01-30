@@ -62,6 +62,22 @@ class HomeController < ApplicationController
     render 'promo_team', :layout => 'header'
   end
   
+  def promo_create
+    @feedback = Feedback.new(params[:feedback])
+    @email_to = 'info@fabtab.com'
+    @email = params[:email]
+    if @feedback.save
+      NotificationsMailer.new_message(@email, @feedback.content).deliver
+      redirect_to(about_path)
+      flash[:notice] = "Mail was successfully sent."
+    else
+      respond_to  do|format|
+        format.html { render :action=>'promo_team' }
+        format.json { render :json=> @feedback.errors, status=> :unprocessable_entity }
+      end
+    end
+  end
+  
   def promo_terms
     render 'promo_term', :layout => 'header'
   end
