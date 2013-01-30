@@ -1,93 +1,93 @@
 <h1 class="title right-portion header-font">My <span>Settings</span></h1>
 <div class="user-details right-portion">
-	<%= form_for @user, :html => { :id => 'edit_user' }, :action => 'update' do |f| %>
-	<div class="white-background">
-		<div class="field-name name">
-			<span class="field-label">Name</span> <div class="field">
-				<span class="display_field"><%= current_user.full_name %></span>
-				<span class="edit_field hidden"><%= text_field_tag 'user[full_name]', current_user.full_name %></span>
-			</div>
-			<%= link_to 'edit', "#", :class => 'edit' %>
-			<%= link_to "cancel", "#", :class => 'cancel', :style => 'display:none' %>
-			<%= submit_tag 'save', :class => 'save btn success small' , :style => 'display:none'%>
-		</div>
-	</div>
-	<div class="gray-background">
-		<div class="field-name email"><span class="field-label">Email</span>
-		<div class="field">
-			<span class="display_field"><%= current_user.email %></span>
-			<span class="edit_field hidden"><%= text_field_tag 'user[email]', current_user.email %></span>
-		</div>
-		<%= link_to 'edit', "#", :class => 'edit' %>
-		<%= link_to "cancel", "#", :class => 'cancel', :style => 'display:none' %>
-		<%= f.submit 'save', :class => 'save btn success small' , :style => 'display:none'%>				
-		</div>
-	</div>
-	<div class="white-background">
-		<div class="field-name password">
-			<span class="field-label">Password</span>
-			<div class="field">
-				<span class="display_field">*******</span>
-				<span class="edit_field hidden"><%= password_field_tag 'user[password]', current_user.password %></span>
-			</div>
-			<%= link_to 'edit', "#", :class => 'edit' %>
-			<%= link_to "cancel", "#", :class => 'cancel', :style => 'display:none' %>
-			<%= f.submit 'save', :class => 'save btn success small' , :style => 'display:none'%>
-		</div>
-	</div>
-	<div class="gray-background">
-		<div class="field-name zipcode">
-		<span class="field-label">Zip Code</span>
-		<div class="field">
-			<span class="display_field"><%= current_user.zipcode %></span>
-			<span class="edit_field hidden"><%= text_field_tag 'user[zipcode]', current_user.zipcode %></span>
-			
-		</div>
-		<%= link_to 'edit', "#", :class => 'edit' %>
-		<%= link_to "cancel", "#", :class => 'cancel', :style => 'display:none' %>
-		<%= f.submit 'save', :class => 'save btn success small' , :style => 'display:none'%>
-		
-		</div>
-	</div>
-	<div class="white-background">
-		<div class="field-name username">
-		<span class="field-label">Username</span>
-		<div class="field username">
-			<span class="display_field"><%= current_user.username.to_s %></span>
-			<span class="edit_field hidden"><%= text_field_tag 'user[username]', current_user.username %></span>
-		</div>
-		<%= link_to 'edit', "#", :class => 'edit' %>
-		<%= link_to "cancel", "#", :class => 'cancel', :style => 'display:none' %>
-		<%= f.submit 'save', :class => 'save btn success small' , :style => 'display:none'%>
-		</div>
-	</div>
-	<div class="gray-background">
-		<div class="field-name">
-			<span class="field-label">Link to Facebook</span>
-			<div class="field">
-				<% if @facebook.empty? %>
-					<span class="display_field"><%= link_to "Log in", '/users/auth/facebook', :id => 'add_coupan' %></span>
-				<% else %>
-					<span class="display_field"><%= link_to "Remove Link", authentication_path(@facebook), :method => :delete, :id => 'add_coupan' %></span>
-				<% end %>
-			</div>
-		</div>
-	</div>
-	<div class="white-background">
-		<div class="field-name">
-			<span class="field-label">Link to Twitter</span>
-			<div class="field">
-				<% if @twitter.empty? %>
-				<span class="display_field"><%= link_to "Log in", '/users/auth/twitter', :id => 'add_coupan' %></span>
-				<% else %>
-					<span class="display_field"><%= link_to "Remove Link", authentication_path(@twitter), :method => :delete, :id => 'add_coupan' %></span>
-				<% end %>
-			</div>
-		</div>
-		
-	</div>
-	
-	<div></div>
-</div>
+  <%= form_for @user, :html => { :id => 'edit_user' }, :action => 'update' do |f| %>
+    <div class="white-background">
+      <div class="field-name name">
+        <span class="field-label">Name</span> <div class="field">
+          <span class="display_field"><%= current_user.full_name %></span>
+          <span class="edit_field hidden"><%= text_field_tag 'user[full_name]', current_user.full_name %></span>
+        </div>
+        <%= link_to 'edit', "#", :class => 'edit' %>
+        <%= link_to "cancel", "#", :class => 'cancel', :style => 'display:none' %>
+        <%= submit_tag 'save', :class => 'save btn success small' , :style => 'display:none'%>
+      </div>
+    </div>
+    <div class="gray-background">
+      <div class="field-name email"><span class="field-label">Email</span>
+        <div class="field">
+          <span class="display_field"><%= current_user.email %></span>
+          <span class="edit_field hidden"><%= text_field_tag 'user[email]', current_user.email %></span>
+        </div>
+        <%= link_to 'edit', "#", :class => 'edit' %>
+        <%= link_to "cancel", "#", :class => 'cancel', :style => 'display:none' %>
+        <%= f.submit 'save', :class => 'save btn success small' , :style => 'display:none'%>
+      </div>
+    </div>
+    <div class="white-background">
+      <div class="field-name password">
+        <span class="field-label">Password</span>
+        <div class="field">
+          <span class="display_field">*******</span>
+          <span class="edit_field hidden"><%= password_field_tag 'user[password]', current_user.password %></span>
+        </div>
+        <%= link_to 'edit', "#", :class => 'edit' %>
+        <%= link_to "cancel", "#", :class => 'cancel', :style => 'display:none' %>
+        <%= f.submit 'save', :class => 'save btn success small' , :style => 'display:none'%>
+      </div>
+    </div>
+    <div class="gray-background">
+      <div class="field-name zipcode">
+        <span class="field-label">Zip Code</span>
+        <div class="field">
+          <span class="display_field"><%= current_user.zipcode %></span>
+          <span class="edit_field hidden"><%= text_field_tag 'user[zipcode]', current_user.zipcode %></span>
+
+        </div>
+        <%= link_to 'edit', "#", :class => 'edit' %>
+        <%= link_to "cancel", "#", :class => 'cancel', :style => 'display:none' %>
+        <%= f.submit 'save', :class => 'save btn success small' , :style => 'display:none'%>
+
+      </div>
+    </div>
+    <div class="white-background">
+      <div class="field-name username">
+        <span class="field-label">Username</span>
+        <div class="field username">
+          <span class="display_field"><%= current_user.username.to_s %></span>
+          <span class="edit_field hidden"><%= text_field_tag 'user[username]', current_user.username %></span>
+        </div>
+        <%= link_to 'edit', "#", :class => 'edit' %>
+        <%= link_to "cancel", "#", :class => 'cancel', :style => 'display:none' %>
+        <%= f.submit 'save', :class => 'save btn success small' , :style => 'display:none'%>
+      </div>
+    </div>
+    <div class="gray-background">
+      <div class="field-name">
+        <span class="field-label">Link to Facebook</span>
+        <div class="field">
+          <% if @facebook.empty? %>
+            <span class="display_field"><%= link_to "Log in", '/users/auth/facebook', :id => 'add_coupan' %></span>
+          <% else %>
+            <span class="display_field"><%= link_to "Remove Link", authentication_path(@facebook), :method => :delete, :id => 'add_coupan' %></span>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="white-background">
+      <div class="field-name">
+        <span class="field-label">Link to Twitter</span>
+        <div class="field">
+          <% if @twitter.empty? %>
+            <span class="display_field"><%= link_to "Log in", '/users/auth/twitter', :id => 'add_coupan' %></span>
+          <% else %>
+            <span class="display_field"><%= link_to "Remove Link", authentication_path(@twitter), :method => :delete, :id => 'add_coupan' %></span>
+          <% end %>
+        </div>
+      </div>
+
+    </div>
+
+    <div></div>
+  </div>
 <% end %>	
 </div>

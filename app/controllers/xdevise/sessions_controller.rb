@@ -35,7 +35,7 @@ class Xdevise::SessionsController < Devise::SessionsController
         end
       end
     else
-      flash[:notice] = 'Please Sign Up to join FabTab' 
+      flash[:notice] = 'Invalid credentials'
       respond_to do |format|
         format.html { redirect_to '/signin'  }
         format.json { render :json => {:response => "User with this email does not exist." } }
