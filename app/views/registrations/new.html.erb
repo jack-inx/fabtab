@@ -1,15 +1,25 @@
 <%= form_for @user, :html => {:id => 'user_new'} do |f| %>
-	
-	<div class="title">Complete the registration by providing your email address</div>
-	<div>
-  	<%= f.email_field :email, :class => 'credentials email', :placeholder => 'type email address here' %></div>
-   
-	<div class="submit"><%= f.submit "Sign Up",  :class => 'login_button', :style=>"margin-left: 262px;" %></div>
+
+  <% if !@user.nil? && @user.errors.any? %>
+    <% flash[:notice] = "Email  #{@user.errors.messages[:email].join(',')}" %>
+  <% end %>
+
+  <div class="title">Complete the registration by providing your email address</div>
+  <div>
+    <%= f.email_field :email, :class => 'credentials email', :placeholder => 'type email address here' %></div>
+
+  <div class="submit"><%= f.submit "Sign Up",  :class => 'login_button', :style=>"margin-left: 262px;" %></div>
   <div class="add_text_for_term">By creating an account, I accept</br>
-       MyFabTab's<%= link_to "Terms and Conditions",promo_terms_path, :class=>"login_link term_and_condition_text" %></div>
+    MyFabTab's<%= link_to "Terms and Conditions",promo_terms_path, :class=>"login_link term_and_condition_text" %></div>
 <% end %>
 <style>
-a:hover{
-  color:#8BC541 !important;
-}
+  a:hover{
+    color:#8BC541 !important;
+  }
+  .validation-error{
+    display: none;
+  }
 </style>
+<script type="text/javascript">
+  $('.flash_messages1').fadeIn(2000).delay(5000).fadeOut(5000);
+</script>

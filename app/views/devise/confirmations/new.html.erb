@@ -1,7 +1,11 @@
 <h2>Resend confirmation instructions</h2>
 <%= form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :method => :post }) do |f| %>
-  <%= devise_error_messages! %>
-
+  <%#= devise_error_messages! %>
+  <% if resource.errors.any? %>
+    <% resource.errors.messages.each do |key,value| %>
+      <% flash[:notice] = "#{key.capitalize}  #{value.join(',')}" %>
+    <% end %>
+  <% end %>
   <div class="input">
     <div class="clearfix">
       <%= f.label :email %>
@@ -13,3 +17,11 @@
 <% end %>
 
 <%= render :partial => "devise/shared/links" %>
+<script type="text/javascript">
+  $('.flash_messages1').fadeIn(2000).delay(5000).fadeOut(5000);
+</script>
+<style type="text/css">
+  .validation-error{
+    display: none;
+  }
+</style>
