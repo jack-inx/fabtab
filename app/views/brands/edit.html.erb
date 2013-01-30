@@ -94,9 +94,17 @@
 
                 <%= link_to "View Coupon", @offer.url, :id => "add_coupan" , :target => "_blank" %>
 </div>
-	<div style="margin-top:5px;text-align: center;height: 25px;">
- <%= link_to "Delete Ad", ad , :confirm => 'Are you sure to delete this Ad?',:method => :delete , :id => "add_coupan"%>
+	<div class="brand_data del_offer brand_de" id="add_coupan">
+      Delete Offer   
+ <%#= link_to "Delete Offer", ad , :confirm => 'Are you sure to delete this Offer?',:method => :delete , :id => "add_coupan"%>
 </div>
+<div class="delete_dialog hidden" style="margin-left:0px !important;margin-top:8px !important;">
+                <div class="close234 close_dialog_offer">X</div>
+
+            <div class="title" style="margin-left:10px;">Delete</div>
+            <div class="message-text">Delete this Offer?</div>
+            <%= link_to "Delete", ad, :class => 'delete_folder',:method => :delete %>
+          </div>          
 <% else %>
 <div style="margin-top:5px;text-align: center;height:25px;" >
 </div>
@@ -106,8 +114,17 @@
 <div style="margin-top:5px;text-align: center;">
                 <%= link_to "Add Coupon", new_coupans_path(@brand, :ad_id => ad.id), :id => "add_coupan" %>
 </div>
-<div style="margin-top:5px;text-align: center;height: 25px;"> <%= link_to "Delete Ad", ad , :confirm => 'Are you sure to delete this Ad?',:method => :delete , :id => "add_coupan"%></div>
-<div style="margin-top:5px;text-align: center;height: 25px;"></div>
+<div class="brand_data del_offer brand_de" id="add_coupan">
+      Delete Offer   
+ <%#= link_to "Delete Offer", ad , :confirm => 'Are you sure to delete this Offer?',:method => :delete , :id => "add_coupan"%>
+</div>
+<div class="delete_dialog hidden" style="margin-left:0px !important;margin-top:8px !important;">
+                <div class="close234 close_dialog_offer">X</div>
+
+            <div class="title" style="margin-left:10px;">Delete</div>
+            <div class="message-text">Delete this Offer?</div>
+            <%= link_to "Delete", ad, :class => 'delete_folder',:method => :delete %>
+          </div>  
               <% end %>
 
           </th>
@@ -152,9 +169,17 @@
                 <%= link_to "View Coupon", @offer.url ,:id => "add_coupan" , :target => "_blank" %>
 
                </div>
-<div style="margin-top:5px;text-align: center;height: 25px;">
- <%= link_to "Delete Ad", ad , :confirm => 'Are you sure to delete this Ad?',:method => :delete , :id => "add_coupan"%>
+<div class="brand_data del_offer brand_de" id="add_coupan">
+      Delete Offer   
+ <%#= link_to "Delete Offer", ad , :confirm => 'Are you sure to delete this Offer?',:method => :delete , :id => "add_coupan"%>
 </div>
+<div class="delete_dialog hidden" style="margin-left:0px !important;margin-top:8px !important;">
+                <div class="close234 close_dialog_offer">X</div>
+
+            <div class="title" style="margin-left:10px;">Delete</div>
+            <div class="message-text">Delete this Offer?</div>
+            <%= link_to "Delete", ad, :class => 'delete_folder',:method => :delete %>
+          </div>  
 
               <% end %>
 
@@ -163,8 +188,17 @@
 
                 <%= link_to "Add Coupon", new_coupans_path(@brand, :ad_id => ad.id), :id => "add_coupan" %>
 		</div>
-<div style="margin-top:5px;text-align: center; height: 25px;"> <%= link_to "Delete Ad", ad , :confirm => 'Are you sure to delete this Ad?',:method => :delete , :id => "add_coupan"%></div>
-<div style="margin-top:5px;text-align: center;height: 25px;"></div>
+<div class="brand_data del_offer brand_de" id="add_coupan">
+      Delete Offer   
+ <%#= link_to "Delete Offer", ad , :confirm => 'Are you sure to delete this Offer?',:method => :delete , :id => "add_coupan"%>
+</div>
+<div class="delete_dialog hidden" style="margin-left:0px !important;margin-top:8px !important;">
+                <div class="close234 close_dialog_offer">X</div>
+
+            <div class="title" style="margin-left:10px;">Delete</div>
+            <div class="message-text">Delete this Offer?</div>
+            <%= link_to "Delete", ad, :class => 'delete_folder',:method => :delete %>
+          </div>  
               <% end %>
 
 
@@ -232,3 +266,17 @@
   <% end %>
 
 </div>
+<script>
+$('.brand_de').click(function(event){
+    event.preventDefault();
+  $('.delete_dialog').addClass('hidden');
+  var self = this;
+  var del = $(self).next('.delete_dialog');
+  $(del).removeClass('hidden');;
+  $(self).next('.delete_dialog').removeClass('hidden');
+});
+$('.close234').click(function(event){
+    event.preventDefault();
+   $('.delete_dialog').addClass('hidden');
+});
+</script>
