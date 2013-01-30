@@ -12,7 +12,8 @@ class Xdevise::SessionsController < Devise::SessionsController
     unless @user.nil?
       if @user.confirmation_token.nil?
         if @user.status == true
-          if warden.authenticate!(:scope => :user)
+
+          if warden.authenticate(:scope => :user)
             sign_in(@user)
             respond_to do |format|
               format.html { respond_with @user, :location => after_sign_in_path_for(@user) }
