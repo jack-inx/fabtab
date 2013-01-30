@@ -25,14 +25,22 @@ class User < ActiveRecord::Base
     self.ads << ad
   end
   def offer_count
-    @count = 0
     @ads = Ad.where('user_id = ?', self.id)
     if !@ads.nil?
-      @ads.each do |offer|
-        @count = @count.to_i + offer.offers.count.to_i
-      end
+      @count = @ads.count    
+    else
+      @count = 0
     end
     return @count
+  end
+  def super_folder
+    @user_ads = Ad.where('user_id = ?', self.id).reject { |ad| ad.image_url.nil?}
+    if !@user_ads.nil?
+      @count = @user_ads.count    
+    else
+      @count = 0
+    end
+
   end
   def complete_registration(params)
     if params[:user][:password].empty? || params[:user][:password_confirmation].empty?
