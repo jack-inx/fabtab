@@ -59,9 +59,13 @@ function getUrlVars(src) {
   var totalAdsAndImages = importantImages.length + importantAds.length + importantVideos.length;
   console.log(importantAds.length);
   if ( totalAdsAndImages == 0) {
-    alert('Sorry No ad/image to save');
+    //alert('Sorry No ad/image to save');
+    var div = "<div class='delete_dialog' style='margin-left: 374px !important;margin-top: -250px !important;'><div class='title' style='margin-left:15px;font-size:19px !important;margin-top:51px;'>Sorry No ad/image to save</div><div class='close234 close_dialog_offer'>X</div></div></br></br>";
+    $('.Middle_Top').append(div);
+    var mask = "<div id='mask_div' style='opacity:0.5;position: absolute;left:0; top:0;height:190%;width:100%;z-index: 50;background:#000;'></div>";
+    $('body').after(mask);
     return false;
-  }
+  }  
     
   var background = document.createElement('div');
   background.setAttribute('id', 'tab-it-background');
@@ -201,3 +205,8 @@ function getUrlVars(src) {
   tabitFooter.appendChild(footerBorder);
   
 })();
+
+$(".close234, #mask_div").live('click',function(){
+    $(".delete_dialog").remove();
+    $("#mask_div").remove();
+});
