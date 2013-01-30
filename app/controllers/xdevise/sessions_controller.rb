@@ -12,7 +12,8 @@ class Xdevise::SessionsController < Devise::SessionsController
     unless @user.nil?
       if @user.confirmation_token.nil?
         if @user.status == true
-          if warden.authenticate!(:scope => :user)
+
+          if warden.authenticate(:scope => :user)
             sign_in(@user)
             respond_to do |format|
               format.html { respond_with @user, :location => after_sign_in_path_for(@user) }
@@ -35,7 +36,7 @@ class Xdevise::SessionsController < Devise::SessionsController
         end
       end
     else
-      flash[:notice] = 'Please Sign Up to join FabTab' 
+      flash[:notice] = 'Invalid credentials'
       respond_to do |format|
         format.html { redirect_to '/signin'  }
         format.json { render :json => {:response => "User with this email does not exist." } }
