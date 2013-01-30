@@ -1,7 +1,7 @@
-<div class="right">
-  <div style="float: right;margin-right: 175px;">
+  <div style="float: right;margin-right: 10px;">
     <%= link_to "Back" , edit_brand_path(params[:id]) ,:class => 'btn medium success add_offer' %>
   </div>
+<div class="right">
   <%= form_for @offer, :url => {:controller => 'offers', :action => 'create'}, :html => { :multipart => true, :target => "_self" }, :class => 'hidden' do |f| %>
     <%= hidden_field_tag 'brand[id]', params[:id] %>
     <%= f.hidden_field :ad_id, :value => @ad_id %>
@@ -9,7 +9,7 @@
     <%= f.text_field :name %><br/>
     <div class="address">State</div>
     <%= select_tag "state", options_for_select(UsState.all.collect {|p| [ p.state, p.state_code ] }),{ :onchange => "update_versions_div(this.value)"}%>
-    <div class="address">City</div>
+    <div class="address" style="margin-top:10px;">City</div>
     <div  id="versionsDiv">
       <%= render :partial => "city_list", :locals => {:city => @city ,:city_name => nil } %>
     </div>
@@ -28,7 +28,7 @@
       <%= hidden_field_tag 'offer[expiry_date(5i)]', '59' %>
       <%= hidden_field_tag 'offer[expiry_date(6i)]', '59' %>
     </div>
-    <%= f.submit "Add Coupon", :class => 'btn medium success add_offer' %>
+    <%= f.submit "Add Coupon", :class => 'btn medium success add_offer',:style=>"margin-bottom:189px;" %>
 
   <% end %>
 </div>

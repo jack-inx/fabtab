@@ -16,7 +16,14 @@
                 <td class="brand_name_data" style="width: 150px;">  <%= brand.name %> </td>
                 <td class="brand_data"> <%= link_to 'View', brand_path(brand), :id => 'add_coupan' %> </td>
                 <td class="brand_data">  <%= link_to 'Edit', edit_brand_path(brand), :id => 'add_coupan' %></td>
-                <td class="brand_data">	<%= link_to 'Delete', brand, :confirm => 'Are you sure you want to destroy your brand?', :method => :delete, :id => 'add_coupan' %></td>
+                <td class="brand_data brand_de" id="add_coupan" style="margin-top:10px;">   Delete      </td>
+                <div class="delete_dialog hidden" style="margin-left:384px !important;margin-top:8px !important;">
+                <div class="close234" style="margin: 12px 24px;color: #000000;float: right;font-size: 20px;font-weight: bold;line-height: 13.5px; opacity: 0.2; text-shadow: 0 1px 0 #FFFFFF;cursor:pointer;">X</div>
+
+            <div class="title" style="margin-left:10px;">Delete</div>
+            <div class="message-text">Delete this Brand?</div>
+            <%= link_to "Delete", brand, :class => 'delete_folder',:method => :delete %>
+          </div>          
               </tr>
             </table>
           <% end %>
@@ -26,3 +33,17 @@
     </ul>
   </div>
 </div>
+<script>
+$('.brand_de').click(function(event){
+    event.preventDefault();
+  $('.delete_dialog').addClass('hidden');
+  var self = this;
+  var del = $(self).parent().parent().parent().parent().children('.delete_dialog');
+  $(del).removeClass('hidden');;
+  //$(self).children('.delete_dialog').removeClass('hidden');
+});
+$('.close234').click(function(event){
+    event.preventDefault();
+   $('.delete_dialog').addClass('hidden');
+});
+</script>
