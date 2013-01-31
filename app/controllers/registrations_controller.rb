@@ -74,6 +74,7 @@ class RegistrationsController < ApplicationController
         respond_to do |format|
           if @user.save
             format.html { redirect_to  '/signin'}
+             format.json { render :json => {:response => @user_status} }
             flash[:notice] = "You are now registered! Check your email for confirmation."
           else
             format.html { render :action=> "new" }
