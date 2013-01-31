@@ -67,11 +67,11 @@ class RegistrationsController < ApplicationController
       end
     else
       @user = User.find_by_email(params[:user_email])
-      @uname = params[:user_email].split('@')[0]
+      #@uname = params[:user_email].split('@')[0]
       if @user
         @user_status = "You have already signed up. Please log in."
       else
-        @user = User.create(:email => params[:user_email],:username => @uname ,:password => "12345678", :password_confirmation => "12345678")
+        @user = User.create(:email => params[:user_email])
         @user_status = "You are now registered! Check your email for confirmation."
         flash[:notice] = "You are now registered! Check your email for confirmation."
       end
