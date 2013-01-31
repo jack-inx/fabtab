@@ -33,15 +33,20 @@ class User < ActiveRecord::Base
     end
     return @count
   end
+  
   def super_folder
-    @user_ads = Ad.where('user_id = ?', self.id).reject { |ad| ad.image_url.nil?}
-    if !@user_ads.nil?
-      @count = @user_ads.count    
-    else
-      @count = 0
+    @ads_offer = Ad.where('user_id = ?', self.id)
+    @folder = 0
+    @ads_offer.each do |i|
+      if !i.brand_id.nil? 
+        @folder = @folder.to_i + 1
+      else 
+        @folder
+      end
     end
-
+    return @folder
   end
+
   def complete_registration(params)
     if params[:user][:password].empty? || params[:user][:password_confirmation].empty?
       add_error_on(:password, "is blank. Password should be of length 6 or more")
