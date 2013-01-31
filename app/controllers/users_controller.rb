@@ -3,9 +3,9 @@ class UsersController < ApplicationController
   before_filter :user_active, :only => [:settings]
   before_filter :invite_active, :only => [:invite,:email]
 
-  # def index
-  #   redirect_to root_path
-  # end
+  def index
+    redirect_to root_path
+  end
   
   def settings
     @user = current_user
