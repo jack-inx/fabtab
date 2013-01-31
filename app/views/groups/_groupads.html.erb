@@ -6,36 +6,36 @@
       <div class = "options">
         <% if current_user.admin? %>
           <div class="top-options">
-            <%= link_to "share", ad_path(ad.id), :class => 'share' %>
-            <%= link_to "move", ad_path(ad.id), :class => 'move' %>
-            <%= link_to "delete", ad_path(ad.id), :class => 'delete' %>
+            <%= link_to "share", ad_path(ad.id), :class => 'share outline_remove' %>
+            <%= link_to "move", ad_path(ad.id), :class => 'move outline_remove' %>
+            <%= link_to "delete", ad_path(ad.id), :class => 'delete outline_remove' %>
           </div>
           <div class="bottom-options">
-            <%= link_to "more from brand","/follow_brand?ad_id=#{ad.id}", :class => 'follow_brand' %>
-            <%= link_to "rate it",ad_path(ad.id), :class => 'rate hidden' %>
+            <%= link_to "more from brand","/follow_brand?ad_id=#{ad.id}", :class => 'follow_brand outline_remove' %>
+            <%= link_to "rate it",ad_path(ad.id), :class => 'rate hidden outline_remove' %>
           </div>
         <% elsif ad.user_ad? || ad.group.permanent? %>
           <div class="top-options">
-            <%= link_to "share", ad_path(ad.id), :class => 'share' %>
-            <%= link_to "move", ad_path(ad.id), :class => 'move' %>
-            <%= link_to "delete", ad_path(ad.id), :class => 'delete' %>
+            <%= link_to "share", ad_path(ad.id), :class => 'share outline_remove' %>
+            <%= link_to "move", ad_path(ad.id), :class => 'move outline_remove' %>
+            <%= link_to "delete", ad_path(ad.id), :class => 'delete outline_remove' %>
           </div>
           <div class="bottom-options">
-            <%= link_to "more from brand","/follow_brand?ad_id=#{ad.id}", :class => 'follow_brand' %>
-            <%= link_to "rate it",ad_path(ad.id), :class => 'rate hidden' %>
+            <%= link_to "more from brand","/follow_brand?ad_id=#{ad.id}", :class => 'follow_brand outline_remove' %>
+            <%= link_to "rate it",ad_path(ad.id), :class => 'rate hidden outline_remove' %>
           </div>
         <% else %>
           <div class="top-options">
-            <%= link_to "share", ad_path(ad.id), :class => 'share' %>
-            <%= link_to "move", ad_path(ad.id), :class => 'move' %>
-            <%= link_to "delete", ad_path(ad.id), :class => 'delete' %>
+            <%= link_to "share", ad_path(ad.id), :class => 'share outline_remove' %>
+            <%= link_to "move", ad_path(ad.id), :class => 'move outline_remove' %>
+            <%= link_to "delete", ad_path(ad.id), :class => 'delete outline_remove' %>
           </div>
           <div class="bottom-options">
             <%#= link_to "more from brand","/follow_brand?ad_id=#{ad.id}", :class => 'follow_brand' %>
-            <%= link_to "rate it",ad_path(ad.id), :class => 'rate hidden' %>
+            <%= link_to "rate it",ad_path(ad.id), :class => 'rate hidden outline_remove' %>
           </div>
         <% end %>
-        <div class="share_dialog hidden">
+        <div class="share_dialog hidden outline_remove">
 
 	 <div class="facebook-share"><fb:like width="80" show_faces="false" action="recommend" layout="button_count" href="<%= ad_url(ad.id) %>"></fb:like></div>
  <div class="twitter-share"><a href="https://twitter.com/share" class="twitter-share-button" data-lang="en" data-text="Check out this cool offer from MyFabTab. I think you are going to like it! <%= ad_url(ad.id) %>">Tweet</a>
@@ -73,10 +73,10 @@
         </div>
         <% @offer = Offer.find_by_ad_id(ad.id) %>
         <% if !@offer.nil? %>
-        <div class="folder-name"><%= @offer.name%></div>
+        <div class="folder-name outline_remove"><%= @offer.name%></div>
         <% end %>
       </div>
-      <div class="rating_dialog hidden">
+      <div class="rating_dialog hidden outline_remove">
         <div class="title">Rate It.</div>
         <%= ratings_for ad, current_user, :show_user_rating => true %>
       </div>
@@ -89,11 +89,11 @@
 <div class="delete_dialog hidden">
   <div class="title">Delete.</div>
   <div class="message-text">Delete this FabTab?</div>
-  <%= link_to "Delete", "#", :class => 'delete_tab' %>
+  <%= link_to "Delete", "#", :class => 'delete_tab outline_remove' %>
 </div>
 
 
-<div class="move_dialog hidden">
+<div class="move_dialog hidden outline_remove">
   <div class="message">Move.</div>
   <%= form_tag(url_for(:controller => 'ads', :method => :put)) do %>
     <%= select_tag "category", options_from_collection_for_select(@category, "id", "name"), :prompt => "Select a category" %>
@@ -102,7 +102,7 @@
   <% end %>
 </div>
 
-<div class="follow_brand_dialog hidden">
+<div class="follow_brand_dialog hidden outline_remove">
   <div class="title">More?</div>
   <div class="message">Do you want more fabtabs from this brand?</div>
   <%= form_tag url_for(:controller => 'users', :action => 'follow_brand') do %>
