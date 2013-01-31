@@ -74,18 +74,18 @@
                 <%= link_to image_tag(ad.image_url , :size => "200x100" ), ad.url %>
               </div>
               <div style="margin-top:5px;text-align: center;">
-                <%= link_to "Source URL", ad.url, :id => "add_coupan",:target => "_blank" %>
+                <%= link_to "Source URL ", ad.url, :id => "add_coupan",:target => "_blank" %>
               </div>
               <% @offer =  Offer.find_by_ad_id(ad.id) %>
               <% if @offer.present?  %>
                 <div style="margin-top:5px;text-align: center;">
-                  <%= link_to "Edit Coupon", edit_coupans_path(@brand, :ad_id => ad.id, :coupan_id => @offer.id), :id => "add_coupan" %>
+                  <%= link_to "Edit Coupon ", edit_coupans_path(@brand, :ad_id => ad.id, :coupan_id => @offer.id), :id => "add_coupan" %>
                 </div>
                 <% if !@offer.url.nil? %>
-                  <div style="margin-top:5px;text-align: center;margin-left: 7px;" >
+                  <div style="margin-top:5px;text-align: center;margin-left: 2px;" >
                     <%= link_to "View Coupon", @offer.url, :id => "add_coupan" , :target => "_blank" %>
                   </div>
-                  <div class="brand_data del_offer brand_de" id="add_coupan">
+                  <div class="brand_data del_offer brand_de" id="add_coupan" style="margin-left:37px;">
                     Delete Offer
           <%#= link_to "Delete Offer", ad , :confirm => 'Are you sure to delete this Offer?',:method => :delete , :id => "add_coupan"%>
                   </div>
@@ -100,10 +100,10 @@
                   </div>
                 <% end %>
               <% else %>
-                <div style="margin-top:42px;text-align: center;">
-                  <%= link_to "Add Coupon", new_coupans_path(@brand, :ad_id => ad.id), :id => "add_coupan" %>
+                <div style="margin-top:42px;text-align: center;margin-left: -8px;">
+                  <%= link_to "Add Coupon", new_coupans_path(@brand, :ad_id => ad.id), :id => "add_coupan",:style=>"margin-left: 9px;" %>
                 </div>
-                <div class="brand_data del_offer brand_de" id="add_coupan">
+                <div class="brand_data del_offer brand_de" id="add_coupan" style="margin-left:37px;">
                   Delete Offer
         <%#= link_to "Delete Offer", ad , :confirm => 'Are you sure to delete this Offer?',:method => :delete , :id => "add_coupan"%>
                 </div>
@@ -137,7 +137,7 @@
                   <%= link_to "Edit Coupon", edit_coupans_path(@brand, :ad_id => ad.id, :coupan_id => @offer.id), :id => "add_coupan" %>
                 </div>
                 <%  if !@offer.url.nil? %>
-                  <div style="margin-top:5px;text-align: center;margin-left: 7px;" >
+                  <div style="margin-top:5px;text-align: center;margin-left: 2px;" >
                     <%= link_to "View Coupon", @offer.url ,:id => "add_coupan" , :target => "_blank" %>
                   </div>
                   <div class="brand_data del_offer brand_de" id="add_coupan">
@@ -152,10 +152,10 @@
                   </div>
                 <% end %>
               <% else %>
-                <div style="margin-top:5px;text-align: center;" >
+                <div style="margin-top:5px;text-align: center; margin-left: -8px;" >
                   <%= link_to "Add Coupon", new_coupans_path(@brand, :ad_id => ad.id), :id => "add_coupan" %>
                 </div>
-                <div class="brand_data del_offer brand_de" id="add_coupan">
+                <div class="brand_data del_offer brand_de" id="add_coupan" style="margin-left:37px;">
                   Delete Offer
         <%#= link_to "delete Offer", ad , :confirm => 'Are you sure to delete this Offer?',:method => :delete , :id => "add_coupan"%>
                 </div>
@@ -163,7 +163,7 @@
                   <div class="close_dialog_offer">X</div>
                   <div class="title" style="margin-left:10px;">Delete</div>
                   <div class="message-text">Delete this Offer?</div>
-                  <%= link_to "Delete3", ad, :class => 'delete_folder',:method => :delete %>
+                  <%= link_to "Delete", ad, :class => 'delete_folder',:method => :delete %>
                 </div>
               <% end %>
             <% end %>
@@ -211,3 +211,6 @@
     $(this).parent().addClass('hidden');
   });
 </script>
+<style type="text/css">
+  #add_coupan { min-width: 100px;}
+</style>

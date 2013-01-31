@@ -28,7 +28,7 @@
         <span class="field-label">Password</span>
         <div class="field">
           <span class="display_field"></span>
-          <span class="edit_field hidden"><%= f.password_field :password, :autocomplete => "off"%><%= f.password_field :password_confirmation %></span>
+          <span class="edit_field hidden"><%= f.password_field :password, :autocomplete => "off" ,:style=>'width: 100px;' %><%= f.password_field :password_confirmation,:style=>'width: 100px;' %></span>
         </div>
         <%= link_to 'edit', "#", :class => 'edit' %>
         <%= link_to "cancel", "#", :class => 'cancel', :style => 'display:none' %>
@@ -86,9 +86,15 @@
       </div>
 
     </div>
-  <div class="Middle_Top"></div>
+    <div class="Middle_Top"></div>
 
     <div></div>
 
-  <% end %>	
+  <% end %>
 </div>
+<style type="text/css">
+  .settings .white-background, .about .white-background {
+  }
+  .settings .gray-background, .about .gray-background {
+}
+</style>
