@@ -13,9 +13,7 @@
       Actions
     </td>
     <td>
-
     </td>
-
   </tr>
   <% @category.each do|category| %>
     <tr>
@@ -27,7 +25,6 @@
           <%= category.user.email  %>
         <% end %>
       </td>
-
       <td>
   <%#= link_to "Delete",destroy_userscategories_path(category.id) %>
         <%= link_to "Delete", "#",:onclick=>"$('#hidden_delete_box_#{category.id}').css('display','block');"  %>
@@ -61,7 +58,6 @@
             </tbody>
           <% end %>
         </table>
-
       </td>
     </tr>
   <% end %>
