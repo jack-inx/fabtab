@@ -72,6 +72,7 @@ class RegistrationsController < ApplicationController
       else
         @user = User.new(:email => params[:user_email])
         respond_to do |format|
+           @user_status = "You are now registered! Check your email for confirmation."
           if @user.save
             format.html { redirect_to  '/signin'}
              format.json { render :json => {:response => @user_status} }
@@ -84,10 +85,10 @@ class RegistrationsController < ApplicationController
           @user_status = "You are now registered! Check your email for confirmation."
         # flash[:notice] = "You are now registered! Check your email for confirmation."
       end
-      respond_to do |format|
-        format.html { redirect_to '/signin'}
-        format.json { render :json => {:response => @user_status} }
-      end
+      # respond_to do |format|
+      #   format.html { redirect_to '/signin'}
+      #   format.json { render :json => {:response => @user_status} }
+      # end
     end
   end
 
