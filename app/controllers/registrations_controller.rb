@@ -67,15 +67,14 @@ class RegistrationsController < ApplicationController
       end
     else
       @user = User.find_by_email(params[:user_email])
+      @uname = params[:user_email].split('@')[0]
       if @user
         @user_status = "You have already signed up. Please log in."
       else
-        @user = User.new(:email => params[:user_email])
+        @user = User.new(:email => params[:user_email],:username => @uname ,:password => "12345678", :password_confirmation => "12345678")
         respond_to do |format|
-           @user_status = "You are now registered! Check your email for confirmation."
           if @user.save
             format.html { redirect_to  '/signin'}
-             format.json { render :json => {:response => @user_status} }
             flash[:notice] = "You are now registered! Check your email for confirmation."
           else
             format.html { render :action=> "new" }
@@ -85,10 +84,10 @@ class RegistrationsController < ApplicationController
           @user_status = "You are now registered! Check your email for confirmation."
         # flash[:notice] = "You are now registered! Check your email for confirmation."
       end
-      # respond_to do |format|
-      #   format.html { redirect_to '/signin'}
-      #   format.json { render :json => {:response => @user_status} }
-      # end
+      respond_to do |format|
+        format.html { redirect_to '/signin'}
+        format.json { render :json => {:response => @user_status} }
+      end
     end
   end
 
