@@ -60,10 +60,10 @@ class RegistrationsController < ApplicationController
           end
           #flash[:notice] = "You are now registered! Check your email for confirmation."
         end
-        #        respond_to do |format|
-        #          format.html { redirect_to "/signin" }
-        #          format.json { render :json => {:response => "ok"}.to_json, :status => 200 }
-        #        end
+                respond_to do |format|
+                  # format.html { redirect_to "/signin" }
+                 format.json { render :json => {:response => "ok"}.to_json, :status => 200 }
+               end
       end
     else
       @user = User.find_by_email(params[:user_email])
@@ -83,10 +83,10 @@ class RegistrationsController < ApplicationController
         #  @user_status = "You are now registered! Check your email for confirmation."
         # flash[:notice] = "You are now registered! Check your email for confirmation."
       end
-      #      respond_to do |format|
+            respond_to do |format|
       #        format.html { redirect_to '/signin'}
-      #        format.json { render :json => {:response => @user_status} }
-      #      end
+              format.json { render :json => {:response => @user_status} }
+           end
     end
   end
 
