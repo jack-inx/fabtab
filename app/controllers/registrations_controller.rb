@@ -71,23 +71,36 @@ class RegistrationsController < ApplicationController
       if @user
         @user_status = "You have already signed up. Please log in."
       else
-        @user = User.new(:email => params[:user_email],:username => @uname ,:password => "12345678", :password_confirmation => "12345678")
-        respond_to do |format|
-          if @user.save
-            format.html { redirect_to  '/signin'}
-            flash[:notice] = "You are now registered! Check your email for confirmation."
-          else
-            format.html { render :action=> "new" }
-            format.json { render :json=> @user.errors, status=> :unprocessable_entity }
-          end
-        end
-          @user_status = "You are now registered! Check your email for confirmation."
-        # flash[:notice] = "You are now registered! Check your email for confirmation."
+        @user = User.create(:email => params[:user_email],:username => @uname ,:password => "12345678", :password_confirmation => "12345678")
+        @user_status = "You are now registered! Check your email for confirmation."
+        flash[:notice] = "You are now registered! Check your email for confirmation."
       end
       respond_to do |format|
         format.html { redirect_to '/signin'}
         format.json { render :json => {:response => @user_status} }
-      end
+      end  
+      # @user = User.find_by_email(params[:user_email])
+      # @uname = params[:user_email].split('@')[0]
+      # if @user
+      #   @user_status = "You have already signed up. Please log in."
+      # else
+      #   @user = User.new(:email => params[:user_email],:username => @uname ,:password => "12345678", :password_confirmation => "12345678")
+      #   respond_to do |format|
+      #     if @user.save
+      #       format.html { redirect_to  '/signin'}
+      #       flash[:notice] = "You are now registered! Check your email for confirmation."
+      #     else
+      #       format.html { render :action=> "new" }
+      #       format.json { render :json=> @user.errors, status=> :unprocessable_entity }
+      #     end
+      #   end
+      #     @user_status = "You are now registered! Check your email for confirmation."
+      #   # flash[:notice] = "You are now registered! Check your email for confirmation."
+      # end
+      # respond_to do |format|
+      #   format.html { redirect_to '/signin'}
+      #   format.json { render :json => {:response => @user_status} }
+      # end
     end
   end
 
