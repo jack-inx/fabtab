@@ -15,8 +15,9 @@ class Xdevise::ConfirmationsController < Devise::ConfirmationsController
     @user = User.find_by_confirmation_token(params[:user][:confirmation_token].to_s)
     if @user.complete_registration(params)
       @user = User.confirm_by_token(@user.confirmation_token)
-      set_flash_message :notice, :confirmed      
+      set_flash_message :notice, :confirmed
       sign_in(:user, @user)
+      UserMailer.user_registration(@user).deliver
       respond_to do |format| 
         format.json { render :json=>{:result=>true,:auth_token=>@user.authentication_token}.to_json}
         format.html{redirect_to root_url}

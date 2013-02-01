@@ -376,6 +376,7 @@ class AdsController < ApplicationController
       format.html { render :text => 'Successfully changed the category' }
     end
   end
+  
   def remove_ad
     @ads = Ad.find(params[:id])
     @ads.destroy
