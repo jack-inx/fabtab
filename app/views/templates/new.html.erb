@@ -7,13 +7,15 @@
   ZeroClipboard.setMoviePath( '/assets/ZeroClipboard.swf' );
 
 </script>
-
+<div style="float: right;margin-right:10px; margin-top: -18px;">
+    <%= link_to "All Email Templates",  templates_path, :id=>"add_coupan" %>
+  </div>
 <%= render :partial=> 'templates/scripts' %>
 
 <div class="content" style="float: none;">
 
 
-  <h2>New Template</h2>
+  <h2 style="font-size: 18px;color: #939598;font-weight: bold;">New Template</h2>
 
   <%= form_for(@template, :path=>templates_path) do |f| %>
     <%= render :partial=>"form", :locals=>{:f=>f} %>

@@ -1,25 +1,25 @@
-
-<div class="content" style="float: none;">
-  <span style="float: right;">
+ <div style="float: right;margin-right:10px; margin-top: -18px;">
     <%= link_to "Back",  admin_edit_path, :id=>"add_coupan" %>
-  </span>
+  </div>
+<div class="content" style="float: none;">
+ 
   <br/>
   <br/>
   <div id ="dblist" >
     <% i = 0 %>
     <div class="total_db" >
       <div class="rows">
-        <div  style="width: 296px;float:left;text-align: center;"><b>File Name</b></div>
+        <div class="tabal_div"style="width: 296px;float:left;margin-left: 30px;"><b>File Name</b></div>
         <div style="width: 120px;float:left;">&nbsp;</div>
-        <div style="width: 180px;float:left;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Actions</b></div>
+        <div class="tabal_div" style="width: 180px;float:left; margin-left: -47px;margin-right: 26px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Actions</b></div>
         <div style="width: 90px;float:left;"> &nbsp;</div>
-        <div style="width: 190px;float:left;"><b>Database Creation Date</b></div>
+        <div class="tabal_div" style="width: 190px;float:left;"><b>Database Creation Date</b></div>
       </div>
       <div style="margin-top: 12px;height: 585px;overflow-x: hidden;overflow-y: scroll;width: 933px; float: left;">
         <% @bucket.objects.each do |obj| %>
           <% if obj.key.split('admin/')[1].split('/')[0].to_i == current_user.id %>
             <% if !(obj.key.split('admin/')[1].split('/')[1].nil?) %>
-              <div class="row" id="firstscroll" style="padding: 14px 0 0;">
+              <div class="row" id="firstscroll" style="padding: 0px 0 0;margin-bottom:11px;">
                 <div style="width: 120px;float:left;">
                   <div class="delete_dialog hidden"style="margin: 10px 31px 20px 572px;" id="hidden_delete_box_<%=  i %>">
                     <div class="close" style="margin: 12px 24px;">X</div>
