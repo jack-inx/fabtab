@@ -58,6 +58,7 @@ class BrandRequestsController < ApplicationController
 
 
     respond_to do |format|
+      format.json { redirect_to brand_requests_path }
       format.json { render :json => @brand_request }
     end
   end
