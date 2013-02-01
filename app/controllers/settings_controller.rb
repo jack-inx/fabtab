@@ -39,7 +39,7 @@ class SettingsController < ApplicationController
     if @setting.nil?
       @setting = Setting.new
     end      
-    render 'edit', :layout => 'admin'
+    render 'edit', :layout => 'application'
   end
   def create
     @setting = Setting.new(params[:setting])
@@ -153,7 +153,7 @@ class SettingsController < ApplicationController
     @user = User.page(params[:page]).per(7)
     @ads = Ad.order("created_at desc").all
     respond_to do |format|
-      format.html{ render :layout => "admin"}
+      format.html{ render :layout => "application"}
     end
   end	
 
@@ -232,7 +232,7 @@ class SettingsController < ApplicationController
       @mpassword = @mpasswords
     end
     respond_to do |format|
-      format.html { render :layout =>'admin'}
+      format.html { render :layout =>'application'}
     end
   end
 
@@ -246,14 +246,14 @@ class SettingsController < ApplicationController
           format.html { redirect_to admin_edit_path, notice: 'Master Password was successfully created.' }
           format.json { render json: admin_edit_path, status: :created, location: admin_edit_path }
         else
-          format.html { render action: "master_password",:layout =>'admin' }
+          format.html { render action: "master_password",:layout =>'application' }
           format.json { render json: @mpassword.errors, status: :unprocessable_entity }
         end
       elsif @mpassword.update_attributes(params[:master_password])
         format.html { redirect_to admin_edit_path, notice: 'Master Password was successfully updated.' }
         format.json { head :ok }
       else
-        format.html { render action: "master_password",:layout =>'admin' }
+        format.html { render action: "master_password",:layout =>'application' }
         format.json { render json: @mpassword.errors, status: :unprocessable_entity }
       end
     end
