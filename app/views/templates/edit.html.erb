@@ -13,7 +13,7 @@
 
 <div class="content" style="float: none;">
 
-  <h1 style="font-size: 18px;color: #939598;font-weight: normal;">EDIT TEMPLATE <span style="float: right;margin-right:10px;"> <%= link_to "All Templates", templates_path , :id=>"add_coupan" %></span></h1>
+  <h1 style="font-size: 18px;color: #939598;font-weight: normal;">EDIT EMAIL TEMPLATE<span style="float: right;margin-right:10px;"> <%= link_to "All Templates", templates_path , :id=>"add_coupan" %></span></h1>
   <%= form_for(@template, :path=>template_path, :method=> "put") do |f| %>
 
     <%= render :partial=>"form", :locals=>{:f=>f } %>
