@@ -1,10 +1,15 @@
 <%= link_to "Back",templates_path,:id => "add_coupan", :style => "float: right;margin-top: -56px; margin-right: 10px;" %>
 <div class="content" style="float: none;">
 
-<h1 style="font-size: 18px;color: #939598;font-weight: normal;">VIEW EMAIL TEMPLATE</h1>
+  <h1 style="font-size: 18px;color: #939598;font-weight: normal;">VIEW EMAIL TEMPLATE</h1>
 
 
-Name : <%= @template.name %><br/>
-Purpose : <%= @template.purpose.name %><br/>
-Content : <%= @template.content.html_safe %><br/>
+  Name : <%= @template.name %><br/>
+  Purpose : <%= @template.purpose.name %><br/>
+  Content : <%= @template.content.html_safe %><br/>
 </div>
+<style>
+  .search1 {
+    display: none;
+  }
+</style>

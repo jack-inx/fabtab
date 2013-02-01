@@ -39,7 +39,7 @@ class SettingsController < ApplicationController
     if @setting.nil?
       @setting = Setting.new
     end      
-    render 'edit', :layout => 'admin'
+    render 'edit', :layout => 'application'
   end
   def create
     @setting = Setting.new(params[:setting])
@@ -153,7 +153,7 @@ class SettingsController < ApplicationController
     @user = User.page(params[:page]).per(7)
     @ads = Ad.order("created_at desc").all
     respond_to do |format|
-      format.html{ render :layout => "admin"}
+      format.html{ render :layout => "application"}
     end
   end	
 
