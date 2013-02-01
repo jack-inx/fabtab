@@ -1,7 +1,7 @@
 <div style="float: right;margin-right: 22px;">
   <%= link_to "All User",setting_users_list_path, :id => 'add_coupan' %>
 </div>
- <h2 style="font-size: 18px;color: #939598;font-weight: normal;">EDIT USER</h2>
+ <h2 style="font-size: 18px;color: #939598;font-weight: normal;margin-top: 28px;margin-left: 3px;">EDIT USER</h2>
 
 <%= form_for @user,:url => url_for(:controller=>:settings, :action=>:update_users), :html => {:id => 'new_brand'} do |f| %>
   <div class="brand_name">User Name</div>
