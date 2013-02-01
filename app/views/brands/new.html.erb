@@ -3,7 +3,7 @@
 </div>
 
 <div class="content">
-
+ <h2 style="font-size: 18px;color: #939598;font-weight: normal;">CREATE BRAND CATEGORY</h2>
   <%= form_for @brand, :html => {:id => 'new_brand'} do |f| %>
  <span id ="offer_url" style="color:red;display: none;">Please Enter Following Details </span> <br/>
   <br /> 
@@ -11,7 +11,7 @@
     <%= f.text_field :name , :id => "url"  %>
     <div class="twitter_handle">Brand's Twitter ID</div>
     <%= f.text_field :twitter_handle %> <br/>
-    <div class="brand_logo">Brand folder logo</div>
+    <div class="brand_logo" style="margin-bottom:10px;">Brand folder logo</div>
     <%= f.file_field :logo %>
     <div style="margin-left: 51px;">
       <%= f.submit "Submit", :id => "add_coupan" %>

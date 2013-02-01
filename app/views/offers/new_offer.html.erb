@@ -23,7 +23,7 @@
  <span id ="offer_url" style="color:red;display:none;">Please Enter valid URL </span> <br/>
     <div class="expiry_date">Coupon Expiry Date</div>
     <div class="row offer">
-      <%= date_select('offer','expiry_date', {}, :class => 'datetime') %><br/>
+      <%= date_select('offer','expiry_date', {}, :class => 'datetime' ,:style=>"width:84px;") %><br/>
       <%= hidden_field_tag 'offer[expiry_date(4i)]', '23' %>
       <%= hidden_field_tag 'offer[expiry_date(5i)]', '59' %>
       <%= hidden_field_tag 'offer[expiry_date(6i)]', '59' %>

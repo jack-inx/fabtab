@@ -1,22 +1,23 @@
 <div style="float:right;margin-right:10px;">
 <%= link_to "Back",admin_edit_path, :id =>'add_coupan' %>
 </div>
+ <h2 style="font-size: 18px;color: #939598;font-weight: normal;margin-left:14px;">ALL BRAND CATEGORY</h2>
 
 <div class="content">
   <div class="brands">
 
     <ul class="unstyled" style="margin-top: 50px;">
       <div class="tabal_div"style=" margin-left: 10px;text-align: left;width: 150px;">Brand Name</div>
-      <div class="tabal_div"style="margin-left: 138px;margin-top: -14px;text-align: center;width: 150px;">Actions</div>
+      <div class="tabal_div"style="margin-left: 143px;margin-top: -14px;text-align: center;width: 150px;">Actions</div>
       <% @brands.each do |brand| %>
         <li>
           <%= form_for brand do |f| %>
             <table class="brand_table">
               <tr>
                 <td class="brand_name_data" style="width: 150px;">  <%= brand.name %> </td>
-                <td class="brand_data"> <%= link_to 'View', brand_path(brand), :id => 'add_coupan' %> </td>
-                <td class="brand_data">  <%= link_to 'Edit', edit_brand_path(brand), :id => 'add_coupan' %></td>
-                <td class="brand_data brand_de" id="add_coupan" style="margin-top:10px;">   Delete      </td>
+                <td class="brand_data" style="margin-left: 4px;"> <%= link_to 'View', brand_path(brand), :id => 'add_coupan' %> </td>
+                <td class="brand_data"  style="  margin-left: 4px;">  <%= link_to 'Edit', edit_brand_path(brand), :id => 'add_coupan' %></td>
+                <td class="brand_data brand_de" id="add_coupan" style="margin-top:10px; margin-left: 4px;">   Delete      </td>
                 <div class="delete_dialog hidden" style="margin-left:384px !important;margin-top:8px !important;">
                 <div class="close234" style="margin: 12px 24px;color: #000000;float: right;font-size: 20px;font-weight: bold;line-height: 13.5px; opacity: 0.2; text-shadow: 0 1px 0 #FFFFFF;cursor:pointer;">X</div>
 

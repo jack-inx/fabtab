@@ -3,6 +3,9 @@
   .grid_clz { display: none; }
   .list_clz { display: none; }
 </style>
+<div style="float: right; margin-right: 10px;">
+        <%= link_to "Back",admin_edit_path, :id => 'add_coupan' %>
+      </div>
 <div class="content">
   <div style="margin-left: 30px;font-size: 18px;color: #939598;"> OFFERS MANAGEMENT</div>
   <div id="groupads1">
@@ -16,9 +19,7 @@
 
       </div>
 
-      <div style="float: right;margin-top: -74px; margin-right: 0px;">
-        <%= link_to "Back",admin_edit_path, :id => 'add_coupan' %>
-      </div>
+      
     </div>
     <div id="gridview" class="<%= @gridview %>" style="height: 550px;overflow-x: hidden;overflow-y: scroll;">
       <ul id="folder_ads_carousel1" style="height:200px;">
