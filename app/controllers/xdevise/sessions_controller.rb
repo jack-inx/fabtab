@@ -3,7 +3,7 @@ class Xdevise::SessionsController < Devise::SessionsController
   skip_before_filter :verify_authenticity, :only => [:omniauth]
 
   def new
-    render 'xdevise/sessions/new', :layout => 'signin'
+    render 'xdevise/sessions/new.html.erb', :layout => 'signin'
   end  
 
   def create
@@ -21,16 +21,21 @@ class Xdevise::SessionsController < Devise::SessionsController
             end
           else
             flash[:notice] = 'Invalid credentials'
-            redirect_to '/signin'
+            respond_to do |format|
+              format.html { redirect_to '/signin' }
+              format.json {  render :json => {:response => "Invalid credentials" } }
+            end
           end
         else
           flash[:notice] = 'User is deactivate'
-          redirect_to '/signin'
+            respond_to do |format|
+              format.html { redirect_to '/signin' }
+              format.json {  render :json => {:response => "User is deactivate" } }
+            end
         end
       else
         flash[:notice] = "You have been sent an email to complete your FabTab registration!'"
-        respond_to do |format|
-          
+        respond_to do |format|          
           format.html { redirect_to '/signin' }
           format.json { render :json => {:response => "You have been sent an email to complete your FabTab registration!" } }
         end
