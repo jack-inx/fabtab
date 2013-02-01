@@ -35,15 +35,11 @@ class GroupsController < ApplicationController
   end
   
   def update
-    logger.info "===================="
     if !params[:group].nil?
       category_id = params[:group][:category]
-      logger.info "======if==========#{params[:group][:category]} ============"
     else
-      logger.info "======else===========#{params[:category]} ============"
       category_id = params[:category]
     end
-    logger.info "======update action #{category_id}=============="
 
     @new_group = Group.find_by_user_id_and_category_id(current_user.id, category_id)
     @old_group = Group.find(params[:id])
