@@ -25,6 +25,7 @@ class RegistrationsController < ApplicationController
   
   def create
     if params[:user_email].nil?
+      logger.info "======= step 1========"
       @user = User.find_by_email(params[:user][:email])
       if session[:omniauth]
         unless @user
@@ -40,45 +41,62 @@ class RegistrationsController < ApplicationController
           format.json { render :json => {:response => "ok", :auth_token => @user.authentication_token}.to_json, :status => 200 }
         end
       else
+        logger.info "======= step 2========"
         if @user
+          logger.info "======= step 3========"
           flash[:notice] = "You have already signed up. Please log in"
           respond_to do |format|
+            logger.info "======= step 4========"
             format.html { redirect_to "/signin" }
             format.json { render :json => {:response => "ok"}.to_json, :status => 200 }
           end
         else
+          logger.info "======= step 5========"
           @uname = params[:user][:email].split('@')[0]
           @user = User.new(:email => params[:user][:email],:username => @uname ,:password => "12345678", :password_confirmation => "12345678")
           respond_to do |format|
+            logger.info "======= step 6========"
             if @user.save
+              logger.info "======= step 7========"
               format.html { redirect_to  '/signin'}
               flash[:notice] = "You are now registered! Check your email for confirmation."
             else
+              logger.info "======= step 8========"
               format.html { render :action=> "new" }
               format.json { render :json=> @user.errors, status=> :unprocessable_entity }
             end
+            logger.info "======= step 9========"
           end
+          logger.info "======= step 10========"
           #flash[:notice] = "You are now registered! Check your email for confirmation."
         end
-        respond_to do |format|
-          # format.html { redirect_to "/signin" }
-          format.json { render :json => {:response => "ok"}.to_json, :status => 200 }
-        end
+#        respond_to do |format|
+#          logger.info "======= step 11========"
+#          # format.html { redirect_to "/signin" }
+#          format.json { render :json => {:response => "ok"}.to_json, :status => 200 }
+#        end
+        logger.info "======= step 12========"
       end
     else
+      logger.info "======= step 13========"
       @user = User.find_by_email(params[:user_email])
       @uname = params[:user_email].split('@')[0]
-      if @user
-        @user_status = "You have already signed up. Please log in."
-      else
-        @user = User.create(:email => params[:user_email],:username => @uname ,:password => "12345678", :password_confirmation => "12345678")
-        @user_status = "You are now registered! Check your email for confirmation."
-        flash[:notice] = "You are now registered! Check your email for confirmation."
-      end
       respond_to do |format|
+        logger.info "======= step 14========"
+        if @user
+          logger.info "======= step 15========"
+          @user_status = "You have already signed up. Please log in."
+        else
+          logger.info "======= step 16========"
+          @user = User.create(:email => params[:user_email],:username => @uname ,:password => "12345678", :password_confirmation => "12345678")
+          @user_status = "You are now registered! Check your email for confirmation."
+          flash[:notice] = "You are now registered! Check your email for confirmation."
+        end
+        logger.info "======= step 17========"
         format.html { redirect_to '/signin'}
         format.json { render :json => {:response => @user_status} }
-      end  
+      end
+      logger.info "======= step 18========"
       # @user = User.find_by_email(params[:user_email])
       # @uname = params[:user_email].split('@')[0]
       # if @user
@@ -102,6 +120,7 @@ class RegistrationsController < ApplicationController
       #   format.json { render :json => {:response => @user_status} }
       # end
     end
+    logger.info "======= step 19========"
   end
 
   def unsubscribe
