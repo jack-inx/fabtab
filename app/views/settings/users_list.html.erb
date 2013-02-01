@@ -1,7 +1,7 @@
-<div style="margin-top: 37px;width:933px;height: 35px;margin-left:3px;">
+<div style="margin-top: 37px;width:933px;height: 35px;margin-left:3px;font-size: 17px!important;">
   <span style="margin-right: 15px;font-size: 18px;color: #939598;">USER LIST</span>
-  <%= link_to "Top ","#",:style => "font-size: 18px;color: #939598;",:id => "totop" %> |
-  <%= link_to "Bottom ","#",:style => "font-size: 18px;color: #939598;",:id => "tobottom" %> |
+<%= link_to "Top ","#",:style => "font-size: 18px;color: #939598;",:id => "totop" %><span style="color: #939598;">|</span>
+  <%= link_to "Bottom ","#",:style => "font-size: 18px;color: #939598;",:id => "tobottom" %><span style="color: #939598;">|</span>
   <%= link_to "A-Z",setting_sort_username_path, :remote => "true" ,:style => "font-size: 18px;color: #939598;"%>
   <span style="float: right;margin-right: 12px;">
     <% if MasterPassword.first %> <b>  Master Password: <%= MasterPassword.decrypt %> </b><% end %>
