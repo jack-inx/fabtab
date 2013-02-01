@@ -253,7 +253,7 @@ class SettingsController < ApplicationController
         format.html { redirect_to admin_edit_path, notice: 'Master Password was successfully updated.' }
         format.json { head :ok }
       else
-        format.html { render action: "master_password",:layout =>'admin' }
+        format.html { render action: "master_password",:layout =>'application' }
         format.json { render json: @mpassword.errors, status: :unprocessable_entity }
       end
     end
