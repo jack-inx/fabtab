@@ -18,6 +18,7 @@ class User < ActiveRecord::Base
   validates  :username, :presence => { :message => "can't be blank"}
   validates :password, :confirmation => true, :length => { :minimum => 6}, :on=>:create
 
+  
 
   ajaxful_rater
   
@@ -105,4 +106,5 @@ class User < ActiveRecord::Base
     end
     super
   end
+
 end
