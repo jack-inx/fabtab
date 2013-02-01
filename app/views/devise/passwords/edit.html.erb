@@ -1,20 +1,26 @@
-<h2 class="confirmationHeading">Change your password</h2>
+<h2 class="confirmationHeading" style="margin-left: 274px;">Change your password</h2>
 
 <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put }) do |f| %>
   <%= devise_error_messages! %>
-  <%= f.hidden_field :reset_password_token %>
+  <%= f.hidden_field :reset_password_token %></br>
 
-  <div class="clearfix" style="margin-left:-115px;margin-bottom:1px;"><%= f.label :password, "New password" ,:style => "padding-top:16px;"%><br />
-  <%= f.password_field :password, :autofocus => true %></div>
+  <%= f.password_field :password, :autofocus => true, :placeholder => "New password" ,:class=> "credentials password"%></br>
 
-  <div class="clearfix" style="margin-left:-115px;margin-bottom:12px;"><%= f.label :password_confirmation, "Confirm new password" ,:style => "padding-top:16px;" %><br />
-  <%= f.password_field :password_confirmation %></div>
+  <%= f.password_field :password_confirmation ,:placeholder =>"Confirm new password",:class=>"credentials password"%></br>
 
-  <div class="createAccount" style="margin-left:-120px;"><%= f.submit "Change my password" %></div>
+  <div class="createAccount" style="margin-left:-162px;"><%= f.submit "Change my password" %></div>
 <% end %>
-<div style="margin-left:320px;">
-<%= render "devise/shared/links" %>
-</div>
+<%- if controller_name != 'sessions' %>
+  <%= link_to "Sign in", new_session_path(resource_name) ,:class=>"login_link", :style=>"margin-left:274px;"%><br />
+<% end -%>
+<style type="text/css">
+  a:hover {
+    color : #8BC541
+  }
+  .login_link {
+    margin-left: 6px;
+  }
+</style>
 
 
 
