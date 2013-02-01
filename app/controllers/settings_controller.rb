@@ -232,7 +232,7 @@ class SettingsController < ApplicationController
       @mpassword = @mpasswords
     end
     respond_to do |format|
-      format.html { render :layout =>'admin'}
+      format.html { render :layout =>'application'}
     end
   end
 
@@ -246,7 +246,7 @@ class SettingsController < ApplicationController
           format.html { redirect_to admin_edit_path, notice: 'Master Password was successfully created.' }
           format.json { render json: admin_edit_path, status: :created, location: admin_edit_path }
         else
-          format.html { render action: "master_password",:layout =>'admin' }
+          format.html { render action: "master_password",:layout =>'application' }
           format.json { render json: @mpassword.errors, status: :unprocessable_entity }
         end
       elsif @mpassword.update_attributes(params[:master_password])
