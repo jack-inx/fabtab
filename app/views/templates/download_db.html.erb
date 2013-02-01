@@ -19,7 +19,7 @@
         <% @bucket.objects.each do |obj| %>
           <% if obj.key.split('admin/')[1].split('/')[0].to_i == current_user.id %>
             <% if !(obj.key.split('admin/')[1].split('/')[1].nil?) %>
-              <div class="row" id="firstscroll" style="padding: 0px 0 0;">
+              <div class="row" id="firstscroll" style="padding: 0px 0 0;margin-bottom:11px;">
                 <div style="width: 120px;float:left;">
                   <div class="delete_dialog hidden"style="margin: 10px 31px 20px 572px;" id="hidden_delete_box_<%=  i %>">
                     <div class="close" style="margin: 12px 24px;">X</div>
