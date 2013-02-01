@@ -18,7 +18,8 @@ class DeviceMailer < Devise::Mailer
       @var = @var.gsub("{{user_name}}",record.username)
       @var = @var.gsub("{{user_email}}",record.email)
       @var = @var.gsub('{{user_ema<font size="2">il}}',record.email)
-      @var = @var.gsub("{{confirm_my_account}}",confirmation_link)
+
+      @var = @var.gsub("{{confirm_my_account}}","<a href=#{href=confirmation_link}>Click here</a>")
       mail(:to => record.email, :subject => "Confirmation instructions") do |format|
         format.html { render :text => @var.html_safe}
       end
@@ -40,8 +41,8 @@ class DeviceMailer < Devise::Mailer
       @var = @var.gsub("{{user_name}}",record.username)
       @var = @var.gsub("{{user_email}}",record.email)
       @var = @var.gsub('{{user_ema<font size="2">il}}',record.email)
-      @var = @var.gsub("{{unsubscribe}}",unsubscribe_link)
-      @var = @var.gsub("{{lost_password}}",edit_password)
+      @var = @var.gsub("{{unsubscribe}}","<a href=#{unsubscribe_link}>Click here</a>")
+      @var = @var.gsub("{{lost_password}}","<a href=#{edit_password}>Click here</a>")
       mail(:to=>record.email, :subject=>"Reset password instructions") do |format|
         format.html { render :text => @var.html_safe }
       end
