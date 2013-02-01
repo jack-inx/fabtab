@@ -1,6 +1,8 @@
-  <div style="float: right;margin-right: 10px;">
+  <div style="float: right;margin-right: 10px;margin-top: 14px;">
     <%= link_to "Back" , edit_brand_path(params[:id]) ,:class => 'btn medium success add_offer' %>
   </div>
+   <h2 style="font-size: 18px;color: #939598;font-weight: normal;margin-left:14px;margin-top: 10px;margin-left: 5px;">ADD COUPON FOR OFFER</h2>
+
 <div class="right">
   <%= form_for @offer, :url => {:controller => 'offers', :action => 'create'}, :html => { :multipart => true, :target => "_self" }, :class => 'hidden' do |f| %>
     <%= hidden_field_tag 'brand[id]', params[:id] %>
