@@ -9,7 +9,7 @@
         </div>
         <%= link_to 'edit', "#", :class => 'edit' %>
         <%= link_to "cancel", "#", :class => 'cancel', :style => 'display:none' %>
-        <%= submit_tag 'save', :class => 'save btn success small' , :style => 'display:none'%>
+        <%= submit_tag 'save', :class => 'save btn success small' , :id => 'add_coupan', :style => 'display:none'%>
       </div>
     </div>
     <div class="gray-background">
@@ -20,7 +20,7 @@
         </div>
         <%= link_to 'edit', "#", :class => 'edit' %>
         <%= link_to "cancel", "#", :class => 'cancel', :style => 'display:none' %>
-        <%= f.submit 'save', :class => 'save btn success small' , :style => 'display:none'%>
+        <%= f.submit 'save', :class => 'save btn success small' , :id => 'add_coupan', :style => 'display:none'%>
       </div>
     </div>
     <div class="white-background">
@@ -32,7 +32,7 @@
         </div>
         <%= link_to 'edit', "#", :class => 'edit' %>
         <%= link_to "cancel", "#", :class => 'cancel', :style => 'display:none' %>
-        <%= f.submit 'save', :class => 'save btn success small' , :style => 'display:none'%>
+        <%= f.submit 'save', :class => 'save btn success small' , :id => 'add_coupan', :style => 'display:none'%>
       </div>
     </div>
     <div class="gray-background">
@@ -45,7 +45,7 @@
         </div>
         <%= link_to 'edit', "#", :class => 'edit' %>
         <%= link_to "cancel", "#", :class => 'cancel', :style => 'display:none' %>
-        <%= f.submit 'save', :class => 'save btn success small' , :style => 'display:none'%>
+        <%= f.submit 'save', :class => 'save btn success small' , :id => 'add_coupan', :style => 'display:none'%>
 
       </div>
     </div>
@@ -58,7 +58,7 @@
         </div>
         <%= link_to 'edit', "#", :class => 'edit' %>
         <%= link_to "cancel", "#", :class => 'cancel', :style => 'display:none' %>
-        <%= f.submit 'save', :class => 'save btn success small' , :style => 'display:none'%>
+        <%= f.submit 'save', :class => 'save btn success small' , :id => 'add_coupan', :style => 'display:none'%>
       </div>
     </div>
     <div class="gray-background">
@@ -105,4 +105,7 @@
     margin-left: 24px;
     margin-bottom: -41px; margin-top: 12px;
   }
+  #add_coupan {
+    margin-top: -6px;
+}
 </style>
