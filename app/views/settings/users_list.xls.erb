@@ -11,7 +11,6 @@
         <Cell><Data ss:Type="String">User Name</Data></Cell>
         <Cell><Data ss:Type="String">Email</Data></Cell>
         <Cell><Data ss:Type="String">Zipcode</Data></Cell>
-        <Cell><Data ss:Type="String">Admin</Data></Cell>
         <Cell><Data ss:Type="String">Number offers count</Data></Cell>
         <Cell><Data ss:Type="String">Super Folder Brand Count</Data></Cell>
         <Cell><Data ss:Type="String">Brand Request Count</Data></Cell>
@@ -23,7 +22,6 @@
           <Cell><Data ss:Type="String"><%= user.username %></Data></Cell>
           <Cell><Data ss:Type="String"><%= user.email %></Data></Cell>
           <Cell><Data ss:Type="String"><%= user.zipcode %></Data></Cell>
-          <Cell><Data ss:Type="String"><% if  user.admin == true %>Yes<%else%>No<%end%></Data></Cell>
           <Cell><Data ss:Type="String"><%= user.offer_count %></Data></Cell>
           <Cell><Data ss:Type="String"><%= user.super_folder %></Data></Cell>
           <Cell><Data ss:Type="String"><%= user.brand_requests.count %></Data></Cell>
