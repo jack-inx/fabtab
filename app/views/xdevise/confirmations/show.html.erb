@@ -1,10 +1,10 @@
 <div style="margin-left:35px;">
-  <div class="login_link" style="margin-left: 367px;">Please complete your account setup</div>
+  <div class="login_links color_text" style="margin-left: 242px; font-size: 20px;color : '#404040' !important">Please complete your account setup</div>
   <%= form_for(@user, :as=> :user, :url => confirm_user_path, :html => { :method => :post }) do |f| %>
     <% unless flash[:error].nil? %>
       <ul>
         <% flash[:error].each do |error| %>
-          <li class="errors"><%= error %></li>
+          <li class="errors" style=" margin-left: 67px;"><%= error %></li>
         <% end %>
       </ul>
     <% end %>
@@ -25,7 +25,11 @@
       </div>
     </div>
 
-    <div class="createAccount" ><%= f.submit "Create account" , :style=>" margin-left: 186px !important;"%></div>
+    <div class="createAccount" ><%= f.submit "Create account" , :style=>" margin-left: 288px !important;"%></div>
   <% end %>
 </div>
-
+<style type="text/css">
+  .color_text {
+    color : '#404040' !important;
+  }
+</style>
