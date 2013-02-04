@@ -10,7 +10,7 @@
 
   <div class="submit"><%= f.submit "Sign Up",  :class => 'login_button', :style=>"margin-left: 262px;" %></div>
   <div class="add_text_for_term">By creating an account, I accept<br/>
-    MyFabTab's<%= link_to "Terms and Conditions",promo_terms_path, :class=>"login_link term_and_condition_text" %></div>
+    MyFabTab's<%= link_to "Terms and Conditions",promo_terms_path, :class=>"term_and_condition_text",:style=>'color:#404040;font-weight:bold;' %></div>
   <%= link_to "Sign in", "/signin", :style=>"margin-left: -2px;",:class => "login_link" %><br />
 
 <% end %>
