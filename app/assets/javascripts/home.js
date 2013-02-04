@@ -293,7 +293,7 @@ $(document).ready(function() {
                 $(self).find('.email .field .display_field').text(data.email);
                 $(self).find('.username .field .display_field').text(data.username);
                 $(self).find('.zipcode .field .display_field').text(data.zipcode);
-                var div = "<div class='delete_dialog' style='margin-left: 69px ! important; margin-top: -335px ! important;'><div class='title' style='margin-left:15px;font-size:19px !important;margin-top:66px;'></div><div class='close234 close_dialog_offer'>X</div><div style='color: rgb(126, 190, 87); font-size: 23px; font-weight: bold; margin-left: 28px; margin-top: 83px;'>Successful!</div></div></br></br>";
+                var div = "<div class='delete_dialog' style='margin-left: 69px ! important; margin-top: -335px ! important;'><div class='title' style='margin-left:15px;font-size:19px !important;margin-top:66px;'></div><div class='close234 close_dialog_offer'>X</div><div class='my_setting'>My Settings </div><div style='color: rgb(126, 190, 87); font-size: 23px; font-weight: normal; margin-left: 12px; margin-top: 83px;'>Save Successfully</div></div></br></br>";
                 $('.Middle_Top').after(div);
                 var mask = "<div id='mask_div' style='opacity:0.5;position: absolute;left:0; top:0;height:190%;width:100%;z-index: 50;background:#000;'></div>";
                 $('body').after(mask);
