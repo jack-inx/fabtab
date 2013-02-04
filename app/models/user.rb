@@ -50,7 +50,7 @@ class User < ActiveRecord::Base
 
   def complete_registration(params)
     if params[:user][:password].empty? || params[:user][:password_confirmation].empty?
-      add_error_on(:password, "is blank. Password should be of length 6 or more")
+      add_error_on(:password, "is blank, Password should be of length 6 or more")
     elsif params[:user][:password] != params[:user][:password_confirmation]
       add_error_on(:password, "and Password Confirmation are not same. Please enter again.")
     else
