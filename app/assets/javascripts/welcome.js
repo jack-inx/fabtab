@@ -1,6 +1,6 @@
 var lastRefreshTime = null;
 var reloadUserAds = function(){
-    var adsUrl = lastRefreshTime === null ? '/ads.json' : '/ads.json?modified_since=' + lastRefreshTime;
+    var adsUrl = lastRefreshTime == null ? '/ads.json' : '/ads.json?modified_since=' + lastRefreshTime;
     $.get(adsUrl, function(data,textStatus,jqXHR){
         updateAdsByEveryone(data);
         lastRefreshTime = jqXHR.getResponseHeader('date');
