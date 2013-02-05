@@ -29,24 +29,47 @@ MFTModule1::Application.routes.draw do
   resources :demos
   resources :optin_ads
   resources :groups
-  resources :brands do
-    member do
-      get 'ads'
-    end
-  end
+
   
   resources :offers
-  resources :settings
   resources :authentications
-  resources :brand_requests
   resources :demo_images
   resources :feedback
 
-resources :templates
-match 'run/:format'=>"templates#run"
- match "templates/delete_selection"=>"templates#delete_at_index"
-match "/my/sample/ind" => "ads#index"
-  match 'db'=>"templates#download_db"
+  scope "/admin" do
+    resources :settings
+
+    resources :brand_requests
+
+    resources :brands do
+      member do
+        get 'ads'
+      end
+    end
+  
+    resources :templates
+    
+    match 'db'=>"templates#download_db"
+    match 'master_password'=>'settings#master_password'
+    match 'new_mpassword' => 'settings#new_mpassword'
+    match '/setting/category_list' => 'settings#category_list'
+    match '/setting/category_ads/:id' => 'settings#category_ads', :as => "category_ads"
+    match '/setting/allusersads' => 'settings#allusersads'
+    match '/setting/multipleads' => 'settings#multipleads'
+    match '/setting/users_list' => 'settings#users_list'
+    match '/setting/new_users' => 'settings#new_users'
+    match '/setting/create_users' => 'settings#create_users'
+    match '/setting/edit_users/:id' => 'settings#edit_users', :as => "edit_users"
+    match '/setting/update_users/:id' => 'settings#update_users', :as => "update_users"
+    match '/setting/destroy_users/:id' => 'settings#destroy_users', :as => "destroy_users"
+    match '/setting/show_users/:id' => 'settings#show_users', :as => "show_users"
+    match 'run/:format'=>"templates#run"
+
+
+  end
+  
+  match "templates/delete_selection"=>"templates#delete_at_index"
+  match "/my/sample/ind" => "ads#index"
 
   match 'delete_file'=>"templates#delete_file"
   match '/ads/flags_ad/:id'=>'ads#flags_ad'
@@ -89,10 +112,7 @@ match "/my/sample/ind" => "ads#index"
   match '/predictive_search' => 'search#predictive_search'
   match '/invite' => 'users#invite'
   match '/invite/email' => 'users#email'
-  match '/setting/category_list' => 'settings#category_list'
-  match '/setting/category_ads/:id' => 'settings#category_ads', :as => "category_ads"
-  match '/setting/allusersads' => 'settings#allusersads'
-  match '/setting/multipleads' => 'settings#multipleads'
+ 
   match '/setting/destroy_ads/:id' => 'settings#destroy_ads', :as => "destroy_ads"
   match '/setting/destroy_userscategories/:id' => 'settings#destroy_userscategories', :as => "destroy_userscategories"
   match '/setting/ignore_notification/:id' => 'settings#ignore_notification', :as => "ignore_ad"
@@ -100,13 +120,7 @@ match "/my/sample/ind" => "ads#index"
   match '/setting' => 'settings#parameters'
   match '/setting/multipleuser' => 'settings#multipleuser'
   match '/setting/sort_username' => 'settings#sort_username'
-  match '/setting/users_list' => 'settings#users_list'
-  match '/setting/new_users' => 'settings#new_users'
-  match '/setting/create_users' => 'settings#create_users'
-  match '/setting/edit_users/:id' => 'settings#edit_users', :as => "edit_users"
-  match '/setting/update_users/:id' => 'settings#update_users', :as => "update_users"
-  match '/setting/destroy_users/:id' => 'settings#destroy_users', :as => "destroy_users"
-  match '/setting/show_users/:id' => 'settings#show_users', :as => "show_users"
+
   match '/setting/destroy_fbtw/:id' => 'settings#destroy_fbtw' , :as => "destroy_fbtw"
   match '/admin/edit' => 'settings#edit'
   match '/follow_brand' => 'users#follow_brand'
@@ -122,16 +136,15 @@ match "/my/sample/ind" => "ads#index"
   get '/ads_show/:ad_id', :to => 'ads#ads_show'
   get '/omniauth_fb/:uid/:email' => 'settings#omniauth_fb'
   get '/omniauth_tw/:uid' => 'settings#omniauth_tw'
-  resources :templates do
-    
-  end
+  #  resources :templates do
+  #
+  #  end
   resources :purposes
 
   match 'unsubscribe_me' => "registrations#unsubscribe"
 
   match "templates/delete_selection"=>"templates#delete_at_index"
-  match 'master_password'=>'settings#master_password'
-  match 'new_mpassword' => 'settings#new_mpassword'
+
 
   get '/home/render_div'=>'home#render_div'
 
