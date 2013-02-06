@@ -36,7 +36,6 @@ MFTModule1::Application.routes.draw do
   resources :demo_images
   resources :feedback
 
-
   resources :brands do
     member do
       get 'ads'
@@ -47,6 +46,7 @@ MFTModule1::Application.routes.draw do
     resources :settings
 
     resources :brand_requests
+
 
   
     resources :templates
