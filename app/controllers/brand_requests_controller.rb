@@ -58,7 +58,7 @@ class BrandRequestsController < ApplicationController
 
 
     respond_to do |format|
-      format.html { redirect_to brand_requests_path }
+      format.html { redirect_to brand_requests_path, :flash[:notice]=>"Brand request successfully handled" }
       format.json { render :json => @brand_request }
     end
   end

@@ -1,7 +1,7 @@
 <div style="float: right;margin-right: 22px;">
-  <%= link_to "All User",setting_users_list_path, :id => 'add_coupan' %>
+  <%= link_to "All User",setting_users_list_path, :id => 'add_coupan' ,:class=>"alerts" %>
 </div>
- <h2 style="font-size: 18px;color: #939598;font-weight: normal;margin-top: 28px;margin-left: 3px;">EDIT USER</h2>
+<h2 style="font-size: 18px;color: #939598;font-weight: normal;margin-top: 28px;margin-left: 3px;">EDIT USER</h2>
 
 <%= form_for @user,:url => url_for(:controller=>:settings, :action=>:update_users), :html => {:id => 'new_brand'} do |f| %>
   <div class="brand_name">User Name</div>
@@ -14,7 +14,18 @@
   <div class="brand_logo">Admin
     <%= f.check_box :admin %>
   </div><br />
-  <%= f.submit "Update", :id => "add_coupan" %>
-  <%= link_to "Cancel", setting_users_list_path,:id => "add_coupan" %>
+  <%= f.submit "Update", :id => "add_coupan" , :class=>'update_me' %>
+  <%= link_to "Cancel", setting_users_list_path,:id => "add_coupan" ,:class=>"alerts" %>
 <% end %>
 
+<script type="text/javascript">
+  $('.alerts').on('click',function(){
+    $(window).bind('beforeunload', function(){
+      return 'Are you sure you want to leave?';
+    });
+  });
+  $('.update_me').on('click',function(){
+    window.onbeforeunload = null;
+  });
+
+</script>
