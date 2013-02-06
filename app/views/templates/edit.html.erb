@@ -1,28 +1,37 @@
 <%= javascript_include_tag "nicEdit" %>
-<%= javascript_include_tag "ZeroClipboard" %>
+<%#= javascript_include_tag "ZeroClipboard" %>
 
 <script type="text/javascript">
   //<![CDATA[
   bkLib.onDomLoaded(function() { nicEditors.allTextAreas() });
   //]]>
 
-  ZeroClipboard.setMoviePath( '/assets/ZeroClipboard.swf' );
-
 </script>
-<%= render :partial=> 'templates/scripts' %>
+<%#= render :partial=> 'templates/scripts' %>
 
 <div class="content" style="float: none;">
 
-  <h1 style="font-size: 18px;color: #939598;font-weight: normal;margin-left: 3px;margin-top: 28px;">EDIT EMAIL TEMPLATE<span style="float: right;margin-right:10px;"> <%= link_to "All Templates", templates_path , :id=>"add_coupan" %></span></h1>
+  <h1 style="font-size: 18px;color: #939598;font-weight: normal;margin-left: 3px;margin-top: 28px;">EDIT EMAIL TEMPLATE<span style="float: right;margin-right:10px;"> <%= link_to "All Templates", templates_path , :id=>"add_coupan",:class=>"alerts" %></span></h1>
   <%= form_for(@template, :path=>template_path, :method=> "put") do |f| %>
 
     <%= render :partial=>"form", :locals=>{:f=>f } %>
 
-    <%= f.submit "Update" , :id=>"add_coupan" %>
+    <%= f.submit "Update" , :id=>"add_coupan", :class=>'update_me' %>
 
-    <%= link_to "Cancel", templates_path , :id=>"add_coupan" %>
+    <%= link_to "Cancel", templates_path , :id=>"add_coupan" ,:class=>"alerts" %>
   <% end %>
 
   <%= render :partial=>'templates/clipboard_text' %>
 
 </div>
+<script type="text/javascript">
+  $('.alerts').on('click',function(){
+    $(window).bind('beforeunload', function(){
+      return 'Are you sure you want to leave?';
+    });
+  });
+  $('.update_me').on('click',function(){
+    window.onbeforeunload = null;
+  });
+
+</script>

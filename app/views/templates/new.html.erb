@@ -8,9 +8,9 @@
 
 </script>
 <div style="float: right;margin-right:10px; margin-top: 3px;">
-  <%= link_to "All Email Templates",  templates_path, :id=>"add_coupan" %>
+  <%= link_to "All Email Templates",  templates_path, :id=>"add_coupan",:class=>"alerts" %>
 </div>
-<%= render :partial=> 'templates/scripts' %>
+<%#= render :partial=> 'templates/scripts' %>
 
 <div class="content" style="float: none;">
 
@@ -19,8 +19,8 @@
 
   <%= form_for(@template, :path=>templates_path) do |f| %>
     <%= render :partial=>"form", :locals=>{:f=>f} %>
-    <%= f.submit "Create", :id=>"add_coupan" %>
-    <%= link_to "Cancel", templates_path, :id=>"add_coupan" %>
+    <%= f.submit "Create", :id=>"add_coupan", :class=>'update_me' %>
+    <%= link_to "Cancel", templates_path, :id=>"add_coupan" ,:class=>"alerts" %>
   <% end %>
   <%= render :partial=>'templates/clipboard_text' %>
 
@@ -34,3 +34,14 @@
     display: none;
   }
 </style>
+<script type="text/javascript">
+  $('.alerts').on('click',function(){
+    $(window).bind('beforeunload', function(){
+      return 'Are you sure you want to leave?';
+    });
+  });
+  $('.update_me').on('click',function(){
+    window.onbeforeunload = null;
+  });
+
+</script>
