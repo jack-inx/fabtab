@@ -36,16 +36,18 @@ MFTModule1::Application.routes.draw do
   resources :demo_images
   resources :feedback
 
+
+  resources :brands do
+    member do
+      get 'ads'
+    end
+  end
+
   scope "/admin" do
     resources :settings
 
     resources :brand_requests
 
-    resources :brands do
-      member do
-        get 'ads'
-      end
-    end
   
     resources :templates
     

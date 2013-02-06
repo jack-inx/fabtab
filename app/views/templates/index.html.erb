@@ -46,7 +46,7 @@
               </td>
               <td style="border-left:none !important;">
                 <%= link_to "View", template_path(f)%> <span class="login_link"> | </span><%= link_to "Edit", edit_template_path(f) %><span class="login_link"> | </span>
-                <%= link_to "Delete", "#",:onclick=>"$('#hidden_delete_box_#{f.id}').css('display','block');"  %></td>
+                <%= link_to "Delete", "#",:onclick=>"show_delete_box(#{f.id})"  %></td>
             </tr>
           <% end %>
         </tbody>
@@ -57,6 +57,13 @@
   <% end %>
 
   <script type="text/javascript">
+    function show_delete_box(id){
+      function show(e){
+        e.preventDefault();
+      }
+      $('#hidden_delete_box_'+id).css('display','block');
+    }
+    
     document.onload =  $("#delete_all").hide();
 
     $('.close').click(function(){
@@ -128,6 +135,6 @@
   }
   .search1 {
     display: none;
-}
+  }
 </style>
 
