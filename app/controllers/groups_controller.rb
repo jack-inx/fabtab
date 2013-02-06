@@ -33,8 +33,7 @@ class GroupsController < ApplicationController
       format.json { render :json => @ad.to_json }
     end
   end
-  
-  def update
+   def update
     if !params[:group].nil?
       category_id = params[:group][:category]
     else
@@ -43,7 +42,7 @@ class GroupsController < ApplicationController
 
     @new_group = Group.find_by_user_id_and_category_id(current_user.id, category_id)
     @old_group = Group.find(params[:id])
-    
+
     logger.info @old_group.id
     if @new_group
       if @new_group.category == @old_group.category
@@ -69,6 +68,7 @@ class GroupsController < ApplicationController
     end
 
   end
+ 
   
   def destroy
     @group = Group.find(params[:id])

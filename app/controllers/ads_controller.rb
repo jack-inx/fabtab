@@ -70,14 +70,14 @@ class AdsController < ApplicationController
         if !params[:tabcategory].blank?
           #          logger.info "=========step 6 #{params[:brandname]}"
           if params[:brandname].to_i == 0 
-            @category = Category.find_by_name_and_user_id(params[:tabcategory],@user.id)
+            @category = Category.find_by_name(params[:tabcategory])
             #            logger.info "=== step 7 #{@category.nil?}"
             if !@category.nil?
               #              logger.info "========= step 8======="
-              @category = Category.find_by_name_and_user_id(params[:tabcategory],@user.id)
+              @category = Category.find_by_name(params[:tabcategory])
             else
               #              logger.info "========= step 9======="
-              @category = Category.find_or_create_by_name_and_user_id(params[:tabcategory].downcase,current_user.id)
+              @category = Category.find_or_create_by_name(params[:tabcategory].downcase)
             end
 
           else
@@ -85,16 +85,17 @@ class AdsController < ApplicationController
             @category = Category.find_or_create_by_name_and_brand_id_and_user_id(params[:tabcategory].downcase,params[:brandname].to_i,current_user.id)
           end
         else
+          
           #          logger.info "========= step 11 ======= #{params[:category]} "
           @category_new = Category.find_by_id(params[:category])
-          @category = Category.find_by_name_and_user_id(@category_new.name,@user.id)
-          if !@category.nil?
-            #            logger.info "==== step 12 =="
-            @category = Category.find_by_name_and_user_id(@category_new.name,@user.id)
-          else
-            #            logger.info "==== step 13 =="
-            @category = Category.find_or_create_by_name_and_user_id(@category_new.name,current_user.id)
-          end
+          @category = Category.find_by_name(@category_new.name)
+#          if !@category.nil?
+#            #            logger.info "==== step 12 =="
+#            @category = Category.find_by_name_and_user_id(@category_new.name,@user.id)
+#          else
+#            #            logger.info "==== step 13 =="
+#            @category = Category.find_or_create_by_name_and_user_id(@category_new.name,current_user.id)
+#          end
 
         end
         #        logger.info "==== step 14 == #{params[:brandname]}"
@@ -230,11 +231,11 @@ class AdsController < ApplicationController
     if params[:tabcategory]
       if params[:brandname].to_i == 0
         #        @category = Category.find_or_create_by_name_and_user_id(params[:tabcategory].downcase, @user.id)
-        @category = Category.find_by_name_and_user_id(params[:tabcategory],@user.id)
+        @category = Category.find_by_name(params[:tabcategory])
         if !@category.nil?
-          @category = Category.find_by_name_and_user_id(params[:tabcategory],@user.id)
+          @category = Category.find_by_name(params[:tabcategory])
         else
-          @category = Category.find_or_create_by_name_and_user_id(params[:tabcategory].downcase,current_user.id)
+          @category = Category.find_or_create_by_name(params[:tabcategory].downcase)
        	end
       else
         @category = Category.find_or_create_by_name_and_brand_id(params[:tabcategory].downcase, params[:brandname].to_i)
@@ -312,11 +313,11 @@ class AdsController < ApplicationController
     if params[:tabcategory]
       if params[:brandname].to_i == 0
         # @category = Category.find_or_create_by_name_and_user_id(params[:tabcategory].downcase, @user.id)
-        @category = Category.find_by_name_and_user_id(params[:tabcategory],@user.id)
+        @category = Category.find_by_name(params[:tabcategory])
         if !@category.nil?
-          @category = Category.find_by_name_and_user_id(params[:tabcategory],@user.id)
+          @category = Category.find_by_name(params[:tabcategory])
         else
-          @category = Category.find_or_create_by_name_and_user_id(params[:tabcategory].downcase,current_user.id)
+          @category = Category.find_or_create_by_name(params[:tabcategory].downcase)
         end
       else
         @category = Category.find_or_create_by_name_and_brand_id(params[:tabcategory].downcase, params[:brandname].to_i)
