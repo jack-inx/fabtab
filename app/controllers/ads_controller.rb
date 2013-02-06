@@ -77,7 +77,7 @@ class AdsController < ApplicationController
               @category = Category.find_by_name(params[:tabcategory])
             else
               #              logger.info "========= step 9======="
-              @category = Category.find_or_create_by_name(params[:tabcategory].downcase)
+              @category = Category.find_or_create_by_name_and_user_id(params[:tabcategory].downcase,@user.id)
             end
 
           else
@@ -89,13 +89,13 @@ class AdsController < ApplicationController
           #          logger.info "========= step 11 ======= #{params[:category]} "
           @category_new = Category.find_by_id(params[:category])
           @category = Category.find_by_name(@category_new.name)
-#          if !@category.nil?
-#            #            logger.info "==== step 12 =="
-#            @category = Category.find_by_name_and_user_id(@category_new.name,@user.id)
-#          else
-#            #            logger.info "==== step 13 =="
-#            @category = Category.find_or_create_by_name_and_user_id(@category_new.name,current_user.id)
-#          end
+          #          if !@category.nil?
+          #            #            logger.info "==== step 12 =="
+          #            @category = Category.find_by_name_and_user_id(@category_new.name,@user.id)
+          #          else
+          #            #            logger.info "==== step 13 =="
+          #            @category = Category.find_or_create_by_name_and_user_id(@category_new.name,current_user.id)
+          #          end
 
         end
         #        logger.info "==== step 14 == #{params[:brandname]}"
