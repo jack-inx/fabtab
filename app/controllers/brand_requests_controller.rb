@@ -54,9 +54,9 @@ class BrandRequestsController < ApplicationController
       UserMailer.brand_folder_set_up(@user,@ad.url,@ad.brand.name, @var).deliver
     end
     @brand_request.destroy
-
+    flash[:notice]="Brand request successfully handled"
     respond_to do |format|
-      format.html { redirect_to brand_requests_path, flash[:notice]="Brand request successfully handled" }
+      format.html { redirect_to brand_requests_path}
       format.json { render :json => @brand_request }
     end
   end
