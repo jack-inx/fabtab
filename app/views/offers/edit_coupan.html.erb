@@ -1,8 +1,10 @@
-<div>
-  <div class="right">
-    <div style="float: right;margin-right: 175px;line-height: 42px;">
+    <div style="float: right; margin-right: 10px; margin-top: 14px;outline: medium none !important;">
       <%= link_to "Back" , edit_brand_path(params[:id]) ,:class => 'btn medium success add_offer' %>
     </div>
+<div>
+  <div class="right">
+<h2 style="font-size: 18px;color: #939598;font-weight: normal;margin-left:14px;margin-top: 10px;margin-left: 5px;">EDIT COUPON FOR OFFER</h2>
+
     <%= form_for @coupan , :url => update_coupans_path(@coupan, :brand_id => @brand_id), :html => { :multipart => true, :target => "_self" ,:style=>"line-height:28px;"}, :class => 'hidden' do |f| %>
   <%#= hidden_field_tag 'brand[id]', params[:id] %>
   <%#= f.hidden_field :ad_id, :value => @ad_id %>
@@ -31,7 +33,7 @@
   <%= hidden_field_tag 'offer[expiry_date(5i)]', '59' %>
   <%= hidden_field_tag 'offer[expiry_date(6i)]', '59' %>
       </div>
-      <div style="margin-top: 7px;margin-bottom: 45px;">
+      <div style="margin-top: 7px;margin-bottom: 55px;">
         <%= f.submit "Save Coupan", :class => 'btn medium success add_offer' %>
       </div>
     <% end %>

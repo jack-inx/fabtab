@@ -36,7 +36,7 @@
 			<li class="group" data-folder="<%#= brand_folder.category.name %>">
 			<% if current_user.admin? %>
 				<% unless brand_folder.permanent? %>
-				<%= link_to "Edit", '#', :class => 'edit-button hidden' %>
+				<%= link_to "Edit", '#', :class => 'edit-button hidden',:style=>"outline: medium none !important;" %>
 				<div class="edit_dialog hidden">
 					<div class="message">Edit.</div>
 					<%= form_for brand_folder do %>

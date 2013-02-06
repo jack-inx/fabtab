@@ -97,7 +97,7 @@ margin-top:-91px;' %>
         <%= hidden_field_tag "ad[ad_type]" %>
         <%= hidden_field_tag :email, current_user.email %>
         <div class="cancel">cancel tab <%= link_to image_tag('/assets/icon_delete.png'), '#' %></div>
-        <%= link_to image_tag('/assets/save.png'), '#', :class => 'tabit' %>
+        <%= link_to image_tag('/assets/save.png'), '#', :class => 'tabit' :style=>"outline: medium none !important;"%>
       <% end %>
 
     </div>
