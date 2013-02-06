@@ -1,5 +1,5 @@
   <div style="float: right;margin-right: 10px;margin-top: 14px;outline: medium none !important;">
-    <%= link_to "Back" , edit_brand_path(params[:id]) ,:class => 'btn medium success add_offer' %>
+    <%= link_to "Back" , edit_brand_path(params[:id]) ,:class => 'add_coupan' %>
   </div>
    <h2 style="font-size: 18px;color: #939598;font-weight: normal;margin-left:14px;margin-top: 10px;margin-left: 5px;">ADD COUPON FOR OFFER</h2>
 
@@ -30,7 +30,7 @@
       <%= hidden_field_tag 'offer[expiry_date(5i)]', '59' %>
       <%= hidden_field_tag 'offer[expiry_date(6i)]', '59' %>
     </div>
-    <%= f.submit "Add Coupon", :class => 'btn medium success add_offer',:style=>"margin-bottom:189px;outline: medium none !important;" %>
+    <%= f.submit "Add Coupon", :class => 'add_coupan',:style=>"margin-bottom:189px;outline: medium none !important;" %>
 
   <% end %>
 </div>
@@ -83,3 +83,27 @@
   });
 
 </script>
+<style>
+.add_coupan{
+ background-color: #7EBE57;
+    background-image: -moz-linear-gradient(center top , #7EBE57, #7EBE57);
+    background-repeat: repeat-x;
+    border-color: #7EBE57;
+    border-radius: 4px 4px 4px 4px;
+    border-style: solid;
+    border-width: 1px;
+    color: white;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 15px;
+    line-height: normal;
+    padding: 5px 14px 6px;
+    text-decoration: none;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+    width: auto;
+  }
+  a:hover{
+    color:white !important;
+    text-decoration: none !important;
+  }
+</style>

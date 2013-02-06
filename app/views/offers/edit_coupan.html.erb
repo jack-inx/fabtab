@@ -1,5 +1,5 @@
     <div style="float: right; margin-right: 10px; margin-top: 14px;outline: medium none !important;">
-      <%= link_to "Back" , edit_brand_path(params[:id]) ,:class => 'btn medium success add_offer' %>
+      <%= link_to "Back" , edit_brand_path(params[:id]) ,:class => 'add_coupan' %>
     </div>
 <div>
   <div class="right">
@@ -34,7 +34,7 @@
   <%= hidden_field_tag 'offer[expiry_date(6i)]', '59' %>
       </div>
       <div style="margin-top: 7px;margin-bottom: 55px;">
-        <%= f.submit "Save Coupan", :class => 'btn medium success add_offer' ,:style=>"outline: medium none !important;"%>
+        <%= f.submit "Save Coupan", :class => 'add_coupan' ,:style=>"outline: medium none !important;"%>
       </div>
     <% end %>
   </div>
@@ -77,4 +77,27 @@
 
 
 </script>
-
+<style>
+.add_coupan{
+ background-color: #7EBE57;
+    background-image: -moz-linear-gradient(center top , #7EBE57, #7EBE57);
+    background-repeat: repeat-x;
+    border-color: #7EBE57;
+    border-radius: 4px 4px 4px 4px;
+    border-style: solid;
+    border-width: 1px;
+    color: white;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 15px;
+    line-height: normal;
+    padding: 5px 14px 6px;
+    text-decoration: none;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+    width: auto;
+  }
+  a:hover{
+    color:white !important;
+    text-decoration: none !important;
+  }
+</style>
