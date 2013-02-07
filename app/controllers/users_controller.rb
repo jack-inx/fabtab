@@ -91,10 +91,10 @@ class UsersController < ApplicationController
   end  
 
   def invite
-#    @email_info= params[:format]
-#    if !@email_info.nil?
-#      flash[:notice] = "Email successfully sent"
-#    end
+    #    @email_info= params[:format]
+    #    if !@email_info.nil?
+    #      flash[:notice] = "Email successfully sent"
+    #    end
     render 'invite', :layout => 'settings'
   end
 
@@ -126,9 +126,11 @@ class UsersController < ApplicationController
     end
     if count > 0
       UserMailer.invite(current_user,email_list,@var).deliver
-      flash[:notice] = "Email successfully sent"
     else
       flash[:notice] = "Please enter valid addresses separated by comma only"
+    end
+    if count > 0
+      flash[:notice] = "Email successfully sent"
     end
     redirect_to promo_invite_path
   end
