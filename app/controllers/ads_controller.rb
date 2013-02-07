@@ -144,12 +144,16 @@ class AdsController < ApplicationController
 
   def destroy
     @ad = Ad.find(params[:id])
+    @ad_offer = @ad.offers
+    @ad_offer.each do |offer|
+      offer.destroy
+    end
     brand = @ad.brand_id
     if @ad.destroy
       respond_to do |format|
         format.json{ render :json => { :response => "success" }}
         flash[:notice]="Offer successfully deleted!"
-        format.html { redirect_to setting_allusersads_path }
+        format.html { redirect_to edit_brand_path(brand) }
       end    
     else
       respond_to do |format|
