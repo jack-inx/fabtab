@@ -94,7 +94,10 @@ class CategoriesController < ApplicationController
     if(params[:category_name].nil?)
       @user_folders = @user.groups.sort {|group_a,group_b| group_b.updated_at <=> group_a.updated_at }.reject { |group| (group.category.nil? && group.permanent? )}
       @category_ids = @user_folders.map {|i| i.category_id }
+      logger.info "========================#{@category_ids.inspect}================================================"
+
       @all_user_categories = Category.where("id in (?)", @category_ids)
+      logger.info "========================#{@all_user_categories.count}================================================"
       @ad = Ad.where("user_id = ?",@user.id)
       @ad.each do |ad|
         @brand << ad.brand
@@ -103,7 +106,10 @@ class CategoriesController < ApplicationController
     else
       @all_user_categories = Category.find_for_user_by_name(@user.id, params[:category_name])
     end
+      logger.info "========================#{@all_user_categories.count}================================================"
+        logger.info "========================#{@brand.count}================================================"
     @brand.uniq!
+            p "========================#{@brand.count}================================================"
     render :json=>  { :categories => @all_user_categories.as_json, :brand => @brand.as_json }
   end
 
