@@ -1,13 +1,4 @@
-<% if @template.errors.any? %>
-  <div id="error_explanation">
 
-    <ul>
-      <% @template.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
 <div class="brand_name">*Name</div> <br/>  <%= f.text_field :name %><br/><br/><br/><br/>
 <div class="brand_name">*Purpose</div><br/>
 <%= f.select(:purpose_id, Purpose.all.map{|p|[p.name, p.id]},:prompt=>"Select one") %>
@@ -19,10 +10,10 @@
 </div>
 <br/><br/>
 <style type="text/css">
- .nicEdit-main ol li{
+  .nicEdit-main ol li{
     list-style:  inherit;
   }
- .nicEdit-main ul li{
+  .nicEdit-main ul li{
     list-style:  inherit;
   }
   a:hover {

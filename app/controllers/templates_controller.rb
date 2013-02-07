@@ -19,7 +19,8 @@ class TemplatesController < ApplicationController
       redirect_to @template
       flash[:notice] = "Template created successfully."
     else
-      render :action => "new", :message => @template
+      flash[:notice] = "#{@template.errors.full_messages.join(', ')}"
+      render :action => "new"
     end
   end
 
@@ -40,6 +41,7 @@ class TemplatesController < ApplicationController
       flash[:notice] = "Updated successfully"
       redirect_to templates_path
     else
+      flash[:notice] = "#{@template.errors.full_messages.join(', ')}"
       render "edit"
     end
   end
