@@ -1,95 +1,95 @@
 <div style="float:right;margin-right:10px;margin-top: 13px;">
-<%= link_to "Back to All Brands",brands_path, :id => "add_coupan" %>
+  <%= current_user.admin? ?  (link_to "Back to All Brands",brands_path, :id => "add_coupan") : (link_to "Back",root_path, :id => "add_coupan") %>
 </div>
 <div class="content">
-	<div class='referdialog hidden'>
-		<div class='title'>Refer A <span>Friend.</span></div>
-		<div>
-                  
-			<%= form_tag url_for(:controller => :optin_ads, :action => 'refer')  do %>
-				<div class='clearfix row'>
-					<span class='greeting'>hello</span>
-					<input type='text' class='span3 name' name='optin_ad[name]' placeholder='type friends name here'></input>
-					<span class='right'>Send Using:</span>
-					<div class='twitter-widget'>
-						<a href="http://twitter.com/share"
-						    class="twitter-share-button"
-						    data-text="Ad Text"
-								data-url="www.myfabtab.com"
-						    data-count="none">Tweet</a>
-					</div>
-					<div class='message row'>Check out this cool offer from MyFabTab. I think you are going to like it!</div>
-					<input type='text' name='optin_ad[email]' class='span3 email' placeholder ='type email address here'/>
-					<input type='hidden' name='optin_ad[id]' id='ad_id'>
-				</div>
-				<input type='submit' class='btn success submit' value='Send' />
-			<% end %>
-			
-		</div>
-	</div>
-	<div class="row section brand_ads carousel">
-		<div class="title"><%= @brand.name %><span> Offers</span></div>
-		<ul id='brand_ads_carousel'>
-		 <% if current_user.admin? %>
-			<% @brand_folders.each do |brand_folder| %>
-			<% if brand_folder.ads.count > 0  %>
-			<li class="group" data-folder="<%#= brand_folder.category.name %>">
-			<% if current_user.admin? %>
-				<% unless brand_folder.permanent? %>
-				<%= link_to "Edit", '#', :class => 'edit-button hidden',:style=>"outline: medium none !important;" %>
-				<div class="edit_dialog hidden">
-					<div class="message">Edit.</div>
-					<%= form_for brand_folder do %>
-					<%= select_tag "category", options_from_collection_for_select(@category, "id", "name"), :prompt => "Select a category" %>
-					<div class="delete">
-						delete tab
-						<%= link_to image_tag('/assets/icon_delete.png'), '#' %>
-					</div>
-					<div class="delete_dialog hidden">
-						<div class="title">Delete.</div>
-						<div class="message-text">Delete this Folder?</div>
-						<%= link_to "Delete", "#", :class => 'delete_folder' %>
-					</div>					
-					 
-					<%= link_to "Save", '#', :class => 'save' %>
+  <div class='referdialog hidden'>
+    <div class='title'>Refer A <span>Friend.</span></div>
+    <div>
 
-					<% end %>
-				</div>
+      <%= form_tag url_for(:controller => :optin_ads, :action => 'refer')  do %>
+        <div class='clearfix row'>
+          <span class='greeting'>hello</span>
+          <input type='text' class='span3 name' name='optin_ad[name]' placeholder='type friends name here'></input>
+          <span class='right'>Send Using:</span>
+          <div class='twitter-widget'>
+            <a href="http://twitter.com/share"
+               class="twitter-share-button"
+               data-text="Ad Text"
+               data-url="www.myfabtab.com"
+               data-count="none">Tweet</a>
+          </div>
+          <div class='message row'>Check out this cool offer from MyFabTab. I think you are going to like it!</div>
+          <input type='text' name='optin_ad[email]' class='span3 email' placeholder ='type email address here'/>
+          <input type='hidden' name='optin_ad[id]' id='ad_id'>
+        </div>
+        <input type='submit' class='btn success submit' value='Send' />
+      <% end %>
 
-				<% end %>
-			<% end %>
-				<a href="<%= group_path(brand_folder.id) %>">
-					<div class="folder">		
-						<div class="folder-content">
-							<% brand_folder.ads.reverse_order.limit(4).each do |ad| %>
-								<% if ad.status == true %>
-								<div class="image">
-									<% if ad.ad_type == "video" %>
-										<%= image_tag video_thumbnail(ad), :class => 'folder-images' %>
-									<% else %>
-										<%= image_tag ad.image_url, :class => 'folder-images' %>
-									<% end %>
-								</div>			
-							<% end %>					
-							<% end %>
-						</div>
-					</div>
-				</a>
-				<div class="folder-category"><% if !brand_folder.category.nil? %> <%= brand_folder.category.name %><% end %></div>
-			</li>
-			<% end %>
-			<% end %>
-<% end %>
-<% else %>
-	 <% @group = Group.where("brand_id = ? and user_id =?",@brand,current_user.id) %>
-        <% @group.each do |brand_folder| %>
-          <% if brand_folder.ads.count > 0 %>
+    </div>
+  </div>
+  <div class="row section brand_ads carousel">
+    <div class="title"><%= @brand.name %><span> Offers</span></div>
+    <ul id='brand_ads_carousel'>
+      <% if current_user.admin? %>
+        <% @brand_folders.each do |brand_folder| %>
+          <% if brand_folder.ads.count > 0  %>
             <li class="group" data-folder="<%#= brand_folder.category.name %>">
+              <% if current_user.admin? %>
+                <% unless brand_folder.permanent? %>
+                  <%= link_to "Edit", '#', :class => 'edit-button hidden',:style=>"outline: medium none !important;" %>
+                  <div class="edit_dialog hidden">
+                    <div class="message">Edit.</div>
+                    <%= form_for brand_folder do %>
+                      <%= select_tag "category", options_from_collection_for_select(@category, "id", "name"), :prompt => "Select a category" %>
+                      <div class="delete">
+                        delete tab
+                        <%= link_to image_tag('/assets/icon_delete.png'), '#' %>
+                      </div>
+                      <div class="delete_dialog hidden">
+                        <div class="title">Delete.</div>
+                        <div class="message-text">Delete this Folder?</div>
+                        <%= link_to "Delete", "#", :class => 'delete_folder' %>
+                      </div>
+
+                      <%= link_to "Save", '#', :class => 'save' %>
+
+                    <% end %>
+                  </div>
+
+                <% end %>
+              <% end %>
               <a href="<%= group_path(brand_folder.id) %>">
                 <div class="folder">
                   <div class="folder-content">
                     <% brand_folder.ads.reverse_order.limit(4).each do |ad| %>
-		<% if ad.status == true %>
+                      <% if ad.status == true %>
+                        <div class="image">
+                          <% if ad.ad_type == "video" %>
+                            <%= image_tag video_thumbnail(ad), :class => 'folder-images' %>
+                          <% else %>
+                            <%= image_tag ad.image_url, :class => 'folder-images' %>
+                          <% end %>
+                        </div>
+                      <% end %>
+                    <% end %>
+                  </div>
+                </div>
+              </a>
+              <div class="folder-category"><% if !brand_folder.category.nil? %> <%= brand_folder.category.name %><% end %></div>
+            </li>
+          <% end %>
+        <% end %>
+      <% end %>
+    <% else %>
+      <% @group = Group.where("brand_id = ? and user_id =?",@brand,current_user.id) %>
+      <% @group.each do |brand_folder| %>
+        <% if brand_folder.ads.count > 0 %>
+          <li class="group" data-folder="<%#= brand_folder.category.name %>">
+            <a href="<%= group_path(brand_folder.id) %>">
+              <div class="folder">
+                <div class="folder-content">
+                  <% brand_folder.ads.reverse_order.limit(4).each do |ad| %>
+                    <% if ad.status == true %>
                       <div class="image">
                         <% if ad.ad_type == "video" %>
                           <%= image_tag video_thumbnail(ad), :class => 'folder-images' %>
@@ -97,50 +97,50 @@
                           <%= image_tag ad.image_url, :class => 'folder-images' %>
                         <% end %>
                       </div>
-		<% end %>
                     <% end %>
-                  </div>
+                  <% end %>
                 </div>
-              </a>
-              <div class="folder-category"><% if !brand_folder.category.nil? %><%= brand_folder.category.name %> <% end %> </div>
-            </li>
-          <% end %>
-<% end %>
+              </div>
+            </a>
+            <div class="folder-category"><% if !brand_folder.category.nil? %><%= brand_folder.category.name %> <% end %> </div>
+          </li>
+        <% end %>
+      <% end %>
 
-		</ul>
-	</div>
-	
-	<div class='row'>
-		<div class='left-section brand_extra_offers carousel'>	
-			<div class="title">Extra <span>Coupons</span></div>
-			<ul id="extra_offers_carousel">				
-				<% @brand_extra_offers.each do |extra_offer| %>  
-					<li>
-						<div class="ad_image">
-							<%= link_to image_tag(extra_offer.image.url), "#", :onClick=>"window.open('#{ extra_offer.url }','pagename','resizable,height=450,width=600');" %>
-						</div>
-						<div class="extra-offer-expiry">
-							Expiry Date <%= extra_offer.expiry_date.strftime("%d/%m/%y") %>
-						</div>
-					</li>
-			  <% end %>
-			</ul>	
-		</div>
-		<div class='right-section twitter'>
-			<div class='title'>Brand <span>Link</span></div>
-			<% if @twitter_information %>
-			<div class="twitter-handle-location"><%= "@#{@twitter_information['name']} #{@twitter_information['location']}" %></div>
-			<div class='twitter-feed'><%= @twitter_information['description'] %></div>
-			<div class="account-site-url"><%= @twitter_information['url'] %></div>
-			<div class="twitter-site"><%= link_to image_tag('/assets/twitter.png'), "https://twitter.com/#{@twitter_information['screen_name']}", :target => '_blank' %></div>
-			<div class="twitter-follow">
-				<a href="<%= "https://twitter.com/#{@twitter_information['screen_name']}" %>" class="twitter-follow-button" data-show-count="false" data-lang="en" data-show-screen-name="false">Follow @<%= @twitter_information['screen_name'] %></a>
-				<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-			</div>
-			<div class="go-to-site"><%= link_to "Go To Site", @twitter_information['url'], :class => 'account-site', :target => '_blank' %></div>
-			<% else %>
-				<div class="twitter-handle-location">Please enter a valid twitter handle</div>
-			<% end %>
-		</div>
-	</div>
+    </ul>
+  </div>
+
+  <div class='row'>
+    <div class='left-section brand_extra_offers carousel'>
+      <div class="title">Extra <span>Coupons</span></div>
+      <ul id="extra_offers_carousel">
+        <% @brand_extra_offers.each do |extra_offer| %>
+          <li>
+            <div class="ad_image">
+              <%= link_to image_tag(extra_offer.image.url), "#", :onClick=>"window.open('#{ extra_offer.url }','pagename','resizable,height=450,width=600');" %>
+            </div>
+            <div class="extra-offer-expiry">
+              Expiry Date <%= extra_offer.expiry_date.strftime("%d/%m/%y") %>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+    <div class='right-section twitter'>
+      <div class='title'>Brand <span>Link</span></div>
+      <% if @twitter_information %>
+        <div class="twitter-handle-location"><%= "@#{@twitter_information['name']} #{@twitter_information['location']}" %></div>
+        <div class='twitter-feed'><%= @twitter_information['description'] %></div>
+        <div class="account-site-url"><%= @twitter_information['url'] %></div>
+        <div class="twitter-site"><%= link_to image_tag('/assets/twitter.png'), "https://twitter.com/#{@twitter_information['screen_name']}", :target => '_blank' %></div>
+        <div class="twitter-follow">
+          <a href="<%= "https://twitter.com/#{@twitter_information['screen_name']}" %>" class="twitter-follow-button" data-show-count="false" data-lang="en" data-show-screen-name="false">Follow @<%= @twitter_information['screen_name'] %></a>
+          <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+        </div>
+        <div class="go-to-site"><%= link_to "Go To Site", @twitter_information['url'], :class => 'account-site', :target => '_blank' %></div>
+      <% else %>
+        <div class="twitter-handle-location">Please enter a valid twitter handle</div>
+      <% end %>
+    </div>
+  </div>
 </div>
