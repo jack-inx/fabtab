@@ -89,7 +89,7 @@ class UsersController < ApplicationController
         @ad.brand.followers << current_user
       end
       respond_to do |format|
-        render :text => 'You have already contacted this brand'
+        flash[:notice] = 'You have already contacted this brand'
         format.json { render :json => { :location => brand_path(@ad.brand) } }
       end
     end
