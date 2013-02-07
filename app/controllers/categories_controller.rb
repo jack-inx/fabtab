@@ -93,7 +93,7 @@ class CategoriesController < ApplicationController
     @brand = []
     if(params[:category_name].nil?)
       @user_folders = @user.groups.sort {|group_a,group_b| group_b.updated_at <=> group_a.updated_at }.reject { |group| (group.category.nil? && group.permanent? )}
-      @category_ids = @user_folders.map{|i| if i.user_id!=null 
+      @category_ids = @user_folders.map{|i| if i.user_id!=NULL 
         i.category_id 
       end
     }
