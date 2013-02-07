@@ -97,9 +97,9 @@ class CategoriesController < ApplicationController
       @user_folders = @user.groups.sort {|group_a,group_b| group_b.updated_at <=> group_a.updated_at }.reject { |group| (group.category.nil? && group.permanent? )}
       @user_folders.each do |i|
         #if !i.user_id.nil? 
-          @ads_new = Ad.where("category_id = ?",i.category_id)
-          logger.info "out of user folders==========================#{@ads_new.count}"
-          if !@ads_new.nil?
+          @ads_new = Ad.where("group_id = ?",i.id)
+          logger.info "out of user folders==========================#{@ads_new.length}"
+          if !@ads_new.blank?
             @category_new_ids << i.category_id 
           end
         #end
