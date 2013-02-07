@@ -1,90 +1,100 @@
 <ul id="folder_ads_carousel">
-<% if !@group_ads.nil? %>
-  <% @group_ads.each do |ad| %>
- <% if ad.status == true %>
-    <li>
-      <div class = "options">
-        <% if current_user.admin? %>
-          <div class="top-options">
-            <%= link_to "share", ad_path(ad.id), :class => 'share outline_remove' %>
-            <%= link_to "move", ad_path(ad.id), :class => 'move outline_remove' %>
-            <%= link_to "delete", ad_path(ad.id), :class => 'delete outline_remove' %>
-          </div>
-          <div class="bottom-options">
-            <%= link_to "more from brand","/follow_brand?ad_id=#{ad.id}", :class => 'follow_brand outline_remove' %>
-            <%= link_to "rate it",ad_path(ad.id), :class => 'rate hidden outline_remove' %>
-          </div>
-        <% elsif ad.user_ad? || ad.group.permanent? %>
-          <div class="top-options">
-            <%= link_to "share", ad_path(ad.id), :class => 'share outline_remove' %>
-            <%= link_to "move", ad_path(ad.id), :class => 'move outline_remove' %>
-            <%= link_to "delete", ad_path(ad.id), :class => 'delete outline_remove' %>
-          </div>
-          <div class="bottom-options">
-            <%= link_to "more from brand","/follow_brand?ad_id=#{ad.id}", :class => 'follow_brand outline_remove' %>
-            <%= link_to "rate it",ad_path(ad.id), :class => 'rate hidden outline_remove' %>
-          </div>
-        <% else %>
-          <div class="top-options">
-            <%= link_to "share", ad_path(ad.id), :class => 'share outline_remove' %>
-            <%= link_to "move", ad_path(ad.id), :class => 'move outline_remove' %>
-            <%= link_to "delete", ad_path(ad.id), :class => 'delete outline_remove' %>
-          </div>
-          <div class="bottom-options">
-            <%#= link_to "more from brand","/follow_brand?ad_id=#{ad.id}", :class => 'follow_brand' %>
-            <%= link_to "rate it",ad_path(ad.id), :class => 'rate hidden outline_remove' %>
-          </div>
-        <% end %>
-        <div class="share_dialog hidden outline_remove">
-
-	 <div class="facebook-share"><fb:like width="80" show_faces="false" action="recommend" layout="button_count" href="<%= ad_url(ad.id) %>"></fb:like></div>
- <div class="twitter-share"><a href="https://twitter.com/share" class="twitter-share-button" data-lang="en" data-text="Check out this cool offer from MyFabTab. I think you are going to like it! <%= ad_url(ad.id) %>">Tweet</a>
-            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-          </div>
-        </div>
-      </div>
-      <div class="ad_image">
-        <% if ad.ad_type == "video" %>
-          <iframe src="<%= ad.image_url %>" width="210" height="160" border="none"></iframe>
-        <% else %>
-          <% if ad.ad_type == "url" %>
-      <%#= image_tag '/assets/default_for_scanit.png', :class => 'folder-images' %>
-                <% @url = ad.url %>
-		<%= link_to image_tag(ad.image_url, :size => "215x182"), '#' , :onClick=>"window.open('#{ ad.url }','pagename','resizable,height=450,width=600');" %>
-                <%#= link_to "",URI.decode(ad.url), :target => '_blank' , :class => "ads_link" %>
-          <% else %>
-            <% if !ad.url.nil? %>
-              <%= link_to image_tag(ad.image_url), '#' , :onClick=>"window.open('#{ ad.url }','pagename','resizable,height=450,width=600');" %>
-            <% elsif !ad.image_url.nil? %>
-              <%= link_to image_tag(ad.image_url), '#', :onClick=>"window.open('#{ ad.image_url }','pagename','resizable,height=450,width=600');" %>
+  <% if !@group_ads.nil? %>
+    <% @group_ads.each do |ad| %>
+      <% if ad.status == true %>
+        <li>
+          <div class = "options">
+            <% if current_user.admin? %>
+              <div class="top-options">
+                <%= link_to "share", ad_path(ad.id), :class => 'share outline_remove' %>
+                <%= link_to "move", ad_path(ad.id), :class => 'move outline_remove' %>
+                <%= link_to "delete", ad_path(ad.id), :class => 'delete outline_remove' %>
+              </div>
+              <div class="bottom-options">
+                <%= link_to "more from brand","/follow_brand?ad_id=#{ad.id}", :class => 'follow_brand outline_remove' %>
+                <%= link_to "rate it",ad_path(ad.id), :class => 'rate hidden outline_remove' %>
+              </div>
+            <% elsif ad.user_ad? || ad.group.permanent? %>
+              <div class="top-options">
+                <%= link_to "share", ad_path(ad.id), :class => 'share outline_remove' %>
+                <%= link_to "move", ad_path(ad.id), :class => 'move outline_remove' %>
+                <%= link_to "delete", ad_path(ad.id), :class => 'delete outline_remove' %>
+              </div>
+              <div class="bottom-options">
+                <%= link_to "more from brand","/follow_brand?ad_id=#{ad.id}", :class => 'follow_brand outline_remove' %>
+                <%= link_to "rate it",ad_path(ad.id), :class => 'rate hidden outline_remove' %>
+              </div>
+            <% else %>
+              <div class="top-options">
+                <%= link_to "share", ad_path(ad.id), :class => 'share outline_remove' %>
+                <%= link_to "move", ad_path(ad.id), :class => 'move outline_remove' %>
+                <%= link_to "delete", ad_path(ad.id), :class => 'delete outline_remove' %>
+              </div>
+              <div class="bottom-options">
+        <%#= link_to "more from brand","/follow_brand?ad_id=#{ad.id}", :class => 'follow_brand' %>
+                <%= link_to "rate it",ad_path(ad.id), :class => 'rate hidden outline_remove' %>
+              </div>
             <% end %>
-      <%#= link_to image_tag(ad.image_url), URI.decode(ad.url || ad.image_url), :target => '_blank' %>
-          <% end %>
-        <% end %>
-      </div>
-      <div class="ad-details">
-        <div class="image-url">
-          <% if !ad.url.nil? %>
-            <%= URI.parse(URI.encode(ad.url)).host %>
-          <% elsif !ad.image_url.nil? %>
-            <%= URI.parse(URI.encode(ad.image_url)).host %>
-          <% end %>
-  <%#= URI.parse(URI.encode(ad.url)).host || URI.parse(URI.encode(ad.image_url)).host %>
-        </div>
-        <% @offer = Offer.find_by_ad_id(ad.id) %>
-        <% if !@offer.nil? %>
-        <div class="folder-name outline_remove"><%= @offer.name%></div>
-        <% end %>
-      </div>
-      <div class="rating_dialog hidden outline_remove">
-        <div class="title">Rate It.</div>
-        <%= ratings_for ad, current_user, :show_user_rating => true %>
-      </div>
+            <div class="share_dialog hidden outline_remove">
 
-    </li>
-<% end %>
+              <div class="facebook-share"><fb:like width="80" show_faces="false" action="recommend" layout="button_count" href="<%= ad_url(ad.id) %>"></fb:like></div>
+              <div class="twitter-share">
+                <!-- twitter -->
+                <a href="https://twitter.com/share" class="twitter-share-button" data-text="Check out this cool offer from MyFabTab. I think you are going to like it! <%= ad_url(ad.id) %>" data-size="large">Tweet</a>
+                <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+                <!--
+                                <a href="https://twitter.com/share" class="twitter-share-button" data-lang="en" data-text="Check out this cool offer from MyFabTab. I think you are going to like it! <%= ad_url(ad.id) %>">
+                  Tweet
+                </a>
+                <script>
+                    !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+                </script>
+                -->
+              </div>
+            </div>
+          </div>
+          <div class="ad_image">
+            <% if ad.ad_type == "video" %>
+              <iframe src="<%= ad.image_url %>" width="210" height="160" border="none"></iframe>
+            <% else %>
+              <% if ad.ad_type == "url" %>
+          <%#= image_tag '/assets/default_for_scanit.png', :class => 'folder-images' %>
+                <% @url = ad.url %>
+                <%= link_to image_tag(ad.image_url, :size => "215x182"), '#' , :onClick=>"window.open('#{ ad.url }','pagename','resizable,height=450,width=600');" %>
+          <%#= link_to "",URI.decode(ad.url), :target => '_blank' , :class => "ads_link" %>
+              <% else %>
+                <% if !ad.url.nil? %>
+                  <%= link_to image_tag(ad.image_url), '#' , :onClick=>"window.open('#{ ad.url }','pagename','resizable,height=450,width=600');" %>
+                <% elsif !ad.image_url.nil? %>
+                  <%= link_to image_tag(ad.image_url), '#', :onClick=>"window.open('#{ ad.image_url }','pagename','resizable,height=450,width=600');" %>
+                <% end %>
+          <%#= link_to image_tag(ad.image_url), URI.decode(ad.url || ad.image_url), :target => '_blank' %>
+              <% end %>
+            <% end %>
+          </div>
+          <div class="ad-details">
+            <div class="image-url">
+              <% if !ad.url.nil? %>
+                <%= URI.parse(URI.encode(ad.url)).host %>
+              <% elsif !ad.image_url.nil? %>
+                <%= URI.parse(URI.encode(ad.image_url)).host %>
+              <% end %>
+      <%#= URI.parse(URI.encode(ad.url)).host || URI.parse(URI.encode(ad.image_url)).host %>
+            </div>
+            <% @offer = Offer.find_by_ad_id(ad.id) %>
+            <% if !@offer.nil? %>
+              <div class="folder-name outline_remove"><%= @offer.name%></div>
+            <% end %>
+          </div>
+          <div class="rating_dialog hidden outline_remove">
+            <div class="title">Rate It.</div>
+            <%= ratings_for ad, current_user, :show_user_rating => true %>
+          </div>
+
+        </li>
+      <% end %>
+    <% end %>
   <% end %>
-<% end %>
 </ul>
 <div class="delete_dialog hidden">
   <div class="title">Delete.</div>
@@ -111,7 +121,7 @@
 </div>
 
 
-  <div id="fb-root"></div>
+<div id="fb-root"></div>
 <script>
   window.fbAsyncInit = function() {
     FB.init({
