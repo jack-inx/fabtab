@@ -95,11 +95,14 @@ class CategoriesController < ApplicationController
     if(params[:category_name].nil?)
 
       @user_folders = @user.groups.sort {|group_a,group_b| group_b.updated_at <=> group_a.updated_at }.reject { |group| (group.category.nil? && group.permanent? )}
+      logger.info "=== user foldfer #{@user_folders.count}"
       @user_folders.each do |i|
-        if !i.user_id.nil? || !i.user_id.blank?
+      logger.info "=== user foldfer #{i.user_id}"
+        if !i.user_id.nil? || !i.user_id.blank? || i.user_id != NULL ||!i.user_id.empty?
           @category_new_ids << i.category_id 
         end
       end
+      logger.info "=== user foldfer #{@category_new_ids.count}"
       @all_user_categories = Category.where("id in (?)", @category_new_ids)
       @ad = Ad.where("user_id = ?",@user.id)
       @ad.each do |ad|
