@@ -79,43 +79,60 @@ class UsersController < ApplicationController
         render :text => 'Thank you, this brand will be in touch with you soon!'
       end
     else
-      unless @ad.brand.followers.include?(current_user)        
+      unless @ad.brand.followers.include?(current_user)
+        logger.info "adding user in list of brand followers"
         @ad.brand.followers << current_user
       end
       respond_to do |format|
+        flash[:notice] = 'You have already contacted this brand'
         format.json { render :json => { :location => brand_path(@ad.brand) } }
       end
     end
   end  
 
   def invite
-    @email_info= params[:format]
-    if !@email_info.nil?
-      flash[:notice] = "Email successfully sent"
-    end
+    #    @email_info= params[:format]
+    #    if !@email_info.nil?
+    #      flash[:notice] = "Email successfully sent"
+    #    end
     render 'invite', :layout => 'settings'
   end
+
+
   def email
+
+    email_list = []
+    count = 0
     emails = params[:email].split(',')
-    
-    purpose = Purpose.arel_table
-    purpose_id = Purpose.where(purpose[:name].matches("%invitation%")).first.id
-    template = Template.find_by_purpose_id(purpose_id)
+    emails.each do |f|
 
+      if f =~ /^([^\s]+)((?:[-a-z0-9]\.)[a-z]{2,})$/i
 
-    #template = Template.find_by_purpose("Invitation")
-    if template
-      @var = template.content
-      @var = @var.gsub('{{user_ema<font size="2">il}}', current_user.email)
-      registration_link = new_registration_url
-      @var = @var.gsub("{{subscribe}}", "<a href=#{registration_link}>Click here</a>")
+        purpose = Purpose.arel_table
+        purpose_id = Purpose.where(purpose[:name].matches("%invitation%")).first.id
+        template = Template.find_by_purpose_id(purpose_id)
 
-      @var = @var.gsub("{{user_email}}", current_user.email)
- 
-      @var = @var.gsub("{{user_name}}",current_user.nickname.capitalize)
-      UserMailer.invite(current_user,emails,@var).deliver
+        if template
+          count =count + 1
+          @var = template.content
+          @var = @var.gsub('{{user_ema<font size="2">il}}', current_user.email)
+          registration_link = new_registration_url
+          @var = @var.gsub("{{subscribe}}", "<a href=#{registration_link}>Click here</a>")
+          @var = @var.gsub("{{user_email}}", current_user.email)
+          @var = @var.gsub("{{user_name}}",current_user.nickname.capitalize)
+          email_list << f
+        end
+      end
     end
-    redirect_to promo_invite_path(emails)
+    if count > 0
+      UserMailer.invite(current_user,email_list,@var).deliver
+    else
+      flash[:notice] = "Please enter valid addresses separated by comma only"
+    end
+    if count > 0
+      flash[:notice] = "Email successfully sent"
+    end
+    redirect_to promo_invite_path
   end
 
 
