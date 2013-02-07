@@ -51,7 +51,7 @@
             <%= link_to "View",show_users_path(user.id) %> |
           </div>
           <div class="edit"><%= link_to "Edit",edit_users_path(user.id) %> | </div>
-          <div class="delete"><%= link_to "Delete","#",:onclick=>"$('#hidden_delete_box_#{user.id}').css('display','block');"  %> | </div>
+          <div class="delete"><%= link_to "Delete","#",:onclick=>"show_delete_box(#{user.id})"  %> | </div>
           <div class="delete_dialog hidden" id="hidden_delete_box_<%=  user.id %>" style="margin-left: 635px;">
             <div class="close" style="margin: 12px 24px;">X</div>
             <div class="title" style="margin-left: 7px;"> Delete</div>
@@ -72,7 +72,15 @@
 </div>
 
 
-<script>
+<script type="text/javascript">   
+  $(".delete").live('click',function(e) {
+    e.preventDefault()
+  });
+  function show_delete_box(id){    
+    $('#hidden_delete_box_'+id).css('display','block');      
+  }
+
+
   document.onload =  $("#delete_all").hide();
   $('#select_all').click(function() {
     if (this.checked) {
@@ -112,5 +120,6 @@
   $('.close').click(function(){
     $('.close').parent().hide();
   });
+
 
 </script>
