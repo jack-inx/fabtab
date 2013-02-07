@@ -91,14 +91,19 @@ class CategoriesController < ApplicationController
     sign_in(@user)
     @admin_user = User.find_by_admin(true)
     @brand = []
+    @category_new_ids=[]
     if(params[:category_name].nil?)
-      @user_folders = @user.groups.sort {|group_a,group_b| group_b.updated_at <=> group_a.updated_at }.reject { |group| (group.category.nil? && group.permanent? )}
-      logger.info "========================#{@user_folders.inspect}================================================"
-      @category_ids = @user_folders.map {|i| i.category_id }
-      logger.info "========================#{@category_ids.inspect}================================================"
 
-      @all_user_categories = Category.where("id in (?)", @category_ids)
-      logger.info "========================#{@all_user_categories.count}================================================"
+      @user_folders = @user.groups.sort {|group_a,group_b| group_b.updated_at <=> group_a.updated_at }.reject { |group| (group.category.nil? && group.permanent? )}
+      logger.info "=== user foldfer #{@user_folders.count}"
+      @user_folders.each do |i|
+      logger.info "=== user foldfer #{i.user_id}"
+        if !i.user_id.nil? || !i.user_id.blank? || i.user_id != NULL ||!i.user_id.empty?
+          @category_new_ids << i.category_id 
+        end
+      end
+      logger.info "=== user foldfer #{@category_new_ids.count}"
+      @all_user_categories = Category.where("id in (?)", @category_new_ids)
       @ad = Ad.where("user_id = ?",@user.id)
       @ad.each do |ad|
         @brand << ad.brand
@@ -107,10 +112,7 @@ class CategoriesController < ApplicationController
     else
       @all_user_categories = Category.find_for_user_by_name(@user.id, params[:category_name])
     end
-      logger.info "========================#{@all_user_categories.count}================================================"
-        logger.info "========================#{@brand.count}================================================"
     @brand.uniq!
-            p "========================#{@brand.count}================================================"
     render :json=>  { :categories => @all_user_categories.as_json, :brand => @brand.as_json }
   end
 
