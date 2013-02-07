@@ -30,12 +30,16 @@ class UsersController < ApplicationController
 
   def follow_brand
     @ad = Ad.find(params[:ad_id])
+    logger.info " found @ad #{@ad}"
     if @ad.brand.nil?
+      logger.info "ad brand is nil"
       @brand_request = BrandRequest.find_by_ad_id(@ad.id)
+      logger.info " search brand request #{@brand_request}"
       if @brand_request
         render :text => "You have already contacted this brand, they will get in touch with you soon" 
       else
-        current_user.brand_requests.create(:ad_id => @ad.id)
+        logger.info "not found brand request"
+        logger.info " created brand request to user #{current_user.brand_requests.create(:ad_id => @ad.id)}"
         purpose = Purpose.arel_table
         purpose_id = Purpose.where(purpose[:name].matches("%follow req%")).first.id
         template = Template.find_by_purpose_id(purpose_id)
@@ -79,7 +83,9 @@ class UsersController < ApplicationController
         render :text => 'Thank you, this brand will be in touch with you soon!'
       end
     else
-      unless @ad.brand.followers.include?(current_user)        
+      logger.info " ad brand is not nil"
+      unless @ad.brand.followers.include?(current_user)
+        logger.info "adding user in list of brand followers"
         @ad.brand.followers << current_user
       end
       respond_to do |format|
