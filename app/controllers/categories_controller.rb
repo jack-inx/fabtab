@@ -91,13 +91,16 @@ class CategoriesController < ApplicationController
     sign_in(@user)
     @admin_user = User.find_by_admin(true)
     @brand = []
+    @category_new_ids=[]
     if(params[:category_name].nil?)
+
       @user_folders = @user.groups.sort {|group_a,group_b| group_b.updated_at <=> group_a.updated_at }.reject { |group| (group.category.nil? && group.permanent? )}
-      @category_ids = @user_folders.map{|i| if i.user_id!=NULL 
-        i.category_id 
+      @user_folders.each do |i|
+        if !i.user_id.nil?
+          @category_new_ids << i.category_id 
+        end
       end
-    }
-      @all_user_categories = Category.where("id in (?)", @category_ids)
+      @all_user_categories = Category.where("id in (?)", @category_new_ids)
       @ad = Ad.where("user_id = ?",@user.id)
       @ad.each do |ad|
         @brand << ad.brand
