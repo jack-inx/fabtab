@@ -92,13 +92,17 @@ class CategoriesController < ApplicationController
     @admin_user = User.find_by_admin(true)
     @brand = []
     if(params[:category_name].nil?)
+      @user_folders_welcome = Group.where("user_id = ?",@user.id)
+      logger.info "===welcome user folder=====================#{@user_folders_welcome.count}================================================"
+      @category_welcome = Category.find_all_for_user(@user)
+      logger.info "============welcome category count============#{@category_welcome.count}================================================"
       @user_folders = @user.groups.sort {|group_a,group_b| group_b.updated_at <=> group_a.updated_at }.reject { |group| (group.category.nil? && group.permanent? )}
-      logger.info "========================#{@user_folders.inspect}================================================"
+      logger.info "===========user folder count=============#{@user_folders.count}================================================"
       @category_ids = @user_folders.map {|i| i.category_id }
-      logger.info "========================#{@category_ids.inspect}================================================"
+      logger.info "=============category ids count===========#{@category_ids.count}================================================"
 
       @all_user_categories = Category.where("id in (?)", @category_ids)
-      logger.info "========================#{@all_user_categories.count}================================================"
+      logger.info "===========all category user count=============#{@all_user_categories.count}================================================"
       @ad = Ad.where("user_id = ?",@user.id)
       @ad.each do |ad|
         @brand << ad.brand
