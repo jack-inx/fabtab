@@ -88,31 +88,43 @@ class CategoriesController < ApplicationController
 
 	def category_list
     @user = User.find_by_authentication_token(params[:auth_token])
+    logger.info "collect user via token #{@user.id}"
     sign_in(@user)
     @admin_user = User.find_by_admin(true)
     @brand = []
     @category_new_ids=[]
+    logger.info "test of category name #{params[:category_name].nil?}"
     if(params[:category_name].nil?)
 
       @user_folders = @user.groups.sort {|group_a,group_b| group_b.updated_at <=> group_a.updated_at }.reject { |group| (group.category.nil? && group.permanent? )}
-      logger.info "=== user foldfer #{@user_folders.count}"
+      logger.info "user folders list #{@user_folders.inspect}"
+      
       @user_folders.each do |i|
-      logger.info "=== user foldfer #{i.user_id}"
-        if !i.user_id.nil? || !i.user_id.blank? || i.user_id != NULL ||!i.user_id.empty?
-          @category_new_ids << i.category_id 
-        end
+        #if !i.user_id.nil? 
+          @ads_new = Ad.where("category_id = ?",i.category_id)
+          if !@ads_new.nil?
+            @category_new_ids << i.category_id 
+          end
+        #end
       end
-      logger.info "=== user foldfer #{@category_new_ids.count}"
+      logger.info "out of user folders"
       @all_user_categories = Category.where("id in (?)", @category_new_ids)
+      logger.info " all user category ========#{@all_user_categories.count}"
       @ad = Ad.where("user_id = ?",@user.id)
+      logger.info "ad via user id #{@ad.inspect}"
       @ad.each do |ad|
+        logger.info "adding brand to @brand #{ad.brand}"
         @brand << ad.brand
       end
       @brand.delete_if { |brand| brand.nil? }
+      logger.info " delete_if brand nil"
     else
+      logger.info " not category nil case"
       @all_user_categories = Category.find_for_user_by_name(@user.id, params[:category_name])
+      logger.info " all user categories #{@all_user_categories.inspect}"
     end
     @brand.uniq!
+    logger.info "making @brand uniq"
     render :json=>  { :categories => @all_user_categories.as_json, :brand => @brand.as_json }
   end
 
