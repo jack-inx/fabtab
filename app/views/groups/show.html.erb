@@ -19,7 +19,7 @@
 
 
         <% if @sort_by == 'rating' %>
-          <span class="green">RATE IT</span>
+          <%= link_to content_tag('span', 'RATE IT'), "#{request.path}?sort_by=rating", :id => 'sort_rating_ad', :class=>'make_green' %>
         <% else %>
           <%= link_to "RATE IT", "#{request.path}?sort_by=rating", :id => 'sort_rating_ad' %>
         <% end %>
@@ -31,6 +31,7 @@
     </div>
   </div>
 </div>
+<!--
 <script type="text/javascript">
   $('.ajaxful-rating a').live('click',function(){
     var current_url = document.URL;
@@ -39,3 +40,12 @@
     }, 1000);
   });
 </script>
+-->
+<style type="text/css">
+  .make_green :hover{
+    color: #89C668;
+  }
+  a:hover {
+    text-decoration: none;
+}
+</style>
