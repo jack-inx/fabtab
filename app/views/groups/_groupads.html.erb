@@ -4,6 +4,7 @@
       <% if ad.status == true %>
         <li>
           <div class = "options">
+            <%=@group.brand_id?%>
             <% if current_user.admin? %>
               <div class="top-options">
                 <%= link_to "share", ad_path(ad.id), :class => 'share outline_remove' %>
