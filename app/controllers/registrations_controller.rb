@@ -14,8 +14,12 @@ class RegistrationsController < ApplicationController
   end
   
   def new
-    @user = User.new
-    render 'new', :layout => 'signin'
+    if current_user
+      redirect_to root_path
+    else
+      @user = User.new
+      render 'new', :layout => 'signin'
+    end
   end
   
   def destroy
