@@ -46,7 +46,7 @@
               </td>
               <td style="border-left:none !important;">
                 <%= link_to "View", template_path(f)%> <span class="login_link"> | </span><%= link_to "Edit", edit_template_path(f) %><span class="login_link"> | </span>
-                <%= link_to "Delete", "#",:onclick=>"show_delete_box(#{f.id})"  %></td>
+                <%= link_to "Delete", "#",:onclick=>"show_delete_box(#{f.id})" ,:class => 'delete' %></td>
             </tr>
           <% end %>
         </tbody>
@@ -57,10 +57,12 @@
   <% end %>
 
   <script type="text/javascript">
+
+
+    $(".delete").live('click',function(e) {
+      e.preventDefault()
+    });
     function show_delete_box(id){
-      function show(e){
-        e.preventDefault();
-      }
       $('#hidden_delete_box_'+id).css('display','block');
     }
     

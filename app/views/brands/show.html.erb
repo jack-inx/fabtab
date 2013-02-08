@@ -38,14 +38,16 @@
                 <% unless brand_folder.permanent? %>
                   <%= link_to "Edit", '#', :class => 'edit-button hidden',:style=>"outline: medium none !important;" %>
                   <div class="edit_dialog hidden">
+                    <div class="closes" style="margin-left: 260px; margin-right: 24px;">X</div>
                     <div class="message">Edit.</div>
                     <%= form_for brand_folder do %>
-                      <%= select_tag "category", options_from_collection_for_select(@category, "id", "name"), :prompt => "Select a category" %>
+                      <%= select_tag "category", options_from_collection_for_select(@category, "id", "name"), :prompt => "Select a category", :class=>'category' %>
                       <div class="delete">
                         delete tab
                         <%= link_to image_tag('/assets/icon_delete.png'), '#' %>
                       </div>
                       <div class="delete_dialog hidden">
+                        <div class="closes" style="margin-left: 260px; margin-right: 24px;">X</div>
                         <div class="title">Delete.</div>
                         <div class="message-text">Delete this Folder?</div>
                         <%= link_to "Delete", "#", :class => 'delete_folder' %>
@@ -144,3 +146,20 @@
     </div>
   </div>
 </div>
+<script type="text/javascript">
+  $(".category").on('click',function(e){
+    $(this).parent().parent().css('display','block');
+    e.preventDefault();
+  })
+
+  $('.closes').on('click',function(e){
+    $(this).parent().addClass('hidden');
+    $(this).parent().removeAttr('style');
+    e.preventDefault();
+  })
+
+  $('.edit-button').on('click',function(){
+    $(this).next().removeClass('hidden');
+    $(this).next().children().children('.delete_dialog').addClass('hidden');
+  })
+</script>
