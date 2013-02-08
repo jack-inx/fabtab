@@ -4,6 +4,14 @@
 <%= f.select(:purpose_id, Purpose.all.map{|p|[p.name, p.id]},:prompt=>"Select one") %>
 <br/><br/><br/><br/>
 
+<div class="alert_dialog hidden">
+  <div class="title" style="margin-left: 14px;"> Do you want to save your changes otherwise<br/> it will be lost ?</div>
+  <div class="message-text"> </div>
+  <div class="con_links">
+    <%= link_to "Cancel", '#',:onclick=>"closeIt();",  :id => 'add_coupan', :style=>'margin: 7px 0 0 312px;' %>
+    <%= link_to "Confirm", templates_path,  :id => 'add_coupan', :style=>'margin: 45px 0px 0px 35px;' %>
+  </div>
+</div>
 <div class="contect_area">
   <div class="brand_name">Content Area</div><br/>
   <%= f.text_area :content, :style=>"width: 100%;height: 100%;" %>
@@ -33,3 +41,9 @@
     width: 260px;
   }
 </style>
+<script type="text/javascript">
+  function closeIt(e){
+    $('.alert_dialog').addClass('hidden');
+    e.preventDefault();
+  }
+</script>

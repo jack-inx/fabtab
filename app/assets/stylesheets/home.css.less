@@ -2482,4 +2482,38 @@ border:none;
 }
  iframe::-webkit-scrollbar {  
     display: none;
-  }  
+  }
+
+.alert_dialog {
+  position:absolute;
+  width:560px;
+  height:200px;
+  margin-left:135px;
+  z-index: 10000004;
+  margin-top:-76px;
+  background: url('/assets/delete_dialog_bg2.png') no-repeat top left;
+  .title {
+    position:absolute;
+    margin-left: 14px;
+    color: #7EBE57;
+    margin-top:35px;
+    font-size:25px;
+  }
+
+  .message-text{
+    margin-top:80px;
+    margin-left:30px;
+    font-size:16px;
+    color:gray;
+  }
+
+  .delete_tab, .delete_folder {
+    display:block;
+    background:url('/assets/delete_btn_dialog2.png');
+    width:87px;
+    height:32px;
+    margin-top:30px;
+    margin-left:105px;
+    text-indent:-9999px;
+  }
+}
