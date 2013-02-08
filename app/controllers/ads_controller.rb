@@ -153,7 +153,11 @@ class AdsController < ApplicationController
       respond_to do |format|
         format.json{ render :json => { :response => "success" }}
         flash[:notice]="Offer successfully deleted!"
-        format.html { redirect_to edit_brand_path(brand) }
+        if brand.nil?
+          format.html { redirect_to setting_allusersads_path }
+        else
+          format.html { redirect_to edit_brand_path(brand) }
+        end
       end    
     else
       respond_to do |format|
