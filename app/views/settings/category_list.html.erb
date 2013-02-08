@@ -20,7 +20,7 @@
   <% @category.each do|category| %>
     <tr>
       <td>
-        <%= link_to_function category.name,"return category_name(#{category.id})" %>
+        <%= link_to_function category.name,"return category_name(#{category.id})",:class=>"category_name" %>
       </td>
       <td>
         <% if !category.user.nil? %>
@@ -29,7 +29,7 @@
       </td>
       <td>
   <%#= link_to "Delete",destroy_userscategories_path(category.id) %>
-        <%= link_to "Delete", "#",:onclick=>"$('#hidden_delete_box_#{category.id}').css('display','block');"  %>
+        <%= link_to "Delete", "#",:onclick=>"show_delete_box(#{category.id})", :class=>'delete'  %>
       </td>
 
       <td style="border-left:none !important;">
@@ -75,12 +75,20 @@
     
   function category_name(cat_id)
   {
-    $(this).click(function(event){
+    $(".category_name").click(function(event){
       event.preventDefault();
     });
     $('table#'+cat_id).toggle();
   }
- 
+
+  $('.delete').on('click',function(e){
+    e.preventDefault();
+  });
+  
+  function show_delete_box(id){
+    $('#hidden_delete_box_'+id).css('display','block');
+  }
+  
 </script>
 <style type="text/css">
   a:hover {
