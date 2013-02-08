@@ -1,11 +1,19 @@
 <div style="margin-bottom: 14px;font-size: 18px;color: #939598;margin-top: 37px;margin-left: 5px;">ADD NEW USER</div>
 <div style="float: right;margin-right: 11px;margin-top: -39px;">
-  <%= link_to "All User",setting_users_list_path, :id => 'add_coupan',:class=>"alerts" %>
+  <%= link_to "All User",'#', :id => 'add_coupan',:class=>"alerts" %>
 </div>
 
 <%= form_for @user,:url => url_for(:controller=>:settings, :action=>:create_users) , :html => {:id => 'new_brand'} do |f| %>
   <%#= f.error_messages %>
 
+  <div class="alert_dialog hidden">
+    <div class="title" style="margin-left: 14px;"> Do you want to save your changes otherwise<br/> it will be lost ?</div>
+    <div class="message-text"> </div>
+    <div class="con_links">
+      <%= link_to "Cancel", '#',:onclick=>"closeIt();",  :id => 'add_coupan', :style=>'margin: 7px 0 0 312px;' %>
+      <%= link_to "Confirm", setting_users_list_path,  :id => 'add_coupan', :style=>'margin: 45px 0px 0px 35px;' %>
+    </div>
+  </div>
 
   <div class="brand_name">User Name*</div>
   <%= f.text_field :username %>
@@ -23,18 +31,20 @@
 
   <div>
     <%= f.submit "Create", :id => "add_coupan" , :class=>'update_me' %>
-    <%= link_to "Cancel", setting_users_list_path,:id => "add_coupan" ,:class=>"alerts" %>
+    <%= link_to "Cancel", '#',:id => "add_coupan" ,:class=>"alerts" %>
   </div>
 <% end %>
 
 <script type="text/javascript">
-  $('.alerts').on('click',function(){
-    $(window).bind('beforeunload', function(){
-      return 'Are you sure you want to leave?';
-    });
+  $('.alerts').on('click',function(e){
+    $('.alert_dialog').removeClass('hidden');
+
+    e.preventDefault();
   });
-  $('.update_me').on('click',function(){
-    window.onbeforeunload = null;
-  });
+
+  function closeIt(e){
+    $('.alert_dialog').addClass('hidden');
+    e.preventDefault();
+  }
 
 </script>
