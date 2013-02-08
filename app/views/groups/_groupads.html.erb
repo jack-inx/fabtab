@@ -36,8 +36,8 @@
               </div>
             <% end %>
             <div class="share_dialog hidden outline_remove">
-
-              <div class="facebook-share"><fb:like width="80" show_faces="false" action="recommend" layout="button_count" href="<%= ad_url(ad.id) %>"></fb:like></div>
+              <div class="message" style="color: #7EBE57;font-size: 25px;margin-left: 75px;margin-top: 17px;">Share</div>
+              <iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2F'<%=ad_url(ad.id)%>'&amp;send=false&amp;layout=button_count&amp;width=200&amp;show_faces=false&amp;font&amp;colorscheme=light&amp;action=recommend&amp;height=21&amp;appId=148204908657714" scrolling="no" frameborder="0" style="border:none;margin-left:70px;margin-top:43px; overflow:hidden; width:200px; height:21px;" allowTransparency="true" ></iframe>
               <div class="twitter-share">
                 <!-- twitter -->
                 <a href="https://twitter.com/share" class="twitter-share-button" data-text="Check out this cool offer from MyFabTab. I think you are going to like it! <%= ad_url(ad.id) %>" data-size="large" data-count="none">Tweet</a>
