@@ -4,7 +4,6 @@
       <% if ad.status == true %>
         <li>
           <div class = "options">
-            <%=@group.brand_id?%>
             <% if current_user.admin? %>
               <div class="top-options">
                 <%= link_to "share", ad_path(ad.id), :class => 'share outline_remove' %>
@@ -18,7 +17,7 @@
             <% elsif ad.user_ad? || ad.group.permanent? %>
               <div class="top-options">
                 <%= link_to "share", ad_path(ad.id), :class => 'share outline_remove' %>
-                <%= link_to "move", ad_path(ad.id), :class => 'move outline_remove' %>
+                 <%=@group.brand_id? == false %><%= link_to "move", ad_path(ad.id), :class => 'move outline_remove' %> <%end%>
                 <%= link_to "delete", ad_path(ad.id), :class => 'delete outline_remove' %>
               </div>
               <div class="bottom-options">
