@@ -24,7 +24,7 @@ class OptinAdsController < ApplicationController
     
       AdsMailer.refer(params[:optin_ad],@var).deliver
     end
-    redirect_to root_path
+    redirect_to index_path
   end
   
 end

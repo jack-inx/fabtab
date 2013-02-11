@@ -64,7 +64,7 @@ class GroupsController < ApplicationController
     end
     respond_to do |format|
       format.json {render :json =>  { :category => category, :new_group => new_group } }
-      format.html { redirect_to root_path }
+      format.html { redirect_to index_path }
     end
 
   end
@@ -75,7 +75,7 @@ class GroupsController < ApplicationController
     @group.destroy
     respond_to do |format|
       format.json { render :json => @group }
-      format.html { redirect_to root_path }
+      format.html { redirect_to index_path }
 
     end
   end

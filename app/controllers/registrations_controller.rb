@@ -42,7 +42,7 @@ class RegistrationsController < ApplicationController
         @user.save(:validate => false)
         sign_in(@user)
         respond_to do |format|
-          format.html { redirect_to root_url }
+          format.html { redirect_to index_url }
           format.json { render :json => {:response => "ok", :auth_token => @user.authentication_token}.to_json, :status => 200 }
         end
       else
