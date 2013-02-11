@@ -59,7 +59,7 @@ MFTModule1::Application.configure do
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
 
-  config.action_mailer.default_url_options = {:host => 'ec2-107-22-153-137.compute-1.amazonaws.com'}
+  config.action_mailer.default_url_options = {:host => 'fabtab.com'}
   
   Net::SMTP.enable_tls(OpenSSL::SSL::VERIFY_NONE)
 
