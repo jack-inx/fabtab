@@ -6,19 +6,22 @@
           <div class = "options">
             <% if current_user.admin? %>
               <div class="top-options">
-                <%= link_to "share", ad_path(ad.id), :class => 'share outline_remove' %>
                 <% if current_user.id==ad.user_id %>
+                  <%= link_to "share", ad_path(ad.id), :class => 'share outline_remove' %>
                   <%= link_to "move", ad_path(ad.id), :class => "move outline_remove" %>
                   <%= link_to "delete", ad_path(ad.id), :class => 'delete outline_remove' %>
                 <% else %>
+                  <%= link_to "share", ad_path(ad.id), :class => 'share outline_remove',:style=>'margin-left: 17px;margin-right: -20px;' %>
                   <%= link_to "delete", ad_path(ad.id), :class => 'delete outline_remove', :style=>'margin-left: 65px;' %>
                 <% end %>
               </div>
               <div class="bottom-options">
                 <% if current_user.id==ad.user_id %>
                   <%= link_to "more from brand","/follow_brand?ad_id=#{ad.id}", :class => "follow_brand outline_remove" %>
+                  <%= link_to "rate it",ad_path(ad.id), :class => 'rate hidden outline_remove' %>
+                <% else %>
+                  <%= link_to "rate it",ad_path(ad.id), :class => 'rate hidden outline_remove',:style=>'margin-left: 69px;' %>
                 <% end %>
-                <%= link_to "rate it",ad_path(ad.id), :class => 'rate hidden outline_remove' %>
               </div>
             <% elsif ad.user_ad? || ad.group.permanent? %>
               <div class="top-options">
