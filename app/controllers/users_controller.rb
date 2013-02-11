@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   before_filter :invite_active, :only => [:invite,:email]
 
   def index
-    redirect_to root_path
+    redirect_to index_path
   end
   
   def settings

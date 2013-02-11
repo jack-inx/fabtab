@@ -11,7 +11,7 @@
   <body>
     <div class="topbar">
       <div class="container">
-        <div id='mft_logo'><a class="brand" href="/"><%= image_tag '/assets/FabTab-LOGObeta.png',:style=>"width: 220px; height: 70px;" %></a></div>
+        <%= link_to image_tag("/assets/FabTab-LOGObeta.png",:style=>"width: 220px; height: 70px;"), index_path ,:class=> "fabtablogo",:style=>"width: 220px; height: 70px;" %>
         <% if !@email_info.nil? %>
           <% if !flash[:notice].nil? %>
             <h1 class="flash_messages1 flash_msg_border"> <%= flash[:notice] %> </h1>

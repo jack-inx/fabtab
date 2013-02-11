@@ -86,7 +86,7 @@ class Xdevise::SessionsController < Devise::SessionsController
       respond_to do |format|
         format.html {
           flash[:notice] = "Signed in successfully."
-          redirect_to root_url
+          redirect_to root_page
         }
         format.json { render :json => {:response => "ok", :auth_token => user.authentication_token}.to_json, :status => 200 }
       end
@@ -100,7 +100,7 @@ class Xdevise::SessionsController < Devise::SessionsController
           format.html {
             #            redirect_to(:user)
             flash[:notice] = "Signed in successfully."
-            redirect_to root_url
+            redirect_to root_page
           }
           format.json {
             render :json => {:response => "ok", :auth_token => user.authentication_token}.to_json, :status => 200

@@ -104,6 +104,7 @@ MFTModule1::Application.routes.draw do
   match '/promo_create' => 'home#promo_create'
   match '/promo_invite' => 'home#promo_invite'
   match '/promo_create' => 'feedback#promo_create'
+  match '/index' => 'home#index'
   match 'js/bookmarkads' => 'Js#bookmarkads'
   match '/search' => 'search#search'
   match '/search_username' => 'users#search_username'
@@ -150,5 +151,5 @@ MFTModule1::Application.routes.draw do
 
   get '/home/render_div'=>'home#render_div'
 
-  root :to=> 'home#index'
+  root :to=> 'home#about'
 end
