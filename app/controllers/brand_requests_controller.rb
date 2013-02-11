@@ -27,38 +27,46 @@ class BrandRequestsController < ApplicationController
     purpose = Purpose.arel_table
     purpose_id = Purpose.where(purpose[:name].matches("%brand set%")).first.id
     template = Template.find_by_purpose_id(purpose_id)
-
-    if template
-      @var = template.content
-    
-      if @ad.url.nil?
-        @ad.url = @ad.image_url
+    if @ad.brand.nil?
+       flash[:notice]="Please select any Brand for Brand request"
+        respond_to do |format|
+        format.html { redirect_to brand_requests_path}
+        #format.json { render :json => @brand_request }
       end
 
-      @token = SecureRandom.urlsafe_base64
+    else
+
+      if template
+        @var = template.content
       
-      unsubscribe_link = unsubscribe_me_url(:token => @token,:id=>@user.id)
-      @var = @var.gsub("{{unsubscribe}}", "<a href=#{unsubscribe_link}>Click here</a>")
+        if @ad.url.nil?
+          @ad.url = @ad.image_url
+        end
+
+        @token = SecureRandom.urlsafe_base64
+        
+        unsubscribe_link = unsubscribe_me_url(:token => @token,:id=>@user.id)
+        @var = @var.gsub("{{unsubscribe}}", "<a href=#{unsubscribe_link}>Click here</a>")
 
 
-      registration_link = new_registration_url
-      @var = @var.gsub("{{subscribe}}", "<a href=#{registration_link}>Click here</a>")
-      @var = @var.gsub("{{user_name}}", @user.nickname.capitalize)
-      @var = @var.gsub("{{user_email}}", @user.email)
-      @var = @var.gsub('{{user_ema<font size="2">il}}', @user.email)
+        registration_link = new_registration_url
+        @var = @var.gsub("{{subscribe}}", "<a href=#{registration_link}>Click here</a>")
+        @var = @var.gsub("{{user_name}}", @user.nickname.capitalize)
+        @var = @var.gsub("{{user_email}}", @user.email)
+        @var = @var.gsub('{{user_ema<font size="2">il}}', @user.email)
 
 
-      @var = @var.gsub("{{ad_image_url}}",@ad.url)
-      @var = @var.gsub("{{brand_name}}", @ad.brand.name )
-      # UserMailer.brand_folder_set_up(@user,@ad.url,@ad.image_url,@ad.brand.name).deliver
-      UserMailer.brand_folder_set_up(@user,@ad.url,@ad.brand.name, @var).deliver
-    end
-    @brand_request.destroy
-    flash[:notice]="Brand request successfully handled"
-    respond_to do |format|
-      format.html { redirect_to brand_requests_path}
-      format.json { render :json => @brand_request }
+        @var = @var.gsub("{{ad_image_url}}",@ad.url)
+        @var = @var.gsub("{{brand_name}}", @ad.brand.name )
+        # UserMailer.brand_folder_set_up(@user,@ad.url,@ad.image_url,@ad.brand.name).deliver
+        UserMailer.brand_folder_set_up(@user,@ad.url,@ad.brand.name, @var).deliver
+      end
+      @brand_request.destroy
+      flash[:notice]="Brand request successfully handled"
+      respond_to do |format|
+        format.html { redirect_to brand_requests_path}
+        format.json { render :json => @brand_request }
+      end
     end
   end
-
 end
