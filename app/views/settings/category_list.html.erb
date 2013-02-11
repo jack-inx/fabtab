@@ -19,12 +19,21 @@
   </tr>
   <% @category.each do|category| %>
     <tr>
-      <td>
+      <td><% count = 0 %>
         <%  @groups =  Group.where("category_id = ?",category.id) %>
         <% if @groups.length > 0 %>
-          <%= link_to_function category.name,"return category_name(#{category.id})",:class=>"category_name" %>
+          <% @groups.each do |f| %>
+            <% if  f.ads.count > 0 %>
+              <% count = count + 1 %>
+            <% end %>
+          <% end %>
+          <% if count > 0 %>
+            <%= link_to_function category.name,"return category_name(#{category.id})",:class=>"category_name" %>
+          <%  else %>
+            <%= link_to category.name, '#',:class=>"category_name", :style=>'text-decoration:none;' %>
+          <% end %>
         <% else %>
-          <%= category.name %>
+          <%= link_to category.name, '#',:class=>"category_name", :style=>'text-decoration:none;' %>
         <% end %>
       </td>
       <td>
