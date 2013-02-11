@@ -207,7 +207,7 @@ class SettingsController < ApplicationController
 
 
   def category_list
-    @category = Category.where('user_id IS NOT NULL and brand_id IS NULL and name not like ?','my saved fabtabs').page(params[:page]).per(7)
+    @category = Category.where('user_id IS NOT NULL and name not like ?','my saved fabtabs').page(params[:page]).per(7)
     respond_to do |format|
       format.html{render :layout => "admin"}
     end
