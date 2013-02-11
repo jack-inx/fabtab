@@ -24,7 +24,7 @@
         <% if @groups.length > 0 %>
           <%= link_to_function category.name,"return category_name(#{category.id})",:class=>"category_name" %>
         <% else %>
-          <%= link_to category.name ,'#',:class=>"category_name", :style=>'text-decoration:none;pointer:cursor;' %>
+          <%= category.name %>
         <% end %>
       </td>
       <td>
