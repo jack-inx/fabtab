@@ -13,10 +13,11 @@ class BrandsController < ApplicationController
 
   def create
     @brand = Brand.new(params[:brand])
-    if @brand.save!
-flash[:notice] = "Brand Folder successfully created!"
+    if !params[:brand][:name].blank? && @brand.save
+      flash[:notice] = "Brand Folder successfully created!"
       redirect_to brands_path
     else
+      flash[:notice] = "Brand name can't be blank"
       render 'new'
     end
   end
@@ -33,7 +34,7 @@ flash[:notice] = "Brand Folder successfully created!"
     @brand.update_attributes(params[:brand])
     @brand.twitter_info = nil
     @brand.save!
-flash[:notice] = "Successfully updated brand folder!"
+    flash[:notice] = "Successfully updated brand folder!"
     redirect_to edit_brand_path(@brand)
   end
   
@@ -44,8 +45,8 @@ flash[:notice] = "Successfully updated brand folder!"
     else
       @user = current_user
     end
- @brand_folders = Group.where("brand_id = ?",@brand)    
-@category = Category.find_all_for_user(@user)
+    @brand_folders = Group.where("brand_id = ?",@brand)
+    @category = Category.find_all_for_user(@user)
     @brand_extra_offers = @brand.offers.select { |offer| offer.expiry_date > Time.now }
     @twitter_information = Twitter.description_for(@brand)
     @coupan_list = []
@@ -61,8 +62,8 @@ flash[:notice] = "Successfully updated brand folder!"
     #  end
     #  @brand_ads_list = @coupan_list.as_json(:include => [ :ad_fb_comments, :offers ])
     #else
-      @brand_list =  @brand.ads
-      @brand_ads_list = @brand_list.as_json(:include => [ :ad_fb_comments, :offers ])
+    @brand_list =  @brand.ads
+    @brand_ads_list = @brand_list.as_json(:include => [ :ad_fb_comments, :offers ])
     #end
     respond_to do |format|
       format.html { }
@@ -80,7 +81,7 @@ flash[:notice] = "Successfully updated brand folder!"
   def destroy
     @brand = Brand.find(params[:id])
     @brand.destroy
-redirect_to brands_path  
-end
+    redirect_to brands_path
+  end
   
 end
