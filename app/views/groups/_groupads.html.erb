@@ -7,17 +7,23 @@
             <% if current_user.admin? %>
               <div class="top-options">
                 <%= link_to "share", ad_path(ad.id), :class => 'share outline_remove' %>
-                <%= link_to "move", ad_path(ad.id), :class => 'move outline_remove' %>
-                <%= link_to "delete", ad_path(ad.id), :class => 'delete outline_remove' %>
+                <% if current_user.id==ad.user_id %>
+                  <%= link_to "move", ad_path(ad.id), :class => "move outline_remove" %>
+                  <%= link_to "delete", ad_path(ad.id), :class => 'delete outline_remove' %>
+                <% else %>
+                  <%= link_to "delete", ad_path(ad.id), :class => 'delete outline_remove', :style=>'margin-left: 65px;' %>
+                <% end %>
               </div>
               <div class="bottom-options">
-                <%= link_to "more from brand","/follow_brand?ad_id=#{ad.id}", :class => 'follow_brand outline_remove' %>
+                <% if current_user.id==ad.user_id %>
+                  <%= link_to "more from brand","/follow_brand?ad_id=#{ad.id}", :class => "follow_brand outline_remove" %>
+                <% end %>
                 <%= link_to "rate it",ad_path(ad.id), :class => 'rate hidden outline_remove' %>
               </div>
             <% elsif ad.user_ad? || ad.group.permanent? %>
               <div class="top-options">
                 <%= link_to "share", ad_path(ad.id), :class => 'share outline_remove' %>
-                 <%= link_to "move", ad_path(ad.id), :class => 'move outline_remove' %>
+                <%= link_to "move", ad_path(ad.id), :class => 'move outline_remove' %>
                 <%= link_to "delete", ad_path(ad.id), :class => 'delete outline_remove' %>
               </div>
               <div class="bottom-options">
@@ -118,7 +124,7 @@
   window.fbAsyncInit = function() {
     FB.init({
       appId      : '148204908657714', // App ID
-      channelUrl : 'http://ec2-107-22-153-137.compute-1.amazonaws.com/channel.html', // Channel File
+      channelUrl : 'http://fabtab.com/channel.html', // Channel File
       status     : true, // check login status
       cookie     : true, // enable cookies to allow the server to access the session
       xfbml      : true  // parse XFBML
