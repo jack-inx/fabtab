@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121228114452) do
+ActiveRecord::Schema.define(:version => 20130116111114) do
 
   create_table "ad_fb_comments", :force => true do |t|
     t.string   "fb_comment_id"
@@ -101,6 +101,19 @@ ActiveRecord::Schema.define(:version => 20121228114452) do
     t.datetime "updated_at"
   end
 
+  create_table "db_dumps", :force => true do |t|
+    t.integer  "admin_id"
+    t.string   "file_name",  :default => ""
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "dbbackups", :force => true do |t|
+    t.integer  "admin_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "demo_images", :force => true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -139,6 +152,12 @@ ActiveRecord::Schema.define(:version => 20121228114452) do
     t.integer  "brand_id"
   end
 
+  create_table "master_passwords", :force => true do |t|
+    t.string   "mpassword"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "offers", :force => true do |t|
     t.string   "url"
     t.datetime "expiry_date"
@@ -172,6 +191,7 @@ ActiveRecord::Schema.define(:version => 20121228114452) do
 
   create_table "purposes", :force => true do |t|
     t.string   "name"
+    t.string   "purpose_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
