@@ -11,7 +11,7 @@
       <% @user_folders.each do |user_folder| %>
         <% if user_folder.ads.count > 0 %>
           <% if user_folder.brand_folder? %>
-            <% if user_folder.brand? %>
+            <% if !user_folder.brand.nil? %>
             <li class="group" data-folder="<%= user_folder.brand.name %>">
               <div class="super_folder">
                 <%= link_to image_tag(user_folder.brand.logo.url(:super_folder)), brand_path(user_folder.brand) %>
