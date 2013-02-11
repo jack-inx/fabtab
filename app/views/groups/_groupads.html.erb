@@ -4,12 +4,10 @@
       <% if ad.status == true %>
         <li>
           <div class = "options">
-            <%= "current user #{current_user.id} : ad.user_id #{ad.user_id}" %>
-            
             <% if current_user.admin? %>
               <div class="top-options">
                 <%= link_to "share", ad_path(ad.id), :class => 'share outline_remove' %>
-                <% if current_user.id==ad.user_id %>
+                <% if current_user.id == ad.user_id %>
                   <%= link_to "move", ad_path(ad.id), :class => "move outline_remove" %>
                   <%= link_to "delete", ad_path(ad.id), :class => 'delete outline_remove' %>
                 <% else %>
