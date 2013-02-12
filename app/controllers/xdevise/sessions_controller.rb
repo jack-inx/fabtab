@@ -171,10 +171,12 @@ class Xdevise::SessionsController < Devise::SessionsController
       sign_out(@user)
       respond_to do |format|
         format.html {
-          flash[:notice] = "Signed in successfully."
+          flash[:notice] = "Signed out successfully."
           redirect_to index_path
         }
-        ender :json => { :response => "Signed in successfully."}
+         format.json {
+        render :json => { :response => "Signed out successfully."}
+      }
       end
   end
 end
