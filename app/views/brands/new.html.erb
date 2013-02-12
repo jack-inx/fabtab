@@ -12,7 +12,7 @@
     <div class="twitter_handle">Brand's Twitter ID</div>
     <%= f.text_field :twitter_handle %> <br/>
     <div class="brand_logo" style="margin-bottom:10px;">Brand folder logo</div>
-    <%= f.file_field :logo %>
+    <%= f.file_field :logo, :style =>'height:31px;' %>
     <div>
       <%= f.submit "Submit", :id => "add_coupan" %>
     </div>
