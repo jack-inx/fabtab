@@ -28,7 +28,11 @@
         <fieldset>
           <div style="margin-bottom: 7px;float: left; margin-right: 46px;margin-top: 13px;">
             <label style="margin-right: 10px;"> From: </label>
+            <%if !current_user.nil? %>
             <%= text_field_tag :email, current_user.email, :readonly => true %>
+            <%else%>
+            <%= text_field_tag :email %>
+            <%end%>
           </div>
           <div style="margin-bottom: 7px;float: left; margin-right: 122px;">
             <label style="margin-right: 10px;"> To: </label>
