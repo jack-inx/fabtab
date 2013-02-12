@@ -16,7 +16,7 @@ class Xdevise::SessionsController < Devise::SessionsController
           if warden.authenticate(:scope => :user)
             sign_in(@user)
             respond_to do |format|
-              format.html { respond_with @user, :location => after_sign_in_path_for(@user) }
+              format.html { respond_with @user, :location => index_path }
               format.json { render :json => {:response => "ok", :auth_token => @user.authentication_token, :user_id => @user.id, :status => 200 } }
             end
           else
