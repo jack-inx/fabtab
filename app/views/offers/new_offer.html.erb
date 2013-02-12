@@ -19,7 +19,7 @@
     <div class="address">Coupon Radius</div>
     <%= f.text_field :radius %><br/>
     <div class="offer_image_url"> Upload Image </div>
-    <%= f.file_field :image %><br/>
+    <%= f.file_field :image, :style =>'height:31px;' %><br/>
     <div class="offer_url">Coupon destination URL (if needed) (Example : http://www.website.com) </div>
     <%= f.text_field :url ,:id => "url" %>
  <span id ="offer_url" style="color:red;display:none;">Please Enter valid URL </span> <br/>

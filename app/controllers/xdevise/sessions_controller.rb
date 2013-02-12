@@ -86,7 +86,7 @@ class Xdevise::SessionsController < Devise::SessionsController
       respond_to do |format|
         format.html {
           flash[:notice] = "Signed in successfully."
-          redirect_to root_page
+          redirect_to index_path
         }
         format.json { render :json => {:response => "ok", :auth_token => user.authentication_token}.to_json, :status => 200 }
       end
@@ -100,7 +100,7 @@ class Xdevise::SessionsController < Devise::SessionsController
           format.html {
             #            redirect_to(:user)
             flash[:notice] = "Signed in successfully."
-            redirect_to root_page
+            redirect_to index_path
           }
           format.json {
             render :json => {:response => "ok", :auth_token => user.authentication_token}.to_json, :status => 200
@@ -166,5 +166,17 @@ class Xdevise::SessionsController < Devise::SessionsController
       render :json => { :response => "This provider is not allowed."}
     end
   end
-  
+  def destroy
+    @user = User.find(current_user)
+      sign_out(@user)
+      respond_to do |format|
+        format.html {
+          flash[:notice] = "Signed out successfully."
+          redirect_to index_path
+        }
+         format.json {
+        render :json => { :response => "Signed out successfully."}
+      }
+      end
+  end
 end
