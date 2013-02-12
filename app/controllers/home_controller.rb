@@ -66,11 +66,20 @@ class HomeController < ApplicationController
     @feedback = Feedback.new(params[:feedback])
     @email_to = 'info@fabtab.com'
     @email = params[:email]
-    if @feedback.save
+    @flag = true
+
+    if @email =~ /^([^\s]+)((?:[-a-z0-9]\.)[a-z]{2,})$/i
+      @flag = false
+    end
+    
+    if (((@email =~ /^([^\s]+)((?:[-a-z0-9]\.)[a-z]{2,})$/i)) && @feedback.save)
       NotificationsMailer.new_message(@email, @feedback.content).deliver
       redirect_to(about_path)
       flash[:notice] = "Mail was successfully sent."
     else
+      if @flag
+        @feedback.errors.add(:email,"is invalid")
+      end
       respond_to  do|format|
         format.html { render :action=>'promo_team',  :layout => 'header' }
         format.json { render :json=> @feedback.errors, status=> :unprocessable_entity }
