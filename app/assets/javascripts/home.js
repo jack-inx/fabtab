@@ -394,7 +394,7 @@ $(document).ready(function() {
                 }, 10000);
             },
             error: function(data,textStatus, xhr){
-                 updateFlashMessage1('Please select category','success');
+                 updateFlashMessage1('Select or add a category to save this offer','success');
             }
 
         });
