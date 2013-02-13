@@ -12,12 +12,12 @@
         <% if user_folder.ads.count > 0 %>
           <% if user_folder.brand_folder? %>
             <% if !user_folder.brand.nil? %>
-            <li class="group" data-folder="<%= user_folder.brand.name %>">
-              <div class="super_folder">
-                <%= link_to image_tag(user_folder.brand.logo.url(:super_folder)), brand_path(user_folder.brand) %>
-              </div>
-              <div class="folder-category"><%= user_folder.brand.name %></div>
-            </li>
+              <li class="group" data-folder="<%= user_folder.brand.name %>">
+                <div class="super_folder">
+                  <%= link_to image_tag(user_folder.brand.logo.url(:super_folder)), brand_path(user_folder.brand) %>
+                </div>
+                <div class="folder-category"><%= user_folder.brand.name %></div>
+              </li>
             <%end%>
           <% else %>
             <li class="group" data-folder="<%#= user_folder.category.name %>">
@@ -48,7 +48,7 @@
                 </div>
               </a>
               <% if !user_folder.category_id.nil? %>
-              <div class="folder-category"><%= category_or_title_name(user_folder) %></div>
+                <div class="folder-category"><%= truncate(category_or_title_name(user_folder), :length => 35, :omission =>'...') %></div>
               <% end %>
               <div id="user_folder_<%=user_folder.id %>" class="show_it" style="margin: -1px 2px; top: 263px;"></div>
             </li>
@@ -175,7 +175,7 @@ margin-top:-91px;' %>
     edit_box.removeClass('hidden');
   })
   $('.group').on('mouseleave',function(){
-  //  $('.edit_dialogs').css('display','none');
+    //  $('.edit_dialogs').css('display','none');
     var self = this;
     var edit_box = $(self).children('.edit-buttons');
     edit_box.addClass('hidden');
