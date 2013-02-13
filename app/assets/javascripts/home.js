@@ -747,7 +747,7 @@ function remove(ad)
         url: "/ads/remove_ad/"+ad_id,
         dataType: "html",
         success: function(data) {
-            window.location="/";
+            window.location="/index";
             updateFlashMessage('Successfully Deleted!','success');
         }
     });
@@ -761,7 +761,7 @@ function remove_offer(ad)
         url: "/ads/remove_ad/"+ad_id,
         dataType: "html",
         success: function(data) {
-            window.location="/";
+            window.location="/index";
             updateFlashMessage('Successfully Deleted!','success');
         }
     });
