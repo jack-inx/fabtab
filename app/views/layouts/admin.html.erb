@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>FabTab</title>
+    <link href="/assets/FabTab_heart.png" rel="shortcut icon" type="image/vnd.microsoft.icon" />
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
@@ -20,7 +21,7 @@
     <div class="container main">
       <div class="flash_messages"><div></div></div>
       <% if !flash[:notice].nil? %>
-        <!--         <h1 class="flash_messages1 flash_msg_border"style="width:596px;margin-left: 174px;margin-top: -26px;"> <%#= flash[:notice] %> </h1> -->
+          <!--         <h1 class="flash_messages1 flash_msg_border"style="width:596px;margin-left: 174px;margin-top: -26px;"> <%#= flash[:notice] %> </h1> -->
         <h1 class="flash_messages1 flash_msg_border" style="display: block; margin-top: -26px; right: 193px; left: 215px; width: 897px;" > <%= flash[:notice] %> </h1>
       <% end %>
       <%= form_tag( { :controller => 'users', :action => 'search_username', :method => :get }, { :remote => true }) do %>

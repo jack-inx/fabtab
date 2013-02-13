@@ -20,7 +20,7 @@ class Xdevise::ConfirmationsController < Devise::ConfirmationsController
       UserMailer.user_registration(@user).deliver
       respond_to do |format| 
         format.json { render :json=>{:result=>true,:auth_token=>@user.authentication_token}.to_json}
-        format.html{redirect_to root_url}
+        format.html{redirect_to index_url}
       end
     else
       respond_to do |format| 

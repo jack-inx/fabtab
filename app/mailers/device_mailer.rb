@@ -18,7 +18,8 @@ class DeviceMailer < Devise::Mailer
       @var = @var.gsub("{{user_name}}",record.username)
       @var = @var.gsub("{{user_email}}",record.email)
       @var = @var.gsub('{{user_ema<font size="2">il}}',record.email)
-
+      logger.info "===============confirmation instruction ============="
+      logger.info "=== #{confirmation_link}  ==="
       @var = @var.gsub("{{confirm_my_account}}","<a href=#{href=confirmation_link}>Click here</a>")
       mail(:to => record.email, :subject => "Confirmation instructions") do |format|
         format.html { render :text => @var.html_safe}
