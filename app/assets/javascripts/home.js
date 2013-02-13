@@ -369,6 +369,18 @@ $(document).ready(function() {
     
         return false;
     });
+
+
+    function runScript(e) {
+        if (e.keyCode == 13) {
+            $('#tabAds').click();
+            e.preventDefault();
+        }
+    }
+    
+    $(".category input").live('keypress',function(event) {
+        runScript(event);
+    });
     
     $('#tabAds').click(function(event) {
         var self = this;
@@ -394,7 +406,7 @@ $(document).ready(function() {
                 }, 10000);
             },
             error: function(data,textStatus, xhr){
-                 updateFlashMessage1('Select or add a category to save this offer','success');
+                updateFlashMessage1('Select or add a category to save this offer','success');
             }
 
         });

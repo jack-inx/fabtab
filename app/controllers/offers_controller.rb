@@ -1,4 +1,4 @@
-	class OffersController < ApplicationController
+class OffersController < ApplicationController
   before_filter :authenticate_user!
   
   def new_offer
@@ -15,8 +15,8 @@
     @brand = Brand.find(params[:id])
     @brand_id = @brand.id
     @coupan = Offer.find(params[:coupan_id])
-	@name = @coupan.city
-   @city = City.find_all_by_state_code(@name.state_code)
+    @name = @coupan.city
+    @city = City.find_all_by_state_code(@name.state_code)
     respond_to do |format|
       format.html {}
     end
@@ -31,7 +31,7 @@
     location = Geocoder.search(@offer.address)
     @offer.latitude = location[0].latitude
     @offer.longitude = location[0].longitude
-	@offer.image_url = @offer.image.to_s
+    @offer.image_url = @offer.image.to_s
     @offer.update_attributes(params[:offer])
     @offer.save!
     redirect_to edit_brand_path(@brand)
@@ -49,8 +49,8 @@
     @offer.longitude = location[0].longitude
     respond_to do |format|
       if @offer.save
-	@offer.image_url = @offer.image.to_s
-	@offer.save(:validate => false)
+        @offer.image_url = @offer.image.to_s
+        @offer.save(:validate => false)
         format.html { redirect_to edit_brand_path(@brand) }
         format.json { render :json => @offer.to_json }
       else
