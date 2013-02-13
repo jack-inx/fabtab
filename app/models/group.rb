@@ -26,6 +26,7 @@ class Group < ActiveRecord::Base
   end
   
   def name
+    logger.info "=== group self id #{ self.id} ==="
     ( self.category.name ) || ( self.brand.title)
   end
 end
