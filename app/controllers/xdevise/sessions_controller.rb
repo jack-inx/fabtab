@@ -60,7 +60,7 @@ class Xdevise::SessionsController < Devise::SessionsController
       if user.status == true
         respond_to do |format|
           format.html {
-            flash[:notice] = "Signed in successfully."
+            flash[:notice] = "Signed in successfully"
             sign_in_and_redirect(:user, authentication.user)
           }
           format.json { render :json => {:response => "ok", :auth_token => user.authentication_token}.to_json, :status => 200 }
@@ -73,7 +73,7 @@ class Xdevise::SessionsController < Devise::SessionsController
       current_user.authentications.create(:provider => omniauth['provider'], :uid => omniauth['uid'])
       respond_to do |format|
         format.html {
-          flash[:notice] = "Authentication successful."
+          flash[:notice] = "Authentication successful"
           redirect_to user_settings_path
         }
         format.json { render :json => {:response => "ok", :auth_token => user.authentication_token}.to_json, :status => 200 }
@@ -85,7 +85,7 @@ class Xdevise::SessionsController < Devise::SessionsController
       sign_in(user)
       respond_to do |format|
         format.html {
-          flash[:notice] = "Signed in successfully."
+          flash[:notice] = "Signed in successfully"
           redirect_to index_path
         }
         format.json { render :json => {:response => "ok", :auth_token => user.authentication_token}.to_json, :status => 200 }
@@ -99,7 +99,7 @@ class Xdevise::SessionsController < Devise::SessionsController
         respond_to do |format|
           format.html {
             #            redirect_to(:user)
-            flash[:notice] = "Signed in successfully."
+            flash[:notice] = "Signed in successfully"
             redirect_to index_path
           }
           format.json {
@@ -142,7 +142,7 @@ class Xdevise::SessionsController < Devise::SessionsController
       @user_auth = Authentication.find_by_provider_and_uid(params[:provider], params[:uid])
       if @user_auth.nil?
         if params[:email].nil?
-          render :json => { :response => "Please enter email to complete signup."}
+          render :json => { :response => "Please enter email to complete signup"}
         else
           @user = User.find_by_email(params[:email])
           if @user.nil?
@@ -163,7 +163,7 @@ class Xdevise::SessionsController < Devise::SessionsController
         render :json => { :auth_token => @user.authentication_token, :user_id => @user.id, :response => "ok"}
       end
     else
-      render :json => { :response => "This provider is not allowed."}
+      render :json => { :response => "This provider is not allowed"}
     end
   end
   def destroy
@@ -171,11 +171,11 @@ class Xdevise::SessionsController < Devise::SessionsController
       sign_out(@user)
       respond_to do |format|
         format.html {
-          flash[:notice] = "Signed out successfully."
+          flash[:notice] = "Signed out successfully"
           redirect_to index_path
         }
          format.json {
-        render :json => { :response => "Signed out successfully."}
+        render :json => { :response => "Signed out successfully"}
       }
       end
   end
