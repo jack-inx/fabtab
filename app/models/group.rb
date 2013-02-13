@@ -6,7 +6,7 @@ class Group < ActiveRecord::Base
   
   def self.sort_by_keyword(user, keyword)
     if keyword == "alphabetical"
-      user.groups.sort_by { |group| group.name if (!group.nil? && (!self.category.nil? || !self.brand.nil?))}
+      user.groups.sort_by { |group| group.name if !group.nil?}
     elsif keyword == "date"
       user.groups.sort { |group_a, group_b| group_b.created_at <=> group_a.created_at }
     else
@@ -26,8 +26,6 @@ class Group < ActiveRecord::Base
   end
   
   def name
-    if !self.category.nil? || !self.brand.nil?
-      ( self.category.name ) || ( self.brand.title)
-    end
+    ( self.category.name ) || ( self.brand.title)
   end
 end
