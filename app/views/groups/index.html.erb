@@ -20,7 +20,7 @@
     <ul id="groups_carousel">
       <% @groups.each do |group| %>
         <% if group.ads.count > 0 %>
-          <% if group.brand_folder? %>
+          <% if group.brand_folder? && !group.brand.nil? %>
             <li>
               <div class="folder">
                 <%= link_to image_tag(group.brand.logo.url(:all_folders)), brand_path(group.brand) %>
