@@ -379,7 +379,7 @@ $(document).ready(function() {
     }
     
     $(".category input").live('keypress',function(event) {
-        runScript(event);
+      //  runScript(event);
     });
     
     $('#tabAds').click(function(event) {
