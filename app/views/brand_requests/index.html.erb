@@ -10,7 +10,7 @@
     <ul>
  <% if @brand_requests.count > 0  %>
       <% @brand_requests.each do |brand_request| %>
-  <% if brand_request.ad.status == true %>
+        <% if !brand_request.ad.nil? && brand_request.ad.status == true %>
         <li class="row">
           <%= form_for brand_request, :method => :delete do |f| %>
             <div class="left">

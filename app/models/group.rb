@@ -26,6 +26,8 @@ class Group < ActiveRecord::Base
   end
   
   def name
-    ( self.category.name ) || ( self.brand.title)
+    if !self.category.nil? || !self.brand.nil?
+      ( self.category.name ) || ( self.brand.title)
+    end
   end
 end
