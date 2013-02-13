@@ -392,7 +392,11 @@ $(document).ready(function() {
                 setTimeout(function() {
                     window.close();
                 }, 10000);
+            },
+            error: function(data,textStatus, xhr){
+                 updateFlashMessage1('Please select category','success');
             }
+
         });
         return false;
     });
