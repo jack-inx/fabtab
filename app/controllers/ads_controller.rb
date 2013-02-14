@@ -50,43 +50,43 @@ class AdsController < ApplicationController
     @ad = Ad.new(params[:ad])
     @ad.ad_type = "url"
     @ad.user_id = current_user.id
-        logger.info "==== step 1 #{@user.email}"
+    logger.info "==== step 1 #{@user.email}"
     if @user.nil?
-            logger.info "==== step 2 #{@user.email}"
+      logger.info "==== step 2 #{@user.email}"
       @user = User.new(:email=> params[:email])
       if @user.save
         render :text => 'Check your email and activate your account'
       end
     elsif @user == current_user
-            logger.info "==== step 3 #{params[:category]} && #{params[:tabcategory]}"
+      logger.info "==== step 3 #{params[:category]} && #{params[:tabcategory]}"
       if params[:category].nil? && params[:tabcategory].nil?
-                logger.info "===== step 4===="
+        logger.info "===== step 4===="
         @group = current_user.groups.find_or_create_by_category_id(Category.find_permanent.id)
         @group.ads << @ad
         @group.save!
         redirect_to root_url
       else
-                logger.info "=== step 5====#{params[:tabcategory]}"
+        logger.info "=== step 5====#{params[:tabcategory]}"
         if !params[:tabcategory].blank?
-                    logger.info "=========step 6 #{params[:brandname]}"
+          logger.info "=========step 6 #{params[:brandname]}"
           if params[:brandname].to_i == 0 
             @category = Category.find_by_name(params[:tabcategory])
-                        logger.info "=== step 7 #{@category.nil?}"
+            logger.info "=== step 7 #{@category.nil?}"
             if !@category.nil?
-                            logger.info "========= step 8======="
+              logger.info "========= step 8======="
               @category = Category.find_by_name(params[:tabcategory])
             else
-                            logger.info "========= step 9======="
+              logger.info "========= step 9======="
               @category = Category.find_or_create_by_name_and_user_id(params[:tabcategory].downcase,@user.id)
             end
 
           else
-                        logger.info "========= step 10 ======="
+            logger.info "========= step 10 ======="
             @category = Category.find_or_create_by_name_and_brand_id_and_user_id(params[:tabcategory].downcase,params[:brandname].to_i,current_user.id)
           end
         else
           
-                    logger.info "========= step 11 ======= #{params[:category]} "
+          logger.info "========= step 11 ======= #{params[:category]} "
           @category_new = Category.find_by_id(params[:category])
           @category = Category.find_by_name(@category_new.name)
           #          if !@category.nil?
@@ -98,28 +98,28 @@ class AdsController < ApplicationController
           #          end
 
         end
-                logger.info "==== step 14 == #{params[:brandname]}"
+        logger.info "==== step 14 == #{params[:brandname]}"
         if params[:brandname].to_i == 0
-                    logger.info "=== step 15 ==="
+          logger.info "=== step 15 ==="
           @group = Group.find_by_category_id_and_user_id(@category.id,current_user.id)
           if !@group.nil?
-                        logger.info "=== step 16==="
+            logger.info "=== step 16==="
             @group = Group.find_by_category_id_and_user_id(@category.id,current_user.id)
           else
-                        logger.info "=== step 17==="
+            logger.info "=== step 17==="
             @group = current_user.groups.find_or_create_by_category_id(@category.id)
           end
         else
-                    logger.info "=== step 18=== #{params[:brandname]}"
+          logger.info "=== step 18=== #{params[:brandname]}"
           @brand = Brand.find(params[:brandname].to_i)
           @group = @brand.groups.find_or_create_by_category_id(@category.id)
           @ad.brand_id = @brand.id
         end
-                logger.info "=== step 19 ==="
+        logger.info "=== step 19 ==="
         @group.ads << @ad
         @group.save!
         respond_to do |format|
-                    logger.info "=== step 20 ==="
+          logger.info "=== step 20 ==="
           format.json {render :json => @group.category.name.to_json }
         end        
       end
@@ -283,13 +283,15 @@ class AdsController < ApplicationController
       end
     end
     if params[:brandname].to_i == 0
-      @group = @user.groups.find_or_create_by_category_id(@category.id)
-      #		@group = Group.find_by_category_id_and_user_id(@category.id,current_user.id)
-      #   if !@group.nil?
-      #	  @group = Group.find_by_category_id_and_user_id(@category.id,current_user.id)
-      # else
-      #	@group = current_user.groups.find_or_create_by_category_id(@category.id)
-      # end
+      #@group = @user.groups.find_or_create_by_category_id(@category.id)
+      @group = Group.find_by_category_id_and_user_id(@category.id,current_user.id)
+      if !@group.nil?
+        @group = Group.find_by_category_id_and_user_id(@category.id,current_user.id)
+        logger.info "=== if params brandname #{@froup.id} #{@category.id}"
+      else
+      	@group = current_user.groups.find_or_create_by_category_id(@category.id)
+        logger.info "=== else params brandname #{@froup.id} #{@category.id}"
+      end
     else
       @brand = Brand.find(params[:brandname].to_i)
       @group = @brand.groups.find_or_create_by_category_id(@category.id)
@@ -379,15 +381,17 @@ class AdsController < ApplicationController
       end
     end
     if params[:brandname].to_i == 0
-      @group = @user.groups.find_or_create_by_category_id(@category.id)
-      logger.info "=== if condition group by user #{@user.id} #{@group.id}"
-      #	@group = Group.find_by_category_id_and_user_id(@category.id,current_user.id)
- 
-      #   if !@group.nil?
-      #	  @group = Group.find_by_category_id_and_user_id(@category.id,current_user.id)
-      # else
-      #	@group = current_user.groups.find_or_create_by_category_id(@category.id)
-      # end
+      #@group = @user.groups.find_or_create_by_category_id(@category.id)
+      
+      @group = Group.find_by_category_id_and_user_id(@category.id,current_user.id)
+
+      if !@group.nil?
+        @group = Group.find_by_category_id_and_user_id(@category.id,current_user.id)
+        logger.info "=== if condition group by user #{current_user.id} #{@group.id} #{@category.id}"
+      else
+      	@group = current_user.groups.find_or_create_by_category_id(@category.id)
+        logger.info " else condition == #{@category.id} #{@group.id} ==="
+      end
     else
       @brand = Brand.find(params[:brandname].to_i)
       @group = @brand.groups.find_or_create_by_category_id(@category.id)
