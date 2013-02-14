@@ -44,6 +44,8 @@ class AdsController < ApplicationController
   end
 
   def save
+    params[:tabcategory] = params[:tabcategory].strip
+    params[:category] = params[:category].strip
     # logger.info "=== #{params[:email].blank?} && #{params[:category].blank?} && #{params[:tabcategory].blank?} && #{params[:brandname].blank?}"
     #logger.info "=== #{params[:email].nil?} && #{params[:category].nil?} && #{params[:tabcategory].nil?} && #{params[:brandname].nil?}"
     @user = User.find_by_email(params[:email])
@@ -214,6 +216,7 @@ class AdsController < ApplicationController
   end
 
   def snapit
+    params[:tabcategory] = params[:tabcategory].strip
     @user = User.find_by_authentication_token(params[:auth_token])
     logger.info " params token #{params[:auth_token]} ==== thumbnailUrl #{params[:thumbnail_url]} #{params[:thumbnail_url].nil?} #{params[:thumbnail_url].blank?}"
     if !params[:thumbnail_url].nil?
