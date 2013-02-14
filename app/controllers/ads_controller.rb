@@ -215,59 +215,81 @@ class AdsController < ApplicationController
 
   def snapit
     @user = User.find_by_authentication_token(params[:auth_token])
-
+    logger.info " params token #{params[:auth_token]} ==== thumbnailUrl #{params[:thumbnail_url]} #{params[:thumbnail_url].nil?} #{params[:thumbnail_url].blank?}"
     if !params[:thumbnail_url].nil?
+      logger.info "inside if condition == #{params[:encode_img]}"
       @sio = StringIO.new(Base64.decode64(params[:encode_img]))
       @sio.original_filename = "#{@user.id + (Time.now).to_i}.png"
       @sio.content_type = "image/png"
       new_url = params[:weburl].to_s
+      logger.info "new url #{new_url}"
       new_url.gsub!(/~/,'&')
+      logger.info "before ad create #{params[:type]}"
       @ad = Ad.create(:ad_type => params[:type], :longitude => params[:longitude], :latitude => params[:latitude], :image => @sio, :user_id => @user.id, :url => new_url)
       @ad.image_url = params[:thumbnail_url]
       @ad.save(:validate => false)
+      looger.info "== save ad #{@ad.id}"
     else
+      logger.info "else condition ===#{params[:encode_img]} "
       @sio = StringIO.new(Base64.decode64(params[:encode_img]))
       @sio.original_filename = "#{@user.id + (Time.now).to_i}.png"
       @sio.content_type = "image/png"
+      logger.info "before create Ad"
       @ad = Ad.create(:ad_type => params[:type], :longitude => params[:longitude], :latitude => params[:latitude], :image => @sio, :user_id => @user.id)
       @ad = Ad.find_by_id(@ad.id)
       @ad.image_url = @ad.image.to_s
       @ad.save(:validate => false)
+      logger.info " === ad save == #{@ad.id}"
       @ad.url = @ad.image_url
       @ad.save(:validate => false)
+      logger.info " === ad save == #{@ad.id}"
     end
+    logger.info "=== out of if else condition ==="
     if params[:tabcategory]
+      logger.info " if params[:tabcategory] ==="
       if params[:brandname].to_i == 0
+        logger.info " if params[:brandname] ==="
         #        @category = Category.find_or_create_by_name_and_user_id(params[:tabcategory].downcase, @user.id)
         @category = Category.find_by_name(params[:tabcategory])
         if !@category.nil?
+          logger.info "=== if category not nill #{@category.id}"
           @category = Category.find_by_name(params[:tabcategory])
         else
+          logger.info "===  if category is nill #{params[:tabcategory].downcase}"
           @category = Category.find_or_create_by_name(params[:tabcategory].downcase)
+          logger.info "=== find or create category== #{@category.id}"
        	end
       else
+        logger.info "=== else of params[:brandname]=="
         @category = Category.find_or_create_by_name_and_brand_id(params[:tabcategory].downcase, params[:brandname].to_i)
+        logger.info "=== find or create by name and brand id "
       end
     else
+      logger.info "=== else of params[:tabcategory] =="
       if params[:category_id] == "0"
+        logger.info "=== if params[:category] =="
         @category = Category.find_by_name_and_user_id(params[:name].downcase,@user.id)
         if @category.nil?
+          logger.info "=== if category nil=="
           @category = Category.create(:name => params[:name])
           @category.user = @user
           @category.save!
+          logger.info "=== create category == #{@category.id}"
         end
       else
+        logger.info "== else of params[:category_id] =="
         @category = Category.find(params[:category_id].to_i)
+        logger.info "== find category #{@category.id}"
       end
     end
     if params[:brandname].to_i == 0
-      #@group = @user.groups.find_or_create_by_category_id(@category.id)
-      		@group = Group.find_by_category_id_and_user_id(@category.id,current_user.id)
-        if !@group.nil?
-      	  @group = Group.find_by_category_id_and_user_id(@category.id,current_user.id)
-       else
-      	@group = current_user.groups.find_or_create_by_category_id(@category.id)
-       end
+      @group = @user.groups.find_or_create_by_category_id(@category.id)
+      #		@group = Group.find_by_category_id_and_user_id(@category.id,current_user.id)
+      #   if !@group.nil?
+      #	  @group = Group.find_by_category_id_and_user_id(@category.id,current_user.id)
+      # else
+      #	@group = current_user.groups.find_or_create_by_category_id(@category.id)
+      # end
     else
       @brand = Brand.find(params[:brandname].to_i)
       @group = @brand.groups.find_or_create_by_category_id(@category.id)
@@ -280,9 +302,10 @@ class AdsController < ApplicationController
 
   def scanit            
     @user = User.find_by_authentication_token(params[:auth_token])
+    logger.info "=== #{@user.inspect}"
     #@image = IMGKit.new(params[:weburl],:quality => 50 ,:width => 300 ,:height => 250)
     if !params[:thumbnail_url].nil?
-
+      logger.info "=== if params[:thumbnail_url] is not nil==="
       @ad = Ad.new()
       new_url = params[:weburl].to_s
       new_url.gsub!(/~/,'&')
@@ -293,7 +316,9 @@ class AdsController < ApplicationController
       @ad.user_id = @user.id
       @ad.image_url = params[:thumbnail_url]
       @ad.save!
+      logger.info "=== create ad #{@ad.id}"
     else
+      logger.info "===else "
       @image_url = "#{Rails.root}"+"/public/#{@user.id + (Time.now).to_i}.jpg"
       #@image.to_file("#{@image_url}")
       `xvfb-run wkhtmltoimage-amd64 --crop-h 800 --crop-w 900 --crop-x 0 --crop-y 0  --use-xserver "#{params[:weburl]}" "#{@image_url}"`
@@ -308,6 +333,7 @@ class AdsController < ApplicationController
       @ad.save!
       @ad.image_url = @ad.image.to_s
       @ad.save!
+      logger.info " create ad #{@ad.id}"
       `rm "#{@image_url}"`
     end
     #@image_name = Time.now.to_i
@@ -319,45 +345,58 @@ class AdsController < ApplicationController
     #@ad.url = @ad.image.to_s
 
     if params[:tabcategory]
+      logger.info "=== if params[:tabcategory]=="
       if params[:brandname].to_i == 0
+        logger.info "=== if brandname==="
         # @category = Category.find_or_create_by_name_and_user_id(params[:tabcategory].downcase, @user.id)
         @category = Category.find_by_name(params[:tabcategory])
         if !@category.nil?
           @category = Category.find_by_name(params[:tabcategory])
+          logger.info "=== if @category  #{@category.id}"
         else
           @category = Category.find_or_create_by_name(params[:tabcategory].downcase)
+          logger.info "=== else @category  #{@category.id}"
         end
       else
+        logger.info "=== else of brandname ==="
         @category = Category.find_or_create_by_name_and_brand_id(params[:tabcategory].downcase, params[:brandname].to_i)
+        logger.info "== #{@category.id}"
       end
     else
+      logger.info "=== else of tabcategory"
       if params[:category_id] == "0"
+        logger.info "=== if params cateid ==0"
         @category = Category.find_by_name_and_user_id(params[:name].downcase,@user.id)
         if @category.nil?
           @category = Category.create(:name => params[:name])
           @category.user = @user
           @category.save!
+          logger.info "== if condition #{@category.id}"
         end
       else
         @category = Category.find(params[:category_id].to_i)
+        logger.info "=== else of param cate id #{@category.id}"
       end
     end
     if params[:brandname].to_i == 0
-      #@group = @user.groups.find_or_create_by_category_id(@category.id)
-      	@group = Group.find_by_category_id_and_user_id(@category.id,current_user.id)
+      @group = @user.groups.find_or_create_by_category_id(@category.id)
+      logger.info "=== if condition group by user #{@user.id} #{@group.id}"
+      #	@group = Group.find_by_category_id_and_user_id(@category.id,current_user.id)
  
-         if !@group.nil?
-      	  @group = Group.find_by_category_id_and_user_id(@category.id,current_user.id)
-       else
-      	@group = current_user.groups.find_or_create_by_category_id(@category.id)
-       end
+      #   if !@group.nil?
+      #	  @group = Group.find_by_category_id_and_user_id(@category.id,current_user.id)
+      # else
+      #	@group = current_user.groups.find_or_create_by_category_id(@category.id)
+      # end
     else
       @brand = Brand.find(params[:brandname].to_i)
       @group = @brand.groups.find_or_create_by_category_id(@category.id)
       @ad.brand_id = @brand.id
+      logger.info "=== else condition #{@ad.id} #{@group.id} #{@brand.id}"
     end
     @group.ads << @ad
     @group.save!
+    logger.info "== group save #{@group.id}"
     render :json => {:response => "ok", :ad_id => @ad.id,:ad_imageurl => @ad.image_url, :category_id => @category.id, :category_name => @category.name}
   end
 
