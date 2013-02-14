@@ -61,11 +61,12 @@ class AdsController < ApplicationController
       end
     elsif @user == current_user
       logger.info "==== step 3 #{params[:category]} && #{params[:tabcategory]}"
-      if params[:category].nil? && params[:tabcategory].nil?
+      if params[:category].blank? && params[:tabcategory].blank?
         logger.info "===== step 4===="
         @group = current_user.groups.find_or_create_by_category_id(Category.find_permanent.id)
         @group.ads << @ad
         @group.save!
+        logger.info "====  step 4-1 #{@group.id}"
         redirect_to root_url
       else
         logger.info "=== step 5====#{params[:tabcategory]}"
@@ -107,9 +108,11 @@ class AdsController < ApplicationController
           if !@group.nil?
             logger.info "=== step 16==="
             @group = Group.find_by_category_id_and_user_id(@category.id,current_user.id)
+            logger.info "====  step 16-1 #{@group.id}"
           else
             logger.info "=== step 17==="
             @group = current_user.groups.find_or_create_by_category_id(@category.id)
+            logger.info "====  step 17-1 #{@group.id}"
           end
         else
           logger.info "=== step 18=== #{params[:brandname]}"
@@ -118,6 +121,7 @@ class AdsController < ApplicationController
           @ad.brand_id = @brand.id
         end
         logger.info "=== step 19 ==="
+        logger.info "====  step 19-1 #{@group.id}"
         @group.ads << @ad
         @group.save!
         respond_to do |format|
