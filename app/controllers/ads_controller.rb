@@ -45,7 +45,7 @@ class AdsController < ApplicationController
 
   def save
     params[:tabcategory] = params[:tabcategory].strip
-    params[:category] = params[:category].strip
+  #  params[:category] = params[:category].strip
     # logger.info "=== #{params[:email].blank?} && #{params[:category].blank?} && #{params[:tabcategory].blank?} && #{params[:brandname].blank?}"
     #logger.info "=== #{params[:email].nil?} && #{params[:category].nil?} && #{params[:tabcategory].nil?} && #{params[:brandname].nil?}"
     @user = User.find_by_email(params[:email])
@@ -87,7 +87,7 @@ class AdsController < ApplicationController
             @category = Category.find_or_create_by_name_and_brand_id_and_user_id(params[:tabcategory].downcase,params[:brandname].to_i,current_user.id)
           end
         else
-          
+          params[:category] = params[:category].strip
           logger.info "========= step 11 ======= #{params[:category]} "
           @category_new = Category.find_by_id(params[:category])
           @category = Category.find_by_name(@category_new.name)
