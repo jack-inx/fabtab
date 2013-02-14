@@ -45,7 +45,7 @@ class AdsController < ApplicationController
 
   def save
     params[:tabcategory] = params[:tabcategory].strip
-  #  params[:category] = params[:category].strip
+    #  params[:category] = params[:category].strip
     # logger.info "=== #{params[:email].blank?} && #{params[:category].blank?} && #{params[:tabcategory].blank?} && #{params[:brandname].blank?}"
     #logger.info "=== #{params[:email].nil?} && #{params[:category].nil?} && #{params[:tabcategory].nil?} && #{params[:brandname].nil?}"
     @user = User.find_by_email(params[:email])
@@ -310,7 +310,6 @@ class AdsController < ApplicationController
   end
 
   def scanit
-    params[:tabcategory] = params[:tabcategory].strip
     @user = User.find_by_authentication_token(params[:auth_token])
     logger.info "=== #{@user.inspect}"
     #@image = IMGKit.new(params[:weburl],:quality => 50 ,:width => 300 ,:height => 250)
@@ -355,6 +354,8 @@ class AdsController < ApplicationController
     #@ad.url = @ad.image.to_s
 
     if params[:tabcategory]
+      params[:tabcategory] = params[:tabcategory].strip
+
       logger.info "=== if params[:tabcategory]=="
       if params[:brandname].to_i == 0
         logger.info "=== if brandname==="
