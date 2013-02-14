@@ -438,10 +438,16 @@ $(document).ready(function() {
                     } else {
                         $(self).parent().find('.folder-category:first').html(data.category);
                         editDialog.find('form #category option:first').attr('selected',true);
+                       var div = "<div class='delete_dialog' style='margin-left: 80px !important;margin-top: 0px !important;'><div class='title' style='margin-left:32px;font-size:19px !important;margin-top:66px;'>Save successfully</div><div class='close234 close_dialog_offer'>X</div><div style=' color: #7EBE57;font-size: 23px;font-weight: bold; margin-top: 14px; margin-left: 30px;'>Save</div></div></br></br>";
+                        $('#sort_date_group').append(div);
+                        var mask = "<div id='mask_div' style='opacity:0.5;position: absolute;left:0; top:0;height:190%;width:100%;z-index: 50;background:#000;'></div>";
+                        $('body').after(mask);
                     }
+                   
                     $(self).parent().children('.edit_dialog').addClass('hidden');
                     $(self).parent().children('.edit_dialog').removeAttr('style');
                     $(self).parent().children('.edit-button').addClass('hidden');
+                   
                 }
             });
             return false;
@@ -778,4 +784,9 @@ function delete_alert_box(ad){
 
 $(".close").live('click',function(){
     $(this).parent().hide();
+});
+
+$(".close234, #mask_div").live('click',function(){
+    $(".delete_dialog").remove();
+    $("#mask_div").remove();
 });
