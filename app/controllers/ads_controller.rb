@@ -305,7 +305,8 @@ class AdsController < ApplicationController
     render :json => {:response => "ok", :ad_id => @ad.id, :category_id => @category.id, :category_name => @category.name}
   end
 
-  def scanit            
+  def scanit
+    params[:tabcategory] = params[:tabcategory].strip
     @user = User.find_by_authentication_token(params[:auth_token])
     logger.info "=== #{@user.inspect}"
     #@image = IMGKit.new(params[:weburl],:quality => 50 ,:width => 300 ,:height => 250)
