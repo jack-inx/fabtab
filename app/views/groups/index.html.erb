@@ -33,7 +33,7 @@
           <% else %>
             <li>
               <% unless group.permanent? %>
-                <%= link_to "Edit", '#', :class => 'edit-button hidden' %>
+                <%= link_to "Edit", '#', :class => 'edit-button hidden', :style=>"outline: medium none !important;" %>
                 <div class="edit_dialog hidden">
                   <div class="closes" style="margin-left: 260px; margin-right: 24px;">X</div>
                   <div class="message" style="margin-top: 10px;">Edit.</div>
@@ -52,7 +52,7 @@
                       <div class="message-text"> Delete this Offer?</div>
                       <%= link_to_function "Delete", "#", :class => 'delete_tab delete', :style=>'margin-left: 112px;' %>
                     </div>
-                    <%= link_to "Save", '#', :class => 'save' %>
+                    <%= link_to "Save", '#', :class => 'save', :style=>"outline: medium none !important;" %>
 
                   <% end %>
                 </div>
