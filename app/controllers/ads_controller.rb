@@ -76,16 +76,16 @@ class AdsController < ApplicationController
             @category = Category.find_by_name(params[:tabcategory])
             logger.info "=== step 7 #{@category.nil?}"
             if !@category.nil?
-              logger.info "========= step 8======="
-              @category = Category.find_by_name(params[:tabcategory])
+              @category = Category.find_by_name_and_user_id(params[:tabcategory].downcase,current_user.id)
+              logger.info "========= step 8======#{@category.id}="
             else
-              logger.info "========= step 9======="
-              @category = Category.find_or_create_by_name_and_user_id(params[:tabcategory].downcase,@user.id)
+              @category = Category.find_or_create_by_name_and_user_id(params[:tabcategory].downcase,current_user.id)
+              logger.info "========= step 9=====#{@category.id}=="
             end
 
           else
-            logger.info "========= step 10 ======="
             @category = Category.find_or_create_by_name_and_brand_id_and_user_id(params[:tabcategory].downcase,params[:brandname].to_i,current_user.id)
+            logger.info "========= step 10 ======#{@category.id}="
           end
         else
           params[:category] = params[:category].strip
@@ -103,8 +103,8 @@ class AdsController < ApplicationController
         end
         logger.info "==== step 14 == #{params[:brandname]}"
         if params[:brandname].to_i == 0
-          logger.info "=== step 15 ==="
           @group = Group.find_by_category_id_and_user_id(@category.id,current_user.id)
+          logger.info "=== step 15 ==#{@group.id}=#{@category.id}"
           if !@group.nil?
             logger.info "=== step 16==="
             @group = Group.find_by_category_id_and_user_id(@category.id,current_user.id)
