@@ -72,7 +72,7 @@
         <% if ad.ad_type == "url" && ad.status == true %>
           <% if !ad.url.nil? %>
             <th style="width:0px;border:none;">
-              <div class="brand_edit">
+              <div class="brand_edit" style="background : none;">
                 <% @url = ad.url %>
                 <%  @brand_count += 1%>
                 <%= link_to image_tag(ad.image_url , :size => "200x100" ), ad.url %>
