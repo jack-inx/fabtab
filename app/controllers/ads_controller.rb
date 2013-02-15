@@ -104,7 +104,7 @@ class AdsController < ApplicationController
         logger.info "==== step 14 == #{params[:brandname]}"
         if params[:brandname].to_i == 0
           @group = Group.find_by_category_id_and_user_id(@category.id,current_user.id)
-          logger.info "=== step 15 ==#{@group.id}=#{@category.id}"
+          logger.info "=== step 15 ==#{@group.inspect}=#{@category.id}"
           if !@group.nil?
             logger.info "=== step 16==="
             @group = Group.find_by_category_id_and_user_id(@category.id,current_user.id)
