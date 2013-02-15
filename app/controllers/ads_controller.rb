@@ -73,7 +73,7 @@ class AdsController < ApplicationController
         if !params[:tabcategory].blank?
           logger.info "=========step 6 #{params[:brandname]}"
           if params[:brandname].to_i == 0 
-            @category = Category.find_by_name(params[:tabcategory])
+            @category = Category.find_by_name_and_user_id(params[:tabcategory].downcase,current_user.id)
             logger.info "=== step 7 #{@category.nil?}"
             if !@category.nil?
               @category = Category.find_by_name_and_user_id(params[:tabcategory].downcase,current_user.id)
