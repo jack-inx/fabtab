@@ -11,7 +11,7 @@
           </td>
           <td style="width: 100px; padding-left: 2px; padding-right: 2px; height: 55px;">
             <% user = User.find_by_id(ad.user_id)  %>
-            <%= truncate(user.username, :length => 15, :omission => '...') %>        
+            <%= if !user.nil? ? truncate(user.username, :length => 15, :omission => '...') : " " %>
           </td>
           <td style="width: 170px; padding-left: 10px; padding-right: 2px;">
             <% user = User.find_by_id(ad.user_id)  %>
