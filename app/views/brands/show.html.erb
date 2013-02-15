@@ -118,7 +118,7 @@
       <ul id="extra_offers_carousel">
         <% @brand_extra_offers.each do |extra_offer| %>
           <li>
-            <div class="ad_image">
+            <div class="ad_image" style="background : none;">
               <%= link_to image_tag(extra_offer.image.url), "#", :onClick=>"window.open('#{ extra_offer.url }','pagename','resizable,height=450,width=600');" %>
             </div>
             <div class="extra-offer-expiry">
