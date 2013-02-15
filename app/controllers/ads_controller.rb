@@ -262,10 +262,10 @@ class AdsController < ApplicationController
       if params[:brandname].to_i == 0
         logger.info " if params[:brandname] ==="
         #        @category = Category.find_or_create_by_name_and_user_id(params[:tabcategory].downcase, @user.id)
-        @category = Category.find_by_name(params[:tabcategory])
+        @category = Category.find_by_name(params[:tabcategory].downcase)
         if !@category.nil?
           logger.info "=== if category not nill #{@category.id}"
-          @category = Category.find_by_name(params[:tabcategory])
+          @category = Category.find_by_name(params[:tabcategory].downcase)
         else
           logger.info "===  if category is nill #{params[:tabcategory].downcase}"
           @category = Category.find_or_create_by_name(params[:tabcategory].downcase)
@@ -283,7 +283,7 @@ class AdsController < ApplicationController
         @category = Category.find_by_name_and_user_id(params[:name].downcase,@user.id)
         if @category.nil?
           logger.info "=== if category nil=="
-          @category = Category.create(:name => params[:name])
+          @category = Category.create(:name => params[:name].downcase)
           @category.user = @user
           @category.save!
           logger.info "=== create category == #{@category.id}"
@@ -365,9 +365,9 @@ class AdsController < ApplicationController
       if params[:brandname].to_i == 0
         logger.info "=== if brandname==="
         # @category = Category.find_or_create_by_name_and_user_id(params[:tabcategory].downcase, @user.id)
-        @category = Category.find_by_name(params[:tabcategory])
+        @category = Category.find_by_name(params[:tabcategory].downcase)
         if !@category.nil?
-          @category = Category.find_by_name(params[:tabcategory])
+          @category = Category.find_by_name(params[:tabcategory].downcase)
           logger.info "=== if @category  #{@category.id}"
         else
           @category = Category.find_or_create_by_name(params[:tabcategory].downcase)
@@ -384,7 +384,7 @@ class AdsController < ApplicationController
         logger.info "=== if params cateid ==0"
         @category = Category.find_by_name_and_user_id(params[:name].downcase,@user.id)
         if @category.nil?
-          @category = Category.create(:name => params[:name])
+          @category = Category.create(:name => params[:name].downcase)
           @category.user = @user
           @category.save!
           logger.info "== if condition #{@category.id}"
