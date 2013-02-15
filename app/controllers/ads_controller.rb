@@ -84,8 +84,11 @@ class AdsController < ApplicationController
               @category = Category.find_by_name_and_user_id(params[:tabcategory].downcase,current_user.id)
               logger.info "========= step 8======#{@category.id}= #{current_user.id}"
             else
-              @category = Category.find_or_create_by_name_and_user_id(params[:tabcategory].downcase,current_user.id)
-              logger.info "========= step 9=====#{@category.id}=#{current_user.id}="
+              @category_1 = Category.find_by_name(params[:tabcategory].downcase)
+              if @category_1.nil?
+                @category = Category.find_or_create_by_name_and_user_id(params[:tabcategory].downcase,current_user.id)
+                logger.info "========= step 9=====#{@category.id}=#{current_user.id}="
+              end
             end
 
           else
