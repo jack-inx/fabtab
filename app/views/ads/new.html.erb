@@ -19,7 +19,7 @@
           <%= select_tag "tabcategory", options_from_collection_for_select(@category, "name", "name"), :prompt => 'type a category' %>
         </div>
         <span class="tabit_field" style = 'display:none;'>
-          <%= select_tag "brandname", options_from_collection_for_select(@brand,"id","name"), :prompt => 'select a brand folder', :style => 'display:none;color:white;' %> </span>
+          <%= select_tag "brandname", options_from_collection_for_select(@brand,"id","name"), :prompt => 'select a brand folder', :style => 'display:none;color:white;background: #797A7D !important;' %> </span>
       </div>
     <% else %>
       <div class="category">
