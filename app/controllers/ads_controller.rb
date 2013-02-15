@@ -44,6 +44,11 @@ class AdsController < ApplicationController
   end
 
   def save
+    logger.info " tab categroy #{params[:tabcategory]}"
+    if !params[:tabcategory].blank?
+      params[:tabcategory] = params[:tabcategory].strip
+      logger.info " tab categroy #{params[:tabcategory]}"
+    end
     
     #  params[:category] = params[:category].strip
     # logger.info "=== #{params[:email].blank?} && #{params[:category].blank?} && #{params[:tabcategory].blank?} && #{params[:brandname].blank?}"
@@ -62,11 +67,6 @@ class AdsController < ApplicationController
     elsif @user == current_user
       logger.info "==== step 3 #{params[:category]} && #{params[:tabcategory]}"
       if params[:category].blank? && params[:tabcategory].blank?
-
-        logger.info " tab categroy #{params[:tabcategory]}"
-        params[:tabcategory] = params[:tabcategory].strip
-        logger.info " tab categroy #{params[:tabcategory]}"
-
         logger.info "===== step 4===="
         @group = current_user.groups.find_or_create_by_category_id(Category.find_permanent.id)
         @group.ads << @ad
@@ -76,11 +76,6 @@ class AdsController < ApplicationController
       else
         logger.info "=== step 5====#{params[:tabcategory]}"
         if !params[:tabcategory].blank?
-
-          logger.info " tab categroy #{params[:tabcategory]}"
-          params[:tabcategory] = params[:tabcategory].strip
-          logger.info " tab categroy #{params[:tabcategory]}"
-
           logger.info "=========step 6 #{params[:brandname]}"
           if params[:brandname].to_i == 0 
             @category = Category.find_by_name_and_user_id(params[:tabcategory].downcase,current_user.id)
