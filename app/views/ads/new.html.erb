@@ -18,7 +18,7 @@
         <div class="category">
           <%= select_tag "tabcategory", options_from_collection_for_select(@category, "name", "name"), :prompt => 'type a category' %>
         </div>
-        <div class="category" style="display:none;">
+        <div class="tabit_field category" style="display:none;">
           <%= select_tag "brandname", options_from_collection_for_select(@brand,"id","name"), :prompt => 'select a brand folder' %> </div>
       </div>
     <% else %>
