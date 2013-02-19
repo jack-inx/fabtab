@@ -130,8 +130,9 @@ class AdsController < ApplicationController
         end
         logger.info "=== step 19 ==="
         logger.info "====  step 19-1 #{@group.id}"
-        @group.ads << @ad
-        @group.save!
+        logger.info @group.ads << @ad
+        logger.info "====  Ads details #{@ad.inspect}"
+        logger.info @group.save!
         respond_to do |format|
           logger.info "=== step 20 ==="
           format.json {render :json => @group.category.name.to_json }
