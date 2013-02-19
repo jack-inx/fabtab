@@ -55,7 +55,6 @@ class AdsController < ApplicationController
     #logger.info "=== #{params[:email].nil?} && #{params[:category].nil?} && #{params[:tabcategory].nil?} && #{params[:brandname].nil?}"
     @user = User.find_by_email(params[:email])
     @ad = Ad.new(params[:ad])
-    @ad.image = URI.parse(params[:ad][:image_url].to_s)
     @ad.ad_type = "url"
     @ad.user_id = current_user.id
     logger.info "==== step 1 #{@user.email}"
@@ -131,9 +130,8 @@ class AdsController < ApplicationController
         end
         logger.info "=== step 19 ==="
         logger.info "====  step 19-1 #{@group.id}"
-        logger.info @group.ads << @ad
-        logger.info "====  Ads details #{@ad.inspect}"
-        logger.info @group.save!
+        @group.ads << @ad
+        @group.save!
         respond_to do |format|
           logger.info "=== step 20 ==="
           format.json {render :json => @group.category.name.to_json }

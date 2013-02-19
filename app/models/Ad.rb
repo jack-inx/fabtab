@@ -8,6 +8,7 @@ class Ad < ActiveRecord::Base
   has_many :offers
   has_attached_file :image, :style=>{:thumb=> '300x250>', :small=>'100x100>'},
     :storage => :s3,
+    :allow_destroy => false,
     :bucket  => 'brand_logos',
     :s3_credentials => {
     :access_key_id => 'AKIAJ5EANDODFQNLOVRA',
