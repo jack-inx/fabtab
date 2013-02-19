@@ -1,14 +1,12 @@
 <div class="team right-portion">
   <div class="title header-font" style="margin-top:20px;margin-left:20px;font-size: 25px;">Team</div>
   <div class="promo_text">
-    <p style="font-size: 18px;line-height: 22px;">MyFabTab Inc. is a small (but beautifully formed) company based in the heart of Silicon Valley, California. Our
-      mission is to provide you the best possible solution to manage all your offers, ads and other fab stuff
-      all in one place. Currently FabTab is in Beta release which basically means we value your feedback on any
-      little kinks you find. So if you want to know more about us, have a great idea for making
-      FabTab even better, or just want to say hello, please contact us using the form below!</p>
+    <p style="font-size: 18px;line-height: 22px;">
+      MyFabTab Inc. is based in the heart of Silicon Valley, California, with offices in London and Sydney. Our mission is to provide you the best possible solution to manage all your offers, ads and other fab stuff all in one place. Currently FabTab is in Beta release which basically means we value your feedback on any little kinks you find. So if you want to know more about us, have a great idea for making FabTab even better, or just want to say hello, please contact us using the form below!
+    </p>
     <br />
-    <p style="font-size: 18px;line-height: 22px;">MyFabTab Inc. is self funded and always looking for world class talent to help us grow. So if you want to
-      invest, have incredible skills or are a brand that wants to knows more, then please get in touch!</p>
+    <p style="font-size: 18px;line-height: 22px;">MyFabTab Inc. is always looking for world class talent, partners and investment. So if you have incredible skills, are a brand that wants to knows more or looking to invest , then please get in touch!
+</p>
 
   </div>
 
@@ -29,9 +27,9 @@
           <div style="margin-bottom: 7px;float: left; margin-right: 46px;margin-top: 13px;">
             <label style="margin-right: 10px;"> From: </label>
             <%if !current_user.nil? %>
-            <%= text_field_tag :email, current_user.email, :readonly => true %>
+              <%= text_field_tag :email, current_user.email, :readonly => true %>
             <%else%>
-            <%= text_field_tag :email %>
+              <%= text_field_tag :email %>
             <%end%>
           </div>
           <div style="margin-bottom: 7px;float: left; margin-right: 122px;">
