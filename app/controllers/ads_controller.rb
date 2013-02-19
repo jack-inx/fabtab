@@ -55,6 +55,7 @@ class AdsController < ApplicationController
     #logger.info "=== #{params[:email].nil?} && #{params[:category].nil?} && #{params[:tabcategory].nil?} && #{params[:brandname].nil?}"
     @user = User.find_by_email(params[:email])
     @ad = Ad.new(params[:ad])
+    @ad.image = URI.parse(params[:ad][:image_url].to_s.image_remote_url)
     @ad.ad_type = "url"
     @ad.user_id = current_user.id
     logger.info "==== step 1 #{@user.email}"
