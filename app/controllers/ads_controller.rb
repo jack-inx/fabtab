@@ -58,7 +58,7 @@ class AdsController < ApplicationController
     @ad = Ad.new(params[:ad])
     if !params[:ad][:image_url].nil?
       @ad_image = open(params[:ad][:image_url])
-      #@ad_image.original_filename = "#{current_user.id + (Time.now).to_i}.jpg"
+      @ad_image.image_file_name = "#{current_user.id + (Time.now).to_i}.jpg"
       @ad.image = @ad_image
     end
     @ad.ad_type = "url"
