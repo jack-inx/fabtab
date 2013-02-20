@@ -6,8 +6,8 @@ class Ad < ActiveRecord::Base
   belongs_to :group, :touch => true
   has_one :brand_request, :dependent => :destroy
   has_many :offers
-  attr_accessible :image_attributes
-  accepts_nested_attributes_for :image, :allow_destroy => false
+  #attr_accessible :image_attributes
+  #accepts_nested_attributes_for :image, :allow_destroy => false
   has_attached_file :image, :style=>{:thumb=> '300x250>', :small=>'100x100>'},
     :storage => :s3,
     :bucket  => 'brand_logos',
