@@ -14,6 +14,8 @@ class Ad < ActiveRecord::Base
     :s3_credentials => {
     :access_key_id => 'AKIAJ5EANDODFQNLOVRA',
     :secret_access_key => '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'},
+    :s3_permissions => {
+    :original => :private },
     :url => "/system/:attachment/:rails_env/ads/:id/:style/:basename.:extension",
     :path => ":rails_root/public/system/:rails_env/ads/:attachment/:id/:style/:basename.:extension", :allow_destroy => false
   has_many :ad_fb_comments
