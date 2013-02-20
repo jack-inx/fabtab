@@ -6,9 +6,9 @@ class Ad < ActiveRecord::Base
   belongs_to :group, :touch => true
   has_one :brand_request, :dependent => :destroy
   has_many :offers
+  accepts_nested_attributes_for :image, :allow_destroy => false
   has_attached_file :image, :style=>{:thumb=> '300x250>', :small=>'100x100>'},
     :storage => :s3,
-    :allow_destroy => false,
     :bucket  => 'brand_logos',
     :s3_credentials => {
     :access_key_id => 'AKIAJ5EANDODFQNLOVRA',
