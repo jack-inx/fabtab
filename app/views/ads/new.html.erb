@@ -18,7 +18,7 @@
         <div class="category">
           <%= select_tag "tabcategory", options_from_collection_for_select(@category, "name", "name"), :prompt => 'type a category' %>
         </div>
-        <div class="tabit_field category" style="display:none;">
+        <div class="tabit_field category1" style="display:none;">
           <%= select_tag "brandname", options_from_collection_for_select(@brand,"id","name"), :prompt => 'select a brand folder', :style =>"-webkit-appearance: none;" %> </div>
       </div>
     <% else %>
@@ -48,10 +48,31 @@
 
 </script>
 <style>
-.tabit_field select option {
-    background: gray;
-    color:white;
-    width: 99%;
-  }
+
+.category1 { margin-top:10px;
+  border-radius: 3px 3px 3px 3px;
+  border: 1px solid #CCCCCC;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset;
+    transition: border 0.2s linear 0s, box-shadow 0.2s linear 0s; width:216px; height:36px;}
+  
+.select {
+  position: absolute;
+  width: 184px; /* With the padding included, the width is 190 pixels: the actual width of the image. */
+  height: 24px;
+  padding: 12px 24px 0 8px;
+  background: url(../images/arrow.png) no-repeat 187px 8px #797A7D;
+  overflow:hidden; color:#bfbfbf; 
+  border-radius:2px; }
+
+.category1:hover {
+    border-color: rgba(82, 168, 236, 0.8);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset, 0 0 8px rgba(82, 168, 236, 0.6);
+    outline: 0 none;}
+
+.styled { height:37px; font-size:13px;}
+
+.styled option { background:#797A7D; color:#bfbfbf; line-height:20px; padding:4px 0 4px 5px;}
+
+.styled option:hover { background:#e3e4e6 !important;}
 
 </style>
