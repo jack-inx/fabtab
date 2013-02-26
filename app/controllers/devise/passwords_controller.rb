@@ -17,12 +17,12 @@ class Devise::PasswordsController < ApplicationController
       flash[:notice] = "Check your email to create a new password"
       respond_to do |format|
         format.html { redirect_to "/signin" } #after_sending_reset_password_instructions_path_for(resource_name)
-        format.json { render :json => { :response => "New Password link has been sent to your email-address." } }
+        format.json { render :json => { :response => "New Password link has been sent to your email-address" } }
       end
     else
       respond_to do |format|
         format.html { render_with_scope :new }
-        format.json { render :json => { :response => "Email does not exist." } }
+        format.json { render :json => { :response => "Email does not exist" } }
       end
       #respond_with_navigational(resource){ render_with_scope :new }
     end
