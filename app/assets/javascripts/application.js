@@ -18,4 +18,5 @@
 //= require bootstrap-tabs
 //= require bootstrap-modal
 //= require home
+//= require custom-form-elements
 

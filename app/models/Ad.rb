@@ -6,14 +6,18 @@ class Ad < ActiveRecord::Base
   belongs_to :group, :touch => true
   has_one :brand_request, :dependent => :destroy
   has_many :offers
+  #attr_accessible :image_attributes
+  #accepts_nested_attributes_for :image, :allow_destroy => false
   has_attached_file :image, :style=>{:thumb=> '300x250>', :small=>'100x100>'},
     :storage => :s3,
     :bucket  => 'brand_logos',
     :s3_credentials => {
     :access_key_id => 'AKIAJ5EANDODFQNLOVRA',
     :secret_access_key => '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'},
+    :s3_permissions => {
+    :original => :public_read },
     :url => "/system/:attachment/:rails_env/ads/:id/:style/:basename.:extension",
-    :path => ":rails_root/public/system/:rails_env/ads/:attachment/:id/:style/:basename.:extension"
+    :path => ":rails_root/public/system/:rails_env/ads/:attachment/:id/:style/:basename.:extension", :allow_destroy => false
   has_many :ad_fb_comments
   has_many :users, :through => :ad_fb_comments
   ajaxful_rateable :stars => 5, :allow_update => true, :dimensions => [:promotions]  

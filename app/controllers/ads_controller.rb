@@ -2,6 +2,7 @@ require 'active_support/secure_random'
 require 'base64'
 require 'tempfile'
 require 'stringio'
+require "open-uri"
 
 class AdsController < ApplicationController
   
@@ -55,6 +56,11 @@ class AdsController < ApplicationController
     #logger.info "=== #{params[:email].nil?} && #{params[:category].nil?} && #{params[:tabcategory].nil?} && #{params[:brandname].nil?}"
     @user = User.find_by_email(params[:email])
     @ad = Ad.new(params[:ad])
+    # if !params[:ad][:image_url].nil?
+    #   @ad_image = open(params[:ad][:image_url])
+    #   @ad_image.name = "#{current_user.id + (Time.now).to_i}.jpg"
+    #   @ad.image = @ad_image
+    # end
     @ad.ad_type = "url"
     @ad.user_id = current_user.id
     logger.info "==== step 1 #{@user.email}"
