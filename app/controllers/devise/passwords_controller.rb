@@ -17,12 +17,12 @@ class Devise::PasswordsController < ApplicationController
       flash[:notice] = "Check your email to create a new password"
       respond_to do |format|
         format.html { redirect_to "/signin" } #after_sending_reset_password_instructions_path_for(resource_name)
-        format.json { render :json => { :response => "New Password link has been sent to your email-address." } }
+        format.json { render :json => { :response => "New Password link has been sent to your email-address" } }
       end
     else
       respond_to do |format|
         format.html { render_with_scope :new }
-        format.json { render :json => { :response => "Email does not exist." } }
+        format.json { render :json => { :response => "Email does not exist" } }
       end
       #respond_with_navigational(resource){ render_with_scope :new }
     end
@@ -43,7 +43,7 @@ class Devise::PasswordsController < ApplicationController
       flash_message = resource.active_for_authentication? ? :updated : :updated_not_active
       set_flash_message(:notice, flash_message) if is_navigational_format?
       sign_in(resource_name, resource)
-      redirect_to "/"
+      redirect_to index_path
       #respond_with resource, :location => after_sign_in_path_for(resource)
     else
       respond_with_navigational(resource){ render_with_scope :edit }
