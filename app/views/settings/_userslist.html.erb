@@ -51,13 +51,15 @@
             <%= link_to "View",show_users_path(user.id) %> |
           </div>
           <div class="edit"><%= link_to "Edit",edit_users_path(user.id) %> | </div>
-          <div class="delete"><%= link_to "Delete","#",:onclick=>"show_delete_box(#{user.id})"  %> | </div>
-          <div class="delete_dialog hidden" id="hidden_delete_box_<%=  user.id %>" style="margin-left: 635px;">
-            <div class="close" style="margin: 12px 24px;">X</div>
-            <div class="title" style="margin-left: 7px;"> Delete</div>
-            <div class="message-text"> Delete this User?</div>
-            <%= link_to "Delete", destroy_users_path(user.id), :method=>'delete', :class => 'delete_tab' %>
+          <div class="delete"><%= link_to "Delete","#",:onclick=>"show_delete_box(#{user.id})"  %> |
+            <div class="delete_dialog hidden" id="hidden_delete_box_<%=  user.id %>" style="left: 135px;">
+              <div class="close" style="margin: 12px 24px;">X</div>
+              <div class="title" style="margin-left: 7px;"> Delete</div>
+              <div class="message-text"> Delete this User?</div>
+              <%= link_to "Delete", destroy_users_path(user.id), :method=>'delete', :class => 'delete_tab' %>
+            </div>
           </div>
+
           <div class="admin" id="flag1_<%= user.id %>">
             <%= render :partial => "users/admin_status", :locals => {:user => user } %>
           </div>
@@ -123,3 +125,12 @@
 
 
 </script>
+<style type="text/css">
+  .delete_dialog {
+    left: 135px;
+    position: absolute;
+    top: 26px;
+    width: 230px;
+    z-index: 10000004;
+  }
+</style>
